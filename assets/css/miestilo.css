@@ -5,7 +5,28 @@
 }
 
 nav {
-    background-color: #c3a64c;
+    background-image: url('../img/texturas/madera.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+}
+
+nav .content-logo {
+    background-image: url('../img/texturas/madera2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+
+    border-radius: 15%;
+    margin-left: 9px;
+    margin-right: 5px;
+}
+
+nav .titulo-logo {
+    font-size: 19px;
+    font-weight: 500;
 }
 
 .icono {

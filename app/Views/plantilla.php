@@ -17,8 +17,11 @@
       <div class="container-fluid">
 
         <!-- Logo de la barra de navegacion -->
-        <img src="assets/img/logo/cva2.png" alt="" width="50px" class="me-3">
-        <a class="navbar-brand" href="#">Muebles</a>
+        <div class="content-logo">
+          <img src="assets/img/logo/cva2.png" alt="" width="50px" class="logo ms-2 me-2">
+        </div>
+        
+        <a class="navbar-brand" href="#"><span class="titulo-logo">CVA Muebles</span></a>
 
         <!-- Botón para dispositivos pequeños -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" 
