@@ -1,0 +1,25 @@
+body {
+    background-color: lightblue;
+}
+
+h1 {
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+.paraghrap {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: justify;
+    color: red;
+    font-size: 24px;
+    text-align: center;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.div-section {
+    background-color: blue;
+    text-align: center;
+    font-size: 20px;
+}
