@@ -5,6 +5,7 @@
 }
 
 nav {
+    box-shadow: -2px 0px 6px black;
     background-image: url('../img/texturas/madera.jpg');
     background-size: cover;
     background-position: center;
