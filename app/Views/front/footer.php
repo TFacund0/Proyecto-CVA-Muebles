@@ -18,7 +18,7 @@
 <!-- Sección 2: Sobre Nosotros -->
 <div class="col-md-4 mb-4">
                 <h5 class="text-uppercase border-bottom pb-2">Sobre Nosotros</h5>
-                <p>Somos una empresa comprometida con la innovación y calidad en desarrollo web desde 2020.</p>
+                <p>Soy un padre de familia de Mantilla que ama la carpinteria desde que me retire.</p>
                 <a href="<?= site_url('about') ?>" class="btn btn-success btn-sm">Conoce más</a>
             </div>
 

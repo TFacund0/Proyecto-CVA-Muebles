@@ -13,27 +13,42 @@ nav {
     color: white;
 }
 
-nav .content-logo {
-    background-image: url('../img/texturas/madera2.jpg');
+nav .content-logo{
+    padding: 1px;
+    color: white;
+    position: relative;
+    background-image: url('../img/texturas/hojas.jpg');
+    background-size: cover;
+    background-position: center;
+   border-inline: 1px solid black;
+   margin-left: 30px;
+    margin-right: 80px;
+    color: white;
+}
+
+ /*nav .content-logo:before {
+    content: "";
+    position: absolute;
+    inset: 0;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    color: white;
+    filter: blur(40px); /* Nivel de difuminado 
+    z-index: 0;
+  }
+  */
 
-    border: 1px solid black;
-    border-radius: 15%;
-    margin-left: 9px;
-    margin-right: 5px;
-}
+
 
 nav .titulo-logo {
     font-size: 19px;
     font-weight: bold;
-    text-shadow: 0 0 30px rgb(0, 0, 0);
+    color: white;
+    text-shadow: 0 0 7px black;
 }
 
 nav .titulo-logo:hover {
-    text-shadow: 0 0 10px rgb(0, 0, 0);
+    text-shadow: 0 0 1px rgb(0, 0, 0);
 }
 
 nav .icono {
@@ -106,6 +121,8 @@ footer div{
 }
 
 .container {
+    /*background-image: url(../img/texturas/hojas.jpg);
+    background-size: cover;*/
     background-color: rgba(0, 0, 0, 0.336);
     padding: 5px;
     border-radius: 8px;
@@ -133,6 +150,60 @@ footer div{
     transition: transform 0.3s, color 0.3s;
 }
 
+.btn-beige {
+    border-radius: 4px;
+    background-color: #f5e7d8; /* Beige muy claro */
+    border: 1px solid #e0d3c5; /* Borde sutil */
+    transition: all 0.3s ease;
+  }
+  
+  .btn-beige:hover {
+    border-radius: 4px;
+    background-color: #70675c; /* Un tono más oscuro al hover */
+    border-color: #d4c7b9;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  }
+  
+.btn-beigeItem {
+    border-radius: 4px;
+    background-color: #504840; /* Un tono más oscuro al hover */
+    border-color: #635b53;
+}  
+
+.btn-beigeItem:hover {
+    border-radius: 4px;
+    background-color: #4e4942; /* Un tono más oscuro al hover */
+    border-color: #504b45;
+    /* transform: translateX(-4px); */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  }
+
+  .dropdown-menu {
+    padding: 0; /* Elimina padding interno */
+    overflow: hidden; /* Contiene los elementos hijos */
+    border: 1px solid rgba(0, 0, 0, 0.15); /* Borde sutil */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1); /* Sombra mejorada */
+  }
+  
+  .dropdown-item {
+    position: relative;
+    padding: 0.5rem 1.5rem;
+    transition: none; /* Elimina transiciones por defecto */
+    border-left: 3px solid transparent; /* Prepara el efecto hover */
+  }
+  
+  /* Efecto hover mejorado */
+  .dropdown-item:hover {
+    background-color: #f8f9fa; /* Gris muy claro */
+    border-left-color: #5a3a22; /* Color madera oscura */
+    transform: none !important; /* Elimina cualquier transformación */
+  }
+  
+  /* Elimina el espacio entre items */
+  .dropdown-item:not(:last-child) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
 /*
 .body {
     padding: 30px;

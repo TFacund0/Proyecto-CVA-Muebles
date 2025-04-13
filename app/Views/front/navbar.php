@@ -1,15 +1,15 @@
 <body>
     <!--BARRA DE NAVEGACION-->
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg p-0">
       <div class="container-fluid">
 
         <!-- Logo de la barra de navegacion -->
-        <div class="content-logo">
-          <img src="assets/img/logo/cva2.png" alt="" width="50px" class="logo me-3 ms-3">
-        </div>
+        <div class="content-logo ">
+          <img src="assets/img/logo/cva2.png" alt="" width="80px" class="logo me-3 ms-3">
+        
         
         <a class="navbar-brand" href="#"><span class="titulo-logo">CVA Muebles</span></a>
-
+        </div>
         <!-- Botón para dispositivos pequeños -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" 
           aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,36 +22,37 @@
           <!-- Menú centrado -->
           <ul class="navbar-nav mx-auto text-lg-center text-end content-list">
             <li class="nav-item">
-              <a class="nav-link active" href="#">Inicio</a>
+              <a class="btn btn-beige text-dark mx-1" href="#">Inicio</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="dropdown-toggle btn btn-beige text-dark mx-1" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Productos
                 </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <ul class="dropdown-menu ">
+                <li><a class="dropdown-item btn btn-beigeItem text-dark mx-1 " href="#">Action</a></li>
+                <li><a class="dropdown-item btn btn-beigeItem text-dark mx-1" href="#">Another action</a></li>
+                <li><a class="dropdown-item btn btn-beigeItem text-dark mx-1" href="#">Something else </a></li>
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Ofertas</a>
+              <a class="btn btn-beige text-dark mx-1" href="#">Ofertas</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Más Información</a>
+              <a class="btn btn-beige text-dark mx-1" href="#">Más Información</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Contactanos</a>
+              <a class="btn btn-beige text-dark mx-1" href="#">Contactanos</a>
             </li>
           </ul>
-
+          
+                
           <!-- Links a la derecha -->
-          <div class="d-flex content-account">
-            <a class="nav-link" href="#">
+          <div class="d-flex content-account position-relative ">
+            <a class="btn btn-beige text-dark mx-1" href="#">
               <img src="assets/img/iconos/cart-check.svg" alt="" class="icono">
             </a>
             
-            <a class="nav-link" href="#">
+            <a class=" btn btn-beige text-dark mx-1" href="#">
               <img src="assets/img/iconos/person.svg" alt="" class="icono">
             </a>
           </div>
