@@ -17,9 +17,9 @@
       <?= view('front/navbar') ?>
 
       <!-- Contenido principal -->
-      <main>
-          <h1 class="animation"><?= esc($title) ?></h1>
-      </main>
+
+      <!-- Section Carrusel -->
+      <?= view('front/section', $footerData) ?>
 
       <!-- Footer -->
       <?= view('front/footer', $footerData) ?>
