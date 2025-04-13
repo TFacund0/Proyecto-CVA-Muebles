@@ -12,10 +12,9 @@
     <script src="assets/js/bootstrap.bundle.min.js" ></script>
     
 </head>
-<body>
-  <div class= "body"> 
-    <h1>facu putooooo</p>
-  </div>
-  
+
+  <body>
+    
   </body>
+  
 </html>

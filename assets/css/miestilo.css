@@ -20,6 +20,7 @@ nav .content-logo {
     background-repeat: no-repeat;
     color: white;
 
+    border: 1px solid black;
     border-radius: 15%;
     margin-left: 9px;
     margin-right: 5px;
@@ -27,22 +28,71 @@ nav .content-logo {
 
 nav .titulo-logo {
     font-size: 19px;
-    font-weight: 500;
+    font-weight: bold;
+    text-shadow: 0 0 30px rgb(0, 0, 0);
 }
 
-.icono {
+nav .titulo-logo:hover {
+    text-shadow: 0 0 10px rgb(0, 0, 0);
+}
+
+nav .icono {
     margin: 0 10px;
+    width: 25px;
+}
+
+.navbar-collapse {
+    transition: all 0.3s ease-in-out;
+}
+
+@media (max-width: 991.5px) {
+    nav .content-account {
+        margin-top: 5px;
+        justify-content: end;
+    }
+
+    nav .nav-item {
+        background-image: url('../img/texturas/madera2.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        padding: 7px 10px;
+        text-align: center;
+        border: 1px solid rgb(0, 0, 0);
+        border-radius: 30px;
+        margin-top: 5px;
+    }
+
+    nav .nav-item:hover {
+        box-shadow: 0 0 3px rgb(0, 0, 0);
+    }
+
+    nav .content-list {
+        width: 50%;
+        margin: 0 auto;
+        justify-content: center;
+        text-align: center;
+    }
+
+    nav .navbar-collapse {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 footer {
-    box-shadow: -2px 0px 6px black;
     background-image: url('../img/texturas/madera.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     color: rgb(7, 0, 0);
+
+    box-shadow: -2px 0px 6px black;
 }
-footer div {
+
+footer div{
     color: rgb(255, 255, 255);
 }
 
@@ -61,29 +111,26 @@ footer div {
     border-radius: 8px;
 }
 
-/* ----- Cambios principales: ----- */
-
-
-/* Iconos SVG */
-.icon {
-    width: 1.25rem;
-    height: 1.25rem;
-    margin-right: 0.5rem;
-    transition: all 0.3s ease;
-}
-
-/* Colores oficiales para SVG */
-.social-link.facebook .icon {
+.social-link.facebook i {
     color: #1877F2;
 }
 
-.social-link.twitter .icon {
+.social-link.twitter i {
     color: #000000;
 }
 
-/* Efectos hover */
-.social-link:hover .icon {
-    transform: translateY(-3px) scale(1.1);
+.social-link.instagram i {
+    background: radial-gradient(circle at 30% 107%, 
+        #fdf497 0%, #fdf497 5%, 
+        #fd5949 45%, #d6249f 60%, 
+        #285AEB 90%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.social-link i {
+    transition: transform 0.3s, color 0.3s;
 }
 
 /*
@@ -92,4 +139,4 @@ footer div {
     padding-bottom: 500px ;
     background-color: #f5f2d6;
 }
-*/ 
+*/
