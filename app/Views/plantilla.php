@@ -8,13 +8,21 @@
     
     <link rel="stylesheet" href="assets/css/miestilo.css">
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <script src="assets/js/bootstrap.bundle.min.js" ></script>
     
 </head>
 
   <body>
-    
+      <?= view('front/navbar') ?>
+
+      <!-- Contenido principal -->
+      <main>
+          <h1 class="text-center"><?= esc($title) ?></h1>
+      </main>
+
+      <!-- Footer -->
+      <?= view('front/footer', $footerData) ?>
+
   </body>
   
 </html>
