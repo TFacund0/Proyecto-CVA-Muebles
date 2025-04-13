@@ -69,7 +69,7 @@
     </div>
             
         <!-- Copyright -->
-            <div class="col-md-4 mb-4 mx-auto">
+            <div class="col-md-4 mb-4 mx-auto text-center">
                 <p class="small mb-0">
                     &copy; <?= $current_year ?? date('Y') ?> 
                     <?= $company_name ?? 'MiSitio' ?>. Todos los derechos reservados.

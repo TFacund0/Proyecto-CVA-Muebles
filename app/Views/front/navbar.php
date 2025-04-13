@@ -18,11 +18,13 @@
         <!-- Contenedor del menú -->
         <div class="collapse navbar-collapse justify-content-between me-lg-5" id="navbarContent">
           
-          <!-- Menú centrado -->
+          <!-- Menú de opciones -->
           <ul class="navbar-nav mx-auto text-lg-center text-end content-list">
             <li class="nav-item">
               <a class="nav-link active" href="#">Inicio</a>
             </li>
+            
+          <!-- Opcion 1: Productos -->
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Productos
@@ -33,23 +35,32 @@
                 <li><a class="dropdown-item" href="#">Something else here</a></li>
               </ul>
             </li>
+
+          <!-- Opcion 2: Ofertas -->
             <li class="nav-item">
               <a class="nav-link" href="#">Ofertas</a>
             </li>
+
+          <!-- Opcion 3: Más Información -->
             <li class="nav-item">
               <a class="nav-link" href="#">Más Información</a>
             </li>
+
+          <!-- Opcion 4: Contactanos -->
             <li class="nav-item">
               <a class="nav-link" href="#">Contactanos</a>
             </li>
           </ul>
 
-          <!-- Links a la derecha -->
+        <!-- Opciones de Registro y Compra -->
           <div class="d-flex content-account">
+            
+          <!-- Opcion 5: Corrito de Compras -->
             <a class="nav-link" href="#">
               <img src="assets/img/iconos/cart-check.svg" alt="" class="icono">
             </a>
             
+          <!-- Opcion 6: Registrarse -->
             <a class="nav-link" href="#">
               <img src="assets/img/iconos/person.svg" alt="" class="icono">
             </a>

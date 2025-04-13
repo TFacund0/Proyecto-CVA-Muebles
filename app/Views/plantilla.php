@@ -13,6 +13,7 @@
 </head>
 
   <body>
+      <!-- Barra de Navegacion -->
       <?= view('front/navbar') ?>
 
       <!-- Contenido principal -->
