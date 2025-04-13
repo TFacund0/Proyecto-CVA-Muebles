@@ -18,7 +18,7 @@
 
         <!-- Logo de la barra de navegacion -->
         <div class="content-logo">
-          <img src="assets/img/logo/cva2.png" alt="" width="50px" class="logo ms-2 me-2">
+          <img src="assets/img/logo/cva2.png" alt="" width="50px" class="logo me-3 ms-3">
         </div>
         
         <a class="navbar-brand" href="#"><span class="titulo-logo">CVA Muebles</span></a>
@@ -30,15 +30,22 @@
         </button>
 
         <!-- Contenedor del menú -->
-        <div class="collapse navbar-collapse justify-content-between" id="navbarContent">
+        <div class="collapse navbar-collapse justify-content-between me-lg-5" id="navbarContent">
           
           <!-- Menú centrado -->
-          <ul class="navbar-nav mx-auto">
+          <ul class="navbar-nav mx-auto text-lg-center text-end content-list">
             <li class="nav-item">
               <a class="nav-link active" href="#">Inicio</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Productos</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Productos
+                </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Ofertas</a>
@@ -52,7 +59,7 @@
           </ul>
 
           <!-- Links a la derecha -->
-          <div class="d-flex">
+          <div class="d-flex content-account">
             <a class="nav-link" href="#">
               <img src="assets/img/iconos/cart-check.svg" alt="" class="icono">
             </a>

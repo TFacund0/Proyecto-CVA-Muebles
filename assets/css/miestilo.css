@@ -19,6 +19,7 @@ nav .content-logo {
     background-repeat: no-repeat;
     color: white;
 
+    border: 1px solid black;
     border-radius: 15%;
     margin-left: 9px;
     margin-right: 5px;
@@ -26,9 +27,56 @@ nav .content-logo {
 
 nav .titulo-logo {
     font-size: 19px;
-    font-weight: 500;
+    font-weight: bold;
+    text-shadow: 0 0 30px rgb(0, 0, 0);
 }
 
-.icono {
+nav .titulo-logo:hover {
+    text-shadow: 0 0 10px rgb(0, 0, 0);
+}
+
+nav .icono {
     margin: 0 10px;
+    width: 25px;
+}
+
+.navbar-collapse {
+    transition: all 0.3s ease-in-out;
+}
+
+@media (max-width: 991.5px) {
+    nav .content-account {
+        margin-top: 5px;
+        justify-content: end;
+    }
+
+    nav .nav-item {
+        background-image: url('../img/texturas/madera2.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        padding: 7px 10px;
+        text-align: center;
+        border: 1px solid rgb(0, 0, 0);
+        border-radius: 30px;
+        margin-top: 5px;
+    }
+
+    nav .nav-item:hover {
+        box-shadow: 0 0 3px rgb(0, 0, 0);
+    }
+
+    nav .content-list {
+        width: 50%;
+        margin: 0 auto;
+        justify-content: center;
+        text-align: center;
+    }
+
+    nav .navbar-collapse {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }
