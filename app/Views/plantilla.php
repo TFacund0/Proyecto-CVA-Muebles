@@ -18,7 +18,7 @@
 
       <!-- Contenido principal -->
       <main>
-          <h1 class="text-center"><?= esc($title) ?></h1>
+          <h1 class="animation"><?= esc($title) ?></h1>
       </main>
 
       <!-- Footer -->

@@ -41,6 +41,18 @@ nav .icono {
     width: 25px;
 }
 
+nav .nav-link {
+    transition: scale 1ms linear;
+}
+
+nav .nav-link:hover {
+    scale: 1.1;
+    border-top-left-radius: 30%;
+    border-top-right-radius: 30%;
+    background-color: rgba(0, 0, 0, 0.150);
+    border-bottom: 1px solid black;
+}
+
 .navbar-collapse {
     transition: all 0.3s ease-in-out;
 }
@@ -140,3 +152,37 @@ footer div{
     background-color: #f5f2d6;
 }
 */
+
+
+
+/*Animacion del Titulo Dinamico*/
+.animation {
+    text-align: center;
+    width: 550px;
+    margin: auto;
+
+    transition: scale 2s linear;
+
+    animation-name: dinamic-title;
+    animation-duration: 3s;
+    animation-delay: 1s;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+.animation:active {
+    animation-play-state: paused;
+    scale: 2.0;
+}
+
+@keyframes dinamic-title {
+    from {
+        background-color: red;
+    }
+    to {
+        background-color: blue;
+        border-radius: 100%;
+    }
+}
