@@ -1,5 +1,53 @@
-section .product-card {
+section {
+    background-image: url(../img/texturas/madera-clara.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    box-shadow: 0 0 10px black;
+    text-align: center;
+}
+
+section .titulo {
+    font-weight: bold;
+    border: 1px solid #000f00;
+    display: inline-block;
+    border-radius: 20px;
+    padding: 7px;
+    margin-top: 10px;
+    margin-bottom: -5px;
+    background-color: #000f001f;
+    box-shadow: 0 0 10px #000f00;
+    scale: 1;
+    transition: scale 0.7s ease-out;
+}
+
+section .titulo:hover {
+    scale: 1.1;
+    transition: scale 0.5s ease-in;
+}
+
+section .card {
+    scale: 1;
+    box-shadow: 0 0 10px black;
+    transition: scale 0.3s ease-out;
+}
+
+section .card:hover {
+    scale: 1.05;
+    transition: scale 0.01s ease-int;
+}
+
+section .muebles-card {
     background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../img/muebles/mesa.jpg') center/cover;
+}
+
+section .dormitorios-card {
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../img/muebles/cama.jpg') center/cover;
+}
+
+section .cocina-card {
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../img/muebles/cocina.jpg') center/cover;
 }
 
 section .text-card {
@@ -7,4 +55,10 @@ section .text-card {
     background-color: rgba(102, 102, 102, 0.47);
     border-radius: 10px;
     color: #fff;
+}
+
+@media (max-width: 766px) {
+    section .card {
+        font-size: 13px;
+    }
 }
