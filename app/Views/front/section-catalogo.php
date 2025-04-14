@@ -1,49 +1,42 @@
-<section class="container my-5">
-    <h2 class="text-center">Catalogo</h2>
-    <div class="d-flex flex-wrap justify-content-around gap-4 my-4">        
-        <div class="card" style="width: 18rem;">
-            <img src="assets/img/fondos-carrusel/GojoWorld.jpg" class="card-img-top" alt="...">
+<!-- Sección de Categorias/Catalogo -->
+<section class="container my-5 bg-danger">
+            <h2 class="text-center">Nuestras Especialidades</h2>
             
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-            
-        </div>
-        
-        <div class="card" style="width: 18rem;">
-            <img src="assets/img/fondos-carrusel/GojoWorld.jpg" class="card-img-top" alt="...">
-            
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-            
-        </div>
-        
-        <div class="card" style="width: 18rem;">
-            <img src="assets/img/fondos-carrusel/GojoWorld.jpg" class="card-img-top" alt="...">
-            
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-            
-        </div>
-        
-        <div class="card" style="width: 18rem;">
-            <img src="assets/img/fondos-carrusel/GojoWorld.jpg" class="card-img-top" alt="...">
-            
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-            
-        </div>
+            <div class="row p-3">
+            <!--Especialidad: Muebles de Sala-->
+                <div class="col-md-4 my-1">
+                    <div class="card h-100 border-0 shadow-sm text-center p-4">
+                        <div class="card-body">
+                            <i class="fas fa-chair fa-3x mb-3 text-madera"></i>
+                            <h3>Muebles de Sala</h3>
+                            <p>Sofás, mesas de centro y libreros diseñados para tu comodidad</p>
+                            <a href="#" class="btn btn-outline-primary">Explorar</a>
+                        </div>
+                    </div>
+                </div>
 
-    </div>
+            <!--Especialidad: Dormitorios-->
+                <div class="col-md-4 my-1">
+                    <div class="card h-100 border-0 shadow-sm text-center p-4">
+                        <div class="card-body">
+                            <i class="fas fa-bed fa-3x mb-3 text-madera"></i>
+                            <h3>Dormitorio</h3>
+                            <p>Camas, mesitas y armarios que transformarán tu espacio</p>
+                            <a href="#" class="btn btn-outline-primary">Explorar</a>
+                        </div>
+                    </div>
+                </div>
+            
+            <!--Especialidad: Cocina-->
+                <div class="col-md-4 my-1">
+                    <div class="card h-100 border-0 shadow-sm text-center p-4">
+                        <div class="card-body">
+                            <i class="fas fa-utensils fa-3x mb-3 text-madera"></i>
+                            <h3>Cocina</h3>
+                            <p>Islas, alacenas y mesas rústicas para tu hogar</p>
+                            <a href="#" class="btn btn-outline-primary">Explorar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 </section>
