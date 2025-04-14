@@ -62,3 +62,23 @@ section .text-card {
         font-size: 13px;
     }
 }
+
+section .boton, .titulo-producto {
+    border-bottom: 2px solid #000f;
+    font-weight: bold;
+    padding: 3px;
+    scale: 1.;
+    transition: scale 1ms ease-in-out;
+    background-color: rgba(0, 0, 0, 0.100);
+    border-radius: 5px;
+}
+
+section .boton:hover, .titulo-producto:hover {
+    border-bottom: 3px solid #000f;
+    font-weight: bold;
+    padding: 3px;
+    background-color: rgba(0, 0, 0, 0.200);
+    border-radius: 5px;
+    scale: 1.07;
+    transition: scale 1ms ease-in-out;
+}
