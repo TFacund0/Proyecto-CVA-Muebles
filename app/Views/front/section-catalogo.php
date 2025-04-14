@@ -5,8 +5,9 @@
             <div class="row p-3">
             <!--Especialidad: Muebles de Sala-->
                 <div class="col-md-4 my-1">
-                    <div class="card h-100 border-0 shadow-sm text-center p-4">
-                        <div class="card-body">
+                    <div class="card h-100 border-0 shadow-sm text-center p-4 product-card">
+                        <img src="assets/img/" alt="Muebles">
+                        <div class="card-body text-card">
                             <i class="fas fa-chair fa-3x mb-3 text-madera"></i>
                             <h3>Muebles de Sala</h3>
                             <p>Sofás, mesas de centro y libreros diseñados para tu comodidad</p>

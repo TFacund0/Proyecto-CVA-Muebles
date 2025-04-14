@@ -1,0 +1,10 @@
+section .product-card {
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../img/muebles/mesa.jpg') center/cover;
+}
+
+section .text-card {
+    border: 1px solid rgb(0, 0, 0);
+    background-color: rgba(102, 102, 102, 0.47);
+    border-radius: 10px;
+    color: #fff;
+}
