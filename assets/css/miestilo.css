@@ -4,6 +4,10 @@
     font-family: Verdana, Tahoma, sans-serif;
 }
 
+body {
+    background: #f5f2d6 !important;
+}
+
 nav {
     box-shadow: -2px 0px 6px black;
     background-image: url('../img/texturas/madera.jpg');
@@ -156,6 +160,13 @@ footer div{
         padding: 30px;
         font-size: 13px;
     }
+}
+
+/*CARRUSEL*/
+.img-carrusel {
+    background-image: url(assets/img/fondos-carrusel/GojoWorld.jpg);
+    width: 100px;
+    height: auto;
 }
 
 

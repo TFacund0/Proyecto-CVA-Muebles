@@ -16,10 +16,11 @@
       <!-- Barra de Navegacion -->
       <?= view('front/navbar') ?>
 
-      <!-- Contenido principal -->
-
       <!-- Section Carrusel -->
       <?= view('front/section', $footerData) ?>
+
+      <!-- Section Carrusel -->
+      <?= view('front/section-catalogo', $footerData) ?>
 
       <!-- Footer -->
       <?= view('front/footer', $footerData) ?>
