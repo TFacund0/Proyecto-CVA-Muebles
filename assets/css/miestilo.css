@@ -211,3 +211,84 @@ footer div{
     background-color: #f5f2d6;
 }
 */
+
+
+
+/*Animacion del Titulo Dinamico*/
+.animation {
+    text-align: center;
+    width: 550px;
+    margin: auto;
+
+    transition: scale 2s linear;
+
+    animation-name: dinamic-title;
+    animation-duration: 3s;
+    animation-delay: 1s;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+.animation:active {
+    animation-play-state: paused;
+    scale: 2.0;
+}
+
+@keyframes dinamic-title {
+    from {
+        background-color: red;
+    }
+    to {
+        background-color: blue;
+        border-radius: 100%;
+    }
+}
+
+/*carrusel textos pruebas*/
+
+.carousel-item {
+    position: relative;
+    height: 80vh; /* Ajusta según necesites */
+  }
+  
+  .carousel-caption {
+    position: absolute;
+    width: auto;
+    padding: 20px;
+    background-color: rgba(90, 58, 34, 0.7); /* Fondo semitransparente madera oscura */
+    border-radius: 8px;
+  }
+  
+  /* Posicionamiento personalizado para cada slide */
+  .carousel-item:nth-child(1) .carousel-caption {
+    top: 20%;
+    left: 10%;
+  }
+  
+  .carousel-item:nth-child(2) .carousel-caption {
+    bottom: 15%;
+    right: 5%;
+  }
+  
+  .carousel-item:nth-child(3) .carousel-caption {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  
+  /* Fondo semitransparente diferente para cada slide */
+  .carousel-item:nth-child(1) .carousel-caption {
+    background-color: rgba(90, 58, 34, 0.8); /* Madera oscura */
+  }
+  
+  .carousel-item:nth-child(2) .carousel-caption {
+    background-color: rgba(227, 201, 160, 0.8); /* Madera clara */
+    color: #5a3a22;
+  }
+  
+  .carousel-item:nth-child(3) .carousel-caption {
+    background-color: rgba(139, 90, 43, 0.8); /* Madera media */
+  }
