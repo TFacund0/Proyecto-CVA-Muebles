@@ -308,6 +308,5 @@
         </div>
     </section>
 
-  </body>
-  
+</body>
 </html>
