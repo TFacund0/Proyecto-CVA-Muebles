@@ -1,4 +1,4 @@
-section {
+.section-destacados, .section-categorias {
     background-image: url(../img/texturas/madera-clara.jpg);
     background-size: cover;
     background-position: center;
@@ -8,7 +8,7 @@ section {
     text-align: center;
 }
 
-section .titulo {
+section .titulo, .titulo-producto {
     font-weight: bold;
     border: 1px solid #000f00;
     display: inline-block;
@@ -22,7 +22,7 @@ section .titulo {
     transition: scale 0.7s ease-out;
 }
 
-section .titulo:hover {
+section .titulo:hover, .titulo-producto:hover {
     scale: 1.1;
     transition: scale 0.5s ease-in;
 }
@@ -57,23 +57,25 @@ section .text-card {
     color: #fff;
 }
 
-@media (max-width: 766px) {
-    section .card {
-        font-size: 13px;
-    }
+section .titulo-producto {
+    font-size: 33px;
+    margin-top: -10px !important;
 }
 
-section .boton, .titulo-producto {
+section .boton {
     border-bottom: 2px solid #000f;
+    font-size: 20px;
     font-weight: bold;
     padding: 3px;
+    margin-top: 15px;
     scale: 1.;
     transition: scale 1ms ease-in-out;
     background-color: rgba(0, 0, 0, 0.100);
     border-radius: 5px;
+    color: white;
 }
 
-section .boton:hover, .titulo-producto:hover {
+section .boton:hover {
     border-bottom: 3px solid #000f;
     font-weight: bold;
     padding: 3px;
@@ -81,4 +83,34 @@ section .boton:hover, .titulo-producto:hover {
     border-radius: 5px;
     scale: 1.07;
     transition: scale 1ms ease-in-out;
+}
+
+.section-texto {
+    background-color: #faf9ec ;
+    border: 1px solid black;
+    box-shadow: 0 0 3px black;
+}
+
+.bloque-texto {
+    width: 50%;
+}
+
+.text-titulo {
+    transform: skewX(-15deg);
+    display: inline-block;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+@media (max-width: 766px) {
+    section {
+        font-size: 0.8rem;
+    }
+    section .card {
+        font-size: 13px;
+    }
+
+    .bloque-texto {
+        width: 75%;
+    }
 }

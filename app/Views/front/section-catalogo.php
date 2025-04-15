@@ -1,5 +1,5 @@
 <!-- Sección de Categorias/Catalogo -->
-<section class="container my-5 catalogo-content">
+<section class="container my-5 catalogo-content section-categorias">
             <h2 class="titulo">Nuestras Especialidades</h2>
             
             <div class="row p-3">
@@ -38,12 +38,23 @@
             </div>
 </section>
 
+<!-- Texto a modo de promoción de los productos y de la empresa -->
+<section class="container-fluid m-auto section-texto">
+    <div class="m-auto my-3 p-3 bloque-texto">
+        <h2 class="text-titulo">¡Diseños Únicos!</h2>
+        <p>
+            En CVA Muebles nos destacamos por la creatividad al diseñar. Inspirados en la simpleza morfológica encontramos la sutileza que caracteriza a nuestros diseños, dando lugar al nacimiento de lo hermoso, lo bello del diseño…
+        </p>
+        <p>Esa es nuestra pasión y se refleja en cada producto nuevo que podemos ofrecerte.</p>
+    </div>
+</section>
+
+
 <!-- Productos Destacados -->
-    <section class="container my-5 py-5">
+    <section class="container my-5 py-5 section-destacados">
         <!-- Titulo con Opcion -->
             <div class="d-flex justify-content-around align-items-center mb-5">
                 <h2 class="titulo-producto mt-0">Productos Destacados</h2>
-                <a href="#" class="btn boton">Ver Todos</a>
             </div>
 
             <div class="row g-4">                
@@ -115,6 +126,10 @@
                             <button class="btn btn-primary w-100">Añadir al Carrito</button>
                         </div>
                     </div>
+                </div>
+
+                <div>
+                    <a href="#" class="btn boton">Ver Todos</a>
                 </div>
             </div>
     </section>
