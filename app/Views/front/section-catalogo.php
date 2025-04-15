@@ -51,7 +51,7 @@
 
 
 <!-- Productos Destacados -->
-    <section class="container my-5 py-5 section-destacados">
+<section class="container my-5 py-5 section-destacados">
         <!-- Titulo con Opcion -->
             <div class="d-flex justify-content-around align-items-center mb-5">
                 <h2 class="titulo-producto mt-0">Productos Destacados</h2>
@@ -132,4 +132,22 @@
                     <a href="#" class="btn boton">Ver Todos</a>
                 </div>
             </div>
-    </section>
+</section>
+
+
+<!-- Ubicacion -->
+<section class="container-fluid contenedor-ubicacion my-5">
+    <div class="text-center location-title">
+        <h3>¿Dónde nos podes encontrar?</h3>
+    </div>
+
+    <div class="d-flex m-4 mb-4 location-content">
+        <img src="assets/img/fondos-carrusel/GojoWorld.jpg" alt="Ubicacion" class="w-50">
+        
+        <div class="px-5 w-50 location-text">
+            <h4 class="titulos">Ubicado en Corrientes/Argentina</h4>
+            <h3 class="titulos localidad typewriter-text">Localidad de Mantilla</h5>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita porro sint itaque quis cupiditate quisquam odio. Possimus, alias distinctio! Quis ex magnam harum voluptates quod veniam modi praesentium tempora vel!</p>
+        </div>
+    </div>
+</section>
