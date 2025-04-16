@@ -29,4 +29,9 @@ class Home extends BaseController
             . view('plantilla', ['title' => 'CVA Muebles'])
             . view('front/footer', $footerData);
     }
+
+    public function quienesSomos()
+    {
+        return view('/front/paginas/quienesSomos');
+    }
 }

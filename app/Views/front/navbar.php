@@ -1,4 +1,4 @@
-<body>
+
     <!--BARRA DE NAVEGACION-->
     <nav class="navbar navbar-expand-lg p-0">
       <div class="container-fluid">
@@ -48,11 +48,11 @@
                 
           <!-- Links a la derecha -->
           <div class="d-flex content-account position-relative ">
-            <a class="btn btn-beige text-dark mx-1" href="#">
+            <a class="btn btn-beige text-dark mx-1" href="<?= base_url('quienesSomos') ?>">
               <img src="assets/img/iconos/cart-check.svg" alt="" class="icono">
             </a>
             
-            <a class=" btn btn-beige text-dark mx-1" href="#">
+            <a class=" btn btn-beige text-dark mx-1" href="<?= base_url('registro') ?>">
               <img src="assets/img/iconos/person.svg" alt="" class="icono">
             </a>
           </div>
