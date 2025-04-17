@@ -8,12 +8,12 @@
     <div class="carousel-inner">
         <!-- Slide 1  -->
         <div class="carousel-item active">
-            <img src="assets/img/fondos-carrusel/taller.jpg" class="w-100" alt="">
+            <img src="assets/img/fondos-carrusel/taller.jpg" class="contain w-100" alt="">
             <div class="carousel-caption d-none d-md-block text-content-carrusel">
-                <h4 class="text-carrusel">Bienvenidos a CVA Muebles</h4>
-                <p class="text-carrusel">Diseño y fabricación artesanal de muebles de madera a medida</p>
+                <h4 class="col text-carrusel">Bienvenidos a CVA Muebles</h4>
+                <p class="col text-carrusel">Diseño y fabricación artesanal de muebles de madera a medida</p>
 
-                <div class="info">
+                <div class="col info">
                     <h5>Más Información</h5>
                 </div>
             </div>

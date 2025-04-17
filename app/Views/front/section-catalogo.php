@@ -128,26 +128,53 @@
                     </div>
                 </div>
 
-                <div>
-                    <a href="#" class="btn boton">Ver Todos</a>
-                </div>
+            <div class="text-center mt-5">
+                <a href="#" class="btn btn-ver-todos">
+                    <span class="me-2">Ver Todos los Productos</span>
+                    <i class="fas fa-chevron-right"></i>
+                </a>
             </div>
 </section>
 
 
-<!-- Ubicacion -->
+<!-- Ubicación -->
 <section class="container-fluid contenedor-ubicacion my-5">
     <div class="text-center location-title">
         <h3>¿Dónde nos podés encontrar?</h3>
     </div>
 
     <div class="d-flex m-4 mb-4 location-content">
-        <img src="assets/img/fondos-carrusel/GojoWorld.jpg" alt="Ubicacion" class="w-50">
+        <!-- Mapa de Google Maps (reemplaza la imagen) -->
+        <div class="w-50 map-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3479.876234045048!2d-58.7687226!3d-29.2839154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x944eba9a3d8e3c1f%3A0xf8a3e4f8a3e4f8a!2sMantilla%2C%20Corrientes!5e0!3m2!1ses-419!2sar!4v1713456789012!5m2!1ses-419!2sar" 
+                width="100%" 
+                height="100%" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade"
+                class="rounded"
+            ></iframe>
+        </div>
         
+        <!-- Texto descriptivo -->
         <div class="px-5 w-50 location-text">
-            <h4 class="titulos">Ubicado en Corrientes/Argentina</h4>
-            <h3 class="titulos localidad typewriter-text">Localidad de Mantilla</h5>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita porro sint itaque quis cupiditate quisquam odio. Possimus, alias distinctio! Quis ex magnam harum voluptates quod veniam modi praesentium tempora vel!</p>
+            <h4 class="titulos">Ubicado en Corrientes, Argentina</h4>
+            <h3 class="titulos localidad typewriter-text">Localidad de Mantilla</h3>
+            <p>
+                Nuestro taller está en este rincón de Corrientes, donde las tradiciones se trabajan 
+                con el mismo cariño que las vetas de la madera. ¡Visítanos y lleva un pedacito de 
+                Mantilla en ese mueble que soñaste!
+            </p>
+            <!-- Botón opcional para abrir en Google Maps -->
+            <a 
+                href="https://www.google.com/maps/place/Mantilla,+Corrientes/@-29.2839154,-58.7687226,15z/data=!3m1!4b1!4m6!3m5!1s0x944eba9a3d8e3c1f:0xf8a3e4f8a3e4f8a!8m2!3d-29.2833333!4d-58.7666667!16s%2Fg%2F121j1t7y" 
+                target="_blank" 
+                class="btn btn-primary mt-3"
+            >
+                Ver en Google Maps
+            </a>
         </div>
     </div>
 </section>
