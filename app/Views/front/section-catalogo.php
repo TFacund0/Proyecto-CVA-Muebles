@@ -138,7 +138,7 @@
 <!-- Ubicacion -->
 <section class="container-fluid contenedor-ubicacion my-5">
     <div class="text-center location-title">
-        <h3>¿Dónde nos podes encontrar?</h3>
+        <h3>¿Dónde nos podés encontrar?</h3>
     </div>
 
     <div class="d-flex m-4 mb-4 location-content">

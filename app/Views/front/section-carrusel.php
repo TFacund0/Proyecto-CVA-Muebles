@@ -7,7 +7,7 @@
     
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="assets/img/fondos-carrusel/GojoWorld.jpg" class="d-block w-100" alt="...">
+            <img src="assets/img/muebles/taller.jpg" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
                 <h5>First slide label</h5>
                 <p>Some representative placeholder content for the first slide.</p>
