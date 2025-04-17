@@ -7,6 +7,7 @@
     <title><?= $title ?? 'titulo variable' ?></title>
     
     <link rel="stylesheet" href="assets/css/miestilo.css">
+    <link rel="stylesheet" href="assets/css/carrusel.css">
     <link rel="stylesheet" href="assets/css/footer.css">
     <link rel="stylesheet" href="assets/css/section.css">
     
