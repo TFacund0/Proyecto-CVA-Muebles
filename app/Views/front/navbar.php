@@ -41,12 +41,7 @@
               <a class="nav-link" href="#">Ofertas</a>
             </li>
 
-          <!-- Opcion 3: Más Información -->
-            <li class="nav-item">
-              <a class="nav-link" href="#">Más Información</a>
-            </li>
-
-          <!-- Opcion 4: Contactanos -->
+          <!-- Opcion 3: Contactanos -->
             <li class="nav-item">
               <a class="nav-link" href="#">Contactanos</a>
             </li>
@@ -55,12 +50,12 @@
         <!-- Opciones de Registro y Compra -->
           <div class="d-flex content-account">
             
-          <!-- Opcion 5: Corrito de Compras -->
+          <!-- Opcion 4: Corrito de Compras -->
             <a class="nav-link" href="#">
               <img src="assets/img/iconos/cart-check.svg" alt="" class="icono">
             </a>
             
-          <!-- Opcion 6: Registrarse -->
+          <!-- Opcion 5: Registrarse -->
             <a class="nav-link" href="#">
               <img src="assets/img/iconos/person.svg" alt="" class="icono">
             </a>
