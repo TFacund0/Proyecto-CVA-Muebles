@@ -13,7 +13,7 @@
 }
 
 .text-content-carrusel {
-    background-image: url('../../../img/texturas/madera-clara.jpg');
+    background-image: url('../../img/texturas/madera2.jpg');
     border-radius: 10px;
     background-size: cover;
     background-position: center;

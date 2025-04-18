@@ -1,3 +1,6 @@
+/* ----------- ESTILO DE CATALOGO Y PRODUCTOS ------------*/
+
+/* Estilo de la caja de secciones de Catalogo y Productos*/
 .section-destacados, .section-categorias {
     background-image: url('../../img/texturas/madera-clara.jpg');
     background-size: cover;
@@ -8,6 +11,7 @@
     text-align: center;
 }
 
+/* Estilo del titulo de la seccion de Catalogo y Productos*/
 section .titulo, .titulo-producto {
     font-weight: bold;
     border: 1px solid #000f00;
@@ -22,34 +26,43 @@ section .titulo, .titulo-producto {
     transition: scale 0.7s ease-out;
 }
 
+/* Estilo animado para el titulo de la seccion de Catalogo y Productos*/
 section .titulo:hover, .titulo-producto:hover {
     scale: 1.1;
     transition: scale 0.5s ease-in;
 }
 
+/* -------------- SECCIÓN CATALOGO / ESPECIALIDADES ---------------- */
+
+/* Estilo de las cartas de las Seccion Catalogo */
 section .card {
     scale: 1;
     box-shadow: 0 0 10px black;
     transition: scale 0.3s ease-out;
 }
 
+/* Estilo con animacion de las cartas de las secciones de Catalogo*/
 section .card:hover {
     scale: 1.05;
     transition: scale 0.01s ease-int;
 }
 
+/* Imagen 1 del Catalogo */
 section .muebles-card {
     background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../../img/muebles/mesa.jpg') center/cover;
 }
 
+/* Imagen 2 del Catalogo */
 section .dormitorios-card {
     background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../../img/muebles/cama.jpg') center/cover;
 }
 
+/* Imagen 3 del Catalogo */
 section .cocina-card {
     background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../../img/muebles/cocina.jpg') center/cover;
 }
 
+/* Estilo del texto de las cartas del Catalogo */
 section .text-card {
     border: 1px solid rgb(0, 0, 0);
     background-color: rgba(102, 102, 102, 0.47);
@@ -57,29 +70,15 @@ section .text-card {
     color: #fff;
 }
 
+/* ------- SECCIÓN PRODUCTOS ---------- */
+
+/* Estilo del titulo de la sección de Productos*/
 section .titulo-producto {
     font-size: 33px;
     margin-top: -10px !important;
 }
 
-.section-texto, .contenedor-ubicacion {
-    background-color: #faf9ec ;
-    border: 1px solid black;
-    box-shadow: 0 0 3px black;
-}
-
-.bloque-texto {
-    width: 50%;
-}
-
-.text-titulo {
-    transform: skewX(-15deg);
-    display: inline-block;
-    font-weight: 700;
-    margin-bottom: 15px;
-}
-
-/* Estilos para el botón */
+/* Estilos para el botón de la sección Productos */
 .btn-ver-todos {
     background-color: #5E3A1E; /* Color madera oscura */
     color: white;
@@ -94,13 +93,14 @@ section .titulo-producto {
     box-shadow: 0 1px 10px rgb(0, 0, 0);
 }
 
+/* Efecto con animación de movimiento en el boton de la sección de Productos*/
 .btn-ver-todos:hover {
     background-color: #3D2411;
     transform: translateY(-3px);
     box-shadow: 0 3px 15px rgba(0, 0, 0);
 }
 
-/* Efecto de "vetas de madera" (opcional) */
+/* Efecto de boton de Desvanecimiento de la sección de Productos */
 .btn-ver-todos::before {
     content: "";
     position: absolute;
@@ -112,11 +112,68 @@ section .titulo-producto {
     transition: 0.5s;
 }
 
+/* Efecto para el desplazamiento del efecto del boton de la sección de Productos */
 .btn-ver-todos:hover::before {
     left: 100%;
 }
 
-@media (max-width: 766px) {
+/* ----------- SECCIÓn DISEÑO ÚNICO ------------- */
+
+/* Estilos de las cajas en la sección de Diseño Único y Ubicacion */
+.section-texto, .contenedor-ubicacion {
+    background-color: #faf9ec ;
+    border: 1px solid black;
+    box-shadow: 0 0 3px black;
+}
+
+/* Estilo del texto de la sección Diseño Único */
+.bloque-texto {
+    width: 70%;
+}
+
+/* Estilo del titulo de la sección Diseño Único */
+.text-titulo {
+    transform: skewX(-15deg);
+    display: inline-block;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+/* ----------------- SECCIÓN UBICACIÓN ------------------*/
+
+/* Estilo del contenedor del titulo de la sección Ubicación */
+section .location-title {
+    border-bottom: 1px solid black;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+/* Estilo del titulo de la sección Ubicación */
+section .location-title h3 {
+    font-weight: bold;
+}
+
+/* Estilo del texto de la sección Ubicación */
+section .location-text .titulos {
+    margin-bottom: 20px;
+}
+
+/* Estilo para el subtitulo de la sección Ubicación */
+section .location-text .localidad {
+    color: rgb(167, 113, 38);
+}
+
+/* Estilo para el mapa de la la sección Ubicación*/
+.map-container {
+    height: 400px; /* Altura fija para el mapa */
+    min-height: 300px; /* Mínimo para móviles */
+    border: 2px solid #000;
+    border-radius: 10px;
+    overflow: hidden; /* Evita que el iframe se salga */
+}
+
+/* ----------------- ZONA DE AJUSTEx PARA PANTALLAS MEDIAS ---------------------*/
+@media (max-width: 768px) {
     section {
         font-size: 0.8rem;
     }
@@ -127,36 +184,7 @@ section .titulo-producto {
     .bloque-texto {
         width: 75%;
     }
-}
 
-/*LOCALIZACION*/
-section .location-title {
-    border-bottom: 1px solid black;
-    padding-top: 15px;
-    padding-bottom: 15px;
-}
-
-section .location-title h3 {
-    font-weight: bold;
-}
-
-section .location-text .titulos {
-    margin-bottom: 20px;
-}
-
-section .location-text .localidad {
-    color: rgb(167, 113, 38);
-}
-
-.map-container {
-    height: 400px; /* Altura fija para el mapa */
-    min-height: 300px; /* Mínimo para móviles */
-    border: 2px solid #000;
-    border-radius: 10px;
-    overflow: hidden; /* Evita que el iframe se salga */
-}
-
-@media (max-width: 768px) {
     .location-content {
         flex-direction: column; /* Apila imagen y texto en móviles */
     }
