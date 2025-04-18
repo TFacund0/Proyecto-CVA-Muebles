@@ -25,9 +25,27 @@ class Home extends BaseController
         ];
 
         // Renderiza la vista principal
-        return view('plantilla', [
+        return view('front/principal/plantilla', [
             'title' => 'CVA Muebles',
             'footerData' => $footerData
         ]);
+    }
+    public function quienesSomos()
+    {
+        return view('front/pages/quienesSomos');
+    }
+
+    public function comercializacion()
+    {
+        return view('front/pages/comercializacion');
+    }
+
+    public function informacionContacto()
+    {
+        return view('front/pages/informacionContacto');
+    }
+    public function terminosYCondiciones()
+    {
+        return view('front/pages/terminosYCondiciones');
     }
 }

@@ -6,10 +6,11 @@
     
     <title><?= $title ?? 'titulo variable' ?></title>
     
-    <link rel="stylesheet" href="assets/css/miestilo.css">
-    <link rel="stylesheet" href="assets/css/carrusel.css">
-    <link rel="stylesheet" href="assets/css/footer.css">
-    <link rel="stylesheet" href="assets/css/section.css">
+    <link rel="stylesheet" href="assets/css/a-styles/miestilo.css">
+    <link rel="stylesheet" href="assets/css/a-styles/carrusel.css">
+    <link rel="stylesheet" href="assets/css/a-styles/footer.css">
+    <link rel="stylesheet" href="assets/css/a-styles/section.css">
+    <link rel="stylesheet" href="assets/css/a-styles/navbar.css">
     
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <script src="assets/js/bootstrap.bundle.min.js" ></script>
@@ -21,10 +22,10 @@
     <?= view('front/navbar') ?>
 
     <!-- Section Carrusel -->
-    <?= view('front/section-carrusel', $footerData) ?>
+    <?= view('front/principal/section-carrusel', $footerData) ?>
 
     <!-- Section Carrusel -->
-    <?= view('front/section-catalogo', $footerData) ?>
+    <?= view('front/principal/section-catalogo', $footerData) ?>
 
     <!-- Footer -->
     <?= view('front/footer', $footerData) ?>

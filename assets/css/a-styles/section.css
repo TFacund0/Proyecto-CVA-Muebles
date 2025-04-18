@@ -1,5 +1,5 @@
 .section-destacados, .section-categorias {
-    background-image: url(../img/texturas/madera-clara.jpg);
+    background-image: url('../../img/texturas/madera-clara.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -39,15 +39,15 @@ section .card:hover {
 }
 
 section .muebles-card {
-    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../img/muebles/mesa.jpg') center/cover;
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../../img/muebles/mesa.jpg') center/cover;
 }
 
 section .dormitorios-card {
-    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../img/muebles/cama.jpg') center/cover;
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../../img/muebles/cama.jpg') center/cover;
 }
 
 section .cocina-card {
-    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../img/muebles/cocina.jpg') center/cover;
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../../img/muebles/cocina.jpg') center/cover;
 }
 
 section .text-card {

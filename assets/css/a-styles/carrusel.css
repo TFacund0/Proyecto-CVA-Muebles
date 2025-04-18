@@ -13,8 +13,10 @@
 }
 
 .text-content-carrusel {
-    background-image: url(../img/texturas/madera2.jpg);
+    background-image: url('../../../img/texturas/madera-clara.jpg');
     border-radius: 10px;
+    background-size: cover;
+    background-position: center;
     border: 3px solid rgb(0, 0, 0);
     box-shadow: inset 0 0 10px rgb(0, 0, 0);
     padding: 1rem;

@@ -1,3 +1,5 @@
+
+
 <!--BARRA DE NAVEGACION-->
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
@@ -18,47 +20,36 @@
         <!-- Contenedor del menú -->
         <div class="collapse navbar-collapse justify-content-between me-lg-5" id="navbarContent">
           
-          <!-- Menú de opciones -->
+          <!-- Menú centrado -->
           <ul class="navbar-nav mx-auto text-lg-center text-end content-list">
             <li class="nav-item">
-              <a class="nav-link active" href="#">Inicio</a>
+              <a class="btn btn-beige text-dark mx-1" href="<?= base_url('/')?>">Inicio</a>
             </li>
-            
-          <!-- Opcion 1: Productos -->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Productos
-                </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-              </ul>
-            </li>
-
-          <!-- Opcion 2: Ofertas -->
             <li class="nav-item">
-              <a class="nav-link" href="#">Ofertas</a>
+                <a class="btn btn-beige text-dark mx-1" href="#">Productos</a>
             </li>
-
-          <!-- Opcion 3: Contactanos -->
             <li class="nav-item">
-              <a class="nav-link" href="#">Contactanos</a>
+              <a class="btn btn-beige text-dark mx-1" href="<?= base_url('comercializacion')?>">Comercializacion</a>
+            </li>
+            <li class="nav-item">
+              <a class="btn btn-beige text-dark mx-1" href="<?= base_url('quienesSomos')?>">Quienes Somos</a>
+            </li>
+            <li class="nav-item">
+              <a class="btn btn-beige text-dark mx-1" href="<?= base_url('informacionContacto')?>">Contactanos</a>
             </li>
           </ul>
-
-        <!-- Opciones de Registro y Compra -->
-          <div class="d-flex content-account">
-            
-          <!-- Opcion 4: Corrito de Compras -->
-            <a class="nav-link" href="#">
+          
+                
+          <!-- Links a la derecha -->
+          <div class="d-flex content-account position-relative ">
+            <a class="btn btn-beige text-dark mx-1" href="#">
               <img src="assets/img/iconos/cart-check.svg" alt="" class="icono">
             </a>
             
-          <!-- Opcion 5: Registrarse -->
-            <a class="nav-link" href="#">
+            <a class=" btn btn-beige text-dark mx-1" href="#">
               <img src="assets/img/iconos/person.svg" alt="" class="icono">
             </a>
+
           </div>
         </div>
 
