@@ -241,10 +241,10 @@
         <h3>¿Dónde nos podés encontrar?</h3>
     </div>
 
-    <div class="d-flex m-4 mb-4 location-content">
+    <div class="row d-flex m-4 mb-4 location-content">
         
         <!-- Mapa de Google Maps (reemplaza la imagen) -->
-        <div class="w-50 map-container">
+        <div class="col-lg-6 col-md-6 col-sm-12 map-container">
             <iframe 
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3479.876234045048!2d-58.7687226!3d-29.2839154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x944eba9a3d8e3c1f%3A0xf8a3e4f8a3e4f8a!2sMantilla%2C%20Corrientes!5e0!3m2!1ses-419!2sar!4v1713456789012!5m2!1ses-419!2sar" 
                 width="100%" 
@@ -258,7 +258,7 @@
         </div>
         
         <!-- Texto descriptivo -->
-        <div class="px-5 w-50 location-text">
+        <div class="col-lg-6 col-md-6 col-sm-12 px-lg-5 location-text">
             <h4 class="titulos">Ubicado en Corrientes, Argentina</h4>
             <h3 class="titulos localidad typewriter-text">Localidad de Mantilla</h3>
             <p>

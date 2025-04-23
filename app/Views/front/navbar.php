@@ -35,7 +35,7 @@
               <a class="btn btn-beige text-dark mx-1" href="<?= base_url('quienesSomos')?>">Quienes Somos</a>
             </li>
             <li class="nav-item">
-              <a class="btn btn-beige text-dark mx-1" href="<?= base_url('informacionContacto')?>">Contactanos</a>
+              <a class="btn btn-beige text-dark mx-1" href="<?= base_url('informacionContacto')?>">Contacto</a>
             </li>
           </ul>
           
