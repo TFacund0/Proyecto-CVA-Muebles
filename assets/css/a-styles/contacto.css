@@ -1,0 +1,18 @@
+/* Contenedor del Titulo Contacto */
+.titulo-contacto {
+    background-image: url('../../img/texturas/planta.jpg');
+    background-color: red;
+    border-bottom: 3px solid white;
+    text-align: center;
+    background-position: center right;
+    background-size: cover;
+    color: white;
+    padding: 15px;
+}
+
+.contenedor-datos {
+    background-image: url('../../img/texturas/madera-clara.jpg');
+    border-radius: 30px;
+    box-shadow: 0 0 7px rgb(0, 0, 0);
+    border: 1.9px solid rgb(0, 0, 0);
+}
