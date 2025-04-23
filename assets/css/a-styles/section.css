@@ -22,14 +22,6 @@ section .titulo, .titulo-producto {
     margin-bottom: -5px;
     background-color: #000f001f;
     box-shadow: 0 0 10px #000f00;
-    scale: 1;
-    transition: scale 0.7s ease-out;
-}
-
-/* Estilo animado para el titulo de la seccion de Catalogo y Productos*/
-section .titulo:hover, .titulo-producto:hover {
-    scale: 1.1;
-    transition: scale 0.5s ease-in;
 }
 
 /* -------------- SECCIÓN CATALOGO / ESPECIALIDADES ---------------- */
