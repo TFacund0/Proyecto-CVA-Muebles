@@ -1,57 +1,56 @@
+<!-- Carrusel principal -->
+<div id="carouselExample" class="carousel slide carrusel-size">
+    
+    <!-- Contenedor de los ítems del carrusel -->
+    <div class="carousel-inner carrusel-size">
 
-<!-- Carrusel -->
-<section id="carouselExampleCaptions" class="carousel slide" height="500px">
-    
-    <!-- Botones del Carrusel para Slide-->
-    <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
-    
-    <div class="carousel-inner" >
-        <!-- Slide 1  -->
+        <!-- Ítem activo (primera imagen del carrusel) -->
         <div class="carousel-item active">
-            <img src="assets/img/fondos-carrusel/taller.jpg" class="contain w-100" alt="Taller de carpintería">
-            
+            <!-- Imagen del fondo -->
+            <img src="assets/img/fondos-carrusel/taller.jpg" class="d-block w-100" alt="Taller de carpintería">
+        
+            <!-- Texto sobre la imagen -->
             <div class="carousel-caption d-none d-md-block text-content-carrusel position-carrusel">
                 <h4 class="col text-carrusel">Bienvenidos a CVA Muebles</h4>
                 <p class="col text-carrusel">Diseño y fabricación artesanal de muebles de madera a medida</p>
-
+                
+                <!-- Botón o texto adicional -->
                 <div class="col info">
                     <h5>Más Información</h5>
                 </div>
             </div>
         </div>
-        
-        <!-- Slide 2  -->
+    
+        <!-- Segundo ítem del carrusel -->
         <div class="carousel-item">
-            <img src="assets/img/fondos-carrusel/taller.jpg" class="contain w-100" alt="Taller de carpintería">
-            
+            <img src="assets/img/fondos-carrusel/taller.jpg" class="d-block w-100" alt="Taller de carpintería">
+
             <div class="carousel-caption d-none d-md-block text-content-carrusel position-carrusel">
-                <h4 class="mt-3 col text-carrusel">Calidad artesanal, diseño con alma</h5>
-                <p class="col text-carrusel">Cada pieza es única y hecha con dedicación</p>
+                <h4 class="mt-3 col text-carrusel">Calidad artesanal</h4>
+                <p class="col text-carrusel">Diseño con alma en el que cada pieza es única y hecha con dedicación</p>
             </div>
         </div>
-        
-        <!-- Slide 3 -->
+    
+        <!-- Tercer ítem del carrusel -->
         <div class="carousel-item">
-            <img src="assets/img/fondos-carrusel/taller.jpg" class="contain w-100" alt="Taller de carpintería">
-            
+            <img src="assets/img/fondos-carrusel/taller.jpg" class="d-block w-100" alt="Taller de carpintería">
+
             <div class="carousel-caption d-none d-md-block text-content-carrusel position-carrusel">
-                <h4 class="mt-3 col text-carrusel">Pasión que se transmite</h5>
-                <p class="col text-carrusel">Más de [X] años creando muebles con amor y oficio familiar</p>
+                <h4 class="mt-3 col text-carrusel">Pasión que se transmite</h4>
+                <p class="col text-carrusel">Más de 2 años creando muebles con amor y oficio familiar</p>
             </div>
         </div>
     </div>
-            
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    
+    <!-- Botón para ir al slide anterior -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
     </button>
     
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <!-- Botón para ir al siguiente slide -->
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
     </button>
-</section>
+</div>
