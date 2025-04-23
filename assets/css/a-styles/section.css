@@ -12,16 +12,19 @@
 }
 
 /* Estilo del titulo de la seccion de Catalogo y Productos*/
-section .titulo, .titulo-producto {
-    font-weight: bold;
+.titulo, .titulo-producto {
+    background-color: #000f001f;
     border: 1px solid #000f00;
-    display: inline-block;
+    box-shadow: 0 0 10px #000f00;
     border-radius: 20px;
+    
+    font-size: 30px;
+    font-weight: bold;
+    display: inline-block;
+    
     padding: 7px;
     margin-top: 10px;
     margin-bottom: -5px;
-    background-color: #000f001f;
-    box-shadow: 0 0 10px #000f00;
 }
 
 /* -------------- SECCIÓN CATALOGO / ESPECIALIDADES ---------------- */
@@ -66,8 +69,13 @@ section .text-card {
 
 /* Estilo del titulo de la sección de Productos*/
 section .titulo-producto {
-    font-size: 33px;
     margin-top: -10px !important;
+}
+
+/* Estilos del contenedor de las cartas*/
+.card-size {
+    max-height: 700px;
+    margin-bottom: 1rem;
 }
 
 /* Estilos para el botón de la sección Productos */
@@ -164,7 +172,7 @@ section .location-text .localidad {
     overflow: hidden; /* Evita que el iframe se salga */
 }
 
-/* ----------------- ZONA DE AJUSTEx PARA PANTALLAS MEDIAS ---------------------*/
+/* ----------------- ZONA DE AJUSTE PARA PANTALLAS MEDIAS ---------------------*/
 @media (max-width: 768px) {
     section {
         font-size: 0.8rem;
@@ -178,13 +186,22 @@ section .location-text .localidad {
     }
 
     .location-content {
-        flex-direction: column; /* Apila imagen y texto en móviles */
+        flex-direction: column;
     }
     .map-container, .location-text {
-        width: 100% !important; /* Ocupa todo el ancho */
+        width: 100% !important;
     }
     .map-container {
-        height: 300px; /* Altura menor en móviles */
+        height: 300px;
         margin-bottom: 1rem;
+    }
+}
+
+/* ----------------- ZONA DE AJUSTE PARA PANTALLAS CHICAS ---------------------*/
+@media (max-width: 570px) {
+    .titulo-producto, .titulo {
+        font-size: 20px !important;
+
+        width: 50%;
     }
 }

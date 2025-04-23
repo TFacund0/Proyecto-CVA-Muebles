@@ -64,7 +64,7 @@
             <div class="row g-4">                
                 
                 <!-- Contenedor de la primera imagen -->
-                <div class="col-lg-3 col-md-6">
+                <div class="col-lg-4 col-md-6 card-size">
                     
                     <div class="producto-card card h-100">
                         
@@ -72,7 +72,7 @@
                         <div class="badge bg-danger position-absolute" style="top: 10px; right: 10px">Oferta</div>
                         
                         <!-- Imagen -->
-                        <img src="assets/img/muebles/mesa.jpg" class="card-img-top" alt="Mesa de comedor">
+                        <img src="assets/img/muebles/Muebles 56.jpeg" class="card-img-top" alt="Mesa de comedor">
                             
                         <!-- Texto Descriptivo -->
                         <div class="card-body">
@@ -94,12 +94,12 @@
                 </div>
                 
                 <!-- Contenedor de la Segunda imagen -->
-                <div class="col-lg-3 col-md-6">
+                <div class="col-lg-4 col-md-6 card-size">
                     
                     <div class="producto-card card h-100">
                     
                         <!-- Imagen -->
-                        <img src="assets/img/muebles/silla.jpg" class="card-img-top" alt="Silla de madera">
+                        <img src="assets/img/muebles/Muebles 10.jpeg" class="card-img-top" alt="Silla de madera">
                         
                         <!-- Texto Descriptivo -->
                         <div class="card-body">
@@ -120,12 +120,12 @@
                 </div>
                 
                 <!-- Contenedor de la Tercera imagen -->
-                <div class="col-lg-3 col-md-6">
+                <div class="col-lg-4 col-md-6 card-size">
                     
                     <div class="producto-card card h-100">
                         
                         <!-- Imagen -->
-                        <img src="assets/img/muebles/estante.jpg" class="card-img-top" alt="Estante para libros">
+                        <img src="assets/img/muebles/Muebles 46.jpeg" class="card-img-top" alt="Estante para libros">
                         
                         <!-- Texto Descriptivo -->
                         <div class="card-body">
@@ -146,23 +146,72 @@
                 </div>
                 
                 <!-- Contenedor de la Cuarta imagen -->
-                <div class="col-lg-3 col-md-6">
+                <div class="col-lg-4 col-md-6 card-size">
                     
                     <div class="producto-card card h-100">
-                        
-                        <!-- Indicador de Nuevo -->
-                        <div class="badge bg-primary position-absolute" style="top: 10px; right: 10px">Nuevo</div>
-                        
+                    
                         <!-- Imagen -->
-                        <img src="assets/img/muebles/cama.jpg" class="card-img-top" alt="Cama rústica">
+                        <img src="assets/img/muebles/Muebles 58.jpeg" class="card-img-top" alt="Silla de madera">
                         
                         <!-- Texto Descriptivo -->
                         <div class="card-body">
-                            <h5 class="card-title">Cama King Size</h5>
-                            <p class="text-muted">Diseño rústico con cabecera tallada</p>
-
+                            <h5 class="card-title">Silla Artesanal</h5>
+                            <p class="text-muted">Diseño ergonómico con acabado natural</p>
+                            
                             <div class="d-flex justify-content-between align-items-center">
-                                <span class="fw-bold text-madera">$2,450.000</span>
+                                <span class="fw-bold">$350.000</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Boton para añadir al carrito -->
+                        <div class="card-footer bg-white border-0">
+                            <button class="btn btn-primary w-100">Añadir al Carrito</button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Contenedor de la Quinta imagen -->
+                <div class="col-lg-4 col-md-6 card-size">
+                    
+                    <div class="producto-card card h-100">
+                    
+                        <!-- Imagen -->
+                        <img src="assets/img/muebles/Muebles 54.jpeg" class="card-img-top" alt="Silla de madera">
+                        
+                        <!-- Texto Descriptivo -->
+                        <div class="card-body">
+                            <h5 class="card-title">Silla Artesanal</h5>
+                            <p class="text-muted">Diseño ergonómico con acabado natural</p>
+                            
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="fw-bold">$350.000</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Boton para añadir al carrito -->
+                        <div class="card-footer bg-white border-0">
+                            <button class="btn btn-primary w-100">Añadir al Carrito</button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Contenedor de la Sexta imagen -->
+                <div class="col-lg-4 col-md-6 card-size">
+                    
+                    <div class="producto-card card h-100">
+                    
+                        <!-- Imagen -->
+                        <img src="assets/img/muebles/Muebles 64.jpeg" class="card-img-top" alt="Silla de madera">
+                        
+                        <!-- Texto Descriptivo -->
+                        <div class="card-body">
+                            <h5 class="card-title">Silla Artesanal</h5>
+                            <p class="text-muted">Diseño ergonómico con acabado natural</p>
+                            
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="fw-bold">$350.000</span>
                             </div>
                         </div>
                         

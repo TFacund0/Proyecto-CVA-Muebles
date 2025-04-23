@@ -26,7 +26,7 @@
             <img src="assets/img/fondos-carrusel/Muebles 22.jpeg" class="d-block w-100" alt="Taller de carpintería">
 
             <div class="carousel-caption d-none d-md-block text-content-carrusel position-carrusel">
-                <h4 class="mt-3 col text-carrusel">Calidad artesanal</h4>
+                <h4 class="col text-carrusel">Calidad artesanal</h4>
                 <p class="col text-carrusel">Diseño con alma en el que cada pieza es única y hecha con dedicación</p>
             </div>
         </div>
@@ -36,7 +36,7 @@
             <img src="assets/img/fondos-carrusel/Muebles 69.jpeg" class="d-block w-100" alt="Taller de carpintería">
 
             <div class="carousel-caption d-none d-md-block text-content-carrusel position-carrusel">
-                <h4 class="mt-3 col text-carrusel">Pasión que se transmite</h4>
+                <h4 class="col text-carrusel">Pasión que se transmite</h4>
                 <p class="col text-carrusel">Más de 2 años creando muebles con amor y oficio familiar</p>
             </div>
         </div>
