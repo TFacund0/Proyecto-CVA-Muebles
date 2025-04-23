@@ -23,7 +23,7 @@
     
         <!-- Segundo ítem del carrusel -->
         <div class="carousel-item">
-            <img src="assets/img/fondos-carrusel/taller.jpg" class="d-block w-100" alt="Taller de carpintería">
+            <img src="assets/img/fondos-carrusel/Muebles 22.jpeg" class="d-block w-100" alt="Taller de carpintería">
 
             <div class="carousel-caption d-none d-md-block text-content-carrusel position-carrusel">
                 <h4 class="mt-3 col text-carrusel">Calidad artesanal</h4>
@@ -33,7 +33,7 @@
     
         <!-- Tercer ítem del carrusel -->
         <div class="carousel-item">
-            <img src="assets/img/fondos-carrusel/taller.jpg" class="d-block w-100" alt="Taller de carpintería">
+            <img src="assets/img/fondos-carrusel/Muebles 69.jpeg" class="d-block w-100" alt="Taller de carpintería">
 
             <div class="carousel-caption d-none d-md-block text-content-carrusel position-carrusel">
                 <h4 class="mt-3 col text-carrusel">Pasión que se transmite</h4>
