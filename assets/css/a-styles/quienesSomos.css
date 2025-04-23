@@ -1,0 +1,99 @@
+* {
+    font-family: "Open Sans", sans-serif;
+}
+
+/*------------- ESTILO DEL HEADER ----------*/
+.fondo-header {
+    background-image: url('../../img/texturas/madera-lisa.jpg');
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.355);
+    border-bottom: 3px solid rgb(0, 0, 0);
+}
+
+.fondo-header h1 {
+    border: 3px solid black;
+    border-radius: 15px;
+    
+    display: inline-block;
+
+    padding: 15px;
+    margin: 3px;
+
+    font-size: 43.1247px;
+    font-weight: bold;
+    scale: 1.0;
+    transition: scale 0.5ms ease-in-out;
+}
+
+.fondo-header h1:hover {
+    box-shadow: 0 0 5px rgb(0, 0, 0);
+    scale: 1.05;
+    transition: scale 1ms ease-in-out;
+}
+
+.fondo-header p {
+    font-size: 25px;
+}
+
+/*-------------- ESTILO DE CONTENEDOR HISTORIA -------------*/
+.contenedor-historia {
+    background-color: #faf9ec;
+
+    border-radius: 10px;
+    box-shadow: 0 0 3px rgb(0, 0, 0);
+}
+
+.texto-historia-section {
+    background-color: #cdcdcd;
+    padding: 30px;
+    
+    border-radius: 10px;
+    box-shadow: 0 0 3px rgb(0, 0, 0);
+}
+
+.texto-historia-section:hover {
+    box-shadow: 0 0 7px rgb(0, 0, 0);
+}
+
+.img-historia-section {
+    justify-content: center;
+    align-items: center;
+}
+
+.img-historia-section img {
+    border-radius: 50px;
+    scale: 1.0;
+    transition: scale 0.5ms ease-in-out;
+}
+
+.img-historia-section img:hover {
+    box-shadow: 0 0 7px rgb(0, 0, 0);
+    scale: 1.01;
+    transition: scale 1ms ease-in-out;
+}
+
+/* ------------------- ESTILO DE CONTENEDOR DE FILOSOFIA ----------------------- */
+.contenedor-filosofia {
+    background-color: #faf9ec;
+
+    border-radius: 10px;
+    box-shadow: 0 0 3px rgb(0, 0, 0);
+    font-size: 20px;
+}
+
+/* ------------------ ESTILO DE CONTENEDOR EQUIPO -------------------------- */
+.contenedor-equipo {
+    background-color: #faf9ec;
+
+    border-radius: 10px;
+    box-shadow: 0 0 3px rgb(0, 0, 0);
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.team-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
