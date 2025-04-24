@@ -1,3 +1,6 @@
+<?php
+extract($footerData);
+?>
 <footer class="bg-dark text-white pt-5 pb-4 ">
         
     <div class="container">
@@ -72,7 +75,7 @@
             <div class="col-md-4 mb-4 mx-auto text-center">
                 <p class="small mb-0">
                     &copy; <?= $current_year ?? date('Y') ?> 
-                    <?= $company_name ?? 'MiSitio' ?>. Todos los derechos reservados.
+                    <?= $company_name ?? 'CVA Muebles' ?>. Todos los derechos reservados.
                 </p>
             </div>
         </div>

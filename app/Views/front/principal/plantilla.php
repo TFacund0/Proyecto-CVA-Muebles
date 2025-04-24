@@ -1,35 +1,14 @@
-<!doctype html>
-<html lang="es">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <title><?= $title ?? 'titulo variable' ?></title>
-    
-    <link rel="stylesheet" href="assets/css/a-styles/miestilo.css">
-    <link rel="stylesheet" href="assets/css/a-styles/carrusel.css">
-    <link rel="stylesheet" href="assets/css/a-styles/footer.css">
-    <link rel="stylesheet" href="assets/css/a-styles/section.css">
-    <link rel="stylesheet" href="assets/css/a-styles/navbar.css">
-    
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-    <script src="assets/js/bootstrap.bundle.min.js" ></script>
-    
-</head>
 
 <body>
-    <!-- Barra de Navegacion -->
-    <?= view('front/navbar') ?>
+
 
     <!-- Section Carrusel -->
-    <?= view('front/principal/section-carrusel', $footerData) ?>
+    <?= view('front/principal/section-carrusel') ?>
 
     <!-- Section Carrusel -->
-    <?= view('front/principal/section-catalogo', $footerData) ?>
+    <?= view('front/principal/section-catalogo') ?>
 
-    <!-- Footer -->
-    <?= view('front/footer', $footerData) ?>
-
+    
 </body>
 
 </html>

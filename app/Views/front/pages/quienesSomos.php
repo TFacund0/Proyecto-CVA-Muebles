@@ -1,17 +1,3 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiénes Somos - CVA Muebles</title>
-    <link rel="stylesheet" href="<?= base_url('assets/css/bootstrap.min.css') ?>">
-    <link rel="stylesheet" href="assets/css/a-styles/navbar.css">
-    <link rel="stylesheet" href="assets/css/a-styles/miestilo.css">
-    <link rel="stylesheet" href="assets/css/a-styles/quienesSomos.css">
-</head>
-<body>
-
-<?= view('front/navbar') ?>
 
     <!-- Sección de encabezado con título y subtítulo -->
     <header class="header-section">
@@ -105,10 +91,3 @@
         </div>
 
     </section>
-
-    <?= view('front/footer') ?>
-    <?= view('front/footer') ?>
-    <script src="<?= base_url('assets/js/jquery-3.6.0.min.js') ?>"></script>
-    <script src="<?= base_url('assets/js/bootstrap.bundle.min.js') ?>"></script>
-</body>
-</html>

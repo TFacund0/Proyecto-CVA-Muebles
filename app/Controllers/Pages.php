@@ -2,19 +2,8 @@
 
 namespace App\Controllers;
 
-class Home extends BaseController
+class Pages extends BaseController
 {
-    
-    public function index()
-    {
-        
-        // Renderiza la vista principal
-        return view('front/main', [
-            'title' => 'CVA Muebles',
-            'footerData' => $this->footerData,
-            'content' => view('front/principal/plantilla')
-        ]);
-    }
     public function quienesSomos()
     {
         return view('front/main', [

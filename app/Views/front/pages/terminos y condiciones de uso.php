@@ -1,16 +1,5 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Términos y Usos - CVA Muebles</title>
-    <link rel="stylesheet" href="<?= base_url('assets/css/bootstrap.min.css') ?>">
-    
-</head>
-<body>
-    
-    <?= view('front/navbar') ?>
 
+<body>
 
     <div class="terms-header">
         <div class="container">
@@ -136,9 +125,5 @@
         </div>
     </div>
 
-    <?= view('front/footer') ?>
 
-    <script src="<?= base_url('assets/js/jquery-3.6.0.min.js') ?>"></script>
-    <script src="<?= base_url('assets/js/bootstrap.bundle.min.js') ?>"></script>
-</body>
 </html>
