@@ -73,4 +73,12 @@
     .contenedor-datos {
         gap: 15px;
     }
+
+    .titulo-contacto h1 {
+        font-size: 25px;
+    }
+
+    .titulo-contacto p {
+        font-size: 15px;
+    }
 }
