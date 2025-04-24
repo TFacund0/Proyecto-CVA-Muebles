@@ -8,10 +8,6 @@ footer {
     box-shadow: -2px 0px 6px black;
 }
 
-footer div{
-    color: rgb(255, 255, 255);
-}
-
 .social-icons a {
     transition: transform 0.3s;
 }

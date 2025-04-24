@@ -1,7 +1,7 @@
 <?php
 extract($footerData);
 ?>
-<footer class="bg-dark text-white pt-5 pb-4 ">
+<footer class="text-white pt-5 pb-4 ">
         
     <div class="container">
         <div class="row">

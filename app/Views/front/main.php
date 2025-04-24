@@ -25,19 +25,15 @@
     
 </head>
 <body>
-    <header>  
-        <!-- Barra de Navegacion -->
-        <?= view('front/navbar') ?>
-    </header>
+    <!-- Barra de Navegacion -->
+    <?= view('front/navbar') ?>
 
     <main>
         <?= $content ?? '' ?>
     </main>
 
-    <footer>
-        <!-- Footer -->
-        <?= view('front/footer', ['footerData' => $footerData]) ?>
-    </footer>
-
+    
+    <!-- Footer -->
+    <?= view('front/footer', ['footerData' => $footerData]) ?>
 </body>
 </body>
