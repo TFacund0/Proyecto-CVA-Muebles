@@ -39,8 +39,8 @@
     left: 50%;
 }
 
-/* Estilo de Boton dentro del cuadro */
-.text-content-carrusel .info {
+/* Estilo del boton enlace del carrusel */
+.boton-carrusel {
     display: inline-block;
     background-color: rgba(0, 0, 0, 0.3);
     
@@ -49,14 +49,17 @@
     
     width: 35%;
     
+    margin-top: 5px;
     padding: 0.5rem;
-    padding-top: 0.7rem;    
+
+    text-decoration: none;
+    color: rgb(255, 255, 255);
 }
 
-/* Estilo de Boton dentro del cuadro cuando se pone el cursor encima */
-.text-content-carrusel .info:hover {
-    border: 1px solid rgb(0, 0, 0);
+/* Estilo del boton enlace del carrusel cuando tiene el cursor */
+.boton-carrusel:hover {
     color: rgb(0, 0, 0);
+    border: 1px solid rgb(0, 0, 0);
     background-color: rgb(255, 255, 255);
 }
 
