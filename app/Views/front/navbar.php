@@ -32,7 +32,7 @@
               <a class="btn btn-beige text-dark mx-1" href="<?= base_url('comercializacion')?>">Comercializacion</a>
             </li>
             <li class="nav-item">
-              <a class="btn btn-beige text-dark mx-1" href="<?= base_url('quienesSomos')?>">Quienes Somos</a>
+              <a class="btn btn-beige text-dark mx-1" href="<?= base_url('quienesSomos')?>">Información</a>
             </li>
             <li class="nav-item">
               <a class="btn btn-beige text-dark mx-1" href="<?= base_url('informacionContacto')?>">Contacto</a>

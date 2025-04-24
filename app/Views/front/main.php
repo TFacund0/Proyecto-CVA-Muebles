@@ -31,7 +31,6 @@
     <main>
         <?= $content ?? '' ?>
     </main>
-
     
     <!-- Footer -->
     <?= view('front/footer', ['footerData' => $footerData]) ?>
