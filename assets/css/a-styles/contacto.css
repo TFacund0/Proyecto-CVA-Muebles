@@ -1,13 +1,19 @@
 /* Contenedor del Titulo Contacto */
 .titulo-contacto {
-    background-image: url('../../img/texturas/planta.jpg');
-    background-color: red;
-    border-bottom: 3px solid white;
+    background-image: url('../../img/texturas/camara.jpg');
+    border-bottom: 3px solid black;
     text-align: center;
-    background-position: center right;
+
+    background-position: top;
     background-size: cover;
-    color: white;
+
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     padding: 15px;
+}
+
+.titulo-contacto h1, .titulo-contacto p {
+    text-shadow: 0 0 5px rgb(0, 0, 0);
 }
 
 .contenedor-datos {
@@ -15,4 +21,45 @@
     border-radius: 30px;
     box-shadow: 0 0 7px rgb(0, 0, 0);
     border: 1.9px solid rgb(0, 0, 0);
+}
+
+.card-style {
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 15px;
+    box-shadow: 0 0 7px rgb(0, 0, 0);
+    background-color: #f5f2d6ae ;
+}
+
+.card-style h5 {
+    font-weight: bold;
+}
+
+.card-style .boton-card, .boton-contacto {
+    border: 1px solid black;
+    background-color: rgba(255, 255, 255, 0.529);
+    scale: 1.0;
+    transition: scale 1m linear;
+}
+
+.card-style .boton-card:hover, .boton-contacto:hover {
+    background-color: rgb(76, 76, 76);
+    color: rgb(255, 255, 255);
+    scale: 1.03;
+    transition: scale 1ms linear;
+}
+
+.datos-legales-content {    
+    align-items: center;
+}
+
+.form-group {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.contact-form h4 {
+    font-weight: bold;
+}
+
+.boton-contacto {
 }
