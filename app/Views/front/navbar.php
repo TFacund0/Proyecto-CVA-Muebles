@@ -26,7 +26,7 @@
               <a class="btn btn-beige text-dark mx-1" href="<?= base_url('/')?>">Inicio</a>
             </li>
             <li class="nav-item">
-                <a class="btn btn-beige text-dark mx-1" href="#">Productos</a>
+                <a class="btn btn-beige text-dark mx-1" href="<?= base_url('productos')?>">Productos</a>
             </li>
             <li class="nav-item">
               <a class="btn btn-beige text-dark mx-1" href="<?= base_url('comercializacion')?>">Comercializacion</a>

@@ -225,7 +225,7 @@
 
             <!-- Boton para ver los todos los productos -->
             <div class="text-center mt-5">
-                <a href="#" class="btn btn-ver-todos">
+                <a href="<?= base_url('productos')?>" class="btn btn-ver-todos">
                     <span class="me-2">Ver Todos los Productos</span>
                     <i class="fas fa-chevron-right"></i>
                 </a>
