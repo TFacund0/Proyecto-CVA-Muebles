@@ -1,3 +1,8 @@
+/* Contenedor de toda la informacion de contacto */
+#container-contacto {
+    background-color: rgb(0, 0, 0, 0);
+}
+
 /* Contenedor principal del título de la sección de contacto */
 .titulo-contacto {
     background-image: url('../../img/texturas/camara.jpg');
@@ -24,20 +29,20 @@
 }
 
 /* Estilo de tarjetas individuales de contacto */
-.card-style {
+.contenedor-datos .card-style {
     border: 1px solid rgb(0, 0, 0); 
     border-radius: 15px; 
     box-shadow: 0 0 7px rgb(0, 0, 0);
-    background-color: #f5f2d6ae; 
+    background-color: #f5f2d6ab; 
 }
 
 /* Títulos dentro de las tarjetas */
-.card-style h5 {
+.contenedor-datos .card-style h5 {
     font-weight: bold;
 }
 
 /* Estilo base de los botones de tarjeta y formulario */
-.card-style .boton-card, .boton-contacto {
+.contenedor-datos .card-style .boton-card, .contenedor-datos .card-style .boton-contacto {
     border: 1px solid black;
     background-color: rgba(255, 255, 255, 0.529);
     scale: 1.0;
@@ -45,7 +50,7 @@
 }
 
 /* Efecto hover para botones */
-.card-style .boton-card:hover, .boton-contacto:hover {
+.contenedor-datos .boton-card:hover, .contenedor-datos .boton-contacto:hover {
     background-color: rgb(76, 76, 76); 
     color: rgb(255, 255, 255); 
     scale: 1.03;

@@ -1,25 +1,20 @@
 
 <!-- Sección de encabezado de contacto -->
 <header class="contact-header titulo-contacto">
-    <div class="container">
-        <h1>Contacto</h1>
-        <p class="lead">Estamos aquí para ayudarte con tus proyectos en madera</p>
-    </div>
+    <h1>Contacto</h1>
+    <p class="lead">Estamos aquí para ayudarte con tus proyectos en madera</p>
 </header>
 
 <!-- Contenedor principal de contacto -->
-<section class="container">
+<section class="container" id="container-contacto">
 
     <!-- Fila con tarjetas de dirección, teléfonos y correos -->
     <div class="row my-3 p-3 contenedor-datos">
         
         <!-- Tarjeta: Dirección física -->
         <div class="col-md-4">
-            <div class="card contact-card text-center h-100 card-style">
+            <div class="card text-center h-100 card-style">
                 <div class="card-body">
-                    <div class="contact-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
                     <h5>Dirección</h5>
                     <p>9 de Julio 1449<br>Mantilla, Corrientes<br>Argentina</p>
                     <a href="https://maps.google.com/?q=9+de+Julio+1449,Mantilla,Corrientes" class="btn btn-sm boton-card">
@@ -31,11 +26,8 @@
 
         <!-- Tarjeta: Teléfonos de contacto -->
         <div class="col-md-4">
-            <div class="card contact-card text-center h-100 card-style">
+            <div class="card text-center h-100 card-style">
                 <div class="card-body">
-                    <div class="contact-icon">
-                        <i class="fas fa-phone-alt"></i>
-                    </div>
                     <h5>Teléfonos</h5>
                     <p>+54 9 3794 098511<br>Lunes a Viernes<br>8:00 - 12:00 / 15:00 - 19:00</p>
                     <a href="tel:+5493794098511" class="btn btn-sm boton-card">
@@ -47,11 +39,8 @@
 
         <!-- Tarjeta: Correos electrónicos -->
         <div class="col-md-4">
-            <div class="card contact-card text-center h-100 card-style">
+            <div class="card text-center h-100 card-style">
                 <div class="card-body">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
                     <h5>Correo Electrónico</h5>
                     <p>
                         info@cvamuebles.com<br>

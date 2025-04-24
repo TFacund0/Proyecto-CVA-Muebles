@@ -8,7 +8,7 @@
     </header>
 
     <!-- Sección principal del contenido -->
-    <section class="container">
+    <section class="container container-quienes-somos">
 
         <!-- SECCIÓN: Nuestra Historia -->
         <div class="row my-5 p-3 py-4 gap-3 d-flex justify-content-around contenedor-historia">
@@ -50,7 +50,7 @@
         <div class="container-fluid my-5 contenedor-equipo">
             <h2 class="section-title">Nuestro Equipo</h2>
 
-            <div class="row team-box">
+            <div class="row team-box mx-auto">
                 
                 <!-- Miembro 1 -->
                 <div class="col-md-4">
