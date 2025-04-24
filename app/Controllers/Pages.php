@@ -37,4 +37,12 @@ class Pages extends BaseController
             'content' => view('front/pages/terminosYCondiciones')
         ]);
     }
+    public function productos()
+    {
+        return view('front/main', [
+            'title' => 'CVA productos',
+            'footerData' => $this->footerData,
+            'content' => view('front/pages/productos')
+        ]);
+    }
 }

@@ -16,7 +16,7 @@
                 
                 <!-- Botón o texto adicional -->
                 <div class="col info">
-                    <h5>Más Información</h5>
+                    <h5> <a href="<?= base_url('quienesSomos')?>">Más Información</a></h5>
                 </div>
             </div>
         </div>

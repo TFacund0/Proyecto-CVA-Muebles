@@ -97,7 +97,7 @@
                         <li>Dirección: 9 de Julio 1449, Mantilla, Corrientes</li>
                         <li>Se recomienda coordinar previamente para preparar tu pedido</li>
                     </ul>
-                    <a href="<?= base_url('contacto') ?>" class="btn mt-3" style="background-color: var(--color-madera-oscura); color: white;">Coordinar retiro</a>
+                    <a href="<?= base_url('informacionContacto')?>" class="btn mt-3" style="background-color: var(--color-madera-oscura); color: white;">Coordinar retiro</a>
                 </div>
             </div>
         </div>
@@ -105,7 +105,7 @@
         <div class="info-box text-center">
             <h3>Garantía y Soporte</h3>
             <p>Todos nuestros productos cuentan con garantía de 1 año por defectos de fabricación. Para reclamos o consultas postventa, contamos con un equipo especializado que te acompañará durante todo el proceso.</p>
-            <a href="<?= base_url('terminos') ?>" class="btn btn-link" style="color: var(--color-terracota);">Ver términos de garantía completos</a>
+            <a href="<?= base_url('terminosYCondiciones') ?>" class="btn btn-link" style="color: var(--color-terracota);">Ver términos de garantía completos</a>
         </div>
     </div>
 </body>

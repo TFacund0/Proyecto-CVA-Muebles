@@ -121,7 +121,7 @@
         
         <div class="text-center mb-5">
             <p>Si tienes alguna duda sobre nuestros términos y condiciones, no dudes en contactarnos.</p>
-            <a href="<?= base_url('contacto') ?>" class="btn" style="background-color: var(--color-madera-oscura); color: white;">Contáctanos</a>
+            <a href="<?= base_url('informacionContacto') ?>" class="btn" style="background-color: var(--color-madera-oscura); color: white;">Contáctanos</a>
         </div>
     </div>
 

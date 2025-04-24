@@ -25,7 +25,7 @@ extract($footerData);
             <div class="col-md-4 mb-4">
                 <h5 class="text-uppercase border-bottom pb-2">Sobre Nosotros</h5>
                 <p>Somos una empresa comprometida con la innovación y calidad en desarrollo web desde 2020.</p>
-                <a href="<?= site_url('about') ?>" class="btn btn-success btn-sm">Conoce más</a>
+                <a href="<?= base_url('quienesSomos') ?>" class="btn btn-success btn-sm">Conoce más</a>
             </div>
 
         <!-- Sección Redes Sociales -->
