@@ -2,7 +2,7 @@
     <!-- Sección de encabezado con título y subtítulo -->
     <header class="header-section">
         <div class="container-fluid text-center p-5 fondo-header">
-            <h1>Quiénes Somos</h1>
+            <h1>Quiénes Somos?</h1>
             <p class="lead mt-5">Artesanía en madera con tradición y pasión</p>
         </div>
     </header>
@@ -28,9 +28,9 @@
 
             <!-- Imagen representativa de la historia -->
             <div class="col-lg-5 col-sm-12 d-flex img-historia-section">
-                <img src="<?= base_url('assets/img/fondos-carrusel/taller.jpg') ?>" 
-                     alt="Taller CVA Muebles" 
-                     class="img-fluid history-img">
+                <img src="<?= base_url('assets/img/texturas/carpienteria.jpg') ?>" 
+                    alt="Taller CVA Muebles" 
+                    class="img-fluid history-img">
             </div>
         </div>
 
@@ -55,7 +55,7 @@
                 <!-- Miembro 1 -->
                 <div class="col-md-4">
                     <div class="card team-card">
-                        <img src="<?= base_url('assets/img/team/senior.jpg') ?>" class="card-img-top" alt="Carlos Vega">
+                        <img src="<?= base_url('assets/img/team/viejo.jpg') ?>" class="card-img-top" alt="Carlos Vega">
                         <div class="card-body">
                             <h5>Carlos Vega</h5>
                             <p class="position">Fundador y Maestro Carpintero</p>
@@ -67,7 +67,7 @@
                 <!-- Miembro 2 -->
                 <div class="col-md-4">
                     <div class="card team-card">
-                        <img src="<?= base_url('assets/img/team/senior.jpg') ?>" class="card-img-top" alt="Valeria Acevedo">
+                        <img src="<?= base_url('assets/img/team/diseñadora.jpg') ?>" class="card-img-top" alt="Valeria Acevedo">
                         <div class="card-body">
                             <h5>Valeria Acevedo</h5>
                             <p class="position">Diseñadora y Proyectista</p>
@@ -79,7 +79,7 @@
                 <!-- Miembro 3 -->
                 <div class="col-md-4">
                     <div class="card team-card">
-                        <img src="<?= base_url('assets/img/team/senior.jpg') ?>" class="card-img-top" alt="Andrés Rojas">
+                        <img src="<?= base_url('assets/img/team/diseñador.jpg') ?>" class="card-img-top" alt="Andrés Rojas">
                         <div class="card-body">
                             <h5>Andrés Rojas</h5>
                             <p class="position">Especialista en Acabados</p>

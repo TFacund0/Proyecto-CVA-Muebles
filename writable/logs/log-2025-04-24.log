@@ -8,3 +8,21 @@ in APPPATH\Controllers\Home.php on line 39.
  5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
  6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
  7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-24 06:30:45 --> TypeError: extract(): Argument #1 ($array) must be of type array, null given
+[Method: GET, Route: informacionContacto]
+in APPPATH\Views\front\footer.php on line 2.
+ 1 APPPATH\Views\front\footer.php(2): extract(null)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_acevedo_arce\\app\\Views\\front\\footer.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('front/footer', [], true)
+ 5 APPPATH\Views\front\pages\informacionContacto.php(142): view('front/footer')
+ 6 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_acevedo_arce\\app\\Views\\front\\pages\\informacionContacto.php')
+ 7 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('front/pages/informacionContacto', [], true)
+ 9 APPPATH\Controllers\Pages.php(29): view('front/pages/informacionContacto')
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pages->informacionContacto()
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pages))
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

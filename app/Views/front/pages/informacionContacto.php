@@ -1,55 +1,53 @@
 
-    <!-- Sección de encabezado de contacto -->
-<div class="contact-header titulo-contacto">
+<!-- Sección de encabezado de contacto -->
+<header class="contact-header titulo-contacto">
     <div class="container">
         <h1>Contacto</h1>
         <p class="lead">Estamos aquí para ayudarte con tus proyectos en madera</p>
     </div>
-</div>
+</header>
 
 <!-- Contenedor principal de contacto -->
-<div class="container">
-    <!-- Fila con tres tarjetas de contacto: dirección, teléfonos y correos -->
-    <div class="row mb-5 bg-danger my-3 p-3 contenedor-datos">
-        <!-- Tarjeta de Dirección -->
+<section class="container">
+
+    <!-- Fila con tarjetas de dirección, teléfonos y correos -->
+    <div class="row my-3 p-3 contenedor-datos">
+        
+        <!-- Tarjeta: Dirección física -->
         <div class="col-md-4">
-            <div class="card contact-card text-center h-100">
+            <div class="card contact-card text-center h-100 card-style">
                 <div class="card-body">
                     <div class="contact-icon">
                         <i class="fas fa-map-marker-alt"></i>
                     </div>
                     <h5>Dirección</h5>
                     <p>9 de Julio 1449<br>Mantilla, Corrientes<br>Argentina</p>
-                    <a href="https://maps.google.com/?q=9+de+Julio+1449,Mantilla,Corrientes" 
-                       class="btn btn-sm" 
-                       style="background-color: var(--color-madera-clara);">
+                    <a href="https://maps.google.com/?q=9+de+Julio+1449,Mantilla,Corrientes" class="btn btn-sm boton-card">
                         Ver en mapa
                     </a>
                 </div>
             </div>
         </div>
 
-        <!-- Tarjeta de Teléfonos -->
+        <!-- Tarjeta: Teléfonos de contacto -->
         <div class="col-md-4">
-            <div class="card contact-card text-center h-100">
+            <div class="card contact-card text-center h-100 card-style">
                 <div class="card-body">
                     <div class="contact-icon">
                         <i class="fas fa-phone-alt"></i>
                     </div>
                     <h5>Teléfonos</h5>
                     <p>+54 9 3794 098511<br>Lunes a Viernes<br>8:00 - 12:00 / 15:00 - 19:00</p>
-                    <a href="tel:+5493794098511" 
-                       class="btn btn-sm" 
-                       style="background-color: var(--color-madera-clara);">
+                    <a href="tel:+5493794098511" class="btn btn-sm boton-card">
                         Llamar ahora
                     </a>
                 </div>
             </div>
         </div>
 
-        <!-- Tarjeta de Correos -->
+        <!-- Tarjeta: Correos electrónicos -->
         <div class="col-md-4">
-            <div class="card contact-card text-center h-100">
+            <div class="card contact-card text-center h-100 card-style">
                 <div class="card-body">
                     <div class="contact-icon">
                         <i class="fas fa-envelope"></i>
@@ -60,9 +58,7 @@
                         ventas@cvamuebles.com<br>
                         soporte@cvamuebles.com
                     </p>
-                    <a href="mailto:info@cvamuebles.com" 
-                       class="btn btn-sm" 
-                       style="background-color: var(--color-madera-clara);">
+                    <a href="mailto:info@cvamuebles.com" class="btn btn-sm boton-card">
                         Enviar email
                     </a>
                 </div>
@@ -70,12 +66,13 @@
         </div>
     </div>
 
-    <!-- Fila con Datos Legales y Formulario de contacto -->
-    <div class="row mb-5">
-        <!-- Columna de datos legales -->
-        <div class="col-lg-6">
-            <div class="business-info">
-                <h4>Datos Legales</h4>
+    <!-- Fila con datos legales y formulario de contacto -->
+    <div class="row d-flex justify-content-around my-4 py-4 gap-4 px-5 contenedor-datos">
+        
+        <!-- Columna: Datos legales de la empresa -->
+        <div class="col-lg-5 card-style">
+            <div class="mx-3">
+                <h4 class="text-center my-3 mb-4 fw-bold">Datos Legales</h4>
                 <p><strong>Razón Social:</strong> CVA Muebles S.R.L.</p>
                 <p><strong>Titular:</strong> Carlos Vega Acevedo</p>
                 <p><strong>CUIT:</strong> 30-12345678-9</p>
@@ -84,21 +81,19 @@
             </div>
         </div>
 
-        <!-- Columna de formulario de contacto -->
-        <div class="col-lg-6">
+        <!-- Columna: Formulario de contacto -->
+        <div class="col-lg-6 card-style">
             <div class="contact-form">
-                <h4 class="text-center mb-4" style="color: var(--color-madera-oscura);">Formulario de Contacto</h4>
-                
-                <!-- Formulario de contacto -->
+                <h4 class="text-center my-3" style="color: var(--color-madera-oscura);">Formulario de Contacto</h4>
                 <form action="<?= base_url('contacto/enviar') ?>" method="post">
-                    <div class="row">
-                        <!-- Campo Nombre -->
+                    
+                    <!-- Fila con nombre y apellido -->
+                    <div class="row form-group">    
                         <div class="col-md-6">
                             <div class="form-group">
                                 <input type="text" class="form-control" name="nombre" placeholder="Nombre" required>
                             </div>
                         </div>
-                        <!-- Campo Apellido -->
                         <div class="col-md-6">
                             <div class="form-group">
                                 <input type="text" class="form-control" name="apellido" placeholder="Apellido" required>
@@ -106,17 +101,17 @@
                         </div>
                     </div>
 
-                    <!-- Campo Email -->
+                    <!-- Email -->
                     <div class="form-group">
                         <input type="email" class="form-control" name="email" placeholder="Correo electrónico" required>
                     </div>
 
-                    <!-- Campo Teléfono -->
+                    <!-- Teléfono -->
                     <div class="form-group">
                         <input type="tel" class="form-control" name="telefono" placeholder="Teléfono">
                     </div>
 
-                    <!-- Campo Asunto -->
+                    <!-- Asunto del mensaje -->
                     <div class="form-group">
                         <select class="form-control" name="asunto" required>
                             <option value="" disabled selected>Seleccione un asunto</option>
@@ -128,15 +123,15 @@
                         </select>
                     </div>
 
-                    <!-- Campo Mensaje -->
+                    <!-- Mensaje -->
                     <div class="form-group">
                         <textarea class="form-control" name="mensaje" rows="5" placeholder="Escribe tu mensaje aquí..." required></textarea>
                     </div>
 
-                    <!-- Botón Enviar -->
-                    <button type="submit" class="btn btn-contact">Enviar Mensaje</button>
+                    <!-- Botón de envío -->
+                    <button type="submit" class="btn btn-contact boton-contacto mb-2">Enviar Mensaje</button>
                 </form>
             </div>
         </div>
     </div>
-</div>
+</section>
