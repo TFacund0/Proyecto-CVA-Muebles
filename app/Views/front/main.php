@@ -10,12 +10,12 @@
 
     <link rel="stylesheet" href="assets/css/a-styles/miestilo.css">
     
+    <link rel="stylesheet" href="assets/css/a-styles/productos.css">
     <link rel="stylesheet" href="assets/css/a-styles/quienesSomos.css">
     <link rel="stylesheet" href="assets/css/a-styles/contacto.css">
 
     <link rel="stylesheet" href="assets/css/a-styles/carrusel.css">
     <link rel="stylesheet" href="assets/css/a-styles/section.css">
-
     
     <link rel="stylesheet" href="assets/css/a-styles/footer.css">
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
