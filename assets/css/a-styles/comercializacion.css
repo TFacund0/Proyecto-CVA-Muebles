@@ -1,0 +1,101 @@
+/* ----------- SECCIÓN COMERCIALIZACIÓN ----------- */
+/* Encabezado */
+.titulo-seccion {
+    background-image: url('../../img/texturas/treeplant.jpg');
+    border-bottom: 3px solid black;
+    text-align: center;
+    background-position: top;
+    background-size: cover;
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    padding: 15px;
+}
+
+.titulo-seccion h1, 
+.titulo-seccion p {
+    text-shadow: 0 0 5px rgb(0, 0, 0);
+}
+
+/* Contenedor principal */
+#container-comercializacion {
+    background-color: rgb(0, 0, 0, 0);
+}
+
+/* Secciones */
+.contenedor-seccion {
+    background-image: url('../../img/texturas/madera-claritaa.jpg');
+    border-radius: 30px;
+    box-shadow: 0 0 7px rgb(0, 0, 0);
+    border: 1.9px solid rgb(0, 0, 0);
+}
+
+/* Tarjetas */
+.card-style {
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 15px;
+    box-shadow: 0 0 7px rgb(0, 0, 0);
+    background-color: #f5f2d6ab;
+}
+
+/* Iconos de métodos de pago */
+.icono-pago {
+    font-size: 2rem;
+    color: var(--color-madera-oscura);
+}
+
+/* Pasos de envío */
+.pasos-envio h5 {
+    color: var(--color-madera-oscura);
+}
+
+/* Mapa de cobertura */
+.mapa-cobertura {
+    border: 1px solid black;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Botones */
+.boton-seccion {
+    border: 1px solid black;
+    background-color: rgba(255, 255, 255, 0.529);
+    transition: all 0.3s ease;
+}
+
+.boton-seccion:hover {
+    background-color: rgb(76, 76, 76);
+    color: rgb(255, 255, 255);
+    transform: scale(1.03);
+}
+
+/* Enlaces */
+.enlace-seccion {
+    color: var(--color-madera-oscura);
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.enlace-seccion:hover {
+    color: var(--color-terracota);
+    text-decoration: none;
+}
+
+/* Texto introductorio */
+.intro-text {
+    font-size: 1.1rem;
+    color: var(--color-madera-oscura);
+}
+
+/* Responsive */
+@media (max-width: 759px) {
+    .titulo-seccion h1 {
+        font-size: 25px;
+    }
+
+    .titulo-seccion p {
+        font-size: 15px;
+    }
+    
+    .contenedor-seccion {
+        padding: 15px !important;
+    }
+}
