@@ -6,7 +6,7 @@
             <div class="row p-3">
             <!-- Especialidad: Muebles de Sala -->
                 <div class="col-md-4 my-2">
-                    <div class="card catalogo-card h-100 text-center p-4 muebles-card">
+                    <div class="card catalogo-card h-100 text-center p-4 muebles-card ">
                         <div class="card-body text-card">
                             <h3>Muebles de Sala</h3>
                             <p>Sofás, mesas de centro y libreros diseñados para tu comodidad</p>
@@ -72,7 +72,7 @@
                         <div class="badge bg-danger position-absolute" style="top: 10px; right: 10px">Oferta</div>
                         
                         <!-- Imagen -->
-                        <img src="assets/img/muebles/Muebles 56.jpeg" class="card-img-top h-100" alt="Mesa de comedor">
+                        <img src="assets/img/muebles/Muebles 56.jpeg" class="card-img-top  h-100" alt="Mesa de comedor">
                             
                         <!-- Texto Descriptivo -->
                         <div class="card-body">
@@ -99,7 +99,7 @@
                     <div class="producto-card card h-100">
                     
                         <!-- Imagen -->
-                        <img src="assets/img/muebles/Muebles 10.jpeg" class="card-img-top h-100" alt="Silla de madera">
+                        <img src="assets/img/muebles/Muebles 10.jpeg" class="card-img-top  h-100" alt="Silla de madera">
                         
                         <!-- Texto Descriptivo -->
                         <div class="card-body">
@@ -125,7 +125,7 @@
                     <div class="producto-card card h-100">
                         
                         <!-- Imagen -->
-                        <img src="assets/img/muebles/Muebles 46.jpeg" class="card-img-top h-100" alt="Estante para libros">
+                        <img src="assets/img/muebles/Muebles 46.jpeg" class="card-img-top  h-100" alt="Estante para libros">
                         
                         <!-- Texto Descriptivo -->
                         <div class="card-body">
@@ -151,7 +151,7 @@
                     <div class="producto-card card h-100">
                     
                         <!-- Imagen -->
-                        <img src="assets/img/muebles/Muebles 58.jpeg" class="card-img-top h-100" alt="Silla de madera">
+                        <img src="assets/img/muebles/Muebles 58.jpeg" class="card-img-top  h-100" alt="Silla de madera">
                         
                         <!-- Texto Descriptivo -->
                         <div class="card-body">
@@ -177,7 +177,7 @@
                     <div class="producto-card card h-100">
                     
                         <!-- Imagen -->
-                        <img src="assets/img/muebles/Muebles 54.jpeg" class="card-img-top h-100" alt="Silla de madera">
+                        <img src="assets/img/muebles/Muebles 54.jpeg" class="card-img-top  h-100" alt="Silla de madera">
                         
                         <!-- Texto Descriptivo -->
                         <div class="card-body">
@@ -203,7 +203,7 @@
                     <div class="producto-card card h-100">
                     
                         <!-- Imagen -->
-                        <img src="assets/img/muebles/Muebles 64.jpeg" class="card-img-top h-100" alt="Silla de madera">
+                        <img src="assets/img/muebles/Muebles 64.jpeg" class="card-img-top  h-100" alt="Silla de madera">
                         
                         <!-- Texto Descriptivo -->
                         <div class="card-body">

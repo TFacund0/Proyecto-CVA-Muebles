@@ -131,7 +131,7 @@
 
             <div class="col-md-4 mb-4" data-categoria="mesas">
                 <div class="card h-100 card-producto">
-                    <img src="assets/img/muebles/Muebles 55.jpeg" class="card-img-top h-100" alt="Mesa de Madera">
+                    <img src="assets/img/muebles/Muebles 55.jpeg" class="card-img-top  h-100" alt="Mesa de Madera">
                     <div class="card-body">
                         <h5 class="card-title">Mesa de Comedor</h5>
                         <p class="card-text">Mesa robusta de madera de pino tratada.</p>
