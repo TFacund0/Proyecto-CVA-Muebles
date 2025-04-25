@@ -4,20 +4,23 @@
         <p>Elegí una categoría o mirá todo</p>
     </div>
 
-    <!-- Filtro de categorías -->
-    <div class="btn-group filtro-categorias my-4" role="group" aria-label="Basic outlined example">
-        <button type="button" class="btn btn-outline-warning">Todos</button>    
-        <button type="button" class="btn btn-outline-warning">Mesas</button>
-        <button type="button" class="btn btn-outline-warning">Sillas</button>
-        <button type="button" class="btn btn-outline-warning">Escritorios</button>
-        <button type="button" class="btn btn-outline-warning">Camas</button>
-        <button type="button" class="btn btn-outline-warning">Roperos</button>
-    </div>
-
     <!-- Grid de productos -->
-    <div class="container-lg container-fluid-md p-4 mb-4" id="catalogo-productos">
-        <div class="row" id="lista-productos">
-            
+    <div class="container-lg container-fluid-md p-4 my-4" id="catalogo-productos">
+
+        <!-- Filtro de categorías -->
+        <div class="d-inline-block px-5 py-2 mb-4 filtro-categorias" role="group" aria-label="Basic outlined example">
+            <div class="d-flex flex-wrap justify-content-center gap-2">
+                <button type="button" class="btn btn-outline-warning">Todos</button>    
+                <button type="button" class="btn btn-outline-warning">Mesas</button>
+                <button type="button" class="btn btn-outline-warning">Sillas</button>
+                <button type="button" class="btn btn-outline-warning">Escritorios</button>
+                <button type="button" class="btn btn-outline-warning">Camas</button>
+                <button type="button" class="btn btn-outline-warning">Roperos</button>
+            </div>
+        </div>
+
+    
+        <div class="row" id="lista-productos">    
             <!-- Ejemplo de producto -->
             <div class="col-md-4 mb-4" data-categoria="mesas">
                 <div class="card h-100 card-producto">

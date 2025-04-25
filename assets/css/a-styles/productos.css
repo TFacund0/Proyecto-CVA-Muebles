@@ -21,7 +21,14 @@
     background-size: cover;
     box-shadow: 0 0 3px rgb(0, 0, 0);
     border: 2px solid rgb(0, 0, 0);
+    border-radius: 15px;
     color: rgb(0, 0, 0) !important;
+}
+
+.filtro-categorias .btn {
+    border: 2px solid #ffc107;
+    background-color: #ffc1071c;
+    font-weight: bold;
 }
 
 /* seccion de productos variable*/
