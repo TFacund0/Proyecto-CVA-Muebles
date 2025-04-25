@@ -1,22 +1,17 @@
-<section id="productos" class="contenedor-productos">
+<section id="productos" class="contenedor-productos text-center">
     <div class="titulo-productos text-center">
         <h2>Productos</h2>
         <p>Elegí una categoría o mirá todo</p>
     </div>
 
     <!-- Filtro de categorías -->
-    <div class="dropdown text-center">
-        
-        <button class="btn btn-dark my-3 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Filtrar por categoría
-        </button>
-
-        <ul class="dropdown-menu">
-            <li><a class="dropdown-item filtro-categoria" href="#" data-categoria="todos">Todos</a></li>
-            <li><a class="dropdown-item filtro-categoria" href="#" data-categoria="mesas">Mesas</a></li>
-            <li><a class="dropdown-item filtro-categoria" href="#" data-categoria="sillas">Sillas</a></li>
-            <li><a class="dropdown-item filtro-categoria" href="#" data-categoria="escritorios">Escritorios</a></li>
-        </ul>
+    <div class="btn-group filtro-categorias my-4" role="group" aria-label="Basic outlined example">
+        <button type="button" class="btn btn-outline-warning">Todos</button>    
+        <button type="button" class="btn btn-outline-warning">Mesas</button>
+        <button type="button" class="btn btn-outline-warning">Sillas</button>
+        <button type="button" class="btn btn-outline-warning">Escritorios</button>
+        <button type="button" class="btn btn-outline-warning">Camas</button>
+        <button type="button" class="btn btn-outline-warning">Roperos</button>
     </div>
 
     <!-- Grid de productos -->

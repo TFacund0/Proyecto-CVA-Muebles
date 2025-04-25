@@ -10,6 +10,16 @@
     color: rgb(255, 255, 255);
 }
 
+.filtro-categorias {
+    background-color: rgba(55, 29, 8, 0.79);
+    background-image: url('../../img/texturas/arbol.jpg');
+    background-position: bottom;
+    background-size: cover;
+    box-shadow: 0 0 3px rgb(0, 0, 0);
+    border: 2px solid rgb(0, 0, 0);
+    color: rgb(0, 0, 0) !important;
+}
+
 #catalogo-productos {
     background-image: url('../../img/texturas/madera2.jpg');
     border: 1px solid rgb(0, 0, 0);
