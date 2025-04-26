@@ -63,7 +63,7 @@
     background-color: white;
 }
 
-/* ---------------- PANTALLA MEDIA ---------------- */
+/* ---------------- AJUSTE PARA LAS DISTINTAS RESOLUCIONES DE PANTALLA ---------------- */
 @media (max-width: 1240px) {
     .text-content-carrusel h4 {
         font-size: 45px;
@@ -94,7 +94,6 @@
     }
 }
 
-/* Responsive para celulares */
 @media (max-width: 768px) {
     .img-carrusel {
         height: 400px;

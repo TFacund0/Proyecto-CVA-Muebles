@@ -32,6 +32,8 @@
     color: rgb(0, 0, 0) !important;
 }
 
+/* Estilo para los botones del filtro */
+
 .filtro-categorias .btn {
     border: 2px solid #ffc107;
     background-color: #ffc1071c;

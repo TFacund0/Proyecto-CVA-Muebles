@@ -46,11 +46,20 @@ nav .icono {
     box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
 
+/* ------------ Soluciona un error con respecto a las caracteristicas de los botones al ser presionados que vienen por defecto ---------- */
 .btn-beige:focus,
 .btn-beige:active,
 .btn-beige:focus-visible {
     outline: none !important;
     box-shadow: none !important;
+}
+
+.boton-links:focus,
+.boton-links:active,
+.boton-links:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
 }
 
 /* --- ESTILOS RESPONSIVOS PARA DISPOSITIVOS PEQUEÑOS --- */

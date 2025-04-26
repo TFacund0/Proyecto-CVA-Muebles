@@ -9,7 +9,7 @@
 <section class="container" id="container-contacto">
 
     <!-- Fila con tarjetas de dirección, teléfonos y correos -->
-    <div class="row my-3 p-3 contenedor-datos">
+    <div class="row my-4 p-3 contenedor-datos">
         
         <!-- Tarjeta: Dirección física -->
         <div class="col-md-4">
@@ -56,7 +56,7 @@
     </div>
 
     <!-- Fila con datos legales y formulario de contacto -->
-    <div class="row d-flex justify-content-around my-4 py-4 gap-4 px-5 contenedor-datos">
+    <div class="row d-flex justify-content-around my-5 py-4 gap-4 px-5 contenedor-datos">
         
         <!-- Columna: Datos legales de la empresa -->
         <div class="col-lg-5 card-style">

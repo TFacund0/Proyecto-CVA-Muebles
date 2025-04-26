@@ -11,6 +11,7 @@
     padding: 15px;
 }
 
+/* Estilo para el titulo y parrafo de comercializacion */
 .titulo-comercializacion h1, 
 .titulo-comercializacion p {
     text-shadow: 0 0 5px rgb(0, 0, 0);
@@ -71,7 +72,23 @@
     color: var(--color-madera-oscura);
 }
 
-/* Responsive */
+/* ----------------- AJUSTE PARA LAS DISTINTAS RESOLUCIONES DE PANTALLA ------------------- */
+@media (max-width: 1024px) {
+    #container-comercializacion p {
+        font-size: 20px !important;
+    }
+}
+
+@media (max-width: 912px) {
+    #container-comercializacion h5 {
+        font-size: 16px !important;
+    }
+
+    #container-comercializacion p{
+        font-size: 15px !important;
+    }
+}
+
 @media (max-width: 759px) {
     .titulo-comercializacion h1 {
         font-size: 25px;

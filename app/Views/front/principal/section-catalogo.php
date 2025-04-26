@@ -1,4 +1,3 @@
-
 <!-- Sección de Categorias/Catalogo -->
 <section class="container my-5 catalogo-content section-categorias">
             <h2 class="titulo">Nuestras Especialidades</h2>
