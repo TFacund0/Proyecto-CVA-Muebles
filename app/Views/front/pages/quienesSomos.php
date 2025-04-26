@@ -35,7 +35,7 @@
         </div>
 
         <!-- SECCIÓN: Nuestra Filosofía -->
-        <div class="text-center contenedor-filosofia p-3">
+        <div class="container-fluid text-center contenedor-filosofia p-3">
             <h2 class="section-title">Nuestra Filosofía</h2>
             <p class="lead">
                 "En cada pieza que creamos, ponemos el mismo cuidado que pondríamos en un mueble para nuestra propia casa"

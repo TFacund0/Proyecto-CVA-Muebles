@@ -1,6 +1,6 @@
 /* ----------- SECCIÓN COMERCIALIZACIÓN ----------- */
 /* Encabezado */
-.titulo-seccion {
+.titulo-comercializacion {
     background-image: url('../../img/texturas/treeplant.jpg');
     border-bottom: 3px solid black;
     text-align: center;
@@ -11,9 +11,14 @@
     padding: 15px;
 }
 
-.titulo-seccion h1, 
-.titulo-seccion p {
+.titulo-comercializacion h1, 
+.titulo-comercializacion p {
     text-shadow: 0 0 5px rgb(0, 0, 0);
+}
+
+/* Estilo de cada subtitulo de los distintos articulos */
+#container-comercializacion .subtitulo-comercializacion {
+    font-weight: bold;
 }
 
 /* Contenedor principal */
@@ -22,7 +27,7 @@
 }
 
 /* Secciones */
-.contenedor-seccion {
+#container-comercializacion .contenedor-seccion {
     background-image: url('../../img/texturas/madera-claritaa.jpg');
     border-radius: 30px;
     box-shadow: 0 0 7px rgb(0, 0, 0);
@@ -30,55 +35,36 @@
 }
 
 /* Tarjetas */
-.card-style {
+#container-comercializacion .card-style {
     border: 1px solid rgb(0, 0, 0);
     border-radius: 15px;
     box-shadow: 0 0 7px rgb(0, 0, 0);
     background-color: #f5f2d6ab;
 }
 
-/* Iconos de métodos de pago */
-.icono-pago {
-    font-size: 2rem;
-    color: var(--color-madera-oscura);
-}
-
-/* Pasos de envío */
-.pasos-envio h5 {
-    color: var(--color-madera-oscura);
-}
-
 /* Mapa de cobertura */
-.mapa-cobertura {
+#container-comercializacion .mapa-cobertura {
     border: 1px solid black;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
 /* Botones */
-.boton-seccion {
-    border: 1px solid black;
-    background-color: rgba(255, 255, 255, 0.529);
+#container-comercializacion .boton-comercializacion {
+    border: 1px solid black !important;
+    background-color: rgba(255, 255, 255, 0.536) !important;
     transition: all 0.3s ease;
 }
 
-.boton-seccion:hover {
+#container-comercializacion .boton-comercializacion:hover {
     background-color: rgb(76, 76, 76);
     color: rgb(255, 255, 255);
     transform: scale(1.03);
 }
 
-/* Enlaces */
-.enlace-seccion {
-    color: var(--color-madera-oscura);
-    text-decoration: underline;
-    transition: color 0.3s ease;
+/* Tamaño de los iconos */
+.icon-comercializacion {
+    width: 30px;
 }
-
-.enlace-seccion:hover {
-    color: var(--color-terracota);
-    text-decoration: none;
-}
-
 /* Texto introductorio */
 .intro-text {
     font-size: 1.1rem;
@@ -87,15 +73,15 @@
 
 /* Responsive */
 @media (max-width: 759px) {
-    .titulo-seccion h1 {
+    .titulo-comercializacion h1 {
         font-size: 25px;
     }
 
-    .titulo-seccion p {
+    .titulo-comercializacion p {
         font-size: 15px;
     }
     
-    .contenedor-seccion {
+    #container-comercializacion .contenedor-seccion {
         padding: 15px !important;
     }
 }
