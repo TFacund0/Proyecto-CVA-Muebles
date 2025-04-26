@@ -1,6 +1,7 @@
 /* Estilo general de la barra de navegación */
 nav {
-    box-shadow: -2px 0px 6px black; 
+    box-shadow: inset 0px 0px 5px black; 
+    border-bottom: 1px solid rgb(0, 0, 0);
     background-image: url('../../img/texturas/madera.jpg'); 
     background-size: cover;
     background-position: center;
