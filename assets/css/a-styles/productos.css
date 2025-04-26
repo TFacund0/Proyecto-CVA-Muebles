@@ -13,6 +13,11 @@
     color: rgb(255, 255, 255);
 }
 
+/* Estilo de titulo y parrafo de la Sección Productos */
+.titulo-productos h2, .titulo-productos p {
+    text-shadow: 0 0 10px rgb(255, 182, 73);
+}
+
 /* botton group que muestra productos por categorias */
 .filtro-categorias {
     background-color: rgba(55, 29, 8, 0.79);
