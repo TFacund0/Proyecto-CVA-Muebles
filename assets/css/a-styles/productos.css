@@ -1,5 +1,7 @@
 /* ----------- SECCIÓN PRODUCTOS ----------- */
 
+/* El estilo de las cartas se encuentra en el archivo css "seccion.css", cuyo nombre de la clase es "product-card" */
+
 /* titulo para la sección de productos */
 .titulo-productos {
     background-color: rgb(253, 218, 172);
@@ -42,20 +44,6 @@
     border: 1px solid rgb(0, 0, 0);
     box-shadow: 0 0 7px rgb(0, 0, 0);
     border-radius: 10px;
-}
-/* cada carta de producto individual */
-.card-producto {
-    border: 2px solid rgb(0, 0, 0) !important;
-    box-shadow: inset 0 0 5px rgb(0, 0, 0);
-    scale: 1.0;
-    transition: scale 100ms ease-out;
-}
-
-/* efecto de agrandamiento cuando pasas por encima */
-.card-producto:hover {
-    scale: 1.02;
-    box-shadow: inset 0 0 13px rgb(0, 0, 0);
-    transition: all 100ms ease-in;
 }
 
 /* ----------------- ZONA DE AJUSTE PARA PANTALLAS CHICAS ---------------------*/

@@ -66,13 +66,13 @@
                 <!-- Contenedor de la primera imagen -->
                 <div class="col-lg-4 col-md-6 card-size">
                     
-                    <div class="producto-card card h-100">
+                    <div class="product-card card h-100">
                         
                         <!-- Indicador de Oferta -->
                         <div class="badge bg-danger position-absolute" style="top: 10px; right: 10px">Oferta</div>
                         
                         <!-- Imagen -->
-                        <img src="assets/img/muebles/Muebles 56.jpeg" class="card-img-top  h-100" alt="Mesa de comedor">
+                        <img src="assets/img/muebles/Muebles 56.jpeg" class="card-img-top h-100" alt="Mesa de comedor">
                             
                         <!-- Texto Descriptivo -->
                         <div class="card-body">
@@ -86,7 +86,7 @@
                         </div>
 
                         <!-- Boton para añadir al carrito -->
-                        <div class="card-footer bg-white border-0">
+                        <div class="card-footer">
                             <button class="btn btn-primary w-100">Añadir al Carrito</button>
                         </div>
                     </div>
@@ -96,10 +96,10 @@
                 <!-- Contenedor de la Segunda imagen -->
                 <div class="col-lg-4 col-md-6 card-size">
                     
-                    <div class="producto-card card h-100">
+                    <div class="product-card card h-100">
                     
                         <!-- Imagen -->
-                        <img src="assets/img/muebles/Muebles 10.jpeg" class="card-img-top  h-100" alt="Silla de madera">
+                        <img src="assets/img/muebles/Muebles 10.jpeg" class="card-img-top h-100" alt="Silla de madera">
                         
                         <!-- Texto Descriptivo -->
                         <div class="card-body">
@@ -112,7 +112,7 @@
                         </div>
                         
                         <!-- Boton para añadir al carrito -->
-                        <div class="card-footer bg-white border-0">
+                        <div class="card-footer">
                             <button class="btn btn-primary w-100">Añadir al Carrito</button>
                         </div>
                     </div>
@@ -122,10 +122,10 @@
                 <!-- Contenedor de la Tercera imagen -->
                 <div class="col-lg-4 col-md-6 card-size">
                     
-                    <div class="producto-card card h-100">
+                    <div class="product-card card h-100">
                         
                         <!-- Imagen -->
-                        <img src="assets/img/muebles/Muebles 46.jpeg" class="card-img-top  h-100" alt="Estante para libros">
+                        <img src="assets/img/muebles/Muebles 46.jpeg" class="card-img-top h-100" alt="Estante para libros">
                         
                         <!-- Texto Descriptivo -->
                         <div class="card-body">
@@ -138,7 +138,7 @@
                         </div>
 
                         <!-- Boton para añadir al carrito -->
-                        <div class="card-footer bg-white border-0">
+                        <div class="card-footer">
                             <button class="btn btn-primary w-100">Añadir al Carrito</button>
                         </div>
                     </div>
@@ -148,10 +148,10 @@
                 <!-- Contenedor de la Cuarta imagen -->
                 <div class="col-lg-4 col-md-6 card-size">
                     
-                    <div class="producto-card card h-100">
+                    <div class="product-card card h-100">
                     
                         <!-- Imagen -->
-                        <img src="assets/img/muebles/Muebles 58.jpeg" class="card-img-top  h-100" alt="Silla de madera">
+                        <img src="assets/img/muebles/Muebles 58.jpeg" class="card-img-top h-100" alt="Silla de madera">
                         
                         <!-- Texto Descriptivo -->
                         <div class="card-body">
@@ -164,7 +164,7 @@
                         </div>
                         
                         <!-- Boton para añadir al carrito -->
-                        <div class="card-footer bg-white border-0">
+                        <div class="card-footer">
                             <button class="btn btn-primary w-100">Añadir al Carrito</button>
                         </div>
                     </div>
@@ -174,10 +174,10 @@
                 <!-- Contenedor de la Quinta imagen -->
                 <div class="col-lg-4 col-md-6 card-size">
                     
-                    <div class="producto-card card h-100">
+                    <div class="product-card card h-100">
                     
                         <!-- Imagen -->
-                        <img src="assets/img/muebles/Muebles 54.jpeg" class="card-img-top  h-100" alt="Silla de madera">
+                        <img src="assets/img/muebles/Muebles 54.jpeg" class="card-img-top h-100" alt="Silla de madera">
                         
                         <!-- Texto Descriptivo -->
                         <div class="card-body">
@@ -190,7 +190,7 @@
                         </div>
                         
                         <!-- Boton para añadir al carrito -->
-                        <div class="card-footer bg-white border-0">
+                        <div class="card-footer">
                             <button class="btn btn-primary w-100">Añadir al Carrito</button>
                         </div>
                     </div>
@@ -200,10 +200,10 @@
                 <!-- Contenedor de la Sexta imagen -->
                 <div class="col-lg-4 col-md-6 card-size">
                     
-                    <div class="producto-card card h-100">
+                    <div class="product-card card h-100">
                     
                         <!-- Imagen -->
-                        <img src="assets/img/muebles/Muebles 64.jpeg" class="card-img-top  h-100" alt="Silla de madera">
+                        <img src="assets/img/muebles/Muebles 64.jpeg" class="card-img-top h-100" alt="Silla de madera">
                         
                         <!-- Texto Descriptivo -->
                         <div class="card-body">
@@ -216,7 +216,7 @@
                         </div>
                         
                         <!-- Boton para añadir al carrito -->
-                        <div class="card-footer bg-white border-0">
+                        <div class="card-footer">
                             <button class="btn btn-primary w-100">Añadir al Carrito</button>
                         </div>
                     </div>
