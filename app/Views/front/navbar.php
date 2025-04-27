@@ -8,7 +8,7 @@
     </div>
     
     <!-- Título / Nombre de la marca -->
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="<?= base_url('/') ?>">
       <span class="titulo-logo">CVA Muebles</span>
     </a>
 

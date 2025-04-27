@@ -27,7 +27,12 @@ nav .content-logo {
 nav .titulo-logo {
     font-size: 19px;
     font-weight: bold;
-    text-shadow: 0 0 30px rgb(0, 0, 0); 
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+nav .titulo-logo:hover {
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.481); 
 }
 
 /* Estilo de íconos (como el carrito y el usuario) */
