@@ -32,7 +32,7 @@
                         <div class="card-style text-center p-3 h-100">
                             <img src="assets/img/iconos/cash.svg" alt="Efectivo" class="icon-comercializacion">
                             <h5 class="mt-3 subtitulo-comercializacion">Efectivo</h5>
-                            <p>Pago en nuestro taller o contra entrega (solo Corrientes)</p>
+                            <p>Pago en nuestro taller o contra entrega</p>
                         </div>
                     </div>
 
@@ -70,7 +70,7 @@
         <div class="col-md-6">
             <div class="card-style h-100 p-4">
                 <h3 class="text-center mb-4 subtitulo-comercializacion">Envíos y Entregas</h3>
-                <p class="text-center mb-4">Realizamos envíos a todo el país con los siguientes tiempos estimados:</p>
+                <p class="text-center mb-4">Realizamos envíos a todo la provincia con los siguientes tiempos estimados:</p>
 
                 <div class="pasos-envio">
                     <!-- Fase 1: Fabricación -->
@@ -89,8 +89,8 @@
                     <div class="card-style p-3">
                         <h5 class="fw-bold">3. Tiempo de Tránsito</h5>
                         <ul class="ps-3">
-                            <li>Corrientes y alrededores: 1-3 días</li>
-                            <li>Resto del país: 5-10 días</li>
+                            <li>Localidades cercanas: 1-3 días</li>
+                            <li>Corrientes y otras localidades: 5-15 días</li>
                         </ul>
                     </div>
                 </div>
@@ -105,14 +105,11 @@
         <div class="col-md-6">
             <div class="card-style h-100 p-4">
                 <h3 class="text-center mb-4 subtitulo-comercializacion">Cobertura de Envíos</h3>
-                <ul class="ps-3 mb-4">
-                    <li>Llegamos a cada rincón de Argentina con transporte especializado para cuidar tus muebles.</li>
-                    <li>Envíos internacionales a Uruguay, Paraguay y Chile: modalidad marítima o terrestre (2-4 semanas).</li>
-                    <li>Mercosur ampliado: Consultar por logística aérea.</li>
-                </ul>
+                <p>Envíos seguros en toda la provincia de Corrientes.
+                Nos especializamos en llevar tus muebles con cuidado y dedicación a cada rincón de la provincia. Utilizamos transporte especializado para garantizar que cada pieza llegue en perfecto estado, tal como salió de nuestro taller.</p>
 
                 <!-- Botón para consultas de envíos -->
-                <div class="text-center">
+                <div class="text-center mt-4">
                     <a href="<?= base_url('informacionContacto')?>" class="btn boton-comercializacion text-dark">Consultas envio y costo</a>
                 </div>
             </div>

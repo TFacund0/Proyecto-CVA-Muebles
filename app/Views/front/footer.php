@@ -11,11 +11,9 @@ extract($footerData);
                 <h5 class="text-uppercase border-bottom pb-2">Contacto</h5>
                 <ul class="list-unstyled">
                     <li class="mb-2">
-                        <i class="bi bi-geo-alt-fill me-2"></i> 
                         <?= $company_address ?? 'anexo unne 9 de julio' ?>
                     </li>
                     <li class="mb-2">
-                        <i class="bi bi-telephone-fill me-2"></i> 
                         <?= $phone ?? '+54 9 3794 098511' ?>
                     </li>
                 </ul>
@@ -24,7 +22,7 @@ extract($footerData);
         <!-- Sección 2: Sobre Nosotros -->
             <div class="col-md-4 mb-4">
                 <h5 class="text-uppercase border-bottom pb-2">Sobre Nosotros</h5>
-                <p>Somos una empresa comprometida con la innovación y calidad en desarrollo web desde 2020.</p>
+                <p>Somos una empresa familiar especializada en crear muebles únicos, hechos a mano con maderas de calidad y pensados para perdurar.</p>
                 <a href="<?= base_url('quienesSomos') ?>" class="btn btn-success btn-sm">Conoce más</a>
             </div>
 

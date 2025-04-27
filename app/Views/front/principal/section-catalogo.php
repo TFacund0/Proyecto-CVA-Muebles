@@ -76,7 +76,7 @@
                         <!-- Texto Descriptivo -->
                         <div class="card-body">
                             <h5 class="card-title">Mesa de Comedor Roble</h5>
-                            <p class="text-muted">Hecha a mano con madera de roble macizo</p>
+                            <p class="text-muted">Juego artesanal de comedor fabricado en madera de roble macizo, ideal para 6 personas. Terminación natural para un estilo rústico y elegante. Resistente y de larga duración.</p>
                                 
                             <div class="d-flex justify-content-between align-items-center">
                                 <span class="fw-bold">$1,200.000</span>
@@ -102,11 +102,11 @@
                         
                         <!-- Texto Descriptivo -->
                         <div class="card-body">
-                            <h5 class="card-title">Silla Artesanal</h5>
-                            <p class="text-muted">Diseño ergonómico con acabado natural</p>
+                            <h5 class="card-title">Alacena Rústica de Pino Macizo</h5>
+                            <p class="text-muted">Estante tipo alacena de diseño rústico, fabricado en pino seleccionado. Cuenta con un sector abierto de 8 divisiones y un módulo cerrado para mayor funcionalidad.</p>
                             
                             <div class="d-flex justify-content-between align-items-center">
-                                <span class="fw-bold">$350.000</span>
+                                <span class="fw-bold">$650.000</span>
                             </div>
                         </div>
                         
@@ -128,11 +128,11 @@
                         
                         <!-- Texto Descriptivo -->
                         <div class="card-body">
-                            <h5 class="card-title">Estante Librero</h5>
-                            <p class="text-muted">Hecho con madera de pino reciclado</p>
+                            <h5 class="card-title">Set de 4 Sillas Modernas</h5>
+                            <p class="text-muted">Conjunto de 4 sillas de diseño moderno realizadas en madera reciclada, con asiento tapizado en ecocuero. Combinan robustez, sustentabilidad y estilo contemporáneo.</p>
                             
                             <div class="d-flex justify-content-between align-items-center">
-                                <span class="fw-bold">$890.000</span>
+                                <span class="fw-bold">$1.200.000 (el set completo)</span>
                             </div>
                         </div>
 
@@ -154,11 +154,11 @@
                         
                         <!-- Texto Descriptivo -->
                         <div class="card-body">
-                            <h5 class="card-title">Silla Artesanal</h5>
-                            <p class="text-muted">Diseño ergonómico con acabado natural</p>
+                            <h5 class="card-title">Mesa de Arrime de Pino Macizo con Cajón</h5>
+                            <p class="text-muted">Mesa auxiliar fabricada artesanalmente en pino seleccionado, con acabado natural y un cajón frontal para almacenamiento. Ideal para recibidores, livings o dormitorios</p>
                             
                             <div class="d-flex justify-content-between align-items-center">
-                                <span class="fw-bold">$350.000</span>
+                                <span class="fw-bold">$150.000</span>
                             </div>
                         </div>
                         
@@ -180,11 +180,11 @@
                         
                         <!-- Texto Descriptivo -->
                         <div class="card-body">
-                            <h5 class="card-title">Silla Artesanal</h5>
-                            <p class="text-muted">Diseño ergonómico con acabado natural</p>
+                            <h5 class="card-title">Sillón Mecedor de Exterior en Madera Tratada</h5>
+                            <p class="text-muted">Realizado en madera tratada para resistir la intemperie. Diseño ergonómico, cómodo y rústico, perfecto para galerías, patios o balcones.</p>
                             
                             <div class="d-flex justify-content-between align-items-center">
-                                <span class="fw-bold">$350.000</span>
+                                <span class="fw-bold">$700.000</span>
                             </div>
                         </div>
                         
@@ -206,11 +206,11 @@
                         
                         <!-- Texto Descriptivo -->
                         <div class="card-body">
-                            <h5 class="card-title">Silla Artesanal</h5>
-                            <p class="text-muted">Diseño ergonómico con acabado natural</p>
+                            <h5 class="card-title">Cama Daybed de Madera Maciza con Cajoneras</h5>
+                            <p class="text-muted">Con respaldo calado artesanal y tres amplios cajones inferiores para guardado. Ideal para dormitorios modernos y funcionales.</p>
                             
                             <div class="d-flex justify-content-between align-items-center">
-                                <span class="fw-bold">$350.000</span>
+                                <span class="fw-bold">$1.200.000</span>
                             </div>
                         </div>
                         

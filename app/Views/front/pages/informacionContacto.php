@@ -63,7 +63,7 @@
             <div class="mx-3">
                 <h4 class="text-center my-3 mb-4 fw-bold">Datos Legales</h4>
                 <p><strong>Razón Social:</strong> CVA Muebles S.R.L.</p>
-                <p><strong>Titular:</strong> Carlos Vega Acevedo</p>
+                <p><strong>Titular:</strong> Acevedo Cesar Victor</p>
                 <p><strong>CUIT:</strong> 30-12345678-9</p>
                 <p><strong>Horario de atención:</strong> Lunes a Viernes de 8:00 a 12:00 y de 15:00 a 19:00</p>
                 <p><strong>Días no laborales:</strong> Sábados, Domingos y feriados nacionales</p>
