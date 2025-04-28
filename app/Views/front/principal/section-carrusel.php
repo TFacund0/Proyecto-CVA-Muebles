@@ -1,5 +1,4 @@
 <!-- Carrusel principal -->
-<div class="ratio ratio-16x9">
 <div id="carouselExample" class="carousel slide carrusel-size " data-bs-ride="carousel">
 
     <!-- Contenedor de los ítems del carrusel -->
@@ -51,5 +50,4 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Siguiente</span>
     </button>
-</div>
 </div>
