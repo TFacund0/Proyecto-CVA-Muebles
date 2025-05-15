@@ -1,6 +1,3 @@
-<?php
-extract($footerData);
-?>
 <footer class="text-white pt-5 pb-4 ">
         
     <div class="container">
@@ -11,10 +8,10 @@ extract($footerData);
                 <h5 class="text-uppercase border-bottom pb-2">Contacto</h5>
                 <ul class="list-unstyled">
                     <li class="mb-2">
-                        <?= $company_address ?? 'anexo unne 9 de julio' ?>
+                        <p>9 de Julio 1449, Ctes, Argentina</p>
                     </li>
                     <li class="mb-2">
-                        <?= $phone ?? '+54 9 3794 098511' ?>
+                        <p>+54 9 3794 098511</p>
                     </li>
                 </ul>
             </div>
@@ -32,7 +29,7 @@ extract($footerData);
                 <div class="social-icons d-flex gap-3">
                     
                 <!-- Facebook -->
-                    <a href="<?= $social_links['facebook'] ?? '#' ?>" class="social-link facebook text-decoration-none text-light hover:text-primary" target="_blank" aria-label="Facebook">
+                    <a href="https://fb.com/misitio" class="social-link facebook text-decoration-none text-light hover:text-primary" target="_blank" aria-label="Facebook">
                         <svg class="icon facebook-icon" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
                             <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
                         </svg>
@@ -40,7 +37,7 @@ extract($footerData);
                     </a>
                     
                     <!-- Twitter/X -->
-                    <a href="<?= $social_links['twitter'] ?? '#' ?>" class="social-link twitter text-decoration-none text-light hover:text-primary" target="_blank"aria-label="Twitter">
+                    <a href="https://twitter.com/misitio" class="social-link twitter text-decoration-none text-light hover:text-primary" target="_blank"aria-label="Twitter">
                         <svg class="icon twitter-icon" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
                             <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z"/>
                         </svg>
@@ -48,7 +45,7 @@ extract($footerData);
                     </a>                        
                         
                     <!-- Instagram -->
-                    <a href="<?= $social_links['instagram'] ?? '#' ?>" class="social-link instagram text-decoration-none text-light hover:text-primary" target="_blank" aria-label="Instagram">
+                    <a href="https://instagram.com/misitio" class="social-link instagram text-decoration-none text-light hover:text-primary" target="_blank" aria-label="Instagram">
                         <!-- Instagram con degradado -->
                         <svg class="icon instagram-icon" width="20" height="20" viewBox="0 0 16 16">
                             <defs>
@@ -72,8 +69,7 @@ extract($footerData);
         <!-- Copyright -->
             <div class="col-md-4 mb-4 mx-auto text-center">
                 <p class="small mb-0">
-                    &copy; <?= $current_year ?? date('Y') ?> 
-                    <?= $company_name ?? 'CVA Muebles' ?>. Todos los derechos reservados.
+                    &copy; <?= date('Y') ?> <?= 'CVA Muebles' ?>. Todos los derechos reservados.
                 </p>
             </div>
         </div>
