@@ -18,3 +18,6 @@ $routes->get('/productos', 'Pages::productos');
 // Rutas del Registro de Usuarios
 $routes->get('/registro', 'UsuarioController::create');
 $routes->post('/enviar-form', 'UsuarioController::formValidation');
+
+//Filtros para los usuarios
+$routes->get('/dashboard', 'Dashboard::index', ['filter' => 'auth']);
