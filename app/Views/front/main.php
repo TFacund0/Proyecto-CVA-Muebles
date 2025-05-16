@@ -35,6 +35,6 @@
     </main>
     
     <!-- Footer -->
-    <?= view('front/footer', ['footerData' => $footerData]) ?>
+    <?= view('front/footer') ?>
 </body>
 </body>

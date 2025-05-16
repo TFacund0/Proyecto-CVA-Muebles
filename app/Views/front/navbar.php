@@ -58,9 +58,9 @@
         </button>
         
         <!-- Botón de usuario / cuenta -->
-        <button class="btn btn-beige boton-links" type="button">
+        <a class="btn btn-beige boton-links" href="<?= base_url('registro') ?>">
           <img src="assets/img/iconos/person.svg" alt="Registrarse" class="icono">
-        </button>
+        </a>
 
       </div> <!-- Fin de content-account -->
 

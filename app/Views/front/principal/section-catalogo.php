@@ -258,7 +258,7 @@
         <!-- Texto descriptivo -->
         <div class="col-lg-6 col-md-6 col-sm-12 px-lg-5 location-text">
             <h4 class="titulos">Ubicado en Corrientes, Argentina</h4>
-            <h3 class="titulos localidad typewriter-text">Localidad de Mantilla</h3>
+            <h3 class="titulos localidad">Localidad de Mantilla</h3>
             <p>
                 Nuestro taller está en este rincón de Corrientes, donde las tradiciones se trabajan 
                 con el mismo cariño que las vetas de la madera. ¡Visítanos y lleva un pedacito de 

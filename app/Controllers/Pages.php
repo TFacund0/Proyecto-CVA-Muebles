@@ -8,7 +8,6 @@ class Pages extends BaseController
     {
         return view('front/main', [
             'title' => 'CVA quienes somos',
-            'footerData' => $this->footerData,
             'content' => view('front/pages/quienesSomos')
         ]);
     }
@@ -17,7 +16,6 @@ class Pages extends BaseController
     {   
         return view('front/main', [
             'title' => 'CVA contactanos',
-            'footerData' => $this->footerData,
             'content' => view('front/pages/comercializacion')
         ]);
     }
@@ -25,7 +23,6 @@ class Pages extends BaseController
     {
         return view('front/main', [
             'title' => 'CVA contactanos',
-            'footerData' => $this->footerData,
             'content' => view('front/pages/informacionContacto')
         ]);
     }
@@ -33,7 +30,6 @@ class Pages extends BaseController
     {
         return view('front/main', [
             'title' => 'CVA contactanos',
-            'footerData' => $this->footerData,
             'content' => view('front/pages/terminosYCondiciones')
         ]);
     }
@@ -41,7 +37,6 @@ class Pages extends BaseController
     {
         return view('front/main', [
             'title' => 'CVA productos',
-            'footerData' => $this->footerData,
             'content' => view('front/pages/productos')
         ]);
     }
