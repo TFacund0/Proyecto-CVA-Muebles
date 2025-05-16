@@ -1,6 +1,7 @@
 /* Estilo general de la barra de navegación */
 nav {
-    box-shadow: -2px 0px 6px black; 
+    box-shadow: inset 0px 0px 5px black; 
+    border-bottom: 1px solid rgb(0, 0, 0);
     background-image: url('../../img/texturas/madera.jpg'); 
     background-size: cover;
     background-position: center;
@@ -26,7 +27,12 @@ nav .content-logo {
 nav .titulo-logo {
     font-size: 19px;
     font-weight: bold;
-    text-shadow: 0 0 30px rgb(0, 0, 0); 
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+nav .titulo-logo:hover {
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.481); 
 }
 
 /* Estilo de íconos (como el carrito y el usuario) */
@@ -39,10 +45,26 @@ nav .icono {
 /* Estilo general para botones en la barra de navegación */
 .btn-beige:hover {
     border-radius: 4px;
-    background-color: #70675c; 
+    background-color: #ff8c00; 
     border-color: #d4c7b9;
     transform: translateY(-1px); 
     box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+/* ------------ Soluciona un error con respecto a las caracteristicas de los botones al ser presionados que vienen por defecto ---------- */
+.btn-beige:focus,
+.btn-beige:active,
+.btn-beige:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.boton-links:focus,
+.boton-links:active,
+.boton-links:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
 }
 
 /* --- ESTILOS RESPONSIVOS PARA DISPOSITIVOS PEQUEÑOS --- */
@@ -103,7 +125,7 @@ nav .icono {
     .btn-beige:hover {
         border-radius: 0;
         background-color: rgb(0, 0, 0, 0); 
-        border-color: rgb(0, 0, 0, 0);
+        border: 0 solid rgb(0, 0, 0, 0);
         transform: translateY(-1px);
         box-shadow: 0 2px 5px rgba(0,0,0,0); 
     }

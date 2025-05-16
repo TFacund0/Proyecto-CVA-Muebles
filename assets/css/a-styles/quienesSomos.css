@@ -9,6 +9,7 @@
     background-color: rgb(0, 0, 0, 0) !important;
 }
 
+/* Estilo para el fondo del encabezado */
 .fondo-header {
     background-image: url('../../img/texturas/herramientas.jpg');
     box-shadow: 0 0px 10px rgba(0, 0, 0, 0.355);

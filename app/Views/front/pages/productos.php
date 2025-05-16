@@ -19,155 +19,304 @@
             </div>
         </div>
 
-    
         <div class="row" id="lista-productos">    
-            <!-- Ejemplo de producto -->
-            <div class="col-md-4 mb-4" data-categoria="mesas">
-                <div class="card h-100 card-producto">
+            <!-- Producto 1 -->
+            <div class="col-md-4 col-sm-6 mb-4" data-categoria="mesas">
+                <div class="card h-100 product-card">
+                    
                     <img src="assets/img/muebles/Muebles 3.jpeg" class="card-img-top h-100" alt="Mesa de Madera">
+                    
                     <div class="card-body">
                         <h5 class="card-title">Mesa de Comedor</h5>
-                        <p class="card-text">Mesa robusta de madera de pino tratada.</p>
+                        <p class="card-text">Ideal para 6 personas. Terminación natural para un estilo rústico y elegante. Resistente y de larga duración.</p>
+                        
+                        <div class="d-flex justify-content-between align-items-center">
+                                <span class="fw-bold">$350.000</span>
+                        </div>
+                    </div>
+
+                    <!-- Boton para añadir al carrito -->
+                    <div class="card-footer">
+                        <button class="btn btn-primary w-100">Añadir al Carrito</button>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-4 mb-4" data-categoria="mesas">
-                <div class="card h-100 card-producto">
+            <div class="col-md-4 col-sm-6 mb-4" data-categoria="mesas">
+                <div class="card h-100 product-card">
                     <img src="assets/img/muebles/Muebles 34.jpeg" class="card-img-top h-100" alt="Mesa de Madera">
+                    
                     <div class="card-body">
-                        <h5 class="card-title">Mesa de Comedor</h5>
-                        <p class="card-text">Mesa robusta de madera de pino tratada.</p>
+                        <h5 class="card-title">Juego de Mesa y Sillas de Pino Tratado</h5>
+                        <p class="card-text">Conjunto de comedor compuesto por mesa robusta, realizados en madera de pino tratada. Perfecto para interiores cálidos o quinchos.</p>
+                        
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="fw-bold">$850.000 (con 4 sillas)</span>
+                        </div>
+                    </div>
+
+                    <!-- Boton para añadir al carrito -->
+                    <div class="card-footer">
+                        <button class="btn btn-primary w-100">Añadir al Carrito</button>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-4 mb-4" data-categoria="mesas">
-                <div class="card h-100 card-producto">
+            <div class="col-md-4 col-sm-6 mb-4" data-categoria="mesas">
+                <div class="card h-100 product-card">
                     <img src="assets/img/muebles/Muebles 7.jpeg" class="card-img-top h-100" alt="Mesa de Madera">
+                    
                     <div class="card-body">
-                        <h5 class="card-title">Mesa de Comedor</h5>
-                        <p class="card-text">Mesa robusta de madera de pino tratada.</p>
+                        <h5 class="card-title">Cama Matrimonial de Madera de Pino</h5>
+                        <p class="card-text">Cama matrimonial de estructura reforzada en madera maciza de pino tratada. Ideal para darle calidez y durabilidad a tu dormitorio.</p>
+                        
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="fw-bold">$950.000</span>
+                        </div>
+                    </div>
+
+                    <!-- Boton para añadir al carrito -->
+                    <div class="card-footer">
+                        <button class="btn btn-primary w-100">Añadir al Carrito</button>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-4 mb-4" data-categoria="mesas">
-                <div class="card h-100 card-producto">
+            <div class="col-md-4 col-sm-6 mb-4" data-categoria="mesas">
+                <div class="card h-100 product-card">
                     <img src="assets/img/muebles/Muebles 46.jpeg" class="card-img-top h-100" alt="Mesa de Madera">
+                    
                     <div class="card-body">
-                        <h5 class="card-title">Mesa de Comedor</h5>
-                        <p class="card-text">Mesa robusta de madera de pino tratada.</p>
+                        <h5 class="card-title">Set de 4 Sillas de Madera Maciza y Tapizado</h5>
+                        <p class="card-text">Madera maciza de alta calidad con tratamiento protector. Tapizado en asiento para mayor confort y resistencia. Diseño moderno y robusto.</p>
+                        
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="fw-bold">$600.000</span>
+                        </div>
+                    </div>
+
+                    <!-- Boton para añadir al carrito -->
+                    <div class="card-footer">
+                        <button class="btn btn-primary w-100">Añadir al Carrito</button>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-4 mb-4" data-categoria="mesas">
-                <div class="card h-100 card-producto">
+            <div class="col-md-4 col-sm-6 mb-4" data-categoria="mesas">
+                <div class="card h-100 product-card">
                     <img src="assets/img/muebles/Muebles 11.jpeg" class="card-img-top h-100" alt="Mesa de Madera">
+                    
                     <div class="card-body">
-                        <h5 class="card-title">Mesa de Comedor</h5>
-                        <p class="card-text">Mesa robusta de madera de pino tratada.</p>
+                        <h5 class="card-title">Mueble Esquinero de Pino Macizo</h5>
+                        <p class="card-text">Mueble esquinero ideal para cocinas o comedores, realizado en madera de pino macizo. Puertas batientes con detalles rústicos y amplia capacidad de guardado. Tratamiento para mayor durabilidad.</p>
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="fw-bold">$750.000</span>
+                        </div>
+                    </div>
+
+                    <!-- Boton para añadir al carrito -->
+                    <div class="card-footer">
+                        <button class="btn btn-primary w-100">Añadir al Carrito</button>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-4 mb-4" data-categoria="mesas">
-                <div class="card h-100 card-producto">
+            <div class="col-md-4 col-sm-6 mb-4" data-categoria="mesas">
+                <div class="card h-100 product-card">
                     <img src="assets/img/muebles/Muebles 10.jpeg" class="card-img-top h-100" alt="Mesa de Madera">
+                    
                     <div class="card-body">
-                        <h5 class="card-title">Mesa de Comedor</h5>
-                        <p class="card-text">Mesa robusta de madera de pino tratada.</p>
+                        <h5 class="card-title">Aparador de Pino con Estantería Abierta</h5>
+                        <p class="card-text">Con estantes abiertos y puerta lateral para almacenamiento. Ideal para vajilla, libros o decoración. Terminación natural para ambientes cálidos.</p>
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="fw-bold">$700.000</span>
+                        </div>
+                    </div>
+
+                    <!-- Boton para añadir al carrito -->
+                    <div class="card-footer">
+                        <button class="btn btn-primary w-100">Añadir al Carrito</button>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-4 mb-4" data-categoria="mesas">
-                <div class="card h-100 card-producto">
+            <div class="col-md-4 col-sm-6 mb-4" data-categoria="mesas">
+                <div class="card h-100 product-card">
                     <img src="assets/img/muebles/Muebles 9.jpeg" class="card-img-top h-100" alt="Mesa de Madera">
+                    
                     <div class="card-body">
-                        <h5 class="card-title">Mesa de Comedor</h5>
-                        <p class="card-text">Mesa robusta de madera de pino tratada.</p>
+                        <h5 class="card-title">Silla Alta de Madera Maciza</h5>
+                        <p class="card-text">Silla alta construida en madera maciza tratada. Ideal para barras de cocina, desayunadores o comedores modernos. Diseño robusto, cómodo y duradero.</p>
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="fw-bold">$350.000</span>
+                        </div>
+                    </div>
+
+                    <!-- Boton para añadir al carrito -->
+                    <div class="card-footer">
+                        <button class="btn btn-primary w-100">Añadir al Carrito</button>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-4 mb-4" data-categoria="mesas">
-                <div class="card h-100 card-producto">
+            <div class="col-md-4 col-sm-6 mb-4" data-categoria="mesas">
+                <div class="card h-100 product-card">
                     <img src="assets/img/muebles/Muebles 12.jpeg" class="card-img-top h-100" alt="Mesa de Madera">
+                    
                     <div class="card-body">
-                        <h5 class="card-title">Mesa de Comedor</h5>
-                        <p class="card-text">Mesa robusta de madera de pino tratada.</p>
+                        <h5 class="card-title">Mesa Auxiliar de Pino con Cajón</h5>
+                        <p class="card-text">Mesa auxiliar de madera maciza de pino tratada. Incluye cajón con cerradura para almacenamiento seguro. Perfecta para cocinas, escritorios o rincones especiales.</p>
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="fw-bold">$350.000</span>
+                        </div>
+                    </div>
+
+                    <!-- Boton para añadir al carrito -->
+                    <div class="card-footer">
+                        <button class="btn btn-primary w-100">Añadir al Carrito</button>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-4 mb-4" data-categoria="mesas">
-                <div class="card h-100 card-producto">
+            <div class="col-md-4 col-sm-6 mb-4" data-categoria="mesas">
+                <div class="card h-100 product-card">
                     <img src="assets/img/muebles/Muebles 16.jpeg" class="card-img-top h-100" alt="Mesa de Madera">
+                    
                     <div class="card-body">
-                        <h5 class="card-title">Mesa de Comedor</h5>
-                        <p class="card-text">Mesa robusta de madera de pino tratada.</p>
+                        <h5 class="card-title">Pizarrón Caballete de Madera</h5>
+                        <p class="card-text">Pizarrón caballete de doble cara fabricado en madera maciza. Ideal para restaurantes, cafeterías o ferias. Resistente, fácil de mover y excelente presentación.</p>
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="fw-bold">$100.000</span>
+                        </div>
+                    </div>
+
+                    <!-- Boton para añadir al carrito -->
+                    <div class="card-footer">
+                        <button class="btn btn-primary w-100">Añadir al Carrito</button>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-4 mb-4" data-categoria="mesas">
-                <div class="card h-100 card-producto">
+            <div class="col-md-4 col-sm-6 mb-4" data-categoria="mesas">
+                <div class="card h-100 product-card">
                     <img src="assets/img/muebles/Muebles 14.jpeg" class="card-img-top h-100" alt="Mesa de Madera">
+                    
                     <div class="card-body">
-                        <h5 class="card-title">Mesa de Comedor</h5>
-                        <p class="card-text">Mesa robusta de madera de pino tratada.</p>
+                        <h5 class="card-title">Ropero de Madera de Pino Maciza</h5>
+                        <p class="card-text">Ropero amplio de madera de pino tratada, con dos puertas y tres cajones inferiores. Ideal para dormitorios que buscan un estilo rústico y natural.</p>
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="fw-bold">$850.000</span>
+                        </div>
+                    </div>
+
+                    <!-- Boton para añadir al carrito -->
+                    <div class="card-footer">
+                        <button class="btn btn-primary w-100">Añadir al Carrito</button>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-4 mb-4" data-categoria="mesas">
-                <div class="card h-100 card-producto">
+            <div class="col-md-4 col-sm-6 mb-4" data-categoria="mesas">
+                <div class="card h-100 product-card">
                     <img src="assets/img/muebles/Muebles 25.jpeg" class="card-img-top h-100" alt="Mesa de Madera">
+                    
                     <div class="card-body">
-                        <h5 class="card-title">Mesa de Comedor</h5>
-                        <p class="card-text">Mesa robusta de madera de pino tratada.</p>
+                        <h5 class="card-title">Sillas de Comedor en Madera Maciza</h5>
+                        <p class="card-text">Sillas robustas de pino macizo, disponibles con o sin apoyabrazos. Diseño clásico, resistentes y cómodas, perfectas para comedor o quincho.</p>
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="fw-bold">$250.000</span>
+                        </div>
+                    </div>
+
+                    <!-- Boton para añadir al carrito -->
+                    <div class="card-footer">
+                        <button class="btn btn-primary w-100">Añadir al Carrito</button>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-4 mb-4" data-categoria="mesas">
-                <div class="card h-100 card-producto">
+            <div class="col-md-4 col-sm-6 mb-4" data-categoria="mesas">
+                <div class="card h-100 product-card">
                     <img src="assets/img/muebles/Muebles 55.jpeg" class="card-img-top  h-100" alt="Mesa de Madera">
+
                     <div class="card-body">
-                        <h5 class="card-title">Mesa de Comedor</h5>
-                        <p class="card-text">Mesa robusta de madera de pino tratada.</p>
+                        <h5 class="card-title">Banqueta Alta de Madera para Barra o Desayunador</h5>
+                        <p class="card-text">Ideal para barras de cocina o desayunadores. Estructura firme y diseño funcional.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="fw-bold">$200.000</span>
+                        </div>
+                    </div>
+
+                    <!-- Boton para añadir al carrito -->
+                    <div class="card-footer">
+                        <button class="btn btn-primary w-100">Añadir al Carrito</button>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-4 mb-4" data-categoria="mesas">
-                <div class="card h-100 card-producto">
+            <div class="col-md-4 col-sm-6 mb-4" data-categoria="mesas">
+                <div class="card h-100 product-card">
                     <img src="assets/img/muebles/Muebles 24.jpeg" class="card-img-top h-100" alt="Mesa de Madera">
+                    
                     <div class="card-body">
-                        <h5 class="card-title">Mesa de Comedor</h5>
-                        <p class="card-text">Mesa robusta de madera de pino tratada.</p>
+                        <h5 class="card-title">Ropero de Madera con Espejo y Cajonera</h5>
+                        <p class="card-text">Ropero fabricado en madera de pino tratada, con espejo incorporado en una de sus puertas y cuatro amplios cajones. Ideal para dormitorios funcionales.</p>
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="fw-bold">$950.000</span>
+                        </div>
+                    </div>
+
+                    <!-- Boton para añadir al carrito -->
+                    <div class="card-footer">
+                        <button class="btn btn-primary w-100">Añadir al Carrito</button>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-4 mb-4" data-categoria="mesas">
-                <div class="card h-100 card-producto">
+            <div class="col-md-4 col-sm-6 mb-4" data-categoria="mesas">
+                <div class="card h-100 product-card">
                     <img src="assets/img/muebles/Muebles 28.jpeg" class="card-img-top h-100" alt="Mesa de Madera">
+                    
                     <div class="card-body">
-                        <h5 class="card-title">Mesa de Comedor</h5>
-                        <p class="card-text">Mesa robusta de madera de pino tratada.</p>
+                        <h5 class="card-title">Mueble Organizador Multiuso de Madera Maciza</h5>
+                        <p class="card-text">Mueble de madera de pino natural, con espacio abierto para microondas o electrodomésticos, estante superior y dos puertas de almacenamiento.</p>
+
+                        <div class="d-flex justify-content-between align-items-center">
+                                <span class="fw-bold">$450.000</span>
+                        </div>
+                    </div>
+
+                    <!-- Boton para añadir al carrito -->
+                    <div class="card-footer">
+                        <button class="btn btn-primary w-100">Añadir al Carrito</button>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-4 mb-4" data-categoria="mesas">
-                <div class="card h-100 card-producto">
+            <div class="col-md-4 col-sm-6 mb-4" data-categoria="mesas">
+                <div class="card h-100 product-card">
                     <img src="assets/img/muebles/Muebles 19.jpeg" class="card-img-top h-100" alt="Mesa de Madera">
+                    
                     <div class="card-body">
-                        <h5 class="card-title">Mesa de Comedor</h5>
-                        <p class="card-text">Mesa robusta de madera de pino tratada.</p>
+                        <h5 class="card-title">Alacena Alta de Madera de Pino</h5>
+                        <p class="card-text">Práctica alacena alta de madera maciza de pino con un diseño único y especial, ideal para optimizar espacios reducidos en cocinas, quinchos o lavaderos.</p>
+
+                        <div class="d-flex justify-content-between align-items-center">
+                                <span class="fw-bold">$250.000</span>
+                        </div>
+                    </div>
+
+                    <!-- Boton para añadir al carrito -->
+                    <div class="card-footer">
+                        <button class="btn btn-primary w-100">Añadir al Carrito</button>
                     </div>
                 </div>
             </div>

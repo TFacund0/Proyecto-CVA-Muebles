@@ -9,7 +9,7 @@
 <section class="container" id="container-contacto">
 
     <!-- Fila con tarjetas de dirección, teléfonos y correos -->
-    <div class="row my-3 p-3 contenedor-datos">
+    <div class="row my-4 p-3 contenedor-datos">
         
         <!-- Tarjeta: Dirección física -->
         <div class="col-md-4">
@@ -56,14 +56,14 @@
     </div>
 
     <!-- Fila con datos legales y formulario de contacto -->
-    <div class="row d-flex justify-content-around my-4 py-4 gap-4 px-5 contenedor-datos">
+    <div class="row d-flex justify-content-around my-5 py-4 gap-4 px-5 contenedor-datos">
         
         <!-- Columna: Datos legales de la empresa -->
         <div class="col-lg-5 card-style">
             <div class="mx-3">
                 <h4 class="text-center my-3 mb-4 fw-bold">Datos Legales</h4>
                 <p><strong>Razón Social:</strong> CVA Muebles S.R.L.</p>
-                <p><strong>Titular:</strong> Carlos Vega Acevedo</p>
+                <p><strong>Titular:</strong> Acevedo Cesar Victor</p>
                 <p><strong>CUIT:</strong> 30-12345678-9</p>
                 <p><strong>Horario de atención:</strong> Lunes a Viernes de 8:00 a 12:00 y de 15:00 a 19:00</p>
                 <p><strong>Días no laborales:</strong> Sábados, Domingos y feriados nacionales</p>

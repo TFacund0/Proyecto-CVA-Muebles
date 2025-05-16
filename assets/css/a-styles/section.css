@@ -65,6 +65,29 @@ section .text-card {
     color: #fff;
 }
 
+/* ----------- SECCIÓn DISEÑO ÚNICO ------------- */
+
+/* Estilos de las cajas en la sección de Diseño Único y Ubicacion */
+.section-texto, .contenedor-ubicacion {
+    background-color: #faf9ec ;
+    border: 1px solid black;
+    box-shadow: 0 0 3px black;
+}
+
+/* Estilo del texto de la sección Diseño Único */
+.bloque-texto {
+    width: 70%;
+}
+
+/* Estilo del titulo de la sección Diseño Único */
+.text-titulo {
+    transform: skewX(-15deg);
+    display: inline-block;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+
 /* ------- SECCIÓN PRODUCTOS ---------- */
 
 /* Estilo del titulo de la sección de Productos*/
@@ -76,6 +99,20 @@ section .titulo-producto {
 .card-size {
     max-height: 700px;
     margin-bottom: 1rem;
+}
+
+/* Estilo de las cartas de los productos */
+.product-card {
+    box-shadow: inset 0 0 5px rgb(0, 0, 0);
+    border: 2px solid black !important;
+    scale: 1.0;
+    transition: scale 100ms ease-out;
+}
+
+.product-card:hover {
+    box-shadow: inset 0 0 15px rgb(0, 0, 0);
+    scale: 1.03;
+    transition: scale 100ms ease-in;
 }
 
 /* Estilos para el botón de la sección Productos */
@@ -115,28 +152,6 @@ section .titulo-producto {
 /* Efecto para el desplazamiento del efecto del boton de la sección de Productos */
 .btn-ver-todos:hover::before {
     left: 100%;
-}
-
-/* ----------- SECCIÓn DISEÑO ÚNICO ------------- */
-
-/* Estilos de las cajas en la sección de Diseño Único y Ubicacion */
-.section-texto, .contenedor-ubicacion {
-    background-color: #faf9ec ;
-    border: 1px solid black;
-    box-shadow: 0 0 3px black;
-}
-
-/* Estilo del texto de la sección Diseño Único */
-.bloque-texto {
-    width: 70%;
-}
-
-/* Estilo del titulo de la sección Diseño Único */
-.text-titulo {
-    transform: skewX(-15deg);
-    display: inline-block;
-    font-weight: 700;
-    margin-bottom: 15px;
 }
 
 /* ----------------- SECCIÓN UBICACIÓN ------------------*/
@@ -203,5 +218,10 @@ section .location-text .localidad {
         font-size: 20px !important;
 
         width: 50%;
+    }
+
+    .btn-ver-todos {
+        font-size: 10px !important;
+        margin-top: -25px;
     }
 }
