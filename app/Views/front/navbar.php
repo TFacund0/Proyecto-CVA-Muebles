@@ -58,7 +58,7 @@
         </button>
         
         <!-- Botón de usuario / cuenta -->
-        <a class="btn btn-beige boton-links" href="<?= base_url('registro') ?>">
+        <a class="btn btn-beige boton-links" href="<?= base_url('login') ?>">
           <img src="assets/img/iconos/person.svg" alt="Registrarse" class="icono">
         </a>
 
@@ -74,13 +74,17 @@
   
   <!-- Encabezado del menú lateral -->
   <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Offcanvas con scroll</h5>
+    <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Menu de Usuario</h5>
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
   </div>
   
   <!-- Cuerpo del menú lateral -->
   <div class="offcanvas-body">
-    <p>Intenta desplazarte por el resto de la página para ver esta opción en acción.</p>
+    <ul>
+      <li>Opcion 1</li>
+      <li>Opcion 2</li>
+      <li>Opcion 3</li>
+    </ul>
   </div>
 
 </div> <!-- Fin del offcanvas -->
