@@ -77,7 +77,12 @@
             <?php }?>
         </div>
 
-        <input type="submit" value="Enviar">
-        <a href="<?php echo base_url('/login')?>">Volver a iniciar sesion</a>
+        <div class="mb-2 p-2">
+            <input type="checkbox" id="check" required>
+            <label for="check">Estoy de acuerdo con los <a href="<?php echo base_url('/terminosYCondiciones')?>" target="_blank">Terminos y Condiciones</a></label>            
+        </div>
+
+        <input type="submit" value="Registrar">
+        <a href="<?php echo base_url('/login')?>">Ya tengo una cuenta</a>
     </form>
 </div>
