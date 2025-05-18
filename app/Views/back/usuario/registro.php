@@ -1,11 +1,12 @@
-<div class="registro-contenedor container m-auto my-5 p-3"> 
-    <h3 class="text-center mb-4 pb-3 titulo-registro">¡Bienvenido! Comienza tu experiencia con nosotros</h3>
+<div class="registro-contenedor container m-auto my-5"> 
+    
+    <h2 class="text-center mb-4 pb-3 titulo-registro">¡Bienvenido! Comienza tu experiencia con nosotros</h2>
 
     <?php $validation = \Config\Services::validation(); ?>
     
     <div class="row info-registro py-3">
-        <div class="col-lg-6 col-sm-12">
-            <div class="m-auto mt-3  p-2">
+        <div class="col-lg-6 col-sm-12 mb-4">
+            <div class="m-auto p-2">
                 <div class="text-center">
                     <img src="assets/img/iconos/registro.svg" class="img-fluid img-registro" alt="">
                     <h4 class="my-3">¡Crea tu cuenta y forma parte!</h4>
@@ -22,7 +23,7 @@
         </div>
 
         <div class="col-lg-6 col-sm-12">
-        <form class="registro-form m-auto" method="post" action="<?php echo base_url('/enviar-form') ?>">
+        <form class="registro-form m-auto me-3" method="post" action="<?php echo base_url('/enviar-form') ?>">
 
             <h4 class="text-center mb-3">Formulario de Registro</h4>
 
@@ -124,6 +125,6 @@
     </div>
 
     <div class="m-3 text-center volver-registro">
-        <a href="<?php echo base_url('/login')?>">Volver a iniciar sesión</a>
+        <a href="<?php echo base_url('/login')?>">Volver</a>
     </div>
 </div>
