@@ -44,7 +44,7 @@
                 <!-- Validacion del campo nombre de usuario(Lado Servidor) -->
                 <?php if($validation->getError('user')) {?>
                     <div class="alert alert-danger mt-2">
-                        <?php $error = $validation->getError('user'); ?>
+                        <?php echo 'Ingrese más de tres caracteres' ?>
                     </div>
                 <?php }?>
             </div>
@@ -60,7 +60,7 @@
                     <!-- Validacion del campo nombre (Lado Servidor) -->
                     <?php if($validation->getError('name')) {?>
                         <div class="alert alert-danger mt-2">
-                            <?php $error = $validation->getError('name'); ?>
+                            <?php echo 'Ingrese más de tres caracteres' ?>
                         </div>
                     <?php }?>
                 </div>
@@ -74,7 +74,7 @@
                     <!-- Validacion del campo apellido (Lado Servidor) -->
                     <?php if($validation->getError('surname')) {?>
                         <div class="alert alert-danger mt-2">
-                            <?php $error = $validation->getError('surname'); ?>
+                            <?php echo 'Ingrese más de tres caracteres' ?>
                         </div>
                     <?php }?>
                 </div>
@@ -90,7 +90,7 @@
                 <!-- Validacion del campo correo (Lado Servidor) -->
                 <?php if($validation->getError('email')) {?>
                     <div class="alert alert-danger mt-2">
-                        <?php $error = $validation->getError('email'); ?>
+                        <?php echo 'Ingrese más de tres caracteres' ?>
                     </div>
                 <?php }?>
             </div>
@@ -109,7 +109,7 @@
                 <!-- Validacion del campo contraseña (Lado Servidor) -->
                 <?php if($validation->getError('pass')) {?>
                     <div class="alert alert-danger mt-2">
-                        <?php $error = $validation->getError('pass'); ?>
+                        <?php echo 'Ingrese más de tres caracteres' ?>
                     </div>
                 <?php }?>
             </div>
