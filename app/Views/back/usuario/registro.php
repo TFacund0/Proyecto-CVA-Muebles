@@ -90,7 +90,7 @@
                 <!-- Validacion del campo correo (Lado Servidor) -->
                 <?php if($validation->getError('email')) {?>
                     <div class="alert alert-danger mt-2">
-                        <?php echo 'Ingrese más de tres caracteres' ?>
+                        <?php echo 'Intentelo otra vez' ?>
                     </div>
                 <?php }?>
             </div>
