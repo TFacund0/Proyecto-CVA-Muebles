@@ -1,3 +1,9 @@
+<?php
+  $session = session();
+  $nombre = $session->get('nombre');
+  $perfil = $session->get('perfil_id');
+?>
+
 <!-- BARRA DE NAVEGACIÓN PRINCIPAL -->
 <nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
@@ -8,9 +14,19 @@
     </div>
     
     <!-- Título / Nombre de la marca -->
-    <a class="navbar-brand" href="<?= base_url('/') ?>">
-      <span class="titulo-logo">CVA Muebles</span>
-    </a>
+    <div>
+      <a class="navbar-brand" href="<?= base_url('/') ?>">
+        <span class="titulo-logo">CVA Muebles</span>
+      </a>
+      
+      <?php if ($perfil == 1) { ?>
+        <h4 class="navbar-brand"> ADMIN: <?php echo $nombre?></h4>  
+      <?php } ?>
+      
+      <?php if ($perfil == 2) { ?>
+        <h4 class="navbar-brand"> Cliente: <?php echo $nombre?></h4>  
+      <?php } ?>
+    </div>
 
     <!-- Botón del menú para dispositivos móviles -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" 

@@ -31,9 +31,11 @@
             <?php if (!empty(session()->getFlashdata('fail'))) {?>
                 <div class="alert alert-danger"><?=session()->getFlashdata('fail'); ?></div>
             <?php }?>
-
+            
             <?php if (!empty(session()->getFlashdata('success'))) {?>
-                <div class="alert alert-danger"><?=session()->getFlashdata('success'); ?></div>
+                <div class="text-center m-3">
+                    <div class="alert alert-danger text-center d-inline-block"><?=session()->getFlashdata('success'); ?></div>
+                </div>
             <?php }?>
             
             <div class="form-floating mb-3">
