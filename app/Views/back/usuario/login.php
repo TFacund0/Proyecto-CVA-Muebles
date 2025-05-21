@@ -1,6 +1,3 @@
-
-
-
 <div class="login-body d-flex justify-content-center align-items-center m-auto my-5 ">
     <div class="login-container shadow rounded p-4">
         <div class="row">
@@ -22,7 +19,9 @@
             <?php }?>
 
             <?php if (!empty(session()->getFlashdata('success'))) {?>
-                <div class="alert alert-success"><?=session()->getFlashdata('success'); ?></div>
+                <div class="text-center m-3">
+                    <div class="alert alert-danger text-center d-inline-block"><?=session()->getFlashdata('success'); ?></div>
+                </div>
             <?php }?>
             
                 <form  method="post" action="<?= base_url('enviar-login') ?>">
