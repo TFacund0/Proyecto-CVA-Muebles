@@ -19,5 +19,7 @@ $routes->get('/productos', 'Pages::productos');
 $routes->get('/registro', 'UsuarioController::create');
 $routes->post('/enviar-form', 'UsuarioController::formValidation');
 
-//Filtros para los usuarios
-$routes->get('/dashboard', 'Dashboard::index', ['filter' => 'auth']);
+// Rutas del login de Usuarios
+$routes->get('/login', 'LoginController::create');
+$routes->post('/enviar-login', 'LoginController::auth');
+$routes->get('/logout', 'LoginController::logout');
