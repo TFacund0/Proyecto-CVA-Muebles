@@ -16,12 +16,15 @@
             <div class="col-md-6 p-4 rounded login-form " style="background-color: rgba(255,255,255,0.9);">
                 <h3 class="text-center mb-3">Iniciar sesión</h3>
 
-                <?php if(session()->getFlashdata('msg')): ?>
-                    <div class="alert alert-warning">
-                        <?= session()->getFlashdata('msg') ?>
-                    </div>
-                <?php endif; ?>
+                <?= csrf_field(); ?>
+            <?php if (!empty(session()->getFlashdata('fail'))) {?>
+                <div class="alert alert-danger"><?=session()->getFlashdata('fail'); ?></div>
+            <?php }?>
 
+            <?php if (!empty(session()->getFlashdata('success'))) {?>
+                <div class="alert alert-success"><?=session()->getFlashdata('success'); ?></div>
+            <?php }?>
+            
                 <form  method="post" action="<?= base_url('enviar-login') ?>">
                     <div class="mb-3">
                         <label for="email" class="form-label">Usuario o Email</label>
