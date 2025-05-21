@@ -1,19 +1,19 @@
-<div class="registro-contenedor container m-auto my-5"> 
+<div class="registro-contenedor container m-auto my-5 "> 
     
-    <h2 class="text-center mb-4 pb-3 titulo-registro">¡Bienvenido! Comienza tu experiencia con nosotros</h2>
+    <h2 class="text-center mb-2 pb-1 titulo-registro">¡Bienvenido! Comienza tu experiencia con nosotros</h2>
 
     <?php $validation = \Config\Services::validation(); ?>
     
-    <div class="row info-registro py-3">
-        <div class="col-lg-6 col-sm-12 mb-4">
-            <div class="m-auto p-2">
+    <div class="row info-registro ">
+        <div class="col-lg-6 col-sm-12 pb-1">
+            <div class="m-auto p-1">
                 <div class="text-center">
                     <img src="assets/img/iconos/registro.svg" class="img-fluid img-registro" alt="">
                     <h4 class="my-3">¡Crea tu cuenta y forma parte!</h4>
                 </div>
 
                 <ul>
-                    <li>Al registrarte podrás guardar tus datos y acceder a beneficios exclusivos</li>
+                    <li>Registrate para acceder a beneficios exclusivos</li>
                     <li>Accedé a todos nuestros servicios</li>
                 </ul>
             </div>
@@ -22,10 +22,10 @@
             </div>
         </div>
 
-        <div class="col-lg-6 col-sm-12">
-        <form class="registro-form m-auto me-3" method="post" action="<?php echo base_url('/enviar-form') ?>">
+        <div class="col-lg-6 col-sm-10">
+        <form class="registro-form m-auto me-2" method="post" action="<?php echo base_url('/enviar-form') ?>">
 
-            <h4 class="text-center mb-3">Formulario de Registro</h4>
+            <h3 class="text-center ">Formulario de Registro</h3>
 
             <?= csrf_field(); ?>
             <?php if (!empty(session()->getFlashdata('fail'))) {?>
@@ -33,10 +33,10 @@
             <?php }?>
 
             <?php if (!empty(session()->getFlashdata('success'))) {?>
-                <div class="alert alert-danger"><?=session()->getFlashdata('success'); ?></div>
+                <div class="alert alert-success"><?=session()->getFlashdata('success'); ?></div>
             <?php }?>
             
-            <div class="form-floating mb-3">
+            <div class="form-floating mb-1">
                 <!-- Campo para el nombre de usuario del formulario -->
                 <input type="text" class="campo-registro form-control" id="nombreUser" name="user" placeholder="Nombre de Usuario" required>
                 <label for="nombreUser">Nombre de Usuario</label>
@@ -49,7 +49,7 @@
                 <?php }?>
             </div>
 
-            <div class="row mb-3">
+            <div class="row mb-1">
                 <div class="col-6">
                     <div class="form-floating">
                         <!-- Campo para el nombre del formulario -->
@@ -80,7 +80,7 @@
                 </div>
             </div>
 
-            <div class="mb-3">
+            <div class="mb-1">
                 <div class="form-floating">
                     <!-- Campo para el correo del formulario -->
                     <input class="campo-registro form-control" type="email" id="email" name="email" placeholder="Correo Electrónico" required>
@@ -95,7 +95,7 @@
                 <?php }?>
             </div>
             
-            <div class="mb-3">
+            <div class="mb-1">
                 <!-- Campo para la contraseña del formulario -->
                 <div class="form-floating">
                     <input class="campo-registro form-control" type="password" id="password" name="pass" placeholder="Contraseña" aria-describedby="passwordHelpBlock"  required>
@@ -124,7 +124,7 @@
         </div>
     </div>
 
-    <div class="m-3 text-center volver-registro">
+    <div class="m-1 text-center volver-registro">
         <a href="<?php echo base_url('/login')?>">Volver</a>
     </div>
 </div>

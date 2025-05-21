@@ -21,11 +21,12 @@ class LoginController extends BaseController {
         $session = session();
         $model = new Usuarios_model();
 
-        $email = $this->request->getVar('email');
+        $login = $this->request->getVar('email'); // puede ser email o usuario
         $password = $this->request->getVar('pass');
 
-        $data = $model->where('email', $email)->first();
-
+        $data = $model->where('email', $login)
+                        ->orWhere('usuario', $login)
+                        ->first();
         if($data) {
             $pass = $data['pass'];
             $baja = $data['baja'];
