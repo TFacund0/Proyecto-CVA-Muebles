@@ -2,6 +2,7 @@
 /* Encabezado */
 .titulo-comercializacion {
     background-image: url('../../img/texturas/treeplant.jpg');
+    background-position: center;
     border-bottom: 3px solid black;
     text-align: center;
     background-position: top;
@@ -30,6 +31,7 @@
 /* Secciones */
 #container-comercializacion .contenedor-seccion {
     background-image: url('../../img/texturas/madera-claritaa.jpg');
+    background-position: center;
     border-radius: 30px;
     box-shadow: 0 0 7px rgb(0, 0, 0);
     border: 1.9px solid rgb(0, 0, 0);

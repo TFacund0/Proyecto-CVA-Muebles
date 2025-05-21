@@ -5,21 +5,26 @@
     background-size: cover;
     background-color: #807c717c!important; 
     box-shadow: 0 0 10px rgb(0, 0, 0);
+    max-width: 1000px !important;
+    margin: 0 auto;
+    padding: 20px;
 }
 
 .titulo-registro {
     border-bottom: 3px solid black;
     background-color: rgba(0, 0, 0, 0.103);
-    padding-top: 15px;
+    padding-top: 5px;
     border-radius: 10px;
 }
 
 .registro-form {
     border: 1px solid rgb(0, 0, 0);
-    padding: 15px;
+    padding: 10px;
     border-radius: 15px;
     color: rgb(255, 255, 255);
-    background-color: #000000a0!important;  
+    background-color: #000000a0!important; 
+    max-width: 480px;
+    margin: auto; 
 }
 
 .registro-form .campo-registro{
@@ -46,7 +51,7 @@
 }
 
 .img-registro {
-    width: 16.5rem;
+    width: 14.5rem;
     height: auto;
 
     border-radius: 100%;
@@ -63,4 +68,14 @@
 
 .check-registro a:hover, .info-registro ul a:hover, .volver-registro a:hover{
     text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .registro-contenedor {
+        padding: 10px;
+    }
+
+    .registro-form {
+        max-width: 100%;
+    }
 }
