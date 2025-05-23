@@ -18,14 +18,6 @@
       <a class="navbar-brand" href="<?= base_url('/') ?>">
         <span class="titulo-logo">CVA Muebles</span>
       </a>
-      
-      <?php if ($perfil == 1) { ?>
-        <h4 class="navbar-brand"> ADMIN: <?php echo $nombre?></h4>  
-      <?php } ?>
-      
-      <?php if ($perfil == 2) { ?>
-        <h4 class="navbar-brand"> Cliente: <?php echo $nombre?></h4>  
-      <?php } ?>
     </div>
 
     <!-- Botón del menú para dispositivos móviles -->
