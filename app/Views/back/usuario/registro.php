@@ -4,7 +4,7 @@
 
     <?php $validation = \Config\Services::validation(); ?>
     
-    <div class="row info-registro ">
+    <div class="row info-registro my-4">
         <div class="col-lg-6 col-sm-12 pb-1">
             <div class="m-auto p-1">
                 <div class="text-center">
@@ -25,18 +25,14 @@
         <div class="col-lg-6 col-sm-10">
         <form class="registro-form m-auto me-2" method="post" action="<?php echo base_url('/enviar-form') ?>">
 
-            <h3 class="text-center ">Formulario de Registro</h3>
+            <h4 class="text-center ">Formulario de Registro</h3>
 
             <?= csrf_field(); ?>
             <?php if (!empty(session()->getFlashdata('fail'))) {?>
                 <div class="alert alert-danger"><?=session()->getFlashdata('fail'); ?></div>
             <?php }?>
-
-            <?php if (!empty(session()->getFlashdata('success'))) {?>
-                <div class="alert alert-success"><?=session()->getFlashdata('success'); ?></div>
-            <?php }?>
             
-            <div class="form-floating mb-1">
+            <div class="form-floating mb-3">
                 <!-- Campo para el nombre de usuario del formulario -->
                 <input type="text" class="campo-registro form-control" id="nombreUser" name="user" placeholder="Nombre de Usuario" required>
                 <label for="nombreUser">Nombre de Usuario</label>
@@ -44,12 +40,12 @@
                 <!-- Validacion del campo nombre de usuario(Lado Servidor) -->
                 <?php if($validation->getError('user')) {?>
                     <div class="alert alert-danger mt-2">
-                        <?php echo 'Ingrese más de tres caracteres' ?>
+                        <?php echo $validation->getError('user') ?>
                     </div>
                 <?php }?>
             </div>
 
-            <div class="row mb-1">
+            <div class="row mb-3">
                 <div class="col-6">
                     <div class="form-floating">
                         <!-- Campo para el nombre del formulario -->
@@ -60,7 +56,7 @@
                     <!-- Validacion del campo nombre (Lado Servidor) -->
                     <?php if($validation->getError('name')) {?>
                         <div class="alert alert-danger mt-2">
-                            <?php echo 'Ingrese más de tres caracteres' ?>
+                            <?php echo $validation->getError('name') ?>
                         </div>
                     <?php }?>
                 </div>
@@ -74,13 +70,13 @@
                     <!-- Validacion del campo apellido (Lado Servidor) -->
                     <?php if($validation->getError('surname')) {?>
                         <div class="alert alert-danger mt-2">
-                            <?php echo 'Ingrese más de tres caracteres' ?>
+                            <?php echo $validation->getError('surname') ?>
                         </div>
                     <?php }?>
                 </div>
             </div>
 
-            <div class="mb-1">
+            <div class="mb-3">
                 <div class="form-floating">
                     <!-- Campo para el correo del formulario -->
                     <input class="campo-registro form-control" type="email" id="email" name="email" placeholder="Correo Electrónico" required>
@@ -90,12 +86,12 @@
                 <!-- Validacion del campo correo (Lado Servidor) -->
                 <?php if($validation->getError('email')) {?>
                     <div class="alert alert-danger mt-2">
-                        <?php echo 'Intentelo otra vez' ?>
+                        <?php echo $validation->getError('email') ?>
                     </div>
                 <?php }?>
             </div>
             
-            <div class="mb-1">
+            <div class="mb-3">
                 <!-- Campo para la contraseña del formulario -->
                 <div class="form-floating">
                     <input class="campo-registro form-control" type="password" id="password" name="pass" placeholder="Contraseña" aria-describedby="passwordHelpBlock"  required>
@@ -109,13 +105,13 @@
                 <!-- Validacion del campo contraseña (Lado Servidor) -->
                 <?php if($validation->getError('pass')) {?>
                     <div class="alert alert-danger mt-2">
-                        <?php echo 'Ingrese más de tres caracteres' ?>
+                        <?php echo $validation->getError('pass') ?>
                     </div>
                 <?php }?>
             </div>
 
             <div class="mb-3 form-check check-registro">
-                <input type="checkbox" class="form-check-input" id="check">
+                <input type="checkbox" class="form-check-input" id="check" name="terms">
                 <label class="form-check-label" for="check">Estas de acuerdo con los <a href="<?php echo base_url('/terminosYCondiciones')?>" target="_blank">Terminos y Condiciones</a></label>
             </div>
                     
