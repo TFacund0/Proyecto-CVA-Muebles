@@ -42,7 +42,7 @@
       <ul class="navbar-nav mx-auto text-lg-center text-end content-list">
         <!-- Ítem: Inicio -->
         <li class="nav-item">
-          <a class="btn btn-beige text-dark mx-1" href="<?= base_url('/logout') ?>">logout</a>
+          <a class="btn btn-beige text-dark mx-1" href="<?= base_url('/') ?>">Inicio</a>
         </li>
 
         <!-- Ítem: Productos -->
@@ -128,6 +128,9 @@
       <li>Opcion 2</li>
       <li>Opcion 3</li>
     </ul>
+    <div class="btn btn-primary">
+      <a class="text-dark mx-1" href="<?= base_url('/logout') ?>">Cerrar sesión</a>
+    </div>
   </div>
 
 </div> <!-- Fin del offcanvas -->
