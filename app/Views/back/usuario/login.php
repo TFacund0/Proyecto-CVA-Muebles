@@ -14,14 +14,8 @@
                 <h3 class="text-center mb-3">Iniciar sesión</h3>
 
                 <?= csrf_field(); ?>
-            <?php if (!empty(session()->getFlashdata('fail'))) {?>
-                <div class="alert alert-danger"><?=session()->getFlashdata('fail'); ?></div>
-            <?php }?>
-
-            <?php if (!empty(session()->getFlashdata('success'))) {?>
-                <div class="text-center m-3">
-                    <div class="alert alert-danger text-center d-inline-block"><?=session()->getFlashdata('success'); ?></div>
-                </div>
+            <?php if (!empty(session()->getFlashdata('falloLogin'))) {?>
+                <div class="alert alert-danger"><?=session()->getFlashdata('fallo_login'); ?></div>
             <?php }?>
 
                 <form  method="post" action="<?= base_url('enviar-login') ?>">
