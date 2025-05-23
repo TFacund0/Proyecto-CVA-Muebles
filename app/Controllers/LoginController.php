@@ -11,6 +11,16 @@ class LoginController extends BaseController {
     }
 
     public function create() {
+                session_start();
+
+    if (isset($_SESSION['usuario'])) {
+    // El usuario tiene sesión iniciada
+            echo "Bienvenido, " . $_SESSION['usuario']['nombre'];
+        } else {
+    // El usuario no ha iniciado sesión
+            header("Location: login.php"); // redirigir a login
+            exit();
+        }
         return view('front/main', [
             'title' => 'Login',
             'content' => view('back/usuario/login')
@@ -51,17 +61,17 @@ class LoginController extends BaseController {
 
                 $session->set($ses_data);
 
-                session()->setFlashdata('msg_bienvenida', 'Bienvenido');
+                session()->setFlashdata('msg', 'Bienvenido');
                 return redirect()->to('/');
 
             }else{
-                session()->setFlashdata('fallo_login', 'Password Incorrecta');
+                $session->setFlashdata('msg', 'Password Incorrecta');
                 return redirect()->to('/login');
             }
-        }
-        else{
-            session()->setFlashdata('fallo_login', 'No ingreso un email o el mismo es incorrecto');
-            return redirect()->to('/login');
+
+        }else{
+            $session->setFlashdata('msg', 'No ingreso un email o el mismo es incorrecto');
+                return redirect()->to('/login');
         }
     }
 
