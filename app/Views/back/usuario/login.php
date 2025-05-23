@@ -1,3 +1,6 @@
+
+
+
 <div class="login-body d-flex justify-content-center align-items-center m-auto my-5 ">
     <div class="login-container shadow rounded p-4">
         <div class="row">
@@ -14,8 +17,12 @@
                 <h3 class="text-center mb-3">Iniciar sesión</h3>
 
                 <?= csrf_field(); ?>
-            <?php if (!empty(session()->getFlashdata('falloLogin'))) {?>
-                <div class="alert alert-danger"><?=session()->getFlashdata('fallo_login'); ?></div>
+            <?php if (!empty(session()->getFlashdata('fail'))) {?>
+                <div class="alert alert-danger"><?=session()->getFlashdata('fail'); ?></div>
+            <?php }?>
+
+            <?php if (!empty(session()->getFlashdata('success'))) {?>
+                <div class="alert alert-success"><?=session()->getFlashdata('success'); ?></div>
             <?php }?>
 
                 <form  method="post" action="<?= base_url('enviar-login') ?>">

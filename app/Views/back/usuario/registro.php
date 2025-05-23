@@ -30,9 +30,8 @@
             <?= csrf_field(); ?>
             <?php if (!empty(session()->getFlashdata('fail'))) {?>
                 <div class="alert alert-danger"><?=session()->getFlashdata('fail'); ?></div>
-                <? $session->remove('fail'); // BORRA el flashdata manualmente
-                ?>
             <?php }?>
+            
             <div class="form-floating mb-3">
                 <!-- Campo para el nombre de usuario del formulario -->
                 <input type="text" class="campo-registro form-control" id="nombreUser" name="user" placeholder="Nombre de Usuario" required>
