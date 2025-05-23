@@ -24,7 +24,7 @@
             <?php if (!empty(session()->getFlashdata('success'))) {?>
                 <div class="alert alert-success"><?=session()->getFlashdata('success'); ?></div>
             <?php }?>
-            
+
                 <form  method="post" action="<?= base_url('enviar-login') ?>">
                     <div class="mb-3">
                         <label for="email" class="form-label">Usuario o Email</label>
@@ -36,6 +36,11 @@
                     </div>
                     <div class="d-grid">
                         <button type="submit" class="btn btn-primary">Ingresar</button>
+                        <?php 
+                        if (isset($_SESSION['usuario'])) {
+                            header("Location: http://localhost/Proyecto-CVA-Muebles/");
+                            exit();
+                        }?>
                     </div>
                     <div class="mt-3 text-center">
                         <a href="#">¿Olvidaste tu contraseña?</a>

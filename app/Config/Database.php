@@ -164,16 +164,16 @@ class Database extends Config
      */
     public array $tests = [
         'DSN'         => '',
-        'hostname'    => '127.0.0.1',
-        'username'    => '',
+        'hostname'    => 'localhost',
+        'username'    => 'root',
         'password'    => '',
-        'database'    => ':memory:',
+        'database'    => 'arce_acevedo',
         'DBDriver'    => 'SQLite3',
         'DBPrefix'    => 'db_',  // Needed to ensure we're working correctly with prefixes live. DO NOT REMOVE FOR CI DEVS
         'pConnect'    => false,
-        'DBDebug'     => true,
+        'DBDebug'     => (ENVIRONMENT != 'production'),
         'charset'     => 'utf8',
-        'DBCollat'    => '',
+        'DBCollat'    => 'utf8mb4_general_ci',
         'swapPre'     => '',
         'encrypt'     => false,
         'compress'    => false,

@@ -1,5 +1,5 @@
 <body>
-
+    
     <!-- Section Carrusel -->
     <?= view('front/principal/section-carrusel') ?>
 
