@@ -55,7 +55,7 @@ class LoginController extends BaseController {
                 return redirect()->to('/');
 
             }else{
-                session()->setFlashdata('fallo_login', 'Password Incorrecta');
+                session()->setFlashdata('fallo_login', 'Contraseña Incorrecta');
                 return redirect()->to('/login');
             }
         }
