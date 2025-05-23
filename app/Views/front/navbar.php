@@ -33,7 +33,7 @@
       <ul class="navbar-nav mx-auto text-lg-center text-end content-list">
         <!-- Ítem: Inicio -->
         <li class="nav-item">
-          <a class="btn btn-beige text-dark mx-1" href="<?= base_url('/') ?>">Inicio</a>
+          <a class="btn btn-beige text-dark mx-1" href="<?= base_url('/logout') ?>">logout</a>
         </li>
 
         <!-- Ítem: Productos -->
