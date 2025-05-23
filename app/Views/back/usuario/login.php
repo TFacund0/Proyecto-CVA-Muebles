@@ -26,18 +26,19 @@
                         <label for="email" class="form-label">Usuario o Email</label>
                         <input type="text" class="form-control" id="email" name="email" placeholder="Tu email o usuario" required>
                     </div>
+                    
                     <div class="mb-3">
                         <label for="password" class="form-label">Contraseña</label>
                         <input type="password" class="form-control" id="password" name="pass" placeholder="Tu contraseña" required>
                     </div>
+                    
                     <div class="d-grid">
                         <button type="submit" class="btn btn-primary">Ingresar</button>
-                        <?php 
-                        if (isset($_SESSION['usuario'])) {
-                            header("Location: http://localhost/Proyecto-CVA-Muebles/");
-                            exit();
-                        }?>
+                        <?php if (isset($_SESSION['usuario'])) { ?>
+                            <?php redirect()->to('/');?>
+                        <?php }?>
                     </div>
+
                     <div class="mt-3 text-center">
                         <a href="#">¿Olvidaste tu contraseña?</a>
                     </div>

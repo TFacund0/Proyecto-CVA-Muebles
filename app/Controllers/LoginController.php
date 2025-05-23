@@ -60,7 +60,7 @@ class LoginController extends BaseController {
             }
         }
         else{
-            session()->setFlashdata('fallo_login', 'No ingreso un email o el mismo es incorrecto');
+            session()->setFlashdata('fallo_login', 'Email o nombre de usuario incorrectos');
             return redirect()->to('/login');
         }
     }

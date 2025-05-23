@@ -2,6 +2,7 @@
   $session = session();
   $nombre = $session->get('nombre');
   $perfil = $session->get('perfil_id');
+  $isLogged = $session->get('logged_in');
 ?>
 
 <!-- BARRA DE NAVEGACIÓN PRINCIPAL -->
@@ -16,8 +17,16 @@
     <!-- Título / Nombre de la marca -->
     <div>
       <a class="navbar-brand" href="<?= base_url('/') ?>">
-        <span class="titulo-logo">CVA Muebles</span>
+        <span class="ms-3 titulo-logo">CVA Muebles</span>
       </a>
+
+      <?php if ($perfil == 1) {?>
+        <div class="ms-3 titulo-logo"> Admin: <?php echo $nombre?></div>
+      <?php }?>
+      
+      <?php if ($perfil == 2) {?>
+        <div class="ms-3 titulo-logo"> Cliente: <?php echo $nombre?></div>
+      <?php }?>
     </div>
 
     <!-- Botón del menú para dispositivos móviles -->
@@ -66,9 +75,15 @@
         </button>
         
         <!-- Botón de usuario / cuenta -->
-        <a class="btn btn-beige boton-links" href="<?= base_url('login') ?>">
-          <img src="assets/img/iconos/person.svg" alt="Registrarse" class="icono">
-        </a>
+        <?php if (!$isLogged) {?>
+                <a class="btn btn-beige boton-links" href="<?= base_url('login') ?>">
+                  <img src="assets/img/iconos/person.svg" alt="Registrarse" class="icono">
+                </a>
+        <?php } else {?>
+                <button class="btn btn-beige boton-links" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasPerfil" aria-controls="offcanvasScrolling">
+                  <img src="assets/img/iconos/person.svg" alt="Opciones de perfil de usuario" class="icono">
+                </button>
+        <?php }?>
 
       </div> <!-- Fin de content-account -->
 
@@ -79,6 +94,26 @@
 
 <!-- MENÚ LATERAL (Offcanvas) para el carrito -->
 <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+  
+  <!-- Encabezado del menú lateral -->
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Menu de Usuario</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+  </div>
+  
+  <!-- Cuerpo del menú lateral -->
+  <div class="offcanvas-body">
+    <ul>
+      <li>Opcion 1</li>
+      <li>Opcion 2</li>
+    </ul>
+  </div>
+
+</div> <!-- Fin del offcanvas -->
+
+
+<!-- MENÚ LATERAL (Offcanvas) para el perfil-->
+<div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasPerfil" aria-labelledby="offcanvasScrollingLabel">
   
   <!-- Encabezado del menú lateral -->
   <div class="offcanvas-header">
