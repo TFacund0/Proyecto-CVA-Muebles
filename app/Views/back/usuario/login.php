@@ -1,9 +1,9 @@
 <div class="login-body d-flex justify-content-center align-items-center m-auto my-5 ">
     
-    <div class="login-container shadow rounded p-4">
+    <div class="login-container rounded p-5">
         <div class="row">
             
-        <!-- Lado izquierdo -->
+            <!-- Lado izquierdo -->
             <div class="col-md-6 d-flex flex-column align-items-center justify-content-center text-center p-4">
                 <img src="assets/img/iconos/registro.svg" alt="icono-usuario" style="width: 150px;">
                 <h4 class="mt-3">¡Bienvenido de nuevo!</h4>

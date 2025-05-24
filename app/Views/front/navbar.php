@@ -21,13 +21,18 @@
       </a>
 
       <?php if ($perfil == 1) {?>
-        <div class="ms-3 titulo-logo"> Admin: <?php echo $nombre?></div>
+        <a class="ms-3 titulo-perfil d-block"><strong>Administrador:</strong> <?php echo $nombre?> </a>
       <?php }?>
       
       <?php if ($perfil == 2) {?>
-        <div class="ms-3 titulo-logo"> Cliente: <?php echo $nombre?></div>
+        <a class="ms-3 titulo-perfil d-block"><strong>Usuario:</strong> <?php echo $nombre?></a>
       <?php }?>
     </div>
+
+    <?= csrf_field(); ?>
+    <?php if (!empty(session()->getFlashdata('sucess'))) {?>
+      <div class="alert alert-Primary"><?=session()->getFlashdata('sucess'); ?></div>
+    <?php }?>
 
     <!-- Botón del menú para dispositivos móviles -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" 
@@ -117,10 +122,10 @@
   
   <!-- Encabezado del menú lateral -->
   <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Menu de Usuario</h5>
+    <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Menu de Opciones</h5>
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
   </div>
-  
+
   <!-- Cuerpo del menú lateral -->
   <div class="offcanvas-body">
     <ul>

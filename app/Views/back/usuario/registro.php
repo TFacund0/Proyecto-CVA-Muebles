@@ -27,11 +27,6 @@
 
             <h4 class="text-center ">Formulario de Registro</h3>
 
-            <?= csrf_field(); ?>
-            <?php if (!empty(session()->getFlashdata('fail'))) {?>
-                <div class="alert alert-danger"><?=session()->getFlashdata('fail'); ?></div>
-            <?php }?>
-
             <div class="form-floating mb-3">
                 <!-- Campo para el nombre de usuario del formulario -->
                 <input type="text" class="campo-registro form-control" id="nombreUser" name="user" placeholder="Nombre de Usuario" required>
@@ -66,7 +61,8 @@
                         <!-- Campo para el apellido del formulario -->
                         <input type="text" class="form-control" id="apellido" name="surname" placeholder="Apellido" required>
                         <label for="apellido">Apellido</label>
-                    </div>    
+                    </div>
+                    
                     <!-- Validacion del campo apellido (Lado Servidor) -->
                     <?php if($validation->getError('surname')) {?>
                         <div class="alert alert-danger mt-2">
@@ -95,7 +91,7 @@
                 <!-- Campo para la contraseña del formulario -->
                 <div class="form-floating">
                     <input class="campo-registro form-control" type="password" id="password" name="pass" placeholder="Contraseña" aria-describedby="passwordHelpBlock"  required>
-                    <label for="password">Password</label>
+                    <label for="password">Contraseña</label>
                     
                     <div id="passwordHelpBlock" class="form-text">
                         Debe ser de 3 a 50 caracteres de largo
