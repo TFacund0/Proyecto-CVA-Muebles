@@ -23,3 +23,7 @@ $routes->post('/enviar-form', 'UsuarioController::formValidation');
 $routes->get('/login', 'LoginController::create');
 $routes->post('/enviar-login', 'LoginController::auth');
 $routes->get('/logout', 'LoginController::logout');
+
+// Rutas de opciones de producto
+$routes->get('/alta-producto', 'ProductoController::create_alta_producto');
+$routes->post('/enviar-alta-producto', 'ProductoController::alta_producto');

@@ -21,11 +21,9 @@
       </a>
 
       <?php if ($perfil == 1) {?>
-        <a class="ms-3 titulo-perfil d-block"><strong>Administrador:</strong> <?php echo $nombre?> </a>
-      <?php }?>
-      
-      <?php if ($perfil == 2) {?>
-        <a class="ms-3 titulo-perfil d-block"><strong>Usuario:</strong> <?php echo $nombre?></a>
+        <a class="titulo-perfil d-block btn btn-outline-light"><strong>Usuario:</strong> admin</a>
+      <?php } elseif ($perfil == 2) {?>
+        <a class="titulo-perfil d-block btn btn-outline-light"><strong>Usuario:</strong> cliente</a>
       <?php }?>
     </div>
 
@@ -128,13 +126,51 @@
 
   <!-- Cuerpo del menú lateral -->
   <div class="offcanvas-body">
-    <ul>
-      <li>Opcion 1</li>
-      <li>Opcion 2</li>
-      <li>Opcion 3</li>
-    </ul>
-    <div class="btn btn-primary">
-      <a class="text-dark mx-1" href="<?= base_url('/logout') ?>">Cerrar sesión</a>
+    <?php if($perfil == 1) {?>
+      <div class="btn btn-outline-primary btn-sm">
+        <a href="">Usuario: <?php echo $nombre?></a>
+      </div>
+      
+      <ul>
+        <li>
+          <a class="nav-link" href="<?php echo base_url('/users-list')?>">CRUD Usuarios</a>
+        </li>
+        <li>
+          <a class="nav-link" href="<?php echo base_url('/product-list')?>">CRUD Productos</a>
+        </li>
+        <li>
+          <a class="nav-link" href="<?php echo base_url('/ventas-list')?>">Muestra Ventas</a>
+        </li>
+        <li>
+          <a class="nav-link" href="<?php echo base_url('/lista-consultas')?>">Consultas</a>
+        </li>
+        <li>
+          <a class="nav-link" href="<?php echo base_url('/alta-producto')?>">Alta Productos</a>
+        </li>
+      </ul>
+    <?php } elseif ($perfil == 2) {?>
+      <div class="btn btn-outline-primary btn-sm">
+        <a href="">Cliente: <?php echo $nombre?></a>
+      </div>
+
+      <ul>
+        <li>
+          <a class="nav-link" href="<?php echo base_url('users-list')?>">Mis productos</a>
+        </li>
+        <li>
+          <a class="nav-link" href="<?php echo base_url('product-list')?>">Perfil</a>
+        </li>
+        <li>
+          <a class="nav-link" href="<?php echo base_url('ventas-list')?>">Carrito</a>
+        </li>
+        <li>
+          <a class="nav-link" href="<?php echo base_url('lista-consultas')?>"></a>
+        </li>
+      </ul>
+    <?php }?>
+
+    <div class="">
+      <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="<?= base_url('/logout') ?>">Cerrar sesión</a>
     </div>
   </div>
 
