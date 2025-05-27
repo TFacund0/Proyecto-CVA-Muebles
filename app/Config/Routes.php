@@ -26,4 +26,4 @@ $routes->get('/logout', 'LoginController::logout');
 
 // Rutas de opciones de producto
 $routes->get('/alta-producto', 'ProductoController::create_alta_producto');
-$routes->post('/enviar-alta-producto', 'ProductoController::alta_producto');
+$routes->post('/enviar-alta-producto', 'ProductoController::formValidation');
