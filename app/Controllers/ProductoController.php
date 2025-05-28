@@ -15,7 +15,7 @@ class ProductoController extends BaseController {
     }
 
     //mostrar los productos en lista
-    public function index() {
+    /*public function index() {
         $productoModel = new Producto_model();
         $data['producto'] = $productoModel->getProductoAll(); //funcion en el modelo
 
@@ -25,7 +25,7 @@ class ProductoController extends BaseController {
             'title' => 'Alta Producto',
             'content' => view('back/producto/productos_nuevos', $dato, $data)
         ]);
-    }
+    }*/
 
     public function create_alta_producto() {
         $session = session();
@@ -47,6 +47,7 @@ class ProductoController extends BaseController {
     public function formValidation() {
         $rules = [
             'nombre_producto' => 'required|min_length[3]|max_length[100]',
+            'image' => 'uploaded[image]|is_image[image]|mime_in[image,image/jpg,image/jpeg,image/png]',
             'precio' => 'required|numeric',
             'precio-vta' => 'required|numeric',
             'stock' => 'required|numeric',
@@ -59,7 +60,13 @@ class ProductoController extends BaseController {
                 'min_length' => 'La cantidad mínima de caracteres es 3',
                 'max_length' => 'La cantidad máxima es de 100 caracteres'
             ],
-            
+
+            'image' => [
+                'uploaded' => 'La imagen del producto es obligatoria',
+                'is_image' => 'El archivo debe ser una imagen válida',
+                'mime_in' => 'La imagen debe ser de tipo jpg, jpeg o png'
+            ],
+
             'precio' => [
                 'required' => 'El precio del producto es obligatorio',
                 'numeric' => 'El valor debe ser únicamente numérico',
@@ -83,22 +90,29 @@ class ProductoController extends BaseController {
 
         $input = $this->validate($rules, $messages);
 
-        $formProducto = new Productos_model();
-
         if (!$input) {
             session()->setFlashData('fail', 'No se cumple con todos los requisitos de los campos');
 
             return $this->create_alta_producto();
-        } 
-        else {
-            $formProducto->save([
+        } else {
+            //Esto obtiene el archivo subido, el get var solo se usa para campos de texto.
+            $image = $this->request->getFile('image');
+
+            $nombre_imagen = $image->getRandomName();
+            $image->move(ROOTPATH.'assets/uploads', $nombre_imagen);
+
+            $data = [
                 'nombre_prod' => $this->request->getVar('nombre_producto'),
+                'imagen' => $image->getName(),
                 'categoria_id' => $this->request->getVar('categoria_id'),
                 'precio' => $this->request->getVar('precio'),
                 'precio_vta' => $this->request->getVar('precio-vta'),
                 'stock' => $this->request->getVar('stock'),
                 'stock_min' => $this->request->getVar('stock-min')
-            ]);
+            ];
+            
+            $formProducto = new Productos_model();
+            $formProducto->insert($data);
 
             session()->setFlashData('success', 'El producto se ingreso con exito');
             return redirect()->to('/alta-producto');
