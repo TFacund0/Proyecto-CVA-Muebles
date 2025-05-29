@@ -96,7 +96,7 @@
             
             <div class="d-flex justify-content-around mt-5">
                 <button type="submit" class="ms-2 me-3 w-50 btn btn-outline-primary">Enviar</button>
-                <a href="<?php echo base_url('/')?>" class="ms-3 me-2 w-50 btn btn-outline-danger">Salir</a>
+                <a href="<?php echo base_url('/crud-productos')?>" class="ms-3 me-2 w-50 btn btn-outline-danger">Salir</a>
             </div>
         </form>
 </div>

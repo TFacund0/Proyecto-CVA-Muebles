@@ -24,6 +24,10 @@ $routes->get('/login', 'LoginController::create');
 $routes->post('/enviar-login', 'LoginController::auth');
 $routes->get('/logout', 'LoginController::logout');
 
-// Rutas de opciones de producto
+// Rutas para el crud de productos
+$routes->get('/crud-productos', 'ProductoController::index');
+$routes->post('/crud-productos', 'ProductoController::index');
+
+// Rutas para el alta de producto
 $routes->get('/alta-producto', 'ProductoController::create_alta_producto');
 $routes->post('/enviar-alta-producto', 'ProductoController::formValidation');

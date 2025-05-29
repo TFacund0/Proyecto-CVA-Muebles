@@ -8,31 +8,34 @@ Use App\Models\Categorias_model;
 use CodeIgniter\Controller;
 
 class ProductoController extends BaseController {
-
     public function __construct() {
         helper(['url', 'form']);
         $session = session();
     }
 
     //mostrar los productos en lista
-    /*public function index() {
-        $productoModel = new Producto_model();
-        $data['producto'] = $productoModel->getProductoAll(); //funcion en el modelo
-
-        $dato['titulo'] = 'Crud_productos';
-        
-        return view('front/main', [
-            'title' => 'Alta Producto',
-            'content' => view('back/producto/productos_nuevos', $dato, $data)
-        ]);
-    }*/
-
-    public function create_alta_producto() {
-        $session = session();
-        $perfil = $session->get('perfil_id');
+    public function index() {
+        $perfil = session()->get('perfil_id');
 
         if ($perfil != 1) {
-            return redirect()->to('/');
+            return redirect()->to('/login');
+        }
+
+        $productoModel = new Productos_model();
+        $data['productos'] = $productoModel->getProductoAll(); //funcion en el modelo
+        $data['select'] = $this->request->getVar('option') ?? 10;
+
+        return view('front/main', [
+            'title' => 'Crud productos',
+            'content' => view('back/producto/crud_productos', $data),
+        ]);
+    }
+
+    public function create_alta_producto() {
+        $perfil = session()->get('perfil_id');
+
+        if ($perfil != 1) {
+            return redirect()->to('/login');
         }
         
         $categoriasModel = new Categorias_model();

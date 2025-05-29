@@ -18,6 +18,7 @@
     
     <link rel="stylesheet" href="assets/css/a-styles/registro.css">
     <link rel="stylesheet" href="assets/css/a-styles/login.css">
+    <link rel="stylesheet" href="assets/css/a-styles/back/crud_product.css">
     <link rel="stylesheet" href="assets/css/a-styles/back/alta_product.css">
 
     <link rel="stylesheet" href="assets/css/a-styles/carrusel.css">

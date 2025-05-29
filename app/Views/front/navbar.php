@@ -136,7 +136,7 @@
           <a class="nav-link" href="<?php echo base_url('/users-list')?>">CRUD Usuarios</a>
         </li>
         <li>
-          <a class="nav-link" href="<?php echo base_url('/product-list')?>">CRUD Productos</a>
+          <a class="nav-link" href="<?php echo base_url('/crud-productos')?>">CRUD Productos</a>
         </li>
         <li>
           <a class="nav-link" href="<?php echo base_url('/ventas-list')?>">Muestra Ventas</a>
