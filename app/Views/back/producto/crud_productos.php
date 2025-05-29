@@ -5,23 +5,25 @@
         <select class="form-select w-auto d-inline-block" name="option" id="option">
             <option selected disabled> 
                 <?php 
-                    if($select == 10) {
+                    if($select > 1 && $select < 10) {
+                        echo $select . ' productos';
+                    } elseif ($select == 10){
                         echo 'Todos';
                     } else {
-                        echo $select; 
+                        echo $select . ' producto';
                     }
                 ?> 
             </option>
             
-            <option value="1 producto">1 producto</option>
-            <option value="2 productos">2 productos</option>
-            <option value="3 productos">3 productos</option>
-            <option value="4 productos">4 productos</option>
-            <option value="5 productos">5 productos</option>
-            <option value="6 productos">6 productos</option>
-            <option value="7 productos">7 productos</option>
-            <option value="8 productos">8 productos</option>
-            <option value="9 productos">9 productos</option>
+            <option value="1">1 producto</option>
+            <option value="2">2 productos</option>
+            <option value="3">3 productos</option>
+            <option value="4">4 productos</option>
+            <option value="5">5 productos</option>
+            <option value="6">6 productos</option>
+            <option value="7">7 productos</option>
+            <option value="8">8 productos</option>
+            <option value="9">9 productos</option>
             <option value="Todos">Todos</option>
         </select>
 
@@ -46,9 +48,8 @@
                 
                 <?php $cant = 0;
                 foreach ($productos as $producto) {
-                    $cant = $cant + 1;
                     
-                    if($select >= $cant || $select == 10) {?>
+                    if($select > $cant || $select == 10) {?>
                         <tr class="text-black">
                             <td> <?php echo $producto['id_producto'] ?> </td>
                             <td> <?php echo $producto['nombre_prod'] ?> </td>
@@ -60,7 +61,8 @@
                             </td>
                             <td>Modificar - Eliminar</td>
                         </tr>
-                <?php }
+                <?php $cant = $cant + 1;
+                    }
                 }?>
 
             </tbody>

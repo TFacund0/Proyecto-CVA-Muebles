@@ -1,11 +1,10 @@
-
 .login-body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f5f5dc;
 }
 
 .login-container {
-    background-image: url('../../img/texturas/madera-claritaa.jpg');
+    background-image: url('../../../../img/texturas/madera-claritaa.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

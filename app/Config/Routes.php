@@ -19,6 +19,10 @@ $routes->get('/productos', 'Pages::productos');
 $routes->get('/registro', 'UsuarioController::create');
 $routes->post('/enviar-form', 'UsuarioController::formValidation');
 
+// Rutas para el crud del usuario
+$routes->get('/crud-usuarios', 'UsuarioController::index');
+$routes->post('/crud-usuarios', 'UsuarioController::index');
+
 // Rutas del login de Usuarios
 $routes->get('/login', 'LoginController::create');
 $routes->post('/enviar-login', 'LoginController::auth');

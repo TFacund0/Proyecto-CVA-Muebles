@@ -133,7 +133,7 @@
       
       <ul>
         <li>
-          <a class="nav-link" href="<?php echo base_url('/users-list')?>">CRUD Usuarios</a>
+          <a class="nav-link" href="<?php echo base_url('/crud-usuarios')?>">CRUD Usuarios</a>
         </li>
         <li>
           <a class="nav-link" href="<?php echo base_url('/crud-productos')?>">CRUD Productos</a>
