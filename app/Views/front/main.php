@@ -15,8 +15,12 @@
     <link rel="stylesheet" href="assets/css/a-styles/contacto.css">
     <link rel="stylesheet" href="assets/css/a-styles/comercializacion.css">
     <link rel="stylesheet" href="assets/css/a-styles/condiciones.css">
-    <link rel="stylesheet" href="assets/css/a-styles/registro.css">
-    <link rel="stylesheet" href="assets/css/a-styles/login.css">
+    
+    <link rel="stylesheet" href="assets/css/a-styles/back/usuario/registro.css">
+    <link rel="stylesheet" href="assets/css/a-styles/back/usuario/login.css">
+
+    <link rel="stylesheet" href="assets/css/a-styles/back/producto/crud_product.css">
+    <link rel="stylesheet" href="assets/css/a-styles/back/producto/alta_product.css">
 
     <link rel="stylesheet" href="assets/css/a-styles/carrusel.css">
     <link rel="stylesheet" href="assets/css/a-styles/section.css">

@@ -65,13 +65,13 @@ class LoginController extends BaseController {
                 return redirect()->to('/');
 
             }else{
-                $session->setFlashdata('msg', 'Password Incorrecta');
+                session()->setFlashdata('fallo_login', 'Contraseña Incorrecta');
                 return redirect()->to('/login');
             }
-
-        }else{
-            $session->setFlashdata('msg', 'No ingreso un email o el mismo es incorrecto');
-                return redirect()->to('/login');
+        }
+        else{
+            session()->setFlashdata('fallo_login', 'Email o nombre de usuario incorrectos');
+            return redirect()->to('/login');
         }
     }
 

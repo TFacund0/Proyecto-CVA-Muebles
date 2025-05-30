@@ -88,4 +88,20 @@ class UsuarioController extends BaseController {
             return $this->response->redirect(base_url('/login'));
         }
     }
+    public function index (){
+        $perfil = session()->get('perfil_id');
+        
+        if ($perfil != 1) {
+            return redirect()->to('/login');
+        }
+
+        $usuarios = new Usuarios_model();
+        $data['usuarios'] = $usuarios->getUsuariosAll();
+        $data['select'] = $this->request->getVar('option') ?? 10;
+
+        return view('front/main', [
+            'title' => 'Crud Usuarios',
+            'content' => view('back/usuario/crud_usuarios', $data),
+        ]);
+    }
 }

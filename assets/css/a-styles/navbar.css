@@ -15,9 +15,9 @@ nav .content-logo {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    color: white;
+    color: rgb(255, 255, 255);
 
-    border: 1px solid black;
+    border: 1px solid rgb(0, 0, 0);
     border-radius: 15%; 
     margin-left: 9px;
     margin-right: 5px;
@@ -29,10 +29,17 @@ nav .titulo-logo {
     font-weight: bold;
     text-decoration: none;
     color: rgb(0, 0, 0);
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.488); 
 }
 
 nav .titulo-logo:hover {
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.481); 
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.247); 
+}
+
+.titulo-perfil {
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.488); 
+    text-decoration: none;
+    color: rgb(0, 0, 0);
 }
 
 /* Estilo de íconos (como el carrito y el usuario) */

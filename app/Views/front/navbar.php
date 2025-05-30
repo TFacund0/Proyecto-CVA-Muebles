@@ -2,6 +2,7 @@
   $session = session();
   $nombre = $session->get('nombre');
   $perfil = $session->get('perfil_id');
+  $isLogged = $session->get('logged_in');
 ?>
 
 <!-- BARRA DE NAVEGACIÓN PRINCIPAL -->
@@ -16,17 +17,20 @@
     <!-- Título / Nombre de la marca -->
     <div>
       <a class="navbar-brand" href="<?= base_url('/') ?>">
-        <span class="titulo-logo">CVA Muebles</span>
+        <span class="ms-3 titulo-logo">CVA Muebles</span>
       </a>
-      
-      <?php if ($perfil == 1) { ?>
-        <h4 class="navbar-brand"> ADMIN: <?php echo $nombre?></h4>  
-      <?php } ?>
-      
-      <?php if ($perfil == 2) { ?>
-        <h4 class="navbar-brand"> Cliente: <?php echo $nombre?></h4>  
-      <?php } ?>
+
+      <?php if ($perfil == 1) {?>
+        <a class="titulo-perfil d-block btn btn-outline-light"><strong>Usuario:</strong> admin</a>
+      <?php } elseif ($perfil == 2) {?>
+        <a class="titulo-perfil d-block btn btn-outline-light"><strong>Usuario:</strong> cliente</a>
+      <?php }?>
     </div>
+
+    <?= csrf_field(); ?>
+    <?php if (!empty(session()->getFlashdata('sucess'))) {?>
+      <div class="alert alert-Primary"><?=session()->getFlashdata('sucess'); ?></div>
+    <?php }?>
 
     <!-- Botón del menú para dispositivos móviles -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" 
@@ -41,7 +45,7 @@
       <ul class="navbar-nav mx-auto text-lg-center text-end content-list">
         <!-- Ítem: Inicio -->
         <li class="nav-item">
-          <a class="btn btn-beige text-dark mx-1" href="<?= base_url('/logout') ?>">logout</a>
+          <a class="btn btn-beige text-dark mx-1" href="<?= base_url('/') ?>">Inicio</a>
         </li>
 
         <!-- Ítem: Productos -->
@@ -74,9 +78,15 @@
         </button>
         
         <!-- Botón de usuario / cuenta -->
-        <a class="btn btn-beige boton-links" href="<?= base_url('login') ?>">
-          <img src="assets/img/iconos/person.svg" alt="Registrarse" class="icono">
-        </a>
+        <?php if (!$isLogged) {?>
+                <a class="btn btn-beige boton-links" href="<?= base_url('login') ?>">
+                  <img src="assets/img/iconos/person.svg" alt="Registrarse" class="icono">
+                </a>
+        <?php } else {?>
+                <button class="btn btn-beige boton-links" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasPerfil" aria-controls="offcanvasScrolling">
+                  <img src="assets/img/iconos/person.svg" alt="Opciones de perfil de usuario" class="icono">
+                </button>
+        <?php }?>
 
       </div> <!-- Fin de content-account -->
 
@@ -99,8 +109,69 @@
     <ul>
       <li>Opcion 1</li>
       <li>Opcion 2</li>
-      <li>Opcion 3</li>
     </ul>
+  </div>
+
+</div> <!-- Fin del offcanvas -->
+
+
+<!-- MENÚ LATERAL (Offcanvas) para el perfil-->
+<div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasPerfil" aria-labelledby="offcanvasScrollingLabel">
+  
+  <!-- Encabezado del menú lateral -->
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Menu de Opciones</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+  </div>
+
+  <!-- Cuerpo del menú lateral -->
+  <div class="offcanvas-body">
+    <?php if($perfil == 1) {?>
+      <div class="btn btn-outline-primary btn-sm">
+        <a href="">Usuario: <?php echo $nombre?></a>
+      </div>
+      
+      <ul>
+        <li>
+          <a class="nav-link" href="<?php echo base_url('/crud-usuarios')?>">CRUD Usuarios</a>
+        </li>
+        <li>
+          <a class="nav-link" href="<?php echo base_url('/crud-productos')?>">CRUD Productos</a>
+        </li>
+        <li>
+          <a class="nav-link" href="<?php echo base_url('/ventas-list')?>">Muestra Ventas</a>
+        </li>
+        <li>
+          <a class="nav-link" href="<?php echo base_url('/lista-consultas')?>">Consultas</a>
+        </li>
+        <li>
+          <a class="nav-link" href="<?php echo base_url('/alta-producto')?>">Alta Productos</a>
+        </li>
+      </ul>
+    <?php } elseif ($perfil == 2) {?>
+      <div class="btn btn-outline-primary btn-sm">
+        <a href="">Cliente: <?php echo $nombre?></a>
+      </div>
+
+      <ul>
+        <li>
+          <a class="nav-link" href="<?php echo base_url('users-list')?>">Mis productos</a>
+        </li>
+        <li>
+          <a class="nav-link" href="<?php echo base_url('product-list')?>">Perfil</a>
+        </li>
+        <li>
+          <a class="nav-link" href="<?php echo base_url('ventas-list')?>">Carrito</a>
+        </li>
+        <li>
+          <a class="nav-link" href="<?php echo base_url('lista-consultas')?>"></a>
+        </li>
+      </ul>
+    <?php }?>
+
+    <div class="">
+      <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="<?= base_url('/logout') ?>">Cerrar sesión</a>
+    </div>
   </div>
 
 </div> <!-- Fin del offcanvas -->
