@@ -11,16 +11,7 @@ class LoginController extends BaseController {
     }
 
     public function create() {
-                session_start();
-
-    if (isset($_SESSION['usuario'])) {
-    // El usuario tiene sesión iniciada
-            echo "Bienvenido, " . $_SESSION['usuario']['nombre'];
-        } else {
-    // El usuario no ha iniciado sesión
-            header("Location: login.php"); // redirigir a login
-            exit();
-        }
+                
         return view('front/main', [
             'title' => 'Login',
             'content' => view('back/usuario/login')

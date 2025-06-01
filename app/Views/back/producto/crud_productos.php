@@ -29,6 +29,14 @@
 
         <button type="submit" class="btn btn-outline-primary" href="<?php echo base_url('/crud-productos') ?>">Actualizar</button>
         <a class="btn btn-outline-primary" href="<?php echo base_url('/alta-producto') ?>">Agregar</a>
+        <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="vista" id="activos" value="NO" <?= ($vista == 'NO') ? 'checked' : '' ?>>
+    <label class="form-check-label" for="activos">Activos</label>
+</div>
+<div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="vista" id="eliminados" value="SI" <?= ($vista == 'SI') ? 'checked' : '' ?>>
+    <label class="form-check-label" for="eliminados">Eliminados</label>
+</div>
     </form>
 
     <div class="table-responsive">
@@ -49,7 +57,7 @@
                 <?php $cant = 0;
                 foreach ($productos as $producto) {
                     
-                    if($select > $cant || $select == 10) {?>
+                    if(($select > $cant || $select == 10) && ($producto['eliminado'] == $vista)) {?>
                         <tr class="text-black">
                             <td> <?php echo $producto['id_producto'] ?> </td>
                             <td> <?php echo $producto['nombre_prod'] ?> </td>
@@ -59,7 +67,15 @@
                             <td class="text-center" style="width: 250px;">
                                 <img src="<?= base_url('assets/uploads/' . $producto['imagen']) ?>" alt="Imagen producto" class="img-thumbnail" style="max-width: 200px; height: auto;">
                             </td>
-                            <td>Modificar - Eliminar</td>
+                            
+                            <td>
+                                <a class="btn btn-outline-primary" href="<?= base_url('/editar-producto/' . $producto['id_producto'] . '?vista=' . $vista) ?>">Modificar</a>
+                            <?php if($vista == 'NO')  {?>
+                                <a class="btn btn-outline-danger" href="<?= base_url('/delete-producto/' . $producto['id_producto'] . '?vista=' . $vista) ?>">Eliminar</a>
+                            <?php }elseif($vista == 'SI')  {?>
+                                <a class="btn btn-outline-success" href="<?= base_url('/activar-producto/' . $producto['id_producto'] . '?vista=' . $vista) ?>">Activar</a> 
+                                <?php } ?>
+                            </td>
                         </tr>
                 <?php $cant = $cant + 1;
                     }

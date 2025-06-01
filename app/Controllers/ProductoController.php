@@ -22,8 +22,12 @@ class ProductoController extends BaseController {
         }
 
         $productoModel = new Productos_model();
-        $data['productos'] = $productoModel->getProductoAll(); //funcion en el modelo
+        
+        $vista = $this->request->getVar('vista') ?? 'NO'; // 'NO' para activos, 'SI' para eliminados
+
+        $data['productos'] = $productoModel->where('eliminado', $vista)->findAll(); //funcion en el modelo
         $data['select'] = $this->request->getVar('option') ?? 10;
+        $data['vista'] = $vista;
 
         return view('front/main', [
             'title' => 'Crud productos',
@@ -120,5 +124,30 @@ class ProductoController extends BaseController {
             session()->setFlashData('success', 'El producto se ingreso con exito');
             return redirect()->to('/alta-producto');
         }
+    }
+
+    public function delete_producto($id) {
+        $productoModel = new Productos_model();
+        $data = ['eliminado' => 'SI'];
+        $productoModel->update($id, $data);
+        
+        $vista = $this->request->getGet('vista') ?? 'NO'; // Obtiene ?vista=SI o NO
+
+    // Redirige y mantiene la vista en el formulario principal
+        return redirect()->to('/crud-productos?vista=' . $vista);
+    }
+
+    
+
+    public function activar_producto($id) {
+        $productoModel = new Productos_model();
+        $data = ['eliminado' => 'NO'];
+        $productoModel->update($id, $data);
+        $productoModel->update($id, $data);
+
+         $vista = $this->request->getGet('vista') ?? 'SI'; // Obtiene ?vista=SI o NO
+
+    // Redirige y mantiene la vista en el formulario principal
+        return redirect()->to('/crud-productos?vista=' . $vista);
     }
 }
