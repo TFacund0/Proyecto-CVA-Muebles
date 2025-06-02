@@ -1,0 +1,50 @@
+#contenedor-config-perfil {
+    border-radius: 15px;
+    box-shadow: 0 0 10px black;
+    border: 1px solid black;
+    overflow: hidden; /* Para evitar desbordes */
+    background-color: rgb(239, 239, 239) !important;
+}
+
+.bloque-titulo-perfil {
+    background: linear-gradient(to left, rgb(166, 166, 166), rgb(248, 248, 248));
+    border-radius: 30px;
+    border: 1px solid black;
+}
+
+.bloque-info-perfil {
+    border: 1px solid black;
+    border-radius: 15px;
+}
+
+.img-perfil {
+    width: 170px;        
+    height: 150px;       
+    object-fit: cover;   
+    border-radius: 50%;  
+    border: 1px solid #000000;
+    box-shadow: 0 0 5px black;
+}
+
+.img-perfil:hover {
+    box-shadow: 0 0 8px black;
+}
+
+.form-datos-perfil {
+    border: 1px solid black;
+}
+
+.form-perfil input {
+    width: 100%; /* Para que se ajuste automáticamente */
+}
+
+.form-title-perfil {
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 1px solid black;
+}
+
+.info-perfil label {
+    font-weight: bold;
+    color: rgb(98, 98, 98);
+}

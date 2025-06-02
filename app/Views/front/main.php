@@ -18,6 +18,7 @@
     
     <link rel="stylesheet" href="assets/css/a-styles/back/usuario/registro.css">
     <link rel="stylesheet" href="assets/css/a-styles/back/usuario/login.css">
+    <link rel="stylesheet" href="assets/css/a-styles/back/usuario/perfil_config.css">
 
     <link rel="stylesheet" href="assets/css/a-styles/back/producto/crud_product.css">
     <link rel="stylesheet" href="assets/css/a-styles/back/producto/alta_product.css">

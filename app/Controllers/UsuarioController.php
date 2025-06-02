@@ -11,7 +11,7 @@ class UsuarioController extends BaseController {
         helper(['form', 'url']);
     }
 
-    public function create() {
+    public function index_registrar() {
         return view('front/main', [
             'title' => 'Registro',
             'content' => view('back/usuario/registro')
@@ -103,5 +103,69 @@ class UsuarioController extends BaseController {
             'title' => 'Crud Usuarios',
             'content' => view('back/usuario/crud_usuarios', $data),
         ]);
+    }
+
+    public function index_perfil() {
+        $perfil = session()->get('perfil_id');
+
+        if ($perfil !=2 && $perfil != 1) {
+            return redirect()->to('/login');
+        }
+
+        return view('front/main', [
+            'title' => 'Configuracion Perfil',
+            'content' => view('back/usuario/perfil_config'),
+        ]);
+    }
+
+    public function guardarCambios()
+    {
+        $usuarioModel = new Usuarios_Model();
+
+        // Datos del formulario
+        $username = $this->request->getPost('username');
+        $nombre   = $this->request->getPost('name');
+        $apellido = $this->request->getPost('surname');
+        $email    = $this->request->getPost('email');
+
+        // Buscar el usuario por username y email
+        $usuario = $usuarioModel
+            ->where('usuario', $username)
+            ->where('email', $email)
+            ->first();
+
+        if (!$usuario) {
+            return redirect()->back()->with('error', 'Usuario no encontrado con ese nombre y correo.');
+        }
+
+        $userId = $usuario['id_usuario']; // Obtenemos el ID
+
+        // Subida de imagen
+        $image = $this->request->getFile('image');
+        $nombre_imagen = null;
+
+        if ($image && $image->isValid() && !$image->hasMoved()) {
+            $nombre_imagen = $image->getRandomName();
+            $image->move(ROOTPATH.'assets/uploads/perfil', $nombre_imagen);
+        }
+
+        // Preparar datos para guardar
+        $data = [
+            'username' => $username,
+            'nombre' => $nombre,
+            'apellido' => $apellido,
+            'email' => $email,
+            'imagen' => $nombre_imagen,
+        ];
+
+        if ($nombre_imagen !== null) {
+            $data['imagen'] = $nombre_imagen;
+        }
+
+        // Actualizar en la base de datos
+        $usuarioModel->update($userId, $data);
+        session()->set('imagen', $nombre_imagen);
+
+        return redirect()->to('/perfil')->with('success', 'Perfil actualizado correctamente');
     }
 }

@@ -21,9 +21,9 @@
       </a>
 
       <?php if ($perfil == 1) {?>
-        <a class="titulo-perfil d-block btn btn-outline-light"><strong>Usuario:</strong> admin</a>
+        <a class="titulo-perfil d-block btn btn-outline-light" href="<?php echo base_url('/perfil') ?>" ><strong>Usuario:</strong> admin</a>
       <?php } elseif ($perfil == 2) {?>
-        <a class="titulo-perfil d-block btn btn-outline-light"><strong>Usuario:</strong> cliente</a>
+        <a class="titulo-perfil d-block btn btn-outline-light" href="<?php echo base_url('/perfil') ?>"><strong>Usuario:</strong> cliente</a>
       <?php }?>
     </div>
 
@@ -158,7 +158,7 @@
           <a class="nav-link" href="<?php echo base_url('users-list')?>">Mis productos</a>
         </li>
         <li>
-          <a class="nav-link" href="<?php echo base_url('product-list')?>">Perfil</a>
+          <a class="nav-link" href="<?php echo base_url('perfil')?>">Perfil</a>
         </li>
         <li>
           <a class="nav-link" href="<?php echo base_url('ventas-list')?>">Carrito</a>

@@ -14,19 +14,22 @@ $routes->get('/informacionContacto', 'Pages::informacionContacto');
 $routes->get('/terminosYCondiciones', 'Pages::terminosYCondiciones');
 $routes->get('/productos', 'Pages::productos');
 
-
 // Rutas del Registro de Usuarios
-$routes->get('/registro', 'UsuarioController::create');
+$routes->get('/registro', 'UsuarioController::index_registrar');
 $routes->post('/enviar-form', 'UsuarioController::formValidation');
-
-// Rutas para el crud del usuario
-$routes->get('/crud-usuarios', 'UsuarioController::index');
-$routes->post('/crud-usuarios', 'UsuarioController::index');
 
 // Rutas del login de Usuarios
 $routes->get('/login', 'LoginController::create');
 $routes->post('/enviar-login', 'LoginController::auth');
 $routes->get('/logout', 'LoginController::logout');
+
+// Rutas para el crud del usuario
+$routes->get('/crud-usuarios', 'UsuarioController::index');
+$routes->post('/crud-usuarios', 'UsuarioController::index');
+
+// Rutas para la configuracion del perfil del usuario
+$routes->get('/perfil', 'UsuarioController::index_perfil');
+$routes->post('/guardarCambios', 'UsuarioController::guardarCambios');
 
 // Rutas para el crud de productos
 $routes->get('/crud-productos', 'ProductoController::index');
