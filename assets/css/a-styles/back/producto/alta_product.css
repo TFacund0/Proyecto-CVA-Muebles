@@ -1,14 +1,23 @@
+/* === Contenedor Principal del Formulario === */
 #alta-producto-contenedor {
-    background-color: rgb(42, 42, 42);
-    color: rgb(255, 255, 255);
-    border: 1px solid rgb(122, 122, 255);
-    box-shadow: inset 0 0 10px rgb(39, 169, 255);
+    background-color: rgb(42, 42, 42); /* Fondo oscuro */
+    color: rgb(255, 255, 255); /* Texto blanco */
+    border: 1px solid rgb(122, 122, 255); /* Borde azul claro */
+    box-shadow: inset 0 0 10px rgb(39, 169, 255); /* Sombra interior azul */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 2rem; /* Espaciado interno */
+    transition: all 0.3s ease; /* Transición suave en cambios */
 }
 
+/* === Contenedor Secundario === */
 .alta-producto-container {
-    box-shadow: 0 0 10px rgb(0, 0, 0);
+    box-shadow: 0 0 10px rgb(0, 0, 0); /* Sombra exterior negra */
+    border-radius: 10px; /* Bordes redondeados */
 }
 
+/* === Título del Formulario === */
 .titulo-form-alta-producto {
-    text-shadow: 0 0 10px rgb(255, 255, 255);
+    text-shadow: 0 0 10px rgb(255, 255, 255); /* Sombra blanca al texto */
+    font-weight: bold; /* Texto en negrita */
+    font-size: 1.8rem; /* Tamaño grande */
 }

@@ -1,50 +1,60 @@
+/* Contenedor principal de la configuración del perfil */
 #contenedor-config-perfil {
-    border-radius: 15px;
-    box-shadow: 0 0 10px black;
-    border: 1px solid black;
-    overflow: hidden; /* Para evitar desbordes */
-    background-color: rgb(239, 239, 239) !important;
+    border-radius: 15px; /* Bordes redondeados para suavizar */
+    box-shadow: 0 0 10px black; /* Sombra alrededor para dar profundidad */
+    border: 1px solid black; /* Borde negro delgado */
+    overflow: hidden; /* Evita que elementos hijos se desborden */
+    background-color: rgb(239, 239, 239) !important; /* Fondo gris claro con prioridad */
 }
 
+/* Bloque que contiene el título del perfil */
 .bloque-titulo-perfil {
+    /* Fondo con degradado horizontal de gris medio a gris muy claro */
     background: linear-gradient(to left, rgb(166, 166, 166), rgb(248, 248, 248));
-    border-radius: 30px;
-    border: 1px solid black;
+    border-radius: 30px; /* Bordes muy redondeados para efecto suavizado */
+    border: 1px solid black; /* Borde negro para delimitar */
 }
 
+/* Bloque que contiene la información detallada del perfil */
 .bloque-info-perfil {
-    border: 1px solid black;
-    border-radius: 15px;
+    border: 1px solid black; /* Borde negro para separar visualmente */
+    border-radius: 15px; /* Bordes ligeramente redondeados */
 }
 
+/* Imagen del perfil */
 .img-perfil {
-    width: 170px;        
-    height: 150px;       
-    object-fit: cover;   
-    border-radius: 50%;  
-    border: 1px solid #000000;
-    box-shadow: 0 0 5px black;
+    width: 170px;         /* Ancho fijo para uniformidad */
+    height: 150px;        /* Alto fijo para uniformidad */
+    object-fit: cover;    /* La imagen cubre el área sin distorsión */
+    border-radius: 50%;   /* Imagen circular */
+    border: 1px solid #000000; /* Borde negro delgado */
+    box-shadow: 0 0 5px black; /* Sombra suave para destacar */
 }
 
+/* Efecto hover en la imagen del perfil para aumentar la sombra */
 .img-perfil:hover {
-    box-shadow: 0 0 8px black;
+    box-shadow: 0 0 8px black; /* Sombra más intensa al pasar el mouse */
 }
 
+/* Formulario que contiene los datos del perfil */
 .form-datos-perfil {
-    border: 1px solid black;
+    border: 1px solid black; /* Borde negro delimitador */
 }
 
+/* Inputs dentro del formulario del perfil */
 .form-perfil input {
-    width: 100%; /* Para que se ajuste automáticamente */
+    width: 100%; /* Inputs se ajustan al ancho completo del contenedor */
 }
 
+/* Título dentro del formulario del perfil */
 .form-title-perfil {
-    font-weight: bold;
-    text-align: center;
-    border-bottom: 1px solid black;
+    font-weight: bold; /* Texto en negrita */
+    text-align: center; /* Centrado horizontal */
+    border-bottom: 1px solid black; /* Línea inferior para separar título */
 }
 
+/* Labels en la información del perfil */
 .info-perfil label {
-    font-weight: bold;
-    color: rgb(98, 98, 98);
+    font-weight: bold; /* Texto en negrita para destacar etiquetas */
+    color: rgb(98, 98, 98); /* Color gris oscuro para texto */
 }

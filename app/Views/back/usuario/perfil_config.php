@@ -1,28 +1,33 @@
 <?php
+    // Obtener datos del perfil del usuario desde la sesión
     $name = session()->get('nombre');
     $username = session()->get('usuario');
     $surname = session()->get('apellido');
     $email = session()->get('email');
     $profile = session()->get('perfil_id');
     $image = session()->get('imagen');
-    $imagePath = $image ? base_url('assets/uploads/perfil/' . $image) : base_url('assets/img/iconos/person.svg');    
+
+    // Determinar la ruta de la imagen de perfil (usar imagen por defecto si no hay personalizada)
+    $imagePath = $image ? base_url('assets/uploads/perfil/' . $image) : base_url('assets/img/iconos/person.svg');
 ?>
 
 <div class="container my-3 px-4 py-5" id="contenedor-config-perfil">
     <div class="px-3">
+
+        <!-- Título y resumen del perfil -->
         <div class="d-flex justify-content-between align-items-center bloque-titulo-perfil m-2 p-3">
             <div class="d-flex">
+                <!-- Imagen superior del perfil -->
                 <div class="me-4">
-                    <!-- Imagen de arriba (principal) -->
                     <img src="<?= $imagePath ?>" alt="foto" class="img-perfil" id="imgPerfilPreviewSuperior">
                 </div>
-                
                 <div class="my-auto">
-                    <h4><?php echo $name . ' ' . $surname?></h4>
+                    <h4><?= $name . ' ' . $surname ?></h4>
                     <p class="text-secondary"><?= $email ?></p>
                 </div>
             </div>
 
+            <!-- Mensajes de éxito o error -->
             <?php if (session()->getFlashdata('success')): ?>
                 <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
             <?php endif; ?>
@@ -31,76 +36,80 @@
                 <div class="alert alert-danger"><?= session()->getFlashdata('fail') ?></div>
             <?php endif; ?>
 
+            <!-- Botones de acción -->
             <div class="d-flex gap-2">
                 <button type="button" class="btn btn-primary" id="btnEditar">Editar</button>
                 <button type="button" class="btn btn-secondary d-none" id="btnCancelar">Cancelar</button>
             </div>
         </div>
 
+        <!-- Formulario de perfil -->
         <form class="row mt-4 mx-auto form-perfil me-3" id="formPerfil" method="post" action="<?= base_url('/guardarCambios') ?>" enctype="multipart/form-data">
-            <div class="col-lg-9 col-md-12">    
+            <!-- Columna principal (datos personales) -->
+            <div class="col-lg-9 col-md-12">
                 <div class="col-12 card form-datos-perfil mb-3">
                     <div class="card-body">
                         <h5 class="card-title form-title-perfil mb-3 pb-2">Datos personales</h5>
-                    
+
+                        <!-- Campo: Nombre de usuario -->
                         <div class="mb-3 info-perfil">
                             <label for="username" class="form-label">Nombre de Usuario</label>
-                            <input type="text" name="username" class="form-control" id="username" placeholder="<?php echo $username?>" value="<?php echo $username?>" disabled>
+                            <input type="text" name="username" class="form-control" id="username" placeholder="<?= $username ?>" value="<?= $username ?>" disabled>
                             <div class="form-text text-muted">Este nombre se usa para iniciar sesión.</div>
                         </div>
 
+                        <!-- Campo: Nombre -->
                         <div class="mb-3 info-perfil">
                             <label for="nombre" class="form-label">Nombre</label>
-                            <input type="text" name="name" class="form-control" id="nombre" placeholder="<?php echo $name?>" value="<?php echo $name?>" disabled>
+                            <input type="text" name="name" class="form-control" id="nombre" placeholder="<?= $name ?>" value="<?= $name ?>" disabled>
                         </div>
 
+                        <!-- Campo: Apellido -->
                         <div class="mb-3 info-perfil">
                             <label for="Apellido" class="form-label">Apellido</label>
-                            <input type="text" name="surname" class="form-control" id="Apellido" placeholder="<?php echo $surname?>" value="<?php echo $surname?>" disabled>
+                            <input type="text" name="surname" class="form-control" id="Apellido" placeholder="<?= $surname ?>" value="<?= $surname ?>" disabled>
                         </div>
 
+                        <!-- Campo: Email -->
                         <div class="mb-3 info-perfil">
-                            <label for="email" class="form-label">Email address</label>
-                            <input type="email" name="email" class="form-control" id="email" placeholder="<?php echo $email?>" value="<?php echo $email?>" disabled>
-                            <small class="form-text text-muted">Este correo se usa para iniciar sessión.</small>
+                            <label for="email" class="form-label">Correo electrónico</label>
+                            <input type="email" name="email" class="form-control" id="email" placeholder="<?= $email ?>" value="<?= $email ?>" disabled>
+                            <small class="form-text text-muted">Este correo se usa para iniciar sesión.</small>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
+            <!-- Columna lateral (perfil y foto) -->
             <div class="col-lg-3 col-md-12 card mb-3">
                 <h5 class="card-title form-title-perfil pb-2 my-3">Información</h5>
-                
+
+                <!-- Campo: Perfil de usuario -->
                 <div class="text-center info-perfil mb-4">
                     <label class="form-label fw-semibold mb-2" for="perfil">Perfil</label>
-                    
                     <div class="border rounded px-3 py-2 bg-light text-secondary" id="perfil" style="font-size: 1rem;">
                         <?= $profile == 1 ? 'Admin' : ($profile == 2 ? 'Cliente' : 'Desconocido') ?>
                     </div>
-                    
                     <small class="form-text text-muted mt-2">Describe tu rol dentro del sistema.</small>
                 </div>
 
+                <!-- Imagen inferior del perfil y carga de nueva imagen -->
                 <div class="my-auto mb-5">
                     <div class="text-center mb-2">
-                        <!-- Imagen de abajo (dentro de tarjeta lateral) -->
-                        <div class="mx-auto " style="width: 250px; height: 175px; overflow: hidden;">
-                            <img src="<?= $imagePath ?>"
-                                alt="foto" 
-                                class="img-thumbnail img-fluid" 
-                                id="imgPerfilPreviewInferior"
-                                style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
+                        <div class="mx-auto" style="width: 250px; height: 175px; overflow: hidden;">
+                            <img src="<?= $imagePath ?>" alt="foto" class="img-thumbnail img-fluid" id="imgPerfilPreviewInferior" style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
                         </div>
-
-                        <!-- Campo para cambiar imagen -->
+                        <!-- Selector de archivo para cambiar imagen -->
                         <input class="form-control form-control-sm mt-2" id="formFileSm" name="image" type="file" disabled>
                     </div>
                 </div>
-
             </div>
+
+            <!-- Botón de guardar (solo visible en modo edición) -->
             <button type="submit" class="btn btn-success d-none w-50 mx-auto" id="btnGuardar">Guardar</button>
         </form>
 
+        <!-- Script de interacciones (modo edición, imagen, etc.) -->
         <script>
             document.addEventListener('DOMContentLoaded', function () {
                 const btnEditar = document.getElementById('btnEditar');
@@ -111,29 +120,30 @@
                 const imgPreviewSuperior = document.getElementById('imgPerfilPreviewSuperior');
                 const imgPreviewInferior = document.getElementById('imgPerfilPreviewInferior');
 
+                // Activar edición
                 btnEditar.addEventListener('click', function () {
                     formInputs.forEach(input => {
                         input.disabled = false;
                         input.readOnly = false;
                     });
-
                     btnEditar.classList.add('d-none');
                     btnGuardar.classList.remove('d-none');
                     btnCancelar.classList.remove('d-none');
                 });
 
+                // Cancelar edición
                 btnCancelar.addEventListener('click', function () {
                     formInputs.forEach(input => {
                         input.disabled = true;
                         input.readOnly = true;
                     });
-
+                    fileInput.value = ""; // Limpiar selector de archivos
                     btnEditar.classList.remove('d-none');
                     btnGuardar.classList.add('d-none');
                     btnCancelar.classList.add('d-none');
                 });
 
-                // ✅ Mostrar imagen en ambas vistas
+                // Mostrar vista previa de imagen en tiempo real
                 fileInput.addEventListener('change', function (event) {
                     const file = event.target.files[0];
                     if (file && file.type.startsWith('image/')) {
@@ -146,8 +156,7 @@
                     }
                 });
             });
-            </script>
-
+        </script>
 
     </div>
 </div>
