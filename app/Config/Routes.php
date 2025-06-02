@@ -38,3 +38,6 @@ $routes->post('/crud-productos', 'ProductoController::index');
 // Rutas para el alta de producto
 $routes->get('/alta-producto', 'ProductoController::create_alta_producto');
 $routes->post('/enviar-alta-producto', 'ProductoController::formValidation');
+$routes->get('/delete-producto/(:num)', 'ProductoController::delete_producto/$1');
+$routes->get('/activar-producto/(:num)', 'ProductoController::activar_producto/$1');
+$routes->get('/ver-eliminados', 'ProductoController::eliminados');

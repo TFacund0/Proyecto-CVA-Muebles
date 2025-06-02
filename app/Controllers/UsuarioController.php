@@ -123,22 +123,10 @@ class UsuarioController extends BaseController {
         $usuarioModel = new Usuarios_Model();
 
         // Datos del formulario
-        $username = $this->request->getPost('username');
-        $nombre   = $this->request->getPost('name');
-        $apellido = $this->request->getPost('surname');
-        $email    = $this->request->getPost('email');
-
-        // Buscar el usuario por username y email
-        $usuario = $usuarioModel
-            ->where('usuario', $username)
-            ->where('email', $email)
-            ->first();
-
-        if (!$usuario) {
-            return redirect()->back()->with('error', 'Usuario no encontrado con ese nombre y correo.');
-        }
-
-        $userId = $usuario['id_usuario']; // Obtenemos el ID
+        $username = $this->request->getVar('username');
+        $nombre   = $this->request->getVar('name');
+        $apellido = $this->request->getVar('surname');
+        $email    = $this->request->getVar('email');
 
         // Subida de imagen
         $image = $this->request->getFile('image');
@@ -149,13 +137,28 @@ class UsuarioController extends BaseController {
             $image->move(ROOTPATH.'assets/uploads/perfil', $nombre_imagen);
         }
 
+        // Buscar el usuario por username y email
+        $session = session();
+        $nombre_usuario = $session->get('usuario');
+        $correo = $session->get('email');
+
+        $usuario = $usuarioModel
+            ->where('usuario', $nombre_usuario)
+            ->where('email', $correo)
+            ->first();
+
+        if (!$usuario) {
+            return redirect()->back()->with('fail', 'Usuario no encontrado con ese nombre y correo.');
+        }
+
+        $userId = $usuario['id_usuario']; // Obtenemos el ID
+
         // Preparar datos para guardar
         $data = [
-            'username' => $username,
+            'usuario' => $username,
             'nombre' => $nombre,
             'apellido' => $apellido,
             'email' => $email,
-            'imagen' => $nombre_imagen,
         ];
 
         if ($nombre_imagen !== null) {
@@ -164,7 +167,7 @@ class UsuarioController extends BaseController {
 
         // Actualizar en la base de datos
         $usuarioModel->update($userId, $data);
-        session()->set('imagen', $nombre_imagen);
+        session()->set($data);
 
         return redirect()->to('/perfil')->with('success', 'Perfil actualizado correctamente');
     }

@@ -18,10 +18,18 @@
                 </div>
                 
                 <div class="my-auto">
-                    <h4>Nombre y Apellido</h4>
-                    <p class="text-secondary">CorreoElectronico@gmail.com</p>
+                    <h4><?php echo $name . ' ' . $surname?></h4>
+                    <p class="text-secondary"><?= $email ?></p>
                 </div>
             </div>
+
+            <?php if (session()->getFlashdata('success')): ?>
+                <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
+            <?php endif; ?>
+
+            <?php if (session()->getFlashdata('fail')): ?>
+                <div class="alert alert-danger"><?= session()->getFlashdata('fail') ?></div>
+            <?php endif; ?>
 
             <div class="d-flex gap-2">
                 <button type="button" class="btn btn-primary" id="btnEditar">Editar</button>

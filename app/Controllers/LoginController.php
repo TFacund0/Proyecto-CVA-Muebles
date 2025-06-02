@@ -45,13 +45,14 @@ class LoginController extends BaseController {
                     'apellido' => $data['apellido'],
                     'email' => $data['email'],
                     'usuario' => $data['usuario'],
+                    'imagen' => $data['imagen'],
                     'perfil_id' => $data['perfil_id'],
                     'logged_in' => TRUE
                 ];
 
                 $session->set($ses_data);
 
-                session()->setFlashdata('msg_bienvenida', 'Bienvenido');
+                session()->setFlashdata('msg', 'Bienvenido');
                 return redirect()->to('/');
 
             }else{
