@@ -14,4 +14,29 @@ class Productos_model extends Model
                     ->join('categorias', 'categorias.id_categoria = productos.categoria_id')
                     ->findAll();
     }
+
+    public function getBuilderProductos() {
+        $db = \Config\Database::conect();
+        $builder = $db->table('productos');
+        $builder->select('*');
+        $builder->join('categorias', 'categorias.id = productos.categoria_id');
+        
+        return $builder;
+    }
+
+    public function getProducto($id = null) {
+        $builder = $this->getBuilderProductos();
+        $builder->where('productos.id', $id);
+        $query = $builder->get();
+
+        return $query->getRowArray();
+    }
+
+    public function updateStock($id = null, $stock = null) {
+        $builder = $this->getBuilderProductos();
+        $builder->where('productos.id', $id);
+        $builder->set('productos.stock', $stock);
+        
+        $builder->update();
+    }
 }
