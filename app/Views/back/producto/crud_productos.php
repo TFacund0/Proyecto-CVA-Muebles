@@ -95,7 +95,7 @@
                             
                             <!-- Acciones: modificar, eliminar o activar -->
                             <td>
-                                <a class="btn btn-outline-primary" href="<?= base_url('/editar-producto/' . $producto['id_producto'] . '?vista=' . $vista) ?>">Modificar</a>
+                                <a class="btn btn-outline-primary" href="<?= base_url('/editar-producto/' . $producto['id_producto'] ) ?>">editar</a>
                                 
                                 <!-- Botón condicional según estado del producto -->
                                 <?php if($vista == 'NO')  {?>

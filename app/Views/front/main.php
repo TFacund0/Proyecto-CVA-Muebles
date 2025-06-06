@@ -22,6 +22,7 @@
 
     <link rel="stylesheet" href="assets/css/a-styles/back/producto/crud_product.css">
     <link rel="stylesheet" href="assets/css/a-styles/back/producto/alta_product.css">
+    <link rel="stylesheet" href="assets/css/a-styles/back/producto/editar_product.css">
 
     <link rel="stylesheet" href="assets/css/a-styles/carrusel.css">
     <link rel="stylesheet" href="assets/css/a-styles/section.css">

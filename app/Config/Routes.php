@@ -40,4 +40,6 @@ $routes->get('/alta-producto', 'ProductoController::create_alta_producto');
 $routes->post('/enviar-alta-producto', 'ProductoController::formValidation');
 $routes->get('/delete-producto/(:num)', 'ProductoController::delete_producto/$1');
 $routes->get('/activar-producto/(:num)', 'ProductoController::activar_producto/$1');
+$routes->get('/editar-producto/(:num)', 'ProductoController::editar_producto/$1');
+$routes->post('/modificar-producto/(:num)', 'ProductoController::modificar_producto/$1');
 $routes->get('/ver-eliminados', 'ProductoController::eliminados');

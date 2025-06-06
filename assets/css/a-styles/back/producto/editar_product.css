@@ -1,0 +1,65 @@
+.editar-prod-contenedor {
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Título del formulario */
+.editar-prod-titulo {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Labels */
+.editar-prod-label {
+    font-weight: 500;
+    color: #555;
+}
+
+/* Inputs y selects */
+.editar-prod-input,
+.editar-prod-select,
+.editar-prod-file {
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.editar-prod-input:focus,
+.editar-prod-select:focus,
+.editar-prod-file:focus {
+    border-color: #28a745;
+    outline: none;
+    box-shadow: 0 0 5px rgba(40, 167, 69, 0.2);
+}
+
+/* Imagen previa */
+.editar-prod-img {
+    border: 1px solid #ddd;
+    padding: 5px;
+    border-radius: 6px;
+    background-color: #fff;
+}
+
+/* Botones */
+.editar-prod-btn-guardar,
+.editar-prod-btn-cancelar {
+    border-radius: 8px;
+    font-weight: 500;
+    padding: 10px 20px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.editar-prod-btn-guardar:hover {
+    background-color: #198754;
+    color: #fff;
+}
+
+.editar-prod-btn-cancelar:hover {
+    background-color: #dc3545;
+    color: #fff;
+}
