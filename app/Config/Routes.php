@@ -34,10 +34,16 @@ $routes->post('/guardarCambios', 'UsuarioController::guardarCambios');
 // Rutas para el crud de productos
 $routes->get('/crud-productos', 'ProductoController::index');
 $routes->post('/crud-productos', 'ProductoController::index');
+$routes->get('/ver-eliminados', 'ProductoController::eliminados');
 
 // Rutas para el alta de producto
 $routes->get('/alta-producto', 'ProductoController::create_alta_producto');
 $routes->post('/enviar-alta-producto', 'ProductoController::formValidation');
+
+// Rutas para eliminar el producto
 $routes->get('/delete-producto/(:num)', 'ProductoController::delete_producto/$1');
 $routes->get('/activar-producto/(:num)', 'ProductoController::activar_producto/$1');
-$routes->get('/ver-eliminados', 'ProductoController::eliminados');
+
+// Rutas para editar el producto
+$routes->get('/editar-producto/(:num)', 'ProductoController::index_editar_producto/$1');
+$routes->post('modificar-producto/(:num)', 'ProductoController::modificar_producto/$1');
