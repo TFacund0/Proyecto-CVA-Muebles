@@ -140,11 +140,11 @@
           </ul>
 
         <?php } elseif ($perfil == 2) {?>
-          <div class="btn btn-outline-primary btn-sm">
+          <div class="btn usuario-boton-lateral">
             <a href="<?php echo base_url('/perfil')?>">Cliente: <?php echo $nombre?></a>
           </div>
 
-          <ul>
+          <ul class="list-unstyled">
             <li><a class="nav-link" href="<?php echo base_url('perfil')?>">Perfil</a></li>  
             <li><a class="nav-link" href="<?php echo base_url('ventas-list')?>">Carrito</a></li>
             <li><a class="nav-link" href="<?php echo base_url('users-list')?>">Mis productos</a></li>
