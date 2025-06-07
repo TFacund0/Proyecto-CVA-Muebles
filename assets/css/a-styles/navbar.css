@@ -74,6 +74,126 @@ nav .icono {
     border: none !important;
 }
 
+/* ---------------- Menu Lateral --------------------*/
+.menu-lateral {
+    background-color: rgba(255, 255, 255);
+    background-image: url('../../img/texturas/madera2.jpg');
+    background-size: cover;
+    border: 1px solid rgb(0, 0, 0);
+    box-shadow: inset 0px 0px 5px black;
+}
+
+.menu-lateral .titulo-menu-lateral {
+    font-size: 24px;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    text-shadow: 0 0 1px rgba(255, 255, 255); 
+    background-color: #382f23af;
+    border: 1px solid rgb(0, 0, 0);
+    text-align: center;
+    margin-top: 10px;
+}
+
+.menu-lateral .cuerpo-menu-lateral {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.menu-lateral h5 {
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.488); 
+}
+
+.menu-lateral .usuario-boton-lateral {
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.488);
+    background-color: #fbca8ea0; /* Cambia el color de fondo al pasar el mouse */
+    background-image: url('../../img/texturas/madera2.jpg');
+    background-size: cover;
+    box-shadow: 0px 0px 5px black;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 10px;
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+}
+
+.menu-lateral .usuario-boton-lateral:hover {
+    background-color: #f5bd78a0; /* Cambia el color de fondo al pasar el mouse */
+    border: 1px solid rgb(0, 0, 0);
+    transform: scale(1.05); /* Efecto de zoom al pasar el mouse */
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Transición suave */
+}
+
+.menu-lateral .usuario-boton-lateral a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    display: block; /* Hace que el enlace ocupe todo el botón */
+}
+
+.menu-lateral ul {
+    background-image: url('../../img/texturas/madera-clara.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+    box-shadow: 0px 0px 5px black;
+
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra los elementos en el eje horizontal */
+    justify-content: center;
+    justify-content: space-around;
+    gap: 3rem;
+}
+
+.menu-lateral ul li {
+    list-style: none;
+    padding: 5px 0;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 30px;
+    width: 80%;
+    text-align: center;
+    background-color: #f5cfa788;
+}
+
+.menu-lateral ul li:hover {
+    box-shadow: 0 0 3px rgb(0, 0, 0);
+    background-color: #e0b78cda; /* Cambia el color de fondo al pasar el mouse */
+    transform: scale(1.05); /* Efecto de zoom al pasar el mouse */
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Transición suave */
+}
+
+.menu-lateral .btn-cerrar-sesion {
+    padding: 10px;
+    cursor: pointer;
+    text-align: start;
+    text-align: center;
+    background-image: url('../../img/texturas/madera2.jpg');
+    background-size: cover;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px black;
+}
+
+.menu-lateral .btn-cerrar-sesion a {
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+}
+
+.menu-lateral .btn-cerrar-sesion:hover {
+    box-shadow: 0 0 3px rgb(0, 0, 0);
+    transform: scale(1.05); /* Efecto de zoom al pasar el mouse */
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Transición suave */
+}
+
 /* --- ESTILOS RESPONSIVOS PARA DISPOSITIVOS PEQUEÑOS --- */
 @media (max-width: 1050px) {
     nav {
@@ -143,3 +263,4 @@ nav .icono {
         font-size: 13px;
     }
 }
+
