@@ -1,115 +1,103 @@
-<!-- Contenedor principal con márgenes y estilos de fondo -->
-<div class="container my-5 p-3 bg-secondary rounded">
+<!-- Contenedor principal -->
+<div class="crud-productos container my-5 p-3">
 
-    <!-- Formulario para seleccionar cantidad de productos y vista -->
-    <form action="<?php echo base_url('/crud-productos'); ?>" method="POST" class="mb-3">
-        
-        <!-- Etiqueta del selector -->
-        <label for="option">Mostrar</label>
-        
-        <!-- Selector de cantidad de productos a mostrar -->
-        <select class="form-select w-auto d-inline-block" name="option" id="option">
-            
-            <!-- Opción seleccionada dinámicamente según valor de $select -->
-            <option selected disabled> 
-                <?php 
-                    if($select > 1 && $select < 10) {
-                        echo $select . ' productos'; // Plural
-                    } elseif ($select == 10){
-                        echo 'Todos'; // Mostrar todos los productos
-                    } else {
-                        echo $select . ' producto'; // Singular
-                    }
-                ?> 
-            </option>
+    <!-- Formulario superior -->
+    <form action="<?php echo base_url('/crud-productos'); ?>" method="POST" class="crud-formulario mb-3">
+        <div class="row g-3 align-items-end">
 
-            <!-- Opciones fijas para seleccionar cantidad de productos -->
-            <option value="1">1 producto</option>
-            <option value="2">2 productos</option>
-            <option value="3">3 productos</option>
-            <option value="4">4 productos</option>
-            <option value="5">5 productos</option>
-            <option value="6">6 productos</option>
-            <option value="7">7 productos</option>
-            <option value="8">8 productos</option>
-            <option value="9">9 productos</option>
-            <option value="Todos">Todos</option>
-        </select>
+            <!-- Filtro: Cantidad a mostrar -->
+            <div class="col-md-auto">
+                <select class="form-select" name="option" id="option">
+                    <option selected disabled> 
+                        <?php 
+                            if($select > 1 && $select < 10) {
+                                echo $select . ' productos';
+                            } elseif ($select == 10){
+                                echo 'Todos';
+                            } else {
+                                echo $select . ' producto';
+                            }
+                        ?> 
+                    </option>
+                    
+                    <?php for ($i = 1; $i <= 9; $i++): ?>
+                        <option value="<?= $i ?>"><?= $i ?> producto<?= $i > 1 ? 's' : '' ?></option>
+                    <?php endfor; ?>
+                    
+                    <option value="Todos">Todos</option>
+                </select>
+            </div>
 
-        <!-- Botón para enviar el formulario y actualizar la vista -->
-        <button type="submit" class="btn btn-outline-primary" href="<?php echo base_url('/crud-productos') ?>">Actualizar</button>
+            <!-- Filtro: Estado (activos / eliminados) -->
+            <div class="col-md-auto d-flex align-items-center mb-1">
+                
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="vista" id="activos" value="NO" <?= ($vista == 'NO') ? 'checked' : '' ?>>
+                    <label class="form-check-label text-secondary" for="activos">Activos</label>
+                </div>
+                
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="vista" id="eliminados" value="SI" <?= ($vista == 'SI') ? 'checked' : '' ?>>
+                    <label class="form-check-label text-secondary" for="eliminados">Eliminados</label>
+                </div>
 
-        <!-- Botón para redirigir al formulario de alta de productos -->
-        <a class="btn btn-outline-primary" href="<?php echo base_url('/alta-producto') ?>">Agregar</a>
-        
-        <!-- Opción para mostrar productos activos -->
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="vista" id="activos" value="NO" <?= ($vista == 'NO') ? 'checked' : '' ?>>
-            <label class="form-check-label" for="activos">Activos</label>
-        </div>
+            </div>
 
-        <!-- Opción para mostrar productos eliminados -->
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="vista" id="eliminados" value="SI" <?= ($vista == 'SI') ? 'checked' : '' ?>>
-            <label class="form-check-label" for="eliminados">Eliminados</label>
+            <!-- Botones -->
+            <div class="col-md-auto ms-auto">
+                <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-outline-light">Actualizar</button>
+                    <a class="btn btn-outline-light" href="<?php echo base_url('/alta-producto') ?>">Agregar</a>
+                </div>
+            </div>
+
         </div>
     </form>
 
-    <!-- Tabla para mostrar los productos -->
-    <div class="table-responsive">
-        <table class="table table-bordered text-center align-middle bg-white">
-            
-            <!-- Cabecera de la tabla -->
-            <thead class="table-warning">
+
+    <!-- Tabla de productos -->
+    <div class="crud-tabla table-responsive shadow-lg rounded border border-dark-subtle">
+        <table class="table table-bordered text-center align-middle" style="background-color: #f8f9fa; border-color: #343a40;">
+            <thead class="text-dark">
                 <tr>
-                    <th>ID</th>
-                    <th>Producto</th>
-                    <th>Precio</th>
-                    <th>Precio Venta</th>
-                    <th>Stock</th>
-                    <th>Imagen</th>
-                    <th>Acción</th>
+                    <th class="border-dark">ID</th>
+                    <th class="border-dark">Producto</th>
+                    <th class="border-dark">Precio</th>
+                    <th class="border-dark">Precio Venta</th>
+                    <th class="border-dark">Stock</th>
+                    <th class="border-dark">Imagen</th>
+                    <th class="border-dark">Acción</th>
                 </tr>
             </thead>
-
-            <tbody>                
+            <tbody>
                 <?php 
-                $cant = 0; // Contador de productos mostrados
-
+                $cant = 0;
                 foreach ($productos as $producto) {
-                    // Condición: mostrar solo la cantidad seleccionada o todos (10) y según vista (activos o eliminados)
-                    if(($select > $cant || $select == 10) && ($producto['eliminado'] == $vista)) {?>
-                        
-                        <!-- Fila de producto -->
-                        <tr class="text-black">
-                            <td> <?php echo $producto['id_producto'] ?> </td>
-                            <td> <?php echo $producto['nombre_prod'] ?> </td>
-                            <td> $<?php echo $producto['precio'] ?> </td>
-                            <td> $<?php echo $producto['precio_vta'] ?> </td>
-                            <td> <?php echo $producto['stock']?> </td>
-                            
-                            <!-- Imagen del producto -->
+                    if(($select > $cant || $select == 10) && ($producto['eliminado'] == $vista)) { ?>
+                        <tr class="text-black border-dark">
+                            <td ><?php echo $producto['id_producto'] ?></td>
+                            <td ><?php echo $producto['nombre_prod'] ?></td>
+                            <td >$<?php echo $producto['precio'] ?></td>
+                            <td >$<?php echo $producto['precio_vta'] ?></td>
+                            <td ><?php echo $producto['stock'] ?></td>
                             <td class="text-center" style="width: 250px;">
-                                <img src="<?= base_url('assets/uploads/' . $producto['imagen']) ?>" alt="Imagen producto" class="img-thumbnail" style="max-width: 200px; height: auto;">
+                                <img src="<?= base_url('assets/uploads/' . $producto['imagen']) ?>" alt="Imagen producto" class="img-producto img-thumbnail border border-dark" style="max-width: 200px; width: 150px; height: auto;">
                             </td>
-                            
-                            <!-- Acciones: modificar, eliminar o activar -->
-                            <td>
-                                <a class="btn btn-outline-primary" href="<?= base_url('/editar-producto/' . $producto['id_producto'] ) ?>">editar</a>
-                                
-                                <!-- Botón condicional según estado del producto -->
-                                <?php if($vista == 'NO')  {?>
-                                    <a class="btn btn-outline-danger" href="<?= base_url('/delete-producto/' . $producto['id_producto'] . '?vista=' . $vista) ?>">Eliminar</a>
-                                <?php } elseif($vista == 'SI')  {?>
-                                    <a class="btn btn-outline-success" href="<?= base_url('/activar-producto/' . $producto['id_producto'] . '?vista=' . $vista) ?>">Activar</a> 
+                            <td class="border-dark">
+                                <a class="btn btn-outline-primary btn-sm" href="<?= base_url('/editar-producto/' . $producto['id_producto']) ?>">Editar</a>
+                                <?php if($vista == 'NO') { ?>
+                                    <a class="btn btn-outline-danger btn-sm" href="<?= base_url('/delete-producto/' . $producto['id_producto'] . '?vista=' . $vista) ?>">Eliminar</a>
+                                <?php } else { ?>
+                                    <a class="btn btn-outline-success btn-sm" href="<?= base_url('/activar-producto/' . $producto['id_producto'] . '?vista=' . $vista) ?>">Activar</a> 
                                 <?php } ?>
                             </td>
                         </tr>
                 <?php 
-                        $cant = $cant + 1; // Incrementa el contador de productos mostrados
+                        $cant++;
                     }
-                }?>
+                } ?>
             </tbody>
         </table>
     </div>
+
 </div>

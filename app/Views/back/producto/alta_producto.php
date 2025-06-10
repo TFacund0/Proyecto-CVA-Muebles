@@ -17,7 +17,7 @@
     <?php }?>
 
     <!-- Formulario de alta de producto -->
-    <form method="post" action="<?php echo base_url('/enviar-alta-producto') ?>" enctype="multipart/form-data">
+    <form method="post" id="form-alta-producto" action="<?php echo base_url('/enviar-alta-producto') ?>" enctype="multipart/form-data">
         
         <!-- Campo de texto: nombre del producto -->
         <div class="mb-3">
@@ -99,9 +99,14 @@
         </div>
 
         <!-- Subida de imagen del producto -->
-        <div class="mb-4">
+        <div class="mb-4 text-center">
             <label for="image" class="form-label">Imagen</label>
             <input type="file" name="image" class="form-control" id="image" accept="image/png, image/jpg, image/jpeg" required>
+
+            <!-- Imagen previa -->
+            <img id="preview-image" alt="Vista previa"
+            style="display:none; margin: 15px auto 0 auto; width: 200px; height: 150px; object-fit: cover; border: 1px solid #ddd; border-radius: 5px;">
+
         </div>
 
         <!-- Mensaje de error para el campo imagen -->
@@ -121,3 +126,29 @@
         </div>
     </form>
 </div>
+
+<script>
+    const imageInput = document.getElementById('image');
+    const preview = document.getElementById('preview-image');
+    const form = document.getElementById('form-alta-producto');
+
+    imageInput.addEventListener('change', function(event) {
+        const [file] = event.target.files;
+        if (file) {
+            preview.src = URL.createObjectURL(file);
+            preview.style.display = 'block';
+        } else {
+            preview.removeAttribute('src');
+            preview.style.display = 'none';
+        }
+    });
+
+    form.addEventListener('reset', function() {
+        preview.removeAttribute('src');
+        preview.style.display = 'none';
+    });
+</script>
+
+
+
+

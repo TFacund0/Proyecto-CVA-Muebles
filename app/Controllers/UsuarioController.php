@@ -185,7 +185,7 @@ class UsuarioController extends BaseController {
         ];
 
         // Si se subió una imagen, agregarla a los datos a guardar
-        if ($nombre_imagen !== null) {
+        if ($nombre_imagen != null) {
             $data['imagen'] = $nombre_imagen;
         }
 

@@ -1,65 +1,66 @@
 .editar-prod-contenedor {
-    background-color: #f9f9f9;
-    border-radius: 12px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
 }
 
-/* Título del formulario */
+/* Título */
 .editar-prod-titulo {
     font-size: 1.8rem;
-    font-weight: 600;
-    color: #333;
+    font-weight: bold;
+    color: #212529;
 }
 
 /* Labels */
 .editar-prod-label {
     font-weight: 500;
-    color: #555;
+    color: #495057;
 }
 
 /* Inputs y selects */
 .editar-prod-input,
 .editar-prod-select,
 .editar-prod-file {
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ced4da;
+    padding: 0.65rem;
     font-size: 1rem;
-    transition: border-color 0.3s ease;
+    transition: box-shadow 0.2s ease-in-out;
 }
 
 .editar-prod-input:focus,
 .editar-prod-select:focus,
 .editar-prod-file:focus {
-    border-color: #28a745;
+    border-color: #198754;
+    box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.25);
     outline: none;
-    box-shadow: 0 0 5px rgba(40, 167, 69, 0.2);
 }
 
 /* Imagen previa */
 .editar-prod-img {
-    border: 1px solid #ddd;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    background-color: #f8f9fa;
     padding: 5px;
-    border-radius: 6px;
-    background-color: #fff;
 }
 
 /* Botones */
 .editar-prod-btn-guardar,
 .editar-prod-btn-cancelar {
-    border-radius: 8px;
-    font-weight: 500;
-    padding: 10px 20px;
+    font-weight: 600;
+    border-radius: 10px;
+    padding: 0.6rem;
     font-size: 1rem;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: all 0.3s ease-in-out;
 }
 
 .editar-prod-btn-guardar:hover {
-    background-color: #198754;
+    background-color: #157347;
     color: #fff;
 }
 
 .editar-prod-btn-cancelar:hover {
-    background-color: #dc3545;
+    background-color: #bb2d3b;
     color: #fff;
 }
