@@ -116,60 +116,42 @@
 
 
     <!-- MENÚ LATERAL (Offcanvas) para el perfil-->
-    <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasPerfil" aria-labelledby="offcanvasScrollingLabel">
+    <div class="offcanvas offcanvas-end menu-lateral" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasPerfil" aria-labelledby="offcanvasScrollingLabel">
       
       <!-- Encabezado del menú lateral -->
-      <div class="offcanvas-header">
+      <div class="offcanvas-header titulo-menu-lateral">
         <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Menu de Opciones</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
       </div>
 
       <!-- Cuerpo del menú lateral -->
-      <div class="offcanvas-body">
+      <div class="offcanvas-body cuerpo-menu-lateral">
         <?php if($perfil == 1) {?>
-          <div class="btn btn-outline-primary btn-sm">
-            <a href="">Usuario: <?php echo $nombre?></a>
+          <div class="btn usuario-boton-lateral">
+            <a href="<?php echo base_url('/perfil') ?>">Usuario: <?php echo $nombre?></a>
           </div>
           
-          <ul>
-            <li>
-              <a class="nav-link" href="<?php echo base_url('/crud-usuarios')?>">CRUD Usuarios</a>
-            </li>
-            <li>
-              <a class="nav-link" href="<?php echo base_url('/crud-productos')?>">CRUD Productos</a>
-            </li>
-            <li>
-              <a class="nav-link" href="<?php echo base_url('/ventas-list')?>">Muestra Ventas</a>
-            </li>
-            <li>
-              <a class="nav-link" href="<?php echo base_url('/lista-consultas')?>">Consultas</a>
-            </li>
-            <li>
-              <a class="nav-link" href="<?php echo base_url('/alta-producto')?>">Alta Productos</a>
-            </li>
+          <ul class="list-unstyled">
+            <li><a class="nav-link" href="<?php echo base_url('/alta-producto')?>">Añadir Producto</a></li>  
+            <li><a class="nav-link" href="<?php echo base_url('/ventas-list')?>">Lista de Ventas</a></li>
+            <li><a class="nav-link" href="<?php echo base_url('/crud-usuarios')?>">Lista de Usuarios</a></li>
+            <li><a class="nav-link" href="<?php echo base_url('/crud-productos')?>">Lista de Productos</a></li>
+            <li><a class="nav-link" href="<?php echo base_url('/lista-consultas')?>">Consultas</a></li>
           </ul>
+
         <?php } elseif ($perfil == 2) {?>
-          <div class="btn btn-outline-primary btn-sm">
-            <a href="">Cliente: <?php echo $nombre?></a>
+          <div class="btn usuario-boton-lateral">
+            <a href="<?php echo base_url('/perfil')?>">Cliente: <?php echo $nombre?></a>
           </div>
 
-          <ul>
-            <li>
-              <a class="nav-link" href="<?php echo base_url('users-list')?>">Mis productos</a>
-            </li>
-            <li>
-              <a class="nav-link" href="<?php echo base_url('perfil')?>">Perfil</a>
-            </li>
-            <li>
-              <a class="nav-link" href="<?php echo base_url('ventas-list')?>">Carrito</a>
-            </li>
-            <li>
-              <a class="nav-link" href="<?php echo base_url('lista-consultas')?>"></a>
-            </li>
+          <ul class="list-unstyled">
+            <li><a class="nav-link" href="<?php echo base_url('perfil')?>">Perfil</a></li>  
+            <li><a class="nav-link" href="<?php echo base_url('ventas-list')?>">Carrito</a></li>
+            <li><a class="nav-link" href="<?php echo base_url('users-list')?>">Mis productos</a></li>
           </ul>
         <?php }?>
 
-        <div class="">
+        <div class="btn-cerrar-sesion">
           <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="<?= base_url('/logout') ?>">Cerrar sesión</a>
         </div>
       </div>
