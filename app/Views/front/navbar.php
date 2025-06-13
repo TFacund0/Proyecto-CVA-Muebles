@@ -146,7 +146,7 @@
 
           <ul class="list-unstyled">
             <li><a class="nav-link" href="<?php echo base_url('perfil')?>">Perfil</a></li>  
-            <li><a class="nav-link" href="<?php echo base_url('ventas-list')?>">Carrito</a></li>
+            <li><a class="nav-link" href="<?php echo base_url('')?>">Carrito</a></li>
             <li><a class="nav-link" href="<?php echo base_url('users-list')?>">Mis productos</a></li>
           </ul>
         <?php }?>
