@@ -34,11 +34,6 @@
                                 <span class="fw-bold">$350.000</span>
                         </div>
                     </div>
-
-                    <!-- Boton para añadir al carrito -->
-                    <div class="card-footer">
-                        <button class="btn btn-primary w-100">Añadir al Carrito</button>
-                    </div>
                 </div>
             </div>
 
@@ -55,10 +50,6 @@
                         </div>
                     </div>
 
-                    <!-- Boton para añadir al carrito -->
-                    <div class="card-footer">
-                        <button class="btn btn-primary w-100">Añadir al Carrito</button>
-                    </div>
                 </div>
             </div>
 
@@ -73,11 +64,6 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <span class="fw-bold">$950.000</span>
                         </div>
-                    </div>
-
-                    <!-- Boton para añadir al carrito -->
-                    <div class="card-footer">
-                        <button class="btn btn-primary w-100">Añadir al Carrito</button>
                     </div>
                 </div>
             </div>
@@ -94,11 +80,6 @@
                             <span class="fw-bold">$600.000</span>
                         </div>
                     </div>
-
-                    <!-- Boton para añadir al carrito -->
-                    <div class="card-footer">
-                        <button class="btn btn-primary w-100">Añadir al Carrito</button>
-                    </div>
                 </div>
             </div>
 
@@ -113,11 +94,6 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <span class="fw-bold">$750.000</span>
                         </div>
-                    </div>
-
-                    <!-- Boton para añadir al carrito -->
-                    <div class="card-footer">
-                        <button class="btn btn-primary w-100">Añadir al Carrito</button>
                     </div>
                 </div>
             </div>
@@ -134,11 +110,6 @@
                             <span class="fw-bold">$700.000</span>
                         </div>
                     </div>
-
-                    <!-- Boton para añadir al carrito -->
-                    <div class="card-footer">
-                        <button class="btn btn-primary w-100">Añadir al Carrito</button>
-                    </div>
                 </div>
             </div>
 
@@ -153,11 +124,6 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <span class="fw-bold">$350.000</span>
                         </div>
-                    </div>
-
-                    <!-- Boton para añadir al carrito -->
-                    <div class="card-footer">
-                        <button class="btn btn-primary w-100">Añadir al Carrito</button>
                     </div>
                 </div>
             </div>
@@ -174,11 +140,6 @@
                             <span class="fw-bold">$350.000</span>
                         </div>
                     </div>
-
-                    <!-- Boton para añadir al carrito -->
-                    <div class="card-footer">
-                        <button class="btn btn-primary w-100">Añadir al Carrito</button>
-                    </div>
                 </div>
             </div>
 
@@ -193,130 +154,6 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <span class="fw-bold">$100.000</span>
                         </div>
-                    </div>
-
-                    <!-- Boton para añadir al carrito -->
-                    <div class="card-footer">
-                        <button class="btn btn-primary w-100">Añadir al Carrito</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4 col-sm-6 mb-4" data-categoria="mesas">
-                <div class="card h-100 product-card">
-                    <img src="assets/img/muebles/Muebles 14.jpeg" class="card-img-top h-100" alt="Mesa de Madera">
-                    
-                    <div class="card-body">
-                        <h5 class="card-title">Ropero de Madera de Pino Maciza</h5>
-                        <p class="card-text">Ropero amplio de madera de pino tratada, con dos puertas y tres cajones inferiores. Ideal para dormitorios que buscan un estilo rústico y natural.</p>
-
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="fw-bold">$850.000</span>
-                        </div>
-                    </div>
-
-                    <!-- Boton para añadir al carrito -->
-                    <div class="card-footer">
-                        <button class="btn btn-primary w-100">Añadir al Carrito</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4 col-sm-6 mb-4" data-categoria="mesas">
-                <div class="card h-100 product-card">
-                    <img src="assets/img/muebles/Muebles 25.jpeg" class="card-img-top h-100" alt="Mesa de Madera">
-                    
-                    <div class="card-body">
-                        <h5 class="card-title">Sillas de Comedor en Madera Maciza</h5>
-                        <p class="card-text">Sillas robustas de pino macizo, disponibles con o sin apoyabrazos. Diseño clásico, resistentes y cómodas, perfectas para comedor o quincho.</p>
-
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="fw-bold">$250.000</span>
-                        </div>
-                    </div>
-
-                    <!-- Boton para añadir al carrito -->
-                    <div class="card-footer">
-                        <button class="btn btn-primary w-100">Añadir al Carrito</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4 col-sm-6 mb-4" data-categoria="mesas">
-                <div class="card h-100 product-card">
-                    <img src="assets/img/muebles/Muebles 55.jpeg" class="card-img-top  h-100" alt="Mesa de Madera">
-
-                    <div class="card-body">
-                        <h5 class="card-title">Banqueta Alta de Madera para Barra o Desayunador</h5>
-                        <p class="card-text">Ideal para barras de cocina o desayunadores. Estructura firme y diseño funcional.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="fw-bold">$200.000</span>
-                        </div>
-                    </div>
-
-                    <!-- Boton para añadir al carrito -->
-                    <div class="card-footer">
-                        <button class="btn btn-primary w-100">Añadir al Carrito</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4 col-sm-6 mb-4" data-categoria="mesas">
-                <div class="card h-100 product-card">
-                    <img src="assets/img/muebles/Muebles 24.jpeg" class="card-img-top h-100" alt="Mesa de Madera">
-                    
-                    <div class="card-body">
-                        <h5 class="card-title">Ropero de Madera con Espejo y Cajonera</h5>
-                        <p class="card-text">Ropero fabricado en madera de pino tratada, con espejo incorporado en una de sus puertas y cuatro amplios cajones. Ideal para dormitorios funcionales.</p>
-
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="fw-bold">$950.000</span>
-                        </div>
-                    </div>
-
-                    <!-- Boton para añadir al carrito -->
-                    <div class="card-footer">
-                        <button class="btn btn-primary w-100">Añadir al Carrito</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4 col-sm-6 mb-4" data-categoria="mesas">
-                <div class="card h-100 product-card">
-                    <img src="assets/img/muebles/Muebles 28.jpeg" class="card-img-top h-100" alt="Mesa de Madera">
-                    
-                    <div class="card-body">
-                        <h5 class="card-title">Mueble Organizador Multiuso de Madera Maciza</h5>
-                        <p class="card-text">Mueble de madera de pino natural, con espacio abierto para microondas o electrodomésticos, estante superior y dos puertas de almacenamiento.</p>
-
-                        <div class="d-flex justify-content-between align-items-center">
-                                <span class="fw-bold">$450.000</span>
-                        </div>
-                    </div>
-
-                    <!-- Boton para añadir al carrito -->
-                    <div class="card-footer">
-                        <button class="btn btn-primary w-100">Añadir al Carrito</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4 col-sm-6 mb-4" data-categoria="mesas">
-                <div class="card h-100 product-card">
-                    <img src="assets/img/muebles/Muebles 19.jpeg" class="card-img-top h-100" alt="Mesa de Madera">
-                    
-                    <div class="card-body">
-                        <h5 class="card-title">Alacena Alta de Madera de Pino</h5>
-                        <p class="card-text">Práctica alacena alta de madera maciza de pino con un diseño único y especial, ideal para optimizar espacios reducidos en cocinas, quinchos o lavaderos.</p>
-
-                        <div class="d-flex justify-content-between align-items-center">
-                                <span class="fw-bold">$250.000</span>
-                        </div>
-                    </div>
-
-                    <!-- Boton para añadir al carrito -->
-                    <div class="card-footer">
-                        <button class="btn btn-primary w-100">Añadir al Carrito</button>
                     </div>
                 </div>
             </div>

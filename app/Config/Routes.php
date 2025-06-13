@@ -23,6 +23,9 @@ $routes->get('/login', 'LoginController::create');
 $routes->post('/enviar-login', 'LoginController::auth');
 $routes->get('/logout', 'LoginController::logout');
 
+// Rutas para las ventas
+$routes->get('/ventas-list', 'VentasController::index_ventas');
+
 // Rutas para el crud del usuario
 $routes->get('/crud-usuarios', 'UsuarioController::index');
 $routes->post('/crud-usuarios', 'UsuarioController::index');

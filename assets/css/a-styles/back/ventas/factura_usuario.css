@@ -1,0 +1,50 @@
+.factura-usuario {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+}
+
+.factura-usuario__titulo {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    color: #333;
+}
+
+.factura-usuario__cabecera p {
+    margin: 0.3rem 0;
+    font-size: 1rem;
+    color: #555;
+}
+
+.factura-usuario__tabla {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.factura-usuario__columna {
+    background-color: #eaeaea;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+.factura-usuario__fila td {
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    font-size: 0.95rem;
+}
+
+.factura-usuario__total {
+    text-align: right;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #222;
+    margin-top: 1rem;
+}
