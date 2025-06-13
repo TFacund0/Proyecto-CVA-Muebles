@@ -50,7 +50,7 @@
 
             <!-- Ítem: Productos -->
             <li class="nav-item">
-              <a class="btn btn-beige text-dark mx-1" href="<?= base_url('productos') ?>">Productos</a>
+              <a class="btn btn-beige text-dark mx-1" href="<?= base_url('todos_p') ?>">Productos</a>
             </li>
 
             <!-- Ítem: Comercialización -->
@@ -73,9 +73,9 @@
           <div class="d-flex content-account">
             
             <!-- Botón de carrito -->
-            <button class="btn btn-beige boton-links" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
-              <img src="<?= base_url('assets/img/iconos/cart-check.svg') ?>" alt="Carrito" class="icono">
-            </button>
+            <a class="btn btn-beige boton-links" href="<?= base_url('/muestro') ?>">
+              <img src="<?= base_url('assets/img/iconos/cart-check.svg') ?>"  alt="Carrito" class="icono">
+        </a>
             
             <!-- Botón de usuario / cuenta -->
             <?php if (!$isLogged) {?>

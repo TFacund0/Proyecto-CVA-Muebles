@@ -17,6 +17,9 @@ class ProductoController extends BaseController {
     /**
      * Muestra la lista de productos activos o eliminados
      */
+    
+    
+
     public function index() {
         $perfil = session()->get('perfil_id');
 
