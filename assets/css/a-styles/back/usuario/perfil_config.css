@@ -23,9 +23,9 @@
 
 /* Imagen del perfil */
 .img-perfil {
-    width: 170px;         /* Ancho fijo para uniformidad */
-    height: 150px;        /* Alto fijo para uniformidad */
-    object-fit: cover;    /* La imagen cubre el área sin distorsión */
+    width: 150px;         /* Ancho fijo para uniformidad */
+    height: 130px;        /* Alto fijo para uniformidad */
+    object-fit: center;    /* La imagen cubre el área sin distorsión */
     border-radius: 50%;   /* Imagen circular */
     border: 1px solid #000000; /* Borde negro delgado */
     box-shadow: 0 0 5px black; /* Sombra suave para destacar */

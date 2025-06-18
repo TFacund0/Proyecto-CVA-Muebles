@@ -70,12 +70,13 @@
             </div>
         </div>
 
-        <!-- Columna: Formulario de contacto -->
+        <!-- Columna: Formulario de Consulta -->
         <div class="col-lg-6 card-style">
             <div class="contact-form">
-                <h4 class="text-center my-3" style="color: var(--color-madera-oscura);">Formulario de Contacto</h4>
-                <form action="<?= base_url('contacto/enviar') ?>" method="post">
-                    
+                <h4 class="text-center my-3" style="color: var(--color-madera-oscura);">Formulario de Consulta</h4>
+                <form action="<?= base_url('/enviar-consulta') ?>" method="post">
+                    <?= csrf_field() ?>
+
                     <!-- Fila con nombre y apellido -->
                     <div class="row form-group">    
                         <div class="col-md-6">
@@ -97,7 +98,7 @@
 
                     <!-- Teléfono -->
                     <div class="form-group">
-                        <input type="tel" class="form-control" name="telefono" placeholder="Teléfono">
+                        <input type="tel" class="form-control" name="telefono" placeholder="Teléfono" required>
                     </div>
 
                     <!-- Asunto del mensaje -->
@@ -114,12 +115,26 @@
 
                     <!-- Mensaje -->
                     <div class="form-group">
-                        <textarea class="form-control" name="mensaje" rows="5" placeholder="Escribe tu mensaje aquí..." required></textarea>
+                        <textarea class="form-control" name="descripcion" rows="5" placeholder="Escribe tu mensaje aquí..." required></textarea>
                     </div>
 
                     <!-- Botón de envío -->
                     <button type="submit" class="btn btn-contact boton-contacto mb-2">Enviar Mensaje</button>
                 </form>
+
+                <!-- Mensaje de éxito o error -->
+                <?php if (session()->getFlashdata('success')): ?>
+                    <div class="alert alert-success mt-3 alert-dismissible fade show" role="alert">
+                        <?= session()->getFlashdata('success') ?>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                <?php elseif (session()->getFlashdata('error')): ?>
+                    <div class="alert alert-danger mt-3 alert-dismissible fade show" role="alert">
+                        <?= session()->getFlashdata('error') ?>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                <?php endif; ?>
+                
             </div>
         </div>
     </div>

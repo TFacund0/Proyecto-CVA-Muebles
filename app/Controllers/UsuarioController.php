@@ -14,6 +14,11 @@ class UsuarioController extends BaseController {
 
     // Muestra la vista para registrar un usuario, cargando la vista principal con contenido de registro
     public function index_registrar() {
+        // Si el usuario ya está autenticado, redirigir a la página principal
+        if (session()->get('logged_in')) {
+            return redirect()->to('/');
+        }
+
         return view('front/main', [
             'title' => 'Registro',
             'content' => view('back/usuario/registro')

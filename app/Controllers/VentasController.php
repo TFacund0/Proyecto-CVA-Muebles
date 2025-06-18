@@ -31,8 +31,8 @@ class VentasController extends BaseController {
 
     public function registrar_venta() {
         $session = session();
-        require(APPPATH . 'Controllers/CarritoController.php');
-        $cartController = new CarritoController();
+        require(APPPATH . 'Controllers/carrito_controller.php');
+        $cartController = new carrito_controller();
         $carrito_contents = $cartController->devolver_carrito();
 
         $productoModel = new Productos_model();
@@ -58,18 +58,18 @@ class VentasController extends BaseController {
         if(!empty($productos_sin_stock)) {
             $mensaje = 'Los siguientes productos no tienen stock suficiente: ' . implode(', ', $productos_sin_stock);
             $session->setFlashdata('error', $mensaje);
-            return redirect()->to(base_url('ventas/index_ventas'));
+            return redirect()->to('ventas_detalle');
         }
 
         if(empty($productos_validos)) {
             $session->setFlashdata('error', 'No hay productos válidos en el carrito.');
-            return redirect()->to(base_url('ventas/index_ventas'));
+            return redirect()->to('ventas_detalle');
         }
 
         $nueva_venta = [
-            'id_usuario' => $session->get('id_usuario'),
+            'usuario_id' => $session->get('id_usuario'),
             'fecha' => date('Y-m-d H:i:s'),
-            'total' => $total
+            'total_venta' => $total
         ];
 
         $venta_id = $ventasModel->insert($nueva_venta);
@@ -77,11 +77,10 @@ class VentasController extends BaseController {
         //Registrar detalles de la venta y actualizar stock
         foreach ($productos_validos as $item) {
             $detalle_venta = [
-                'id_venta' => $venta_id,
-                'id_producto' => $item['id'],
+                'venta_id' => $venta_id,
+                'producto_id' => $item['id'],
                 'cantidad' => $item['qty'],
                 'precio' => $item['price'],
-                'subtotal' => $item['subtotal']
             ];
             $ventasDetalleModel->insert($detalle_venta);
 
@@ -92,7 +91,7 @@ class VentasController extends BaseController {
         //Vaciar Carrito y mostrar confirmación
         $cartController->borrar_carrito();
         $session->setFlashdata('success', 'Venta registrada exitosamente. Total: ' . $total);
-        return redirect()->to(base_url('ventas/index_ventas'));
+        return redirect()->to('ventas_detalle');
     }
 
     public function ver_factura($venta_id) {

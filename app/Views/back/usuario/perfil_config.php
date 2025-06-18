@@ -18,9 +18,11 @@
         <div class="d-flex justify-content-between align-items-center bloque-titulo-perfil m-2 p-3">
             <div class="d-flex">
                 <!-- Imagen superior del perfil -->
-                <div class="me-4">
+                <div class="me-4 d-flex align-items-center">
                     <img src="<?= $imagePath ?>" alt="foto" class="img-perfil" id="imgPerfilPreviewSuperior">
                 </div>
+
+                <!-- Información del usuario -->
                 <div class="my-auto">
                     <h4><?= $name . ' ' . $surname ?></h4>
                     <p class="text-secondary"><?= $email ?></p>
@@ -29,11 +31,17 @@
 
             <!-- Mensajes de éxito o error -->
             <?php if (session()->getFlashdata('success')): ?>
-                <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <?= session()->getFlashdata('success') ?>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
             <?php endif; ?>
 
             <?php if (session()->getFlashdata('fail')): ?>
-                <div class="alert alert-danger"><?= session()->getFlashdata('fail') ?></div>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <?= session()->getFlashdata('fail') ?>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
             <?php endif; ?>
 
             <!-- Botones de acción -->
@@ -96,9 +104,12 @@
                 <!-- Imagen inferior del perfil y carga de nueva imagen -->
                 <div class="my-auto mb-5">
                     <div class="text-center mb-2">
-                        <div class="mx-auto" style="width: 250px; height: 175px; overflow: hidden;">
-                            <img src="<?= $imagePath ?>" alt="foto" class="img-thumbnail img-fluid" id="imgPerfilPreviewInferior" style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
+                        <div class="mx-auto" style="width: 250px; height: 175px; overflow: hidden; background-color: #f0f0f0;">
+                            <img src="<?= $imagePath ?>" alt="foto" class="img-thumbnail img-fluid"
+                                id="imgPerfilPreviewInferior"
+                                style="width: 100%; height: 100%; object-fit: contain; object-position: center;">
                         </div>
+
                         <!-- Selector de archivo para cambiar imagen -->
                         <input class="form-control form-control-sm mt-2" id="formFileSm" name="image" type="file" disabled>
                     </div>

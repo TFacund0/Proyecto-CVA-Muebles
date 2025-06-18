@@ -1,23 +1,69 @@
-/* === Contenedor Principal del Formulario === */
+/* Contenedor Principal */
 #alta-producto-contenedor {
-    background-color: rgb(42, 42, 42); /* Fondo oscuro */
-    color: rgb(255, 255, 255); /* Texto blanco */
-    border: 1px solid rgb(122, 122, 255); /* Borde azul claro */
-    box-shadow: inset 0 0 10px rgb(39, 169, 255); /* Sombra interior azul */
-    border-radius: 10px; /* Bordes redondeados */
-    padding: 2rem; /* Espaciado interno */
-    transition: all 0.3s ease; /* Transición suave en cambios */
+    background-color: #fdf7ec; /* Color cálido similar al fondo general */
+    color: #333; /* Texto oscuro para buena legibilidad */
+    border: 1px solid #d2b48c; /* Borde tipo madera clara */
+    box-shadow: 0 0 15px rgba(0,0,0,0.1); /* Sombra suave */
+    border-radius: 15px;
+    padding: 2rem;
+    font-family: 'Segoe UI', sans-serif;
 }
 
-/* === Contenedor Secundario === */
-.alta-producto-container {
-    box-shadow: 0 0 10px rgb(0, 0, 0); /* Sombra exterior negra */
-    border-radius: 10px; /* Bordes redondeados */
-}
-
-/* === Título del Formulario === */
+/* Título */
 .titulo-form-alta-producto {
-    text-shadow: 0 0 10px rgb(255, 255, 255); /* Sombra blanca al texto */
-    font-weight: bold; /* Texto en negrita */
-    font-size: 1.8rem; /* Tamaño grande */
+    color: #5d3b1a; /* Marrón madera */
+    text-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
+    font-weight: bold;
+    font-size: 1.8rem;
+}
+
+/* Inputs y select */
+#alta-producto-contenedor input[type="text"],
+#alta-producto-contenedor input[type="number"],
+#alta-producto-contenedor input[type="file"],
+#alta-producto-contenedor select {
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+}
+
+/* Botones */
+#alta-producto-contenedor .btn-outline-primary {
+    border-color: #6c4f3d;
+    color: #6c4f3d;
+}
+#alta-producto-contenedor .btn-outline-primary:hover {
+    background-color: #6c4f3d;
+    color: white;
+}
+
+#alta-producto-contenedor .btn-outline-danger {
+    border-color: #b03a2e;
+    color: #b03a2e;
+}
+#alta-producto-contenedor .btn-outline-danger:hover {
+    background-color: #b03a2e;
+    color: white;
+}
+
+#alta-producto-contenedor .btn-outline-light {
+    border-color: #999;
+    color: #999;
+}
+#alta-producto-contenedor .btn-outline-light:hover {
+    background-color: #ccc;
+    color: black;
+}
+
+/* Vista previa imagen */
+#preview-image {
+    margin: 15px auto 0 auto;
+    border: 1px solid #d3c1a1;
+    border-radius: 10px;
+}
+
+/* Alertas */
+.alert {
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
 }

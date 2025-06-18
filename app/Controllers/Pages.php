@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Controllers;
+use App\Models\Productos_Model;
+use CodeIgniter\Controller;
 
 /**
  * Controlador Pages
@@ -68,9 +70,12 @@ class Pages extends BaseController
      */
     public function productos()
     {
+        $productoModel = new Productos_Model();
+        $data['producto'] = $productoModel->orderBy('id_producto', 'DESC')->findAll();
+
         return view('front/main', [
-            'title' => 'CVA productos',
-            'content' => view('front/pages/productos')
+            'title' => 'Producto',
+            'content' => view('front/pages/productos', $data)
         ]);
     }
 }

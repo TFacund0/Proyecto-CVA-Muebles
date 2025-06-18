@@ -27,15 +27,3 @@
     color: rgb(255, 255, 255); /* Color del texto blanco */
     background-color: #000000a0!important; /* Fondo negro con transparencia */
 }
-
-/* Estilos del botón primario dentro del login (por ejemplo, botón "Iniciar sesión") */
-.login-body .btn-primary {
-    background-color: #8B4513; /* Marrón tipo "saddle brown" */
-    border-color: #8B4513; /* Mismo color para el borde */
-}
-
-/* Estilos del botón primario cuando el usuario pasa el mouse por encima */
-.login-body .btn-primary:hover {
-    background-color: #A0522D; /* Marrón más claro ("sienna") */
-    border-color: #A0522D; /* Borde del mismo color */
-}

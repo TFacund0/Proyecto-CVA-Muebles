@@ -49,16 +49,30 @@
                 foreach ($usuarios as $usuario) {    
 
                     if($select > $cant || $select == 10) {?>
-                        <tr class="text-black">
-                            <td> <?php echo $usuario['id_usuario'] ?> </td>
-                            <td> <?php echo $usuario['nombre'] ?> </td>
-                            <td> <?php echo $usuario['apellido'] ?> </td>
-                            <td> <?php echo $usuario['usuario'] ?> </td>
-                            <td> <?php echo $usuario['email']?> </td>
-                            <td> <?php echo $usuario['perfil']?> </td>
-                            <td>Modificar - Eliminar</td>
-                        </tr>
-                <?php $cant = $cant + 1;
+                        
+                        <!--Si la session coincide con el id del usuario, no mostrar el botón de eliminar -->
+                        <?php if (session()->get('id_usuario') == $usuario['id_usuario']) {?>
+                            <tr class="text-black">
+                                <td> <?php echo $usuario['id_usuario'] ?> </td>
+                                <td> <?php echo $usuario['nombre'] ?> </td>
+                                <td> <?php echo $usuario['apellido'] ?> </td>
+                                <td> <?php echo $usuario['usuario'] ?> </td>
+                                <td> <?php echo $usuario['email']?> </td>
+                                <td> <?php echo $usuario['perfil']?> </td>
+                                <td>Modificar</td>
+                            </tr>
+                        <?php } else { ?>
+                            <tr class="text-black">
+                                <td> <?php echo $usuario['id_usuario'] ?> </td>
+                                <td> <?php echo $usuario['nombre'] ?> </td>
+                                <td> <?php echo $usuario['apellido'] ?> </td>
+                                <td> <?php echo $usuario['usuario'] ?> </td>
+                                <td> <?php echo $usuario['email']?> </td>
+                                <td> <?php echo $usuario['perfil']?> </td>
+                                <td>Modificar - Eliminar</td>
+                            </tr>
+                            <?php $cant = $cant + 1;
+                        <?php }?>
                     }
                 }?>
 

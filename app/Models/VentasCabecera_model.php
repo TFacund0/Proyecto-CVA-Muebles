@@ -14,7 +14,7 @@ class VentasCabecera_model extends Model {
         $builder = $db->table('ventas_cabecera');
         $builder->select('*');
         
-        $builder->join('usuarios', 'usuarios.id = ventas_cabecera.usuario_id');
+        $builder->join('usuarios', 'usuarios.id_usuario = ventas_cabecera.usuario_id');
 
         if ($id != null) {
             $builder->where('ventas_cabecera.id', $id);

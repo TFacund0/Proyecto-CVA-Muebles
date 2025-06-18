@@ -33,19 +33,19 @@ class VentasDetalle_model extends Model {
         $builder->select('*');
         
         $builder->join('ventas_cabecera', 'ventas_cabecera.id = ventas_detalle.venta_id');
-        $builder->join('productos', 'productos.id = ventas_detalle.producto_id');
-        $builder->join('usuarios', 'usuarios.id = ventas_cabecera.usuario_id');
+        $builder->join('productos', 'productos.id_producto = ventas_detalle.producto_id');
+        $builder->join('usuarios', 'usuarios.id_usuario = ventas_cabecera.usuario_id');
 
-        if ($id == null) {
+        if ($id != null) {
             $builder->where('ventas_cabecera.id', $id);
+        }
+
+        if ($id_usuario != null) {
+            $builder->where('ventas_cabecera.usuario_id', $id_usuario);
         }
 
         $query = $builder->get();
         
-        if ($query->getNumRows() > 0) {
-            return $query->getResultArray();
-        } else {
-            return [];
-        }
+        return ($query->getNumRows() > 0) ? $query->getResultArray() : [];
     }
 }

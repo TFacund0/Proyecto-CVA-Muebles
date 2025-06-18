@@ -50,7 +50,7 @@
 
             <!-- Ítem: Productos -->
             <li class="nav-item">
-              <a class="btn btn-beige text-dark mx-1" href="<?= base_url('todos_p') ?>">Productos</a>
+              <a class="btn btn-beige text-dark mx-1" href="<?= $isLogged == 'SI' ? base_url('todos_p') : base_url('productos') ?>">Productos</a>
             </li>
 
             <!-- Ítem: Comercialización -->
@@ -72,17 +72,18 @@
           <!-- Íconos de Cuenta y Carrito a la derecha -->
           <div class="d-flex content-account">
             
-            <!-- Botón de carrito -->
-            <a class="btn btn-beige boton-links" href="<?= base_url('/muestro') ?>">
-              <img src="<?= base_url('assets/img/iconos/cart-check.svg') ?>"  alt="Carrito" class="icono">
-        </a>
-            
-            <!-- Botón de usuario / cuenta -->
+            <!-- Botón de usuario y Carrito -->
             <?php if (!$isLogged) {?>
                     <a class="btn btn-beige boton-links" href="<?= base_url('login') ?>">
                       <img src="<?= base_url('assets/img/iconos/person.svg')?>" alt="Registrarse" class="icono">
                     </a>
             <?php } else {?>
+                    <!-- Botón de carrito -->
+                    <a class="btn btn-beige boton-links" href="<?= base_url('/muestro') ?>">
+                      <img src="<?= base_url('assets/img/iconos/cart-check.svg') ?>"  alt="Carrito" class="icono">
+                    </a>
+                    
+                    <!-- Botón de perfil -->
                     <button class="btn btn-beige boton-links" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasPerfil" aria-controls="offcanvasScrolling">
                       <img src="<?= base_url('assets/img/iconos/person.svg')?>" alt="Opciones de perfil de usuario" class="icono">
                     </button>
@@ -94,26 +95,6 @@
 
       </div> <!-- Fin de container-fluid -->
     </nav>
-
-    <!-- MENÚ LATERAL (Offcanvas) para el carrito -->
-    <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
-      
-      <!-- Encabezado del menú lateral -->
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Menu de Usuario</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
-      </div>
-      
-      <!-- Cuerpo del menú lateral -->
-      <div class="offcanvas-body">
-        <ul>
-          <li>Opcion 1</li>
-          <li>Opcion 2</li>
-        </ul>
-      </div>
-
-    </div> <!-- Fin del offcanvas -->
-
 
     <!-- MENÚ LATERAL (Offcanvas) para el perfil-->
     <div class="offcanvas offcanvas-end menu-lateral" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasPerfil" aria-labelledby="offcanvasScrollingLabel">

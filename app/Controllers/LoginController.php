@@ -23,6 +23,11 @@ class LoginController extends BaseController {
      * @return \CodeIgniter\HTTP\Response
      */
     public function create() {
+        if (session()->get('logged_in')) {
+            // Si el usuario ya está autenticado, redirige a la página principal
+            return redirect()->to('/');
+        }
+
         return view('front/main', [
             'title' => 'Login',
             'content' => view('back/usuario/login')

@@ -12,13 +12,7 @@ class ProductoController extends BaseController {
     public function __construct() {
         helper(['url', 'form']);
         $session = session(); // Inicia la sesión
-    }
-
-    /**
-     * Muestra la lista de productos activos o eliminados
-     */
-    
-    
+    }    
 
     public function index() {
         $perfil = session()->get('perfil_id');

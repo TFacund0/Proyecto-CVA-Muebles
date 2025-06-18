@@ -16,17 +16,17 @@ class Productos_model extends Model
     }
 
     public function getBuilderProductos() {
-        $db = \Config\Database::conect();
+        $db = \Config\Database::connect();
         $builder = $db->table('productos');
         $builder->select('*');
-        $builder->join('categorias', 'categorias.id = productos.categoria_id');
+        $builder->join('categorias', 'categorias.id_categoria = productos.categoria_id');
         
         return $builder;
     }
 
     public function getProducto($id = null) {
         $builder = $this->getBuilderProductos();
-        $builder->where('productos.id', $id);
+        $builder->where('productos.id_producto', $id);
         $query = $builder->get();
 
         return $query->getRowArray();
@@ -34,7 +34,7 @@ class Productos_model extends Model
 
     public function updateStock($id = null, $stock = null) {
         $builder = $this->getBuilderProductos();
-        $builder->where('productos.id', $id);
+        $builder->where('productos.id_producto', $id);
         $builder->set('productos.stock', $stock);
         
         $builder->update();

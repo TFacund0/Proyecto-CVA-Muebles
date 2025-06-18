@@ -7,14 +7,20 @@
     <!-- Se carga el servicio de validación para mostrar errores si existen -->
 
     <!-- Mensaje de éxito si se establece una variable flash 'success' -->
-    <?php if(session()->getFlashData('success')) {?>
-        <div class="alert alert-primary text-center"><?php echo session()->getFlashData('success');?></div>
-    <?php }?>
+    <?php if (session()->getFlashdata('success')): ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <?= session()->getFlashdata('success') ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+        </div>
+    <?php endif; ?>
 
-    <!-- Mensaje de error si se establece una variable flash 'fail' -->
-    <?php if(session()->getFlashData('fail')) {?>
-        <div class="alert alert-danger text-center"><?php echo session()->getFlashData('fail');?></div>
-    <?php }?>
+    <?php if (session()->getFlashdata('fail')): ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <?= session()->getFlashdata('fail') ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+        </div>
+    <?php endif; ?>
+
 
     <!-- Formulario de alta de producto -->
     <form method="post" id="form-alta-producto" action="<?php echo base_url('/enviar-alta-producto') ?>" enctype="multipart/form-data">
