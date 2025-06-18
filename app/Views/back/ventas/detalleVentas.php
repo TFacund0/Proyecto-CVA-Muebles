@@ -11,6 +11,7 @@
                 <th class="col-cantidad">Cantidad</th>
                 <th class="col-precio">Precio</th>
                 <th class="col-subtotal">Subtotal</th>
+                <th class="col-Estado">Estado</th>
             </tr>
         </thead>
         <tbody class="tabla-ventas-cuerpo">
@@ -23,6 +24,7 @@
                 <td class="col-cantidad"><?= esc($item['cantidad']) ?></td>
                 <td class="col-precio">$<?= esc($item['precio']) ?></td>
                 <td class="col-subtotal">$<?= esc($item['subtotal']) ?></td>
+                <td class="col-estado"><button class="btn btn-outline-secondary" href="<?php base_url('/factura') . esc($item['venta_id']) ?>">Ver Factura</button></td>
             </tr>
             <?php endforeach; ?>
         </tbody>

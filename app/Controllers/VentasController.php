@@ -58,12 +58,12 @@ class VentasController extends BaseController {
         if(!empty($productos_sin_stock)) {
             $mensaje = 'Los siguientes productos no tienen stock suficiente: ' . implode(', ', $productos_sin_stock);
             $session->setFlashdata('error', $mensaje);
-            return redirect()->to('ventas_detalle');
+            return redirect()->to('muestro');
         }
 
         if(empty($productos_validos)) {
             $session->setFlashdata('error', 'No hay productos válidos en el carrito.');
-            return redirect()->to('ventas_detalle');
+            return redirect()->to('muestro');
         }
 
         $nueva_venta = [
@@ -91,7 +91,7 @@ class VentasController extends BaseController {
         //Vaciar Carrito y mostrar confirmación
         $cartController->borrar_carrito();
         $session->setFlashdata('success', 'Venta registrada exitosamente. Total: ' . $total);
-        return redirect()->to('ventas_detalle');
+        return redirect()->to('muestro');
     }
 
     public function ver_factura($venta_id) {

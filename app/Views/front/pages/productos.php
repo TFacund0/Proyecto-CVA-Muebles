@@ -7,21 +7,21 @@
     <!-- Grid de productos -->
     <div class="container-lg container-fluid-md p-4 my-4" id="catalogo-productos">
 
-        <!-- Filtro de categorías -->
-        <div class="d-inline-block px-5 py-2 mb-4 filtro-categorias" role="group" aria-label="Basic outlined example">
-            <div class="d-flex flex-wrap justify-content-center gap-2">
-                <button type="button" class="btn btn-outline-warning">Todos</button>    
-                <button type="button" class="btn btn-outline-warning">Mesas</button>
-                <button type="button" class="btn btn-outline-warning">Sillas</button>
-                <button type="button" class="btn btn-outline-warning">Escritorios</button>
-                <button type="button" class="btn btn-outline-warning">Camas</button>
-                <button type="button" class="btn btn-outline-warning">Roperos</button>
+        <!-- Filtro de categorías dinámico -->
+        <div class="categorias-scroll py-3 mb-4 filtro-categorias">
+            <div class="d-flex flex-nowrap overflow-auto gap-3 px-3">
+                <button type="button" class="btn btn-outline-warning filtro-categoria" data-categoria="todos">Todos</button>
+                <?php foreach ($categorias as $cat) { ?>
+                    <button type="button" class="btn btn-outline-warning filtro-categoria" data-categoria="<?= esc($cat['descripcion']) ?>">
+                        <?= esc($cat['descripcion']) ?>
+                    </button>
+                <?php } ?>
             </div>
         </div>
 
         <div class="row" id="lista-productos">
             <?php foreach ($producto as $row) { ?>
-                <div class="col-md-4 col-sm-6 mb-4" data-categorias="mesas">
+                <div class="col-md-4 col-sm-6 mb-4" data-categorias="<?= esc($row['categoria']) ?>">
                     <div class="card h-100 product-card">
 
                         <img src="<?= base_url('assets/uploads/' . $row['imagen']) ?>" class="card-img-top h-100" alt="<?= esc($row['nombre_prod']) ?>">
@@ -31,6 +31,7 @@
                             
                             <div class="d-flex justify-content-between align-items-center">
                                 <p class="fw-bold">Precio: $<?= esc($row['precio_vta']) ?></p>
+                                <p class="fw-bold">Stock: <?= esc($row['stock']) ?></p>
                             </div>
                         </div>
 
@@ -60,3 +61,25 @@
             <?php } ?>
         </div>
 </section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const botones = document.querySelectorAll('.filtro-categoria');
+        const productos = document.querySelectorAll('#lista-productos .col-md-4');
+
+        botones.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const categoria = btn.dataset.categoria.toLowerCase();
+
+                productos.forEach(prod => {
+                    const catProd = prod.dataset.categorias.toLowerCase();
+                    if (categoria === 'todos' || catProd === categoria) {
+                        prod.style.display = 'block';
+                    } else {
+                        prod.style.display = 'none';
+                    }
+                });
+            });
+        });
+    });
+</script>

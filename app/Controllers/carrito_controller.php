@@ -64,10 +64,17 @@ class carrito_controller extends BaseController
     public function catalogo()
     {
         $productoModel = new Productos_Model();
-        $data['producto'] = $productoModel->orderBy('id_producto', 'DESC')->findAll();
+        $categorias = new Categorias_model();
+        $data['producto'] = $productoModel
+                                ->select('productos.*, categorias.descripcion as categoria')
+                                ->join('categorias', 'productos.categoria_id = categorias.id_categoria')
+                                ->orderBy('id_producto', 'DESC')
+                                ->findAll();
+
+        $data['categorias'] = $categorias->select('descripcion')->distinct()->findAll();
 
         return view('front/main', [
-            'title' => 'confirmar compra',
+            'title' => 'Productos',
             'content' => view('front/pages/productos', $data)
         ]);
     }

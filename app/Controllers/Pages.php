@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 use App\Models\Productos_Model;
+use App\Models\Categorias_Model;
 use CodeIgniter\Controller;
 
 /**
@@ -71,7 +72,14 @@ class Pages extends BaseController
     public function productos()
     {
         $productoModel = new Productos_Model();
-        $data['producto'] = $productoModel->orderBy('id_producto', 'DESC')->findAll();
+        $categorias = new Categorias_Model();
+        $data['producto'] = $productoModel
+                                ->select('productos.*, categorias.descripcion as categoria')
+                                ->join('categorias', 'productos.categoria_id = categorias.id_categoria')
+                                ->orderBy('id_producto', 'DESC')
+                                ->findAll();
+
+        $data['categorias'] = $categorias->select('descripcion')->distinct()->findAll();
 
         return view('front/main', [
             'title' => 'Producto',

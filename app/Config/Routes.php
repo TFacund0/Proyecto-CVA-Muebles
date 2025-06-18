@@ -85,3 +85,9 @@ $routes->get('carrito_resta/(:any)', 'carrito_controller::resta/$1', ['filter' =
 
 // Rutas para el detalle de ventas
 $routes->get('/ventas_detalle', 'VentasController::index_ventas', ['filter' => 'auth']);
+$routes->get('/factura/(:num)', 'VentasController::ver_factura/$1', ['filter' => 'auth']);
+
+// Rutas para el crud de consultas
+$routes->get('/lista-consultas', 'ConsultaController::index', ['filter' => 'auth']);
+$routes->get('/consultas', 'ConsultaController::listarConsultas', ['filter' => 'auth']);
+$routes->post('/consultas/eliminar/(:num)', 'ConsultaController::eliminarConsulta/$1', ['filter' => 'auth']);

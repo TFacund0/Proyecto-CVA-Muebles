@@ -6,6 +6,18 @@ use CodeIgniter\Controller;
 use App\Models\Consultas_model;
 
 class ConsultaController extends BaseController {
+    public function index() {
+        // Cargar los helpers necesarios
+        helper(['form', 'url']);
+
+        $consultasModel = new Consultas_model();
+        $data['consultas'] = $consultasModel->findAll();
+
+        return view('front/main', [
+            'title' => 'Consulta',
+            'content' => view('back/consultas/lista_consultas', $data)
+        ]);
+    }
 
     public function cargarConsulta() {
         $consultas = new Consultas_model();
@@ -35,5 +47,41 @@ class ConsultaController extends BaseController {
             // Redirigir con errores de validación
             return redirect()->back()->withInput()->with('error', 'Envio fallido. Por favor, revisa los datos ingresados.');
         }
+    }
+
+    public function listarConsultas(){
+        $consultasModel = new Consultas_model();
+
+        $search = $this->request->getGet('search');
+        $filtroTipo = $this->request->getGet('filtro_tipo');
+        $asunto = $this->request->getGet('asunto');
+
+        if ($filtroTipo == 'nombre_apellido' && !empty($search)) {
+            $consultasModel->groupStart()
+                ->like('nombre', $search)
+                ->orLike('apellido', $search)
+                ->groupEnd();
+        }
+
+        if ($filtroTipo == 'asunto' && !empty($asunto)) {
+            $consultasModel->where('asunto', $asunto);
+        }
+
+        $data['consultas'] = $consultasModel
+            ->orderBy('fecha', 'DESC')
+            ->findAll();
+
+        return view('front/main', [
+            'title' => 'Consulta',
+            'content' => view('back/consultas/lista_consultas', $data)
+        ]);
+    }
+
+    public function eliminarConsulta($id)
+    {
+        $consultasModel = new Consultas_model();
+        $consultasModel->delete($id);
+
+        return redirect()->to('/consultas')->with('success', 'Consulta eliminada correctamente.');
     }
 }

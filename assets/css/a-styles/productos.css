@@ -47,6 +47,52 @@
     box-shadow: 0 0 7px rgb(0, 0, 0);
     border-radius: 10px;
 }
+.product-card {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    background-color: #fff8f0;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
+}
+
+.product-card .card-img-top {
+    height: 250px;
+    object-fit: cover;
+    border-bottom: 1px solid #ccc;
+}
+
+.product-card .card-body {
+    padding: 1rem;
+    background-color: #fff5e1;
+}
+
+.product-card .card-title {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #6b3e1d;
+}
+
+.product-card .card-footer {
+    background-color: #fce8d5;
+    border-top: 1px solid #e0b27a;
+}
+
+.product-card .btn {
+    width: 100%;
+    font-weight: bold;
+    background-color: #ffc107;
+    color: #000;
+    border: none;
+}
+
+.product-card .btn:hover {
+    background-color: #e0a800;
+}
 
 /* ----------------- ZONA DE AJUSTE PARA PANTALLAS CHICAS ---------------------*/
 @media (max-width: 1200) {
