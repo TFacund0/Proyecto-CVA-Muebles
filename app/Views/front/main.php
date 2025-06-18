@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/css/a-styles/condiciones.css')?>">
     
     <link rel="stylesheet" href="<?= base_url('assets/css/a-styles/back/consultas/lista_consultas.css')?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/a-styles/back/producto/carrito_view.css') ?>">
 
     <link rel="stylesheet" href="<?= base_url('assets/css/a-styles/back/usuario/registro.css')?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/a-styles/back/usuario/login.css')?>">

@@ -1,69 +1,71 @@
 /* Contenedor principal */
 .crud-productos {
-    background-color: #f8f9fa !important; /* Fondo claro */
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    background-color: #fef9f1 !important; /* Fondo tipo pergamino */
+    box-shadow: 0 0 8px rgba(92, 64, 51, 0.4);
     border-radius: 1rem;
+    border: 1px solid #e0c9a6;
 }
 
-/* Formulario */
+/* Formulario superior */
 .crud-formulario {
-    background-color: #000000e9 !important;
+    background-color: #ece2d0e6; /* beige traslúcido */
     padding: 1rem;
     border-radius: 0.75rem;
-    border: 1px solid #dee2e6;
+    border: 1px solid #d4b48a;
 }
 
+/* Inputs y selects */
 .crud-formulario .form-select,
 .crud-formulario .form-check-input {
-    border-color: #ced4da;
+    border-color: #c7a678;
+    background-color: #fffaf5;
 }
 
 .crud-formulario .form-select:focus {
-    border-color: #0d6efd;
-    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+    border-color: #7b5e44;
+    box-shadow: 0 0 0 0.2rem rgba(123, 94, 68, 0.25);
 }
 
-/* Botones */
+/* Botones del formulario */
 .crud-formulario .btn-outline-light {
-    color: #0d6efd;
-    border-color: #0d6efd;
-    background-color: #000000;
+    color: #7b5e44;
+    border-color: #7b5e44;
+    background-color: #ece2d0;
     transition: background-color 0.3s, color 0.3s;
 }
 
 .crud-formulario .btn-outline-light:hover {
-    background-color: #0d6efd;
+    background-color: #7b5e44;
     color: #ffffff;
 }
 
 /* Tabla */
 .crud-tabla table {
-    background-color: #ffffff;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-    margin: 0;
-    border: 1px solid #dee2e6;
+    background-color: #fffdf8;
+    box-shadow: 0 0 5px rgba(92, 64, 51, 0.3);
+    border: 1px solid #e0c9a6;
 }
 
 .crud-tabla th {
-    background-color: #0000003d !important; /* similar a table-warning pero más suave */
-    color: #212529;
+    background-color: #d9c3a4 !important;
+    color: #4b3b2a;
     font-weight: 600;
 }
 
 .crud-tabla td {
-    color: #212529;
+    color: #3f2f22;
 }
 
 .crud-tabla tr:hover {
-    background-color: #00000028;
+    background-color: #f4ede3;
 }
 
-/* Imagen producto */
+/* Imágenes */
 .img-producto {
     max-height: 100px;
     object-fit: cover;
     border-radius: 0.5rem;
-    border: 1px solid #dee2e6;
+    border: 2px solid #d4b48a;
     transition: transform 0.2s ease-in-out;
 }
 
@@ -73,20 +75,31 @@
 
 /* Botones dentro de tabla */
 .crud-tabla .btn-outline-primary {
-    color: #0d6efd;
-    border-color: #0d6efd;
+    color: #5e3c20;
+    border-color: #5e3c20;
+    background-color: transparent;
 }
+
 .crud-tabla .btn-outline-primary:hover {
-    background-color: #0d6efd;
+    background-color: #5e3c20;
     color: #ffffff;
 }
 
 .crud-tabla .btn-outline-danger {
-    color: #dc3545;
-    border-color: #dc3545;
+    color: #8b2e2e;
+    border-color: #8b2e2e;
 }
 .crud-tabla .btn-outline-danger:hover {
-    background-color: #dc3545;
+    background-color: #8b2e2e;
+    color: #ffffff;
+}
+
+.crud-tabla .btn-outline-success {
+    color: #3e6435;
+    border-color: #3e6435;
+}
+.crud-tabla .btn-outline-success:hover {
+    background-color: #3e6435;
     color: #ffffff;
 }
 
