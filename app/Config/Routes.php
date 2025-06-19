@@ -37,6 +37,13 @@ $routes->get('/ventas-list', 'VentasController::index_ventas', ['filter' => 'aut
 $routes->get('/crud-usuarios', 'UsuarioController::index', ['filter' => 'auth']);
 $routes->post('/crud-usuarios', 'UsuarioController::index', ['filter' => 'auth']);
 
+// Rutas para editar el usuario
+$routes->get('/editar-usuario/(:num)', 'UsuarioController::editar_usuario/$1', ['filter' => 'auth']);
+
+// Rutas para eliminar el usuario
+$routes->get('/delete-usuario/(:num)', 'UsuarioController::delete_usuario/$1', ['filter' => 'auth']);
+$routes->get('/activar-usuario/(:num)', 'UsuarioController::activar_usuario/$1', ['filter' => 'auth']);
+
 // Rutas para la configuracion del perfil del usuario
 $routes->get('/perfil', 'UsuarioController::index_perfil', ['filter' => 'auth']);
 $routes->post('/guardarCambios', 'UsuarioController::guardarCambios', ['filter' => 'auth']);
