@@ -1,50 +1,89 @@
 .ventas-container {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f0f2f5;
-    max-width: 1000px;
-    margin: 30px auto;
-    padding: 25px;
+    background-color: rgba(255, 255, 255, 0.95);
     border-radius: 12px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+    border: 2px solid #e0c097;
+    min-height: 400px;
 }
 
 .ventas-titulo {
-    text-align: center;
-    font-size: 28px;
-    color: #2c3e50;
-    margin-bottom: 20px;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #4e3d26;
 }
 
-.tabla-ventas {
-    width: 100%;
-    border-collapse: collapse;
+.ventas-container .table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f6f1e7;
 }
 
-.tabla-ventas-encabezado {
-    background-color: #007bff;
-    color: #ffffff;
-}
-
-.tabla-ventas-fila-encabezado th {
-    padding: 14px;
+.ventas-container .table th {
+    background-color: #d8b07e !important;
+    color: #fff;
     text-align: center;
 }
 
-.tabla-ventas-cuerpo .tabla-ventas-fila:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-.tabla-ventas-fila td {
-    padding: 12px;
-    border: 1px solid #e0e0e0;
+.ventas-container .table td {
+    vertical-align: middle;
     text-align: center;
 }
 
-.tabla-ventas-fila:hover {
-    background-color: #e6f2ff;
+/* Contenedor principal del formulario */
+.filtro-ventas-form {
+    background-color: #f6f1e7;
+    border: 2px solid #d1bfa3;
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
 }
 
-.col-id-venta, .col-id-producto, .col-nombre, .col-cantidad, .col-precio, .col-subtotal {
-    /* Estilos específicos por columna si necesitás */
+/* Input de búsqueda */
+.filtro-busqueda-input {
+    border: 1px solid #c9b499;
+    background-color: #fff8f0;
+    color: #3b2e1c;
+}
+
+.filtro-busqueda-input::placeholder {
+    color: #a48f76;
+}
+
+/* Selector de tipo de filtro */
+.filtro-select {
+    border: 1px solid #c9b499;
+    background-color: #fff8f0;
+    color: #3b2e1c;
+}
+
+/* Botones */
+.btn-filtrar {
+    background-color: #c9b499 !important;
+    border: none;
+    color: white;
+    transition: background-color 0.2s ease;
+}
+
+.btn-filtrar:hover {
+    background-color: #b6a48f !important;
+}
+
+.btn-limpiar {
+    background-color: #9b948b !important;
+    border: none;
+    color: white;
+    transition: background-color 0.2s ease;
+}
+
+.btn-limpiar:hover {
+    background-color: #7f7871 !important;
+}
+
+/* Responsive para móviles */
+@media (max-width: 576px) {
+    .filtro-ventas-form .col-md-4,
+    .filtro-ventas-form .col-md-2 {
+        width: 100%;
+        margin-bottom: 10px;
+    }
 }

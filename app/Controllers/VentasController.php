@@ -14,20 +14,50 @@ class VentasController extends BaseController {
     }
 
     public function index_ventas() {
-        $data = [];
-        $ventasDetalle = new VentasDetalle_model();
-        $data['ventas'] = $ventasDetalle->getDetallesAll();
+        helper('text');
+        $request = service('request');
 
-        // Calcula el subtotal para cada venta
-        foreach ($data['ventas'] as &$venta) {
-            $venta['subtotal'] = $venta['cantidad'] * $venta['precio'];
+        $ventasDetalle = new VentasDetalle_model();
+
+        // Parámetros de filtrado
+        $search = strtolower(trim($request->getGet('search') ?? ''));
+        $tipo = $request->getGet('filtro_tipo') ?? '';
+
+        $ventas = $ventasDetalle->getDetallesAll();
+        $ventas_filtradas = [];
+
+        foreach ($ventas as $venta) {
+            $coincide = true;
+
+            if ($search) {
+                switch ($tipo) {
+                    case 'id':
+                        $coincide = strpos((string) $venta['venta_id'], $search) !== false;
+                        break;
+                    case 'usuario':
+                        $coincide = stripos($venta['usuario'], $search) !== false;
+                        break;
+                    case 'descripcion':
+                        $coincide = stripos($venta['nombre_prod'], $search) !== false;
+                        break;
+                    default:
+                        $coincide = true;
+                }
+            }
+
+            if ($coincide) {
+                // Calcula subtotal directamente en el foreach
+                $venta['subtotal'] = $venta['cantidad'] * $venta['precio'];
+                $ventas_filtradas[] = $venta;
+            }
         }
 
         return view('front/main', [
             'title' => 'Ventas',
-            'content' => view('back/ventas/detalleVentas', $data),
+            'content' => view('back/ventas/detalleVentas', ['ventas' => $ventas_filtradas, 'search' => $search, 'filtro_tipo' => $tipo])
         ]);
     }
+
 
     public function registrar_venta() {
         $session = session();

@@ -1,32 +1,55 @@
+<div class="ventas-container container my-5">
+    <h1 class="ventas-titulo text-center mb-4">Detalle de Ventas</h1>
 
-<div class="ventas-container">
-    <h1 class="ventas-titulo">Detalle de Ventas</h1>
-    <table class="tabla-ventas">
-        <thead class="tabla-ventas-encabezado">
-            <tr class="tabla-ventas-fila-encabezado">
-                <th class="col-id-venta">ID Venta</th>
-                <th class="col-id-producto">Usuario</th>
-                <th class="col-id-producto">ID Producto</th>
-                <th class="col-nombre">Nombre</th>
-                <th class="col-cantidad">Cantidad</th>
-                <th class="col-precio">Precio</th>
-                <th class="col-subtotal">Subtotal</th>
-                <th class="col-Estado">Estado</th>
-            </tr>
-        </thead>
-        <tbody class="tabla-ventas-cuerpo">
-            <?php foreach ($ventas as $item): ?>
-            <tr class="tabla-ventas-fila">
-                <td class="col-id-venta"><?= esc($item['venta_id']) ?></td>
-                <td class="col-id-usuario"><?= esc($item['usuario'])?></td>
-                <td class="col-id-producto"><?= esc($item['producto_id']) ?></td>
-                <td class="col-nombre"><?= esc($item['nombre_prod']) ?></td>
-                <td class="col-cantidad"><?= esc($item['cantidad']) ?></td>
-                <td class="col-precio">$<?= esc($item['precio']) ?></td>
-                <td class="col-subtotal">$<?= esc($item['subtotal']) ?></td>
-                <td class="col-estado"><button class="btn btn-outline-secondary" href="<?php base_url('/factura') . esc($item['venta_id']) ?>">Ver Factura</button></td>
-            </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+    <!-- Tabla de ventas -->
+    <div class="table-responsive p-2">
+        
+        <form method="get" class="row g-2 mb-4 filtro-ventas-form">
+            <div class="col-md-4">
+                <input type="text" name="search" class="form-control filtro-busqueda-input" placeholder="Buscar..." value="<?= esc($search ?? '') ?>">
+            </div>
+
+            <div class="col-md-4">
+                <select name="filtro_tipo" class="form-select filtro-select">
+                    <option value="">-- Filtrar por --</option>
+                    <option value="id" <?= ($filtro_tipo ?? '') === 'id' ? 'selected' : '' ?>>ID Venta</option>
+                    <option value="usuario" <?= ($filtro_tipo ?? '') === 'usuario' ? 'selected' : '' ?>>Usuario</option>
+                    <option value="descripcion" <?= ($filtro_tipo ?? '') === 'descripcion' ? 'selected' : '' ?>>Producto</option>
+                </select>
+            </div>
+
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-filtrar w-100">Filtrar</button>
+            </div>
+
+            <div class="col-md-2">
+                <a href="<?= base_url('/ventas_detalle') ?>" class="btn btn-limpiar w-100">Ver Todos</a>
+            </div>
+        </form>
+
+        <table id="tablaVentas" class="table table-striped table-bordered tabla-ventas w-100">
+            <thead class="tabla-ventas-encabezado table-primary">
+                <tr>
+                    <th>ID Venta</th>
+                    <th>Usuario</th>
+                    <th>Descripción</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($ventas as $item): ?>
+                    <tr>
+                        <td><?= esc($item['venta_id']) ?></td>
+                        <td><?= esc($item['usuario']) ?></td>
+                        <td><?= esc($item['nombre_prod']) ?></td>
+                        <td><?= esc($item['cantidad']) ?></td>
+                        <td>$<?= esc(number_format($item['precio'], 2)) ?></td>
+                        <td>$<?= esc(number_format($item['subtotal'], 2)) ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
 </div>
