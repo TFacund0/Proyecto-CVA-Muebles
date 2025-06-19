@@ -82,11 +82,6 @@ class carrito_controller extends BaseController
 
     public function muestra() //carrito que se muestra
     {
-        $perfil = session()->get('perfil_id');
-
-        if ($perfil != 1) {
-            return redirect()->to('/login');
-        }
         $cart = \Config\Services::cart();
         $cart = $cart->contents();
         $data['cart'] = $cart;

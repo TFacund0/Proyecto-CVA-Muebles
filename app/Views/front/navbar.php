@@ -104,7 +104,6 @@
         <a href="<?= base_url('/perfil') ?>">Cliente: <?= esc($nombre) ?></a>
       </div>
       <ul class="list-unstyled">
-        <li><a class="nav-link" href="<?= base_url('/perfil') ?>">Perfil</a></li>
         <li><a class="nav-link" href="<?= base_url('/muestro') ?>">Carrito</a></li>
         <li><a class="nav-link" href="<?= base_url('/users-list') ?>">Mis productos</a></li>
       </ul>
