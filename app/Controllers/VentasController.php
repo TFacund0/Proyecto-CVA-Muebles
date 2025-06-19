@@ -8,11 +8,27 @@ use App\Models\VentasCabecera_model;
 use App\Models\VentasDetalle_model;
 use App\Models\Productos_model;
 
+/**
+ * Controlador para gestión de ventas
+ * 
+ * Funcionalidades:
+ * - Listado y filtrado de ventas
+ * - Registro de nuevas ventas
+ * - Visualización de facturas
+ */
 class VentasController extends BaseController {
+
+    /**
+     * Constructor - Inicializa helpers
+     */
     public function __construct() {
         helper(['url', 'form']);
     }
 
+    /**
+     * Muestra el listado de ventas con filtros
+     * @return View Vista de detalle de ventas
+     */
     public function index_ventas() {
         $perfil = session()->get('perfil_id');
 
@@ -64,7 +80,10 @@ class VentasController extends BaseController {
         ]);
     }
 
-
+    /**
+     * Procesa el registro de una nueva venta
+     * @return Redirect Redirección con mensaje de estado
+     */
     public function registrar_venta() {
         $session = session();
         require(APPPATH . 'Controllers/carrito_controller.php');
@@ -130,6 +149,11 @@ class VentasController extends BaseController {
         return redirect()->to('muestro');
     }
 
+    /**
+     * Muestra la factura de una venta específica
+     * @param int $venta_id ID de la venta
+     * @return View Vista de factura
+     */
     public function ver_factura($venta_id) {
         $detalles_venta = new VentasDetalle_model();
         $data['venta'] = $detalles_venta->getDetalles($venta_id);
@@ -140,6 +164,11 @@ class VentasController extends BaseController {
         ]);
     }
 
+    /**
+     * Muestra todas las facturas de un usuario
+     * @param int $id_usuario ID del usuario
+     * @return View Vista de historial de compras
+     */
     public function ver_facturas_usuario($id_usuario) {
         $ventasModel = new VentasCabecera_model();
         $data['ventas'] = $ventasModel->getVentas($id_usuario);

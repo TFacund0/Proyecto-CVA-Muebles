@@ -1,3 +1,11 @@
+/* =============================================
+   ESTILOS PARA EL FORMULARIO DE EDICIÓN DE PRODUCTOS
+   ============================================= */
+
+/* 
+  CONTENEDOR PRINCIPAL
+  Estilos para el contenedor blanco con sombra que envuelve todo el formulario
+*/
 .editar-prod-contenedor {
     background-color: #ffffff;
     border-radius: 16px;
@@ -5,20 +13,29 @@
     transition: all 0.3s ease;
 }
 
-/* Título */
+/* 
+  TÍTULO DEL FORMULARIO
+  Estilos para el texto "Editar Producto" en la parte superior
+*/
 .editar-prod-titulo {
     font-size: 1.8rem;
     font-weight: bold;
     color: #212529;
 }
 
-/* Labels */
+/* 
+  ETIQUETAS DE LOS CAMPOS
+  Estilos para los textos como "Nombre del Producto", "Categoría", etc.
+*/
 .editar-prod-label {
     font-weight: 500;
     color: #495057;
 }
 
-/* Inputs y selects */
+/* 
+  CAMPOS DE FORMULARIO
+  Estilos base para todos los inputs, selects y campo de archivo
+*/
 .editar-prod-input,
 .editar-prod-select,
 .editar-prod-file {
@@ -29,6 +46,10 @@
     transition: box-shadow 0.2s ease-in-out;
 }
 
+/* 
+  ESTADO FOCUS DE LOS CAMPOS
+  Efecto visual cuando un campo está seleccionado
+*/
 .editar-prod-input:focus,
 .editar-prod-select:focus,
 .editar-prod-file:focus {
@@ -37,7 +58,10 @@
     outline: none;
 }
 
-/* Imagen previa */
+/* 
+  IMÁGENES DEL PRODUCTO
+  Estilos para la imagen actual y la vista previa de nueva imagen
+*/
 .editar-prod-img {
     border: 1px solid #dee2e6;
     border-radius: 8px;
@@ -45,7 +69,10 @@
     padding: 5px;
 }
 
-/* Botones */
+/* 
+  BOTONES DE ACCIÓN
+  Estilos base para los botones Guardar Cambios y Cancelar
+*/
 .editar-prod-btn-guardar,
 .editar-prod-btn-cancelar {
     font-weight: 600;
@@ -55,11 +82,19 @@
     transition: all 0.3s ease-in-out;
 }
 
+/* 
+  EFECTO HOVER BOTÓN GUARDAR
+  Cambios visuales al pasar el mouse sobre Guardar Cambios
+*/
 .editar-prod-btn-guardar:hover {
     background-color: #157347;
     color: #fff;
 }
 
+/* 
+  EFECTO HOVER BOTÓN CANCELAR
+  Cambios visuales al pasar el mouse sobre Cancelar
+*/
 .editar-prod-btn-cancelar:hover {
     background-color: #bb2d3b;
     color: #fff;
