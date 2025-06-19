@@ -13,41 +13,41 @@
 
 <div class="container my-3 px-4 py-5" id="contenedor-config-perfil">
     <div class="px-3">
-
         <!-- Título y resumen del perfil -->
-        <div class="d-flex justify-content-between align-items-center bloque-titulo-perfil m-2 p-3">
-            <div class="d-flex">
+        <div class="row bloque-titulo-perfil p-3 align-items-center">
+            <div class="col-12 col-md-8 d-flex align-items-center mb-3 mb-md-0">
                 <!-- Imagen superior del perfil -->
-                <div class="me-4 d-flex align-items-center">
+                <div class="me-4">
                     <img src="<?= $imagePath ?>" alt="foto" class="img-perfil" id="imgPerfilPreviewSuperior">
                 </div>
-
                 <!-- Información del usuario -->
-                <div class="my-auto">
-                    <h4><?= $name . ' ' . $surname ?></h4>
-                    <p class="text-secondary"><?= $email ?></p>
+                <div class="info-usuario">
+                    <h4 class="nombre-info-usuario"><?= $name . ' ' . $surname ?></h4>
+                    <p class="text-secondary mb-0 email-info-usuario"><?= $email ?></p>
                 </div>
             </div>
 
-            <!-- Mensajes de éxito o error -->
-            <?php if (session()->getFlashdata('success')): ?>
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <?= session()->getFlashdata('success') ?>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            <?php endif; ?>
+            <div class="col-12 col-md-4 text-md-end container-fluid">
+                <!-- Mensajes de éxito o error -->
+                <?php if (session()->getFlashdata('success')): ?>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <?= session()->getFlashdata('success') ?>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                <?php endif; ?>
 
-            <?php if (session()->getFlashdata('fail')): ?>
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <?= session()->getFlashdata('fail') ?>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            <?php endif; ?>
+                <?php if (session()->getFlashdata('fail')): ?>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <?= session()->getFlashdata('fail') ?>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                <?php endif; ?>
 
-            <!-- Botones de acción -->
-            <div class="d-flex gap-2">
-                <button type="button" class="btn btn-primary" id="btnEditar">Editar</button>
-                <button type="button" class="btn btn-secondary d-none" id="btnCancelar">Cancelar</button>
+                <!-- Botones de acción -->
+                <div class="d-flex gap-2 justify-content-md-end justify-content-center">
+                    <button type="button" class="btn btn-primary" id="btnEditar">Editar</button>
+                    <button type="button" class="btn btn-secondary d-none" id="btnCancelar">Cancelar</button>
+                </div>
             </div>
         </div>
 
@@ -55,7 +55,7 @@
         <form class="row mt-4 mx-auto form-perfil me-3" id="formPerfil" method="post" action="<?= base_url('/guardarCambios') ?>" enctype="multipart/form-data">
             <!-- Columna principal (datos personales) -->
             <div class="col-lg-9 col-md-12">
-                <div class="col-12 card form-datos-perfil mb-3">
+                <div class="card form-datos-perfil mb-3">
                     <div class="card-body">
                         <h5 class="card-title form-title-perfil mb-3 pb-2">Datos personales</h5>
 
@@ -102,22 +102,21 @@
                 </div>
 
                 <!-- Imagen inferior del perfil y carga de nueva imagen -->
-                <div class="my-auto mb-5">
-                    <div class="text-center mb-2">
-                        <div class="mx-auto" style="width: 250px; height: 175px; overflow: hidden; background-color: #f0f0f0;">
-                            <img src="<?= $imagePath ?>" alt="foto" class="img-thumbnail img-fluid"
-                                id="imgPerfilPreviewInferior"
-                                style="width: 100%; height: 100%; object-fit: contain; object-position: center;">
-                        </div>
-
-                        <!-- Selector de archivo para cambiar imagen -->
-                        <input class="form-control form-control-sm mt-2" id="formFileSm" name="image" type="file" disabled>
+                <div class="my-auto mb-5 text-center">
+                    <div class="mx-auto" style="width: 100%; max-width: 250px; height: 175px; overflow: hidden; background-color: #f0f0f0;">
+                        <img src="<?= $imagePath ?>" alt="foto" class="img-thumbnail img-fluid"
+                            id="imgPerfilPreviewInferior"
+                            style="width: 100%; height: 100%; object-fit: contain; object-position: center;">
                     </div>
+                    <!-- Selector de archivo para cambiar imagen -->
+                    <input class="form-control form-control-sm mt-2" id="formFileSm" name="image" type="file" disabled>
                 </div>
             </div>
 
             <!-- Botón de guardar (solo visible en modo edición) -->
-            <button type="submit" class="btn btn-success d-none w-50 mx-auto" id="btnGuardar">Guardar</button>
+            <div class="text-center">
+                <button type="submit" class="btn btn-success d-none w-50" id="btnGuardar">Guardar</button>
+            </div>
         </form>
 
         <!-- Script de interacciones (modo edición, imagen, etc.) -->
@@ -131,7 +130,6 @@
                 const imgPreviewSuperior = document.getElementById('imgPerfilPreviewSuperior');
                 const imgPreviewInferior = document.getElementById('imgPerfilPreviewInferior');
 
-                // Activar edición
                 btnEditar.addEventListener('click', function () {
                     formInputs.forEach(input => {
                         input.disabled = false;
@@ -142,19 +140,17 @@
                     btnCancelar.classList.remove('d-none');
                 });
 
-                // Cancelar edición
                 btnCancelar.addEventListener('click', function () {
                     formInputs.forEach(input => {
                         input.disabled = true;
                         input.readOnly = true;
                     });
-                    fileInput.value = ""; // Limpiar selector de archivos
+                    fileInput.value = "";
                     btnEditar.classList.remove('d-none');
                     btnGuardar.classList.add('d-none');
                     btnCancelar.classList.add('d-none');
                 });
 
-                // Mostrar vista previa de imagen en tiempo real
                 fileInput.addEventListener('change', function (event) {
                     const file = event.target.files[0];
                     if (file && file.type.startsWith('image/')) {
@@ -168,6 +164,5 @@
                 });
             });
         </script>
-
     </div>
 </div>

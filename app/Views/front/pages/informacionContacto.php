@@ -106,9 +106,9 @@
                         <select class="form-control" name="asunto" required>
                             <option value="" disabled selected>Seleccione un asunto</option>
                             <option value="Consulta general">Consulta general</option>
-                            <option value="Presupuesto">Solicitud de presupuesto</option>
-                            <option value="Estado de pedido">Estado de mi pedido</option>
-                            <option value="Garantía">Consulta sobre garantía</option>
+                            <option value="Solicitud de presupuesto">Solicitud de presupuesto</option>
+                            <option value="Estado de mi pedido">Estado de mi pedido</option>
+                            <option value="Consulta sobre garantía">Consulta sobre garantía</option>
                             <option value="Otro">Otro</option>
                         </select>
                     </div>

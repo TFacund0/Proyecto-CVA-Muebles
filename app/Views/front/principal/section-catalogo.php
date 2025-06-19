@@ -1,3 +1,8 @@
+<?php
+    $session = session();
+    $isLogged = $session->get('isLogged');
+?>
+
 <!-- Sección de Categorias/Catalogo -->
 <section class="container my-5 catalogo-content section-categorias">
     <h2 class="titulo">Nuestras Especialidades</h2>
@@ -9,7 +14,7 @@
                 <div class="card-body text-card">
                     <h3>Muebles de Sala</h3>
                     <p>Sofás, mesas de centro y libreros diseñados para tu comodidad</p>
-                    <a href="#" class="btn btn-outline-warning">Explorar</a>
+                    <a href="<?= $isLogged == 'SI' ? base_url('todos_p') : base_url('productos') ?>" class="btn btn-outline-warning">Explorar</a>
                 </div>
             </div>
         </div>
@@ -20,7 +25,7 @@
                 <div class="card-body text-card">
                     <h3>Dormitorios</h3>
                     <p>Camas, mesitas y armarios que transformarán tu espacio</p>
-                    <a href="#" class="btn btn-outline-warning">Explorar</a>
+                    <a href="<?= $isLogged == 'SI' ? base_url('todos_p') : base_url('productos') ?>" class="btn btn-outline-warning">Explorar</a>
                 </div>
             </div>
         </div>                
@@ -31,7 +36,7 @@
                 <div class="card-body text-card">
                     <h3>Cocina</h3>
                     <p>Islas, alacenas y mesas rústicas para tu hogar</p>
-                    <a href="#" class="btn btn-outline-warning">Explorar</a>
+                    <a href="<?= $isLogged == 'SI' ? base_url('todos_p') : base_url('productos') ?>" class="btn btn-outline-warning">Explorar</a>
                 </div>
             </div>
         </div>  
@@ -83,11 +88,6 @@
                         <del class="text-muted">$1,500.000</del>
                     </div>
                 </div>
-
-                <!-- Boton para añadir al carrito -->
-                <div class="card-footer">
-                    <button class="btn btn-primary w-100">Añadir al Carrito</button>
-                </div>
             </div>
 
         </div>
@@ -108,11 +108,6 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <span class="fw-bold">$650.000</span>
                     </div>
-                </div>
-                
-                <!-- Boton para añadir al carrito -->
-                <div class="card-footer">
-                    <button class="btn btn-primary w-100">Añadir al Carrito</button>
                 </div>
             </div>
 
@@ -135,11 +130,6 @@
                         <span class="fw-bold">$1.200.000 (el set completo)</span>
                     </div>
                 </div>
-
-                <!-- Boton para añadir al carrito -->
-                <div class="card-footer">
-                    <button class="btn btn-primary w-100">Añadir al Carrito</button>
-                </div>
             </div>
             
         </div>
@@ -160,11 +150,6 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <span class="fw-bold">$150.000</span>
                     </div>
-                </div>
-                
-                <!-- Boton para añadir al carrito -->
-                <div class="card-footer">
-                    <button class="btn btn-primary w-100">Añadir al Carrito</button>
                 </div>
             </div>
 
@@ -187,11 +172,6 @@
                         <span class="fw-bold">$700.000</span>
                     </div>
                 </div>
-                
-                <!-- Boton para añadir al carrito -->
-                <div class="card-footer">
-                    <button class="btn btn-primary w-100">Añadir al Carrito</button>
-                </div>
             </div>
 
         </div>
@@ -213,18 +193,13 @@
                         <span class="fw-bold">$1.200.000</span>
                     </div>
                 </div>
-                
-                <!-- Boton para añadir al carrito -->
-                <div class="card-footer">
-                    <button class="btn btn-primary w-100">Añadir al Carrito</button>
-                </div>
             </div>
 
         </div>
 
         <!-- Boton para ver los todos los productos -->
         <div class="text-center mt-5">
-            <a href="<?= base_url('productos')?>" class="btn btn-ver-todos">
+            <a href="<?= $isLogged == 'SI' ? base_url('todos_p') : base_url('productos') ?>" class="btn btn-ver-todos">
                 <span class="me-2">Ver Todos los Productos</span>
             </a>
         </div>

@@ -58,3 +58,14 @@
     font-weight: bold; /* Texto en negrita para destacar etiquetas */
     color: rgb(98, 98, 98); /* Color gris oscuro para texto */
 }
+
+/* Ajusta para pantallas pequeñas */
+@media (max-width: 796px) {
+    .info-usuario .nombre-info-usuario {
+        font-size: 15px !important;
+    }
+    
+    .info-usuario .email-info-usuario {
+        font-size: 10px !important;
+    }
+}

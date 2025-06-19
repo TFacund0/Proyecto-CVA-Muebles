@@ -6,9 +6,16 @@ use CodeIgniter\Controller;
 use App\Models\Consultas_model;
 
 class ConsultaController extends BaseController {
-    public function index() {
+    public function index() {    
         // Cargar los helpers necesarios
         helper(['form', 'url']);
+
+        $perfil = session()->get('perfil_id');
+        
+        // Si el perfil no es administrador (id = 1), redirigir al login
+        if ($perfil != 1) {
+            return redirect()->to('/login');
+        }
 
         $consultasModel = new Consultas_model();
         $data['consultas'] = $consultasModel->findAll();
@@ -49,13 +56,24 @@ class ConsultaController extends BaseController {
         }
     }
 
-    public function listarConsultas(){
+    public function listarConsultas() {
+        $perfil = session()->get('perfil_id');
+        
+        // Si el perfil no es administrador (id = 1), redirigir al login
+        if ($perfil != 1) {
+            return redirect()->to('/login');
+        }
+
         $consultasModel = new Consultas_model();
 
         $search = $this->request->getGet('search');
         $filtroTipo = $this->request->getGet('filtro_tipo');
         $asunto = $this->request->getGet('asunto');
 
+        // Iniciar filtro por las activas
+        $consultasModel->where('activo', 'SI');
+
+        // Filtro por nombre o apellido
         if ($filtroTipo == 'nombre_apellido' && !empty($search)) {
             $consultasModel->groupStart()
                 ->like('nombre', $search)
@@ -63,6 +81,7 @@ class ConsultaController extends BaseController {
                 ->groupEnd();
         }
 
+        // Filtro por asunto
         if ($filtroTipo == 'asunto' && !empty($asunto)) {
             $consultasModel->where('asunto', $asunto);
         }
@@ -77,11 +96,14 @@ class ConsultaController extends BaseController {
         ]);
     }
 
-    public function eliminarConsulta($id)
-    {
-        $consultasModel = new Consultas_model();
-        $consultasModel->delete($id);
 
-        return redirect()->to('/consultas')->with('success', 'Consulta eliminada correctamente.');
+    public function eliminarConsulta($id) {
+        $consultasModel = new Consultas_model();
+
+        // Actualiza el campo 'activo' a 'NO' en lugar de eliminarlo
+        $consultasModel->update($id, ['activo' => 'NO']);
+
+        return redirect()->to('/consultas')->with('success', 'Consulta desactivada correctamente.');
     }
+
 }

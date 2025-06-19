@@ -38,20 +38,14 @@
                         <?php if (session()->get('logged_in')) { ?>
 
                         <div class="card-footer">
-                            <?php 
-                                echo form_open('carrito/add'); 
-                                echo form_hidden('id_producto', $row['id_producto']);
-                                echo form_hidden('precio_vta', $row['precio_vta']);
-                                echo form_hidden('nombre_prod', $row['nombre_prod']);
-
-                                $btn = array(
-                                    'class' => 'btn btn-secondary fuenteBotones',
-                                    'value' => 'Agregar al Carrito',
-                                    'name'  => 'action'
-                                );  
-                                echo form_submit($btn);
-                                echo form_close();
-                            ?>
+                            <form action="<?= base_url('carrito/add') ?>" method="post">
+                                <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>">
+                                <input type="hidden" name="id_producto" value="<?= esc($row['id_producto']) ?>">
+                                <input type="hidden" name="precio_vta" value="<?= esc($row['precio_vta']) ?>">
+                                <input type="hidden" name="nombre_prod" value="<?= esc($row['nombre_prod']) ?>">
+                                <input type="hidden" name="imagen" value="<?= esc($row['imagen']) ?>">
+                                <input type="submit" class="btn btn-secondary fuenteBotones" value="Agregar al Carrito" name="action">
+                            </form>
                         </div>
                         
                         <?php }?>
@@ -61,6 +55,7 @@
             <?php } ?>
         </div>
 </section>
+
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {

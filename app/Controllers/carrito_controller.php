@@ -61,10 +61,10 @@ class carrito_controller extends BaseController
         return redirect()->to(base_url("muestro"));
     }
 
-    public function catalogo()
-    {
+    public function catalogo(){
         $productoModel = new Productos_Model();
         $categorias = new Categorias_model();
+
         $data['producto'] = $productoModel
                                 ->select('productos.*, categorias.descripcion as categoria')
                                 ->join('categorias', 'productos.categoria_id = categorias.id_categoria')
@@ -79,6 +79,7 @@ class carrito_controller extends BaseController
         ]);
     }
 
+
     public function muestra() //carrito que se muestra
     {
         $perfil = session()->get('perfil_id');
@@ -91,7 +92,7 @@ class carrito_controller extends BaseController
         $data['cart'] = $cart;
 
         return view('front/main', [
-            'title' => 'confirmar compra',
+            'title' => 'Carrito de Compras',
             'content' => view('front/pages/Carrito_parte_view', $data)
         ]);
     }
