@@ -2,19 +2,21 @@
     <div class="container consulta-container">
         <h1 class="consulta-titulo">Listado de Consultas</h1>
 
-        <form method="get" action="<?= base_url('/consultas') ?>" class="consulta-busqueda-form row gy-2 gx-3 align-items-center" id="consulta-form">
-            <div class="col-md-4">
-                <input type="text" name="search" placeholder="Buscar por nombre o apellido" value="<?= esc($_GET['search'] ?? '') ?>" class="form-control consulta-input">
+        <form method="get" action="<?= base_url('/consultas') ?>" class="row gy-2 gx-3 align-items-center" id="consulta-form">
+            <div class="col-12 col-md-4">
+                <input type="text" name="search" placeholder="Buscar por nombre o apellido" value="<?= esc($_GET['search'] ?? '') ?>" class="form-control">
             </div>
-            <div class="col-md-3">
-                <select name="filtro_tipo" id="filtro-tipo" class="form-select consulta-select">
+
+            <div class="col-12 col-md-3">
+                <select name="filtro_tipo" id="filtro-tipo" class="form-select">
                     <option value="">-- Elegir tipo de filtro --</option>
                     <option value="nombre_apellido" <?= (isset($_GET['filtro_tipo']) && $_GET['filtro_tipo'] == 'nombre_apellido') ? 'selected' : '' ?>>Nombre o Apellido</option>
                     <option value="asunto" <?= (isset($_GET['filtro_tipo']) && $_GET['filtro_tipo'] == 'asunto') ? 'selected' : '' ?>>Asunto</option>
                 </select>
             </div>
-            <div class="col-md-3" id="asunto-col" style="display: none;">
-                <select name="asunto" id="filtro-asunto" class="form-select consulta-select">
+
+            <div class="col-12 col-md-3" id="asunto-col" style="display: none;">
+                <select name="asunto" id="filtro-asunto" class="form-select">
                     <option value="">-- Seleccione un asunto --</option>
                     <option value="Consulta general" <?= ($_GET['asunto'] ?? '') == 'Consulta general' ? 'selected' : '' ?>>Consulta general</option>
                     <option value="Solicitud de presupuesto" <?= ($_GET['asunto'] ?? '') == 'Solicitud de presupuesto' ? 'selected' : '' ?>>Solicitud de presupuesto</option>
@@ -23,10 +25,11 @@
                     <option value="Otro" <?= ($_GET['asunto'] ?? '') == 'Otro' ? 'selected' : '' ?>>Otro</option>
                 </select>
             </div>
-            <div class="col-auto d-flex gap-2">
+
+            <div class="col-12 col-md-auto d-flex gap-2">
                 <button type="submit" class="btn consulta-boton">Buscar</button>
                 <?php if (!empty($_GET['search']) || !empty($_GET['asunto']) || !empty($_GET['filtro_tipo'])): ?>
-                    <a href="<?= base_url('/consultas') ?>" class="consulta-boton-restablecer">Ver todas</a>
+                    <a href="<?= base_url('/consultas') ?>" class="consulta-boton-restablecer">Ver Todas</a>
                 <?php endif; ?>
             </div>
         </form>

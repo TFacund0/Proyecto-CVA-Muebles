@@ -241,3 +241,80 @@ nav .icono {
     }
 }
 
+/* ---------- CAMBIOS AGREGADOS Y MEJORADOS PARA RESPONSIVE Y FLUIDEZ VISUAL ---------- */
+
+/* Asegurar que los logos y títulos se acomoden bien en pantallas pequeñas */
+@media (max-width: 768px) {
+    nav .titulo-logo {
+        font-size: 16px;
+        display: inline-block;
+        margin-top: 5px;
+    }
+
+    nav .titulo-perfil {
+        font-size: 13px;
+        display: inline-block;
+        margin-top: 5px;
+    }
+
+    nav .content-logo {
+        margin-left: 4px;
+        margin-right: 4px;
+    }
+
+    nav .logo {
+        width: 40px;
+    }
+}
+
+/* Mejora la alineación vertical en pantallas pequeñas */
+@media (max-width: 768px) {
+    nav .navbar-brand,
+    nav .titulo-perfil {
+        display: block;
+        text-align: center;
+    }
+
+    nav .navbar-toggler {
+        margin-left: auto;
+    }
+
+    nav .content-account {
+        justify-content: center !important;
+        margin-top: 10px;
+    }
+
+    .menu-lateral .usuario-boton-lateral {
+        font-size: 13px;
+    }
+}
+
+/* Mejora adicional: asegurar que botones e íconos tengan buen tamaño táctil */
+nav .boton-links {
+    padding: 8px;
+}
+
+nav .icono {
+    width: 28px;
+    height: 28px;
+}
+
+/* Mejora accesibilidad en ítems del menú offcanvas */
+.menu-lateral ul li a {
+    display: block;
+    color: #3e2a11;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.menu-lateral ul li a:hover {
+    color: #000;
+    text-decoration: underline;
+}
+
+/* Oculta elementos duplicados innecesarios en móviles */
+@media (max-width: 768px) {
+    nav .titulo-perfil {
+        display: none;
+    }
+}

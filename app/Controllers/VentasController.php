@@ -14,6 +14,12 @@ class VentasController extends BaseController {
     }
 
     public function index_ventas() {
+        $perfil = session()->get('perfil_id');
+
+        if ($perfil != 1) {
+            return redirect()->to('/login');
+        }
+
         helper('text');
         $request = service('request');
 

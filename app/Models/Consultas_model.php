@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class Consultas_model extends Model {
     protected $table = 'consultas';
     protected $primaryKey = 'id_consulta';
-    protected $allowedFields = ['nombre', 'apellido', 'email', 'telefono', 'asunto', 'descripcion', 'fecha'];
+    protected $allowedFields = ['nombre', 'apellido', 'email', 'telefono', 'asunto', 'descripcion', 'fecha', 'activo'];
 
     public function getConsultas() {
         return $this->findAll();

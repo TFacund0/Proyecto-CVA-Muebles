@@ -1,18 +1,46 @@
-/* ----------- TÉRMINOS Y CONDICIONES ----------- */
-/* Encabezado específico para términos */
-.terms-header {
+/* Encabezado de Términos */
+.terminos-encabezado {
     background-image: url('../../img/texturas/maderaoscura.jpg');
     background-position: center;
-    
+    background-size: cover;
+    color: white;
 }
-.contenedor-terminos {
+
+/* Fondo de sección principal */
+.terminos-fondo {
     background-image: url('../../img/texturas/madera-claritaa.jpg');
     background-position: center;
-    border-radius: 30px;
-    box-shadow: 0 0 7px rgb(0, 0, 0);
-    border: 1.9px solid rgb(0, 0, 0);
+    background-size: cover;
+    border-radius: 20px;
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.6);
+    border: 2px solid #000;
 }
-/* Acordeón personalizado */
+
+/* Contenedores principales */
+.terminos-seccion {
+    border-left: 5px solid #B85C38;
+    background-color: #fff;
+}
+
+/* Tarjetas informativas */
+.terminos-tarjeta {
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    background-color: #fff;
+}
+.terminos-tarjeta:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Avisos */
+.resumen-aviso {
+    border-radius: 12px;
+    font-weight: 500;
+}
+
+/* Acordeón */
 .accordion-button {
     background-color: rgba(253, 218, 172, 0.5);
     font-weight: 600;
@@ -22,23 +50,15 @@
     color: #3a2c0e;
 }
 
-/* Bordes para secciones */
-.terms-section {
-    border-left: 4px solid var(--color-terracota);
-}
-
-/* Efecto hover para tarjetas internas */
-.card-style .card-style:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-/* Responsive */
+/* Responsive ajustes */
 @media (max-width: 768px) {
-    .terms-section {
+    .terminos-seccion {
         padding: 1.5rem !important;
     }
-    .terms-section h2 {
-        font-size: 1.5rem;
+    .terminos-seccion h2 {
+        font-size: 1.4rem;
+    }
+    .terminos-tarjeta {
+        margin-bottom: 1rem;
     }
 }

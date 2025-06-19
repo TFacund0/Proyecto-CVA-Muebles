@@ -92,7 +92,7 @@ class carrito_controller extends BaseController
         $data['cart'] = $cart;
 
         return view('front/main', [
-            'title' => 'confirmar compra',
+            'title' => 'Carrito de Compras',
             'content' => view('front/pages/Carrito_parte_view', $data)
         ]);
     }

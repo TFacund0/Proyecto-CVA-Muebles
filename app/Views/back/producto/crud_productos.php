@@ -83,12 +83,12 @@
                             <td class="text-center" style="width: 250px;">
                                 <img src="<?= base_url('assets/uploads/' . $producto['imagen']) ?>" alt="Imagen producto" class="img-producto img-thumbnail border border-dark" style="max-width: 200px; width: 150px; height: auto;">
                             </td>
-                            <td class="border-dark">
-                                <a class="btn btn-outline-primary btn-sm" href="<?= base_url('/editar-producto/' . $producto['id_producto']) ?>">Editar</a>
+                            <td class="border-dark m-auto">
+                                <a class="btn btn-outline-primary btn-sm mb-1" href="<?= base_url('/editar-producto/' . $producto['id_producto']) ?>">Editar</a>
                                 <?php if($vista == 'NO') { ?>
-                                    <a class="btn btn-outline-danger btn-sm" href="<?= base_url('/delete-producto/' . $producto['id_producto'] . '?vista=' . $vista) ?>">Eliminar</a>
+                                    <a class="btn btn-outline-danger btn-sm mb-1" href="<?= base_url('/delete-producto/' . $producto['id_producto'] . '?vista=' . $vista) ?>">Eliminar</a>
                                 <?php } else { ?>
-                                    <a class="btn btn-outline-success btn-sm" href="<?= base_url('/activar-producto/' . $producto['id_producto'] . '?vista=' . $vista) ?>">Activar</a> 
+                                    <a class="btn btn-outline-success btn-sm mb-1" href="<?= base_url('/activar-producto/' . $producto['id_producto'] . '?vista=' . $vista) ?>">Activar</a> 
                                 <?php } ?>
                             </td>
                         </tr>
