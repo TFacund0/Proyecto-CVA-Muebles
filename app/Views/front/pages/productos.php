@@ -43,6 +43,7 @@
                                 <input type="hidden" name="id_producto" value="<?= esc($row['id_producto']) ?>">
                                 <input type="hidden" name="precio_vta" value="<?= esc($row['precio_vta']) ?>">
                                 <input type="hidden" name="nombre_prod" value="<?= esc($row['nombre_prod']) ?>">
+                                <input type="hidden" name="imagen" value="<?= esc($row['imagen']) ?>">
                                 <input type="submit" class="btn btn-secondary fuenteBotones" value="Agregar al Carrito" name="action">
                             </form>
                         </div>

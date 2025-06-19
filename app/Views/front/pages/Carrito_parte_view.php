@@ -1,5 +1,6 @@
-    <div class="container py-4" id="carrito">
-        <div class="carrito-box rounded p-4 mx-auto">
+<div class="container py-4" id="carrito">
+    <div class="carrito-box d-flex flex-column rounded p-4 mx-auto" style="min-height: 600px; height: 100%;">
+        <div class="flex-grow-1 d-flex flex-column">
             <div class="text-center mb-4">
                 <h2 class="carrito-title">Productos en tu Carrito</h2>
             </div>
@@ -22,8 +23,8 @@
                     </a>
                 </div>
             <?php else: ?>
-                <form action="<?= base_url('carrito_actualiza') ?>" method="post">
-                    <div class="table-responsive">
+                <form action="<?= base_url('carrito_actualiza') ?>" method="post" class="d-flex flex-column flex-grow-1">
+                    <div class="table-responsive mb-4">
                         <table class="table table-bordered table-hover align-middle text-center table-carrito">
                             <thead class="table-dark">
                                 <tr>
@@ -45,7 +46,7 @@
                                     <input type="hidden" name="cart[<?= esc($item['rowid']) ?>][imagen]" value="<?= esc($item['imagen']) ?>">
 
                                     <tr>
-                                        <td><img src="<?= base_url('assets/uploads/' . $item['imagen']) ?>" class="img-fluid carrito-img" alt="<?= esc($item['name']) ?>"></td>
+                                        <td><img src="<?= base_url('assets/uploads/' . $item['imagen']) ?>" class="img-thumbnail border border-dark carrito-img" alt="<?= esc($item['name']) ?>" style="max-width: 200px; width: 150px; height: auto;"></td>
                                         <td><?= esc($item['name']) ?></td>
                                         <td>$<?= esc($item['price']) ?></td>
                                         <td>
@@ -63,7 +64,8 @@
                         </table>
                     </div>
 
-                    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mt-4 carrito-total-box">
+                    <!-- Bloque al fondo -->
+                    <div class="mt-auto d-flex flex-column flex-md-row justify-content-between align-items-center carrito-total-box">
                         <h4 class="mb-3 mb-md-0">Total: $<?= number_format($gran_total, 2) ?></h4>
                         <div class="d-flex flex-column flex-sm-row gap-2">
                             <a class="btn btn-outline-danger" href="<?= base_url('/borrar') ?>">Vaciar Carrito</a>
@@ -75,3 +77,4 @@
             <?php endif; ?>
         </div>
     </div>
+</div>
