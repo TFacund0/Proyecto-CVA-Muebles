@@ -1,3 +1,8 @@
+<?php
+    $session = session();
+    $isLogged = $session->get('isLogged');
+?>
+
 <!-- Sección de Categorias/Catalogo -->
 <section class="container my-5 catalogo-content section-categorias">
     <h2 class="titulo">Nuestras Especialidades</h2>
@@ -9,7 +14,7 @@
                 <div class="card-body text-card">
                     <h3>Muebles de Sala</h3>
                     <p>Sofás, mesas de centro y libreros diseñados para tu comodidad</p>
-                    <a href="#" class="btn btn-outline-warning">Explorar</a>
+                    <a href="<?= $isLogged == 'SI' ? base_url('todos_p') : base_url('productos') ?>" class="btn btn-outline-warning">Explorar</a>
                 </div>
             </div>
         </div>
@@ -20,7 +25,7 @@
                 <div class="card-body text-card">
                     <h3>Dormitorios</h3>
                     <p>Camas, mesitas y armarios que transformarán tu espacio</p>
-                    <a href="#" class="btn btn-outline-warning">Explorar</a>
+                    <a href="<?= $isLogged == 'SI' ? base_url('todos_p') : base_url('productos') ?>" class="btn btn-outline-warning">Explorar</a>
                 </div>
             </div>
         </div>                
@@ -31,7 +36,7 @@
                 <div class="card-body text-card">
                     <h3>Cocina</h3>
                     <p>Islas, alacenas y mesas rústicas para tu hogar</p>
-                    <a href="#" class="btn btn-outline-warning">Explorar</a>
+                    <a href="<?= $isLogged == 'SI' ? base_url('todos_p') : base_url('productos') ?>" class="btn btn-outline-warning">Explorar</a>
                 </div>
             </div>
         </div>  
