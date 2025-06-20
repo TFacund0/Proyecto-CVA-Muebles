@@ -15,12 +15,6 @@
       <a class="navbar-brand titulo-logo text-nowrap" href="<?= base_url('/') ?>">
         CVA Muebles
       </a>
-
-      <?php if ($perfil == 1 || $perfil == 2): ?>
-        <a class="titulo-perfil d-none d-md-block btn btn-outline-light ms-2" href="<?= base_url('/perfil') ?>">
-          <strong>Usuario:</strong> <?= $perfil == 1 ? 'admin' : 'cliente' ?>
-        </a>
-      <?php endif; ?>
     </div>
 
     <?= csrf_field(); ?>

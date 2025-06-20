@@ -91,7 +91,7 @@
                             <td><?php echo $usuario['perfil'] ?></td>
                             <td>
                                 <div class="d-flex justify-content-center gap-2">
-                                    <a class="btn btn-outline-primary btn-sm" href="<?= base_url('/editar-usuario/' . $usuario['id_usuario']) ?>">cambiar perfil</a>
+                                    <a class="btn btn-outline-primary btn-sm" href="<?= base_url('/editar-usuario/' . $usuario['id_usuario']) ?>">Cambiar perfil</a>
                                     <?php if($vista == 'NO') { ?>
                                     <a class="btn btn-outline-danger btn-sm" href="<?= base_url('/delete-usuario/' . $usuario['id_usuario'] . '?vista=' . $vista) ?>">Eliminar</a>
                                 <?php } else { ?>

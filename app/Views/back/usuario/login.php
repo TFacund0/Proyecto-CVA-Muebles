@@ -60,11 +60,6 @@
                             <?php redirect()->to('/'); ?>
                         <?php } ?>
                     </div>
-
-                    <!-- Enlace para recuperación de contraseña -->
-                    <div class="mt-3 text-center">
-                        <a href="#">¿Olvidaste tu contraseña?</a>
-                    </div>
                 </form>
             </div>
         </div>
