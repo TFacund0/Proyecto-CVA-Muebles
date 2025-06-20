@@ -95,9 +95,9 @@
                                         <!-- Control de cantidad -->
                                         <td>
                                             <div class="btn-group" role="group">
-                                                <a class="btn btn-sm btn-success" href="<?= base_url('carrito_suma/' . $item['rowid']) ?>">+</a>
-                                                <span class="px-2"><?= esc($item['qty']) ?></span>
                                                 <a class="btn btn-sm btn-danger" href="<?= base_url('carrito_resta/' . $item['rowid']) ?>">-</a>
+                                                <span class="px-2"><?= esc($item['qty']) ?></span>
+                                                <a class="btn btn-sm btn-success" href="<?= base_url('carrito_suma/' . $item['rowid']) ?>">+</a>
                                             </div>
                                         </td>
                                         
