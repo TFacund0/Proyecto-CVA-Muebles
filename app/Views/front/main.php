@@ -27,6 +27,9 @@
     <link rel="stylesheet" href="<?= base_url('assets/css/a-styles/back/producto/editar_product.css')?>">
 
     <link rel="stylesheet" href="<?= base_url('assets/css/a-styles/back/ventas/detalle_ventas.css')?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/a-styles/back/ventas/factura_usuario.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/a-styles/back/ventas/vista_compras.css') ?>">
+
 
     <link rel="stylesheet" href="<?= base_url('assets/css/a-styles/carrusel.css')?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/a-styles/section.css')?>">

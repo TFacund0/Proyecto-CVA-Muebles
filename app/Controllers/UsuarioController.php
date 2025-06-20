@@ -108,7 +108,7 @@ class UsuarioController extends BaseController {
     // Método para mostrar el listado de usuarios (solo si el perfil es administrador)
     public function index (){
         $perfil = session()->get('perfil_id');
-        
+        $vista = $this->request->getVar('vista') ?? 'NO';
         // Si el perfil no es administrador (id = 1), redirigir al login
         if ($perfil != 1) {
             return redirect()->to('/login');
@@ -119,6 +119,8 @@ class UsuarioController extends BaseController {
         $data['usuarios'] = $usuarios->getUsuariosAll();
         // Obtener el valor del selector o asignar 10 por defecto
         $data['select'] = $this->request->getVar('option') ?? 10;
+        $data['vista'] = $vista;
+        
 
         // Cargar la vista principal con la lista de usuarios
         return view('front/main', [
@@ -202,5 +204,42 @@ class UsuarioController extends BaseController {
 
         // Redirigir a la página de perfil con mensaje de éxito
         return redirect()->to('/perfil')->with('success', 'Perfil actualizado correctamente');
+    }
+
+        public function delete_usuario($id) {
+        $usuarioModel = new Usuarios_model();
+        $usuarioModel->update($id, ['baja' => 'SI']);
+
+        $vista = $this->request->getGet('vista') ?? 'NO';
+        return redirect()->to('/crud-usuarios?vista=' . $vista);
+    }
+
+    /**
+     * Activa nuevamente un usuario marcado como eliminado
+     */
+    public function activar_usuario($id) {
+        $usuarioModel = new Usuarios_model();
+        $usuarioModel->update($id, ['baja' => 'NO']);
+
+        $vista = $this->request->getGet('vista') ?? 'SI';
+        return redirect()->to('/crud-usuarios?vista=' . $vista);
+    }
+    /**
+     * cambia el perfil de un usuario entre administrador y usuario normal
+     */
+    public function editar_usuario($id) {
+        $usuarioModel = new Usuarios_model();
+
+        $usuario = $usuarioModel->find($id);
+        
+        // verificar que el usuario tiene un perfil_id = 2
+        if ($usuario['perfil_id'] != 2) {
+            $usuarioModel->update($id, ['perfil_id' => 2]);
+        } else {
+            $usuarioModel->update($id, ['perfil_id' => 1]);
+        }
+        
+        session()->setFlashdata('success', 'Modificación exitosa');
+        return redirect()->to('/crud-usuarios');
     }
 }
