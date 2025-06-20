@@ -1,50 +1,94 @@
-.factura-usuario {
-    max-width: 800px;
-    margin: 2rem auto;
+/* Contenedor principal de la factura */
+.factura-detalle-contenedor {
+    background-color: #f7f4e9;
     padding: 2rem;
-    border: 1px solid #ccc;
     border-radius: 10px;
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
+    max-width: 900px;
+    margin: 15px auto;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
 }
 
-.factura-usuario__titulo {
-    text-align: center;
+/* Título */
+.factura-detalle-titulo {
+    font-family: 'Georgia', serif;
+    font-size: 2rem;
+    color: #3e2f1c;
+    border-bottom: 2px solid #d1bfa7;
+    padding-bottom: 0.5rem;
     margin-bottom: 1.5rem;
-    font-size: 1.8rem;
-    color: #333;
 }
 
-.factura-usuario__cabecera p {
-    margin: 0.3rem 0;
+/* Cabecera de datos de la factura */
+.factura-detalle-cabecera {
+    background-color: #fff;
+    border: 1px solid #d8cfc0;
+    border-radius: 6px;
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
+
+.factura-detalle-cabecera .dato {
     font-size: 1rem;
-    color: #555;
+    color: #3e2f1c;
+    margin-bottom: 0.4rem;
 }
 
-.factura-usuario__tabla {
+/* Tabla de productos */
+.factura-detalle-tabla {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
+    background-color: #fff;
 }
 
-.factura-usuario__columna {
-    background-color: #eaeaea;
-    padding: 0.8rem;
-    border: 1px solid #ccc;
+.factura-detalle-tabla thead {
+    background-color: #e6ddd0;
+}
+
+.factura-detalle-tabla th,
+.factura-detalle-tabla td {
+    border: 1px solid #d8cfc0;
+    padding: 0.75rem;
     text-align: left;
+    color: #3e2f1c;
 }
 
-.factura-usuario__fila td {
-    padding: 0.8rem;
-    border: 1px solid #ddd;
-    font-size: 0.95rem;
-}
-
-.factura-usuario__total {
-    text-align: right;
-    font-size: 1.2rem;
+.factura-detalle-total {
     font-weight: bold;
-    color: #222;
-    margin-top: 1rem;
+    text-align: right;
+    background-color: #f1ebe0;
+}
+/* ========================== */
+/* Estilos Responsive         */
+/* ========================== */
+
+@media (max-width: 768px) {
+    .factura-detalle-contenedor {
+        padding: 1rem;
+    }
+
+    .factura-detalle-titulo {
+        font-size: 1.6rem;
+        text-align: center;
+    }
+
+    .factura-detalle-cabecera .dato {
+        font-size: 0.95rem;
+    }
+
+    .factura-detalle-tabla th,
+    .factura-detalle-tabla td {
+        font-size: 0.9rem;
+        padding: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .factura-detalle-tabla {
+        font-size: 0.85rem;
+    }
+
+    .factura-detalle-tabla th,
+    .factura-detalle-tabla td {
+        padding: 0.4rem;
+    }
 }

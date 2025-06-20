@@ -104,6 +104,11 @@ class carrito_controller extends BaseController
      */
     public function muestra() //carrito que se muestra
     {
+        $perfil = session()->get('id_usuario');
+
+        if ($perfil == NULL) {
+            return redirect()->to('/login');
+        }
         $cart = \Config\Services::cart();
         $cart = $cart->contents();
         $data['cart'] = $cart;
@@ -119,6 +124,7 @@ class carrito_controller extends BaseController
      */
     public function remove($rowid)
     {
+
         $cart = \Config\Services::cart();
 
         if ($rowid == "all") {
