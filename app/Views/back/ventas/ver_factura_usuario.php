@@ -1,33 +1,47 @@
-<section class="factura-usuario">
-    <h1 class="factura-usuario__titulo">Detalle de la Factura</h1>
+<!-- back/ventas/ver_factura_usuario.php -->
 
-    <div class="factura-usuario__cabecera">
-        <p><strong>Número de Factura:</strong> <?= esc($cabecera['id']) ?></p>
-        <p><strong>Fecha:</strong> <?= esc($cabecera['fecha']) ?></p>
-    </div>
+<div class="container my-4">
+    <h2 class="mb-4">Factura Detallada</h2>
 
-    <table class="factura-usuario__tabla">
-        <thead>
-            <tr>
-                <th class="factura-usuario__columna">Producto</th>
-                <th class="factura-usuario__columna">Cantidad</th>
-                <th class="factura-usuario__columna">Precio Unitario</th>
-                <th class="factura-usuario__columna">Subtotal</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($detalles as $item): ?>
-            <tr class="factura-usuario__fila">
-                <td><?= esc($item['nombre']) ?></td>
-                <td><?= esc($item['cantidad']) ?></td>
-                <td>$<?= number_format($item['precio'], 2) ?></td>
-                <td>$<?= number_format($item['cantidad'] * $item['precio'], 2) ?></td>
-            </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+    <?php if (!empty($venta)): ?>
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Factura #<?= $venta[0]['venta_id'] ?></h5>
+                <p class="card-text">Fecha: <?= date('d/m/Y H:i', strtotime($venta[0]['fecha'])) ?></p>
+                <p class="card-text">Cliente: <?= $venta[0]['nombre'] ?? 'Sin nombre' ?></p>
+            </div>
+        </div>
 
-    <div class="factura-usuario__total">
-        <strong>Total de la Compra:</strong> $<?= number_format($cabecera['total_venta'], 2) ?>
-    </div>
-</section>
+        <table class="table table-bordered">
+            <thead class="table-secondary">
+                <tr>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Precio Unitario</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php 
+                    $total = 0;
+                    foreach ($venta as $item): 
+                        $subtotal = $item['cantidad'] * $item['precio'];
+                        $total += $subtotal;
+                ?>
+                    <tr>
+                        <td><?= $item['nombre_producto'] ?? 'Producto' ?></td>
+                        <td><?= $item['cantidad'] ?></td>
+                        <td>$<?= number_format($item['precio'], 2) ?></td>
+                        <td>$<?= number_format($subtotal, 2) ?></td>
+                    </tr>
+                <?php endforeach; ?>
+                <tr class="table-light">
+                    <td colspan="3" class="text-end"><strong>Total:</strong></td>
+                    <td><strong>$<?= number_format($total, 2) ?></strong></td>
+                </tr>
+            </tbody>
+        </table>
+    <?php else: ?>
+        <p>No se encontraron detalles para esta factura.</p>
+    <?php endif; ?>
+</div>

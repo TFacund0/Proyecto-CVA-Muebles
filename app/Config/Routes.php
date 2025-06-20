@@ -42,6 +42,7 @@ $routes->post('/enviar-consulta', 'ConsultaController::cargarConsulta');
 // -------------------- Gestión de Ventas --------------------
 $routes->get('/ventas-list', 'VentasController::index_ventas', ['filter' => 'auth']);
 $routes->get('/ventas_detalle', 'VentasController::index_ventas', ['filter' => 'auth']);
+$routes->get('/ventas_lista', 'VentasController::ver_facturas_usuario', ['filter' => 'auth']);
 $routes->get('/factura/(:num)', 'VentasController::ver_factura/$1', ['filter' => 'auth']);
 $routes->get('/carrito_comprar', 'VentasController::registrar_venta', ['filter' => 'auth']);
 
@@ -49,6 +50,10 @@ $routes->get('/carrito_comprar', 'VentasController::registrar_venta', ['filter' 
 // -------------------- Gestión de Usuarios --------------------
 $routes->get('/crud-usuarios', 'UsuarioController::index', ['filter' => 'auth']);
 $routes->post('/crud-usuarios', 'UsuarioController::index', ['filter' => 'auth']);
+$routes->get('/editar-usuario/(:num)', 'UsuarioController::editar_usuario/$1', ['filter' => 'auth']);
+$routes->get('/delete-usuario/(:num)', 'UsuarioController::delete_usuario/$1', ['filter' => 'auth']);
+$routes->get('/activar-usuario/(:num)', 'UsuarioController::activar_usuario/$1', ['filter' => 'auth']);
+
 
 // -------------------- Perfil de Usuario --------------------
 $routes->get('/perfil', 'UsuarioController::index_perfil', ['filter' => 'auth']);

@@ -1,33 +1,19 @@
-<section class="factura-admin">
-    <h1 class="factura-admin__titulo">Factura Nº <?= esc($cabecera['id']) ?></h1>
+<!-- back/ventas/vistaCompras.php -->
 
-    <div class="factura-admin__info">
-        <p><strong>Fecha:</strong> <?= esc($cabecera['fecha']) ?></p>
-        <p><strong>Cliente:</strong> <?= esc($cabecera['usuario_nombre']) ?></p>
-    </div>
+<div class="container my-4">
+    <h2 class="mb-4">Mis Facturas</h2>
 
-    <table class="factura-admin__tabla">
-        <thead>
-            <tr>
-                <th class="factura-admin__columna">Producto</th>
-                <th class="factura-admin__columna">Cantidad</th>
-                <th class="factura-admin__columna">Precio Unitario</th>
-                <th class="factura-admin__columna">Subtotal</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($detalles as $item): ?>
-            <tr class="factura-admin__fila">
-                <td><?= esc($item['nombre']) ?></td>
-                <td><?= esc($item['cantidad']) ?></td>
-                <td>$<?= number_format($item['precio'], 2) ?></td>
-                <td>$<?= number_format($item['cantidad'] * $item['precio'], 2) ?></td>
-            </tr>
+    <?php if (!empty($ventas)): ?>
+        <div class="list-group">
+            <?php foreach ($ventas as $venta): ?>
+                <a href="<?= base_url('factura/' . $venta['id']) ?>" class="list-group-item list-group-item-action">
+                    <strong>Factura #<?= $venta['id'] ?></strong><br>
+                    Fecha: <?= date('d/m/Y H:i', strtotime($venta['fecha'])) ?><br>
+                    Total: $<?= number_format($venta['total_venta'], 2) ?>
+                </a>
             <?php endforeach; ?>
-        </tbody>
-    </table>
-
-    <div class="factura-admin__total">
-        <strong>Total:</strong> $<?= number_format($cabecera['total_venta'], 2) ?>
-    </div>
-</section>
+        </div>
+    <?php else: ?>
+        <p>No tenés facturas registradas.</p>
+    <?php endif; ?>
+</div>

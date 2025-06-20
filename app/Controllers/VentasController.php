@@ -136,17 +136,18 @@ class VentasController extends BaseController {
 
         return view('front/main', [
             'title' => 'Mi Compra',
-            'content' => view('back/ventas/vista_compras', $data)
+            'content' => view('back/ventas/ver_factura_usuario', $data)
         ]);
     }
 
-    public function ver_facturas_usuario($id_usuario) {
+    public function ver_facturas_usuario() {
+        $id_usuario = session()->get('id_usuario');
         $ventasModel = new VentasCabecera_model();
         $data['ventas'] = $ventasModel->getVentas($id_usuario);
 
         return view('front/main', [
             'title' => 'Todas mis Compras',
-            'content' => view('back/ventas/ver_factura_usuario', $data)
+            'content' => view('back/ventas/vistaCompras', $data)
         ]);
     }
 }
