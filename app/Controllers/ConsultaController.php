@@ -5,7 +5,14 @@ namespace App\Controllers;
 use CodeIgniter\Controller;
 use App\Models\Consultas_model;
 
+/**
+ * Controlador para gestionar las consultas de usuarios
+ */
 class ConsultaController extends BaseController {
+
+    /**
+     * Muestra la vista principal de consultas (solo para administradores)
+     */
     public function index() {    
         // Cargar los helpers necesarios
         helper(['form', 'url']);
@@ -26,6 +33,9 @@ class ConsultaController extends BaseController {
         ]);
     }
 
+    /**
+     * Procesa el envío de una nueva consulta desde el formulario
+     */
     public function cargarConsulta() {
         $consultas = new Consultas_model();
         
@@ -56,6 +66,9 @@ class ConsultaController extends BaseController {
         }
     }
 
+    /**
+     * Lista las consultas con opciones de filtrado (solo para administradores)
+     */
     public function listarConsultas() {
         $perfil = session()->get('perfil_id');
         
@@ -96,7 +109,9 @@ class ConsultaController extends BaseController {
         ]);
     }
 
-
+    /**
+     * Desactiva una consulta (marcándola como inactiva en lugar de eliminarla)
+     */
     public function eliminarConsulta($id) {
         $consultasModel = new Consultas_model();
 

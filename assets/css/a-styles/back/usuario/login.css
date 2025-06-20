@@ -1,29 +1,29 @@
 /* Estilos generales del cuerpo de la página de login */
 .login-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente general */
-    background-color: #f5f5dc; /* Color de fondo en tono beige claro */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5dc; 
 }
 
 /* Contenedor principal del formulario de login */
 .login-container {
-    background-image: url('../../../../img/texturas/madera-claritaa.jpg'); /* Imagen de fondo con textura de madera */
-    background-position: center; /* Centra la imagen de fondo */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
-    background-size: cover; /* Escala la imagen para cubrir todo el contenedor */
-    background-color: #807c717c!important; /* Color de fondo con transparencia (fallback o superposición sobre la imagen) */
+    background-image: url('../../../../img/texturas/madera-claritaa.jpg');
+    background-position: center; 
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-color: #807c717c!important;
 
-    max-width: 1000px !important; /* Ancho máximo del contenedor */
-    margin: 0 auto; /* Centra horizontalmente */
-    padding: 20px; /* Espaciado interno */
-    box-shadow: 0 0 10px rgb(0, 0, 0); /* Sombra alrededor del contenedor */
-    border: 1px solid black; /* Borde negro */
+    max-width: 1000px !important;
+    margin: 0 auto; 
+    padding: 20px; 
+    box-shadow: 0 0 10px rgb(0, 0, 0); 
+    border: 1px solid black;
 }
 
 /* Estilos del formulario de login */
 .login-form {
-    border: 1px solid rgb(0, 0, 0); /* Borde negro */
-    padding: 15px; /* Espaciado interno */
-    border-radius: 15px; /* Bordes redondeados */
-    color: rgb(255, 255, 255); /* Color del texto blanco */
-    background-color: #000000a0!important; /* Fondo negro con transparencia */
+    border: 1px solid rgb(0, 0, 0); 
+    padding: 15px; 
+    border-radius: 15px;
+    color: rgb(255, 255, 255);
+    background-color: #000000a0!important;
 }

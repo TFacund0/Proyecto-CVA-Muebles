@@ -7,9 +7,14 @@ use App\Models\Productos_model;
 use App\Models\Usuario_model;
 use App\Models\Categorias_model;
 
-
+/**
+ * Controlador para gestionar el carrito de compras
+ */
 class carrito_controller extends BaseController
 {
+    /**
+     * Constructor - Inicializa helpers y servicios
+     */
     public function __construct()
     {
         helper(['form','url','cart']);
@@ -17,6 +22,9 @@ class carrito_controller extends BaseController
         $session = session();
     }
 
+    /**
+     * Agrega un producto al carrito
+     */
     public function add()
     {
         $cart = \Config\Services::cart();
@@ -32,6 +40,9 @@ class carrito_controller extends BaseController
         return redirect()->back()->withInput();
     }
 
+    /**
+     * Actualiza un item en el carrito
+     */
     public function actualiza_carrito()
     {
         $cart = \Config\Services::cart();
@@ -47,6 +58,9 @@ class carrito_controller extends BaseController
         return redirect()->back()->withInput();
     }
 
+    /**
+     * Elimina un item específico del carrito
+     */
     public function eliminar_item($rowid)
     {
         $cart = \Config\Services::Cart();
@@ -54,6 +68,9 @@ class carrito_controller extends BaseController
         return redirect()->to(base_url("muestro"));
     }
 
+    /**
+     * Vacía completamente el carrito
+     */
     public function borrar_carrito()
     {
         $cart = \Config\Services::Cart();
@@ -61,6 +78,9 @@ class carrito_controller extends BaseController
         return redirect()->to(base_url("muestro"));
     }
 
+    /**
+     * Muestra el catálogo de productos
+     */
     public function catalogo(){
         $productoModel = new Productos_Model();
         $categorias = new Categorias_model();
@@ -79,14 +99,11 @@ class carrito_controller extends BaseController
         ]);
     }
 
-
+    /**
+     * Muestra el contenido actual del carrito
+     */
     public function muestra() //carrito que se muestra
     {
-        $perfil = session()->get('id_usuario');
-
-        if ($perfil == NULL) {
-            return redirect()->to('/login');
-        }
         $cart = \Config\Services::cart();
         $cart = $cart->contents();
         $data['cart'] = $cart;
@@ -97,6 +114,9 @@ class carrito_controller extends BaseController
         ]);
     }
 
+    /**
+     * Elimina un item o vacía el carrito completo
+     */
     public function remove($rowid)
     {
         $cart = \Config\Services::cart();
@@ -110,12 +130,18 @@ class carrito_controller extends BaseController
         return redirect()->back()->withInput();
     }
 
+    /**
+     * Devuelve el contenido actual del carrito
+     */
     public function devolver_carrito()
     {
         $cart = \Config\Services::cart();
         return $cart->contents();
     }
 
+    /**
+     * Incrementa la cantidad de un item en el carrito
+     */
     public function suma($rowid)
     {
         $cart = \Config\Services::cart();
@@ -130,6 +156,9 @@ class carrito_controller extends BaseController
         return redirect()->to("muestro");
     }
 
+    /**
+     * Decrementa la cantidad de un item en el carrito
+     */
     public function resta($rowid)
     {
         $cart = \Config\Services::cart();

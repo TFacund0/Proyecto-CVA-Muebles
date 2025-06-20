@@ -7,13 +7,29 @@ use App\Models\Usuario_model;
 use App\Models\Categorias_model;
 use CodeIgniter\Controller;
 
+/**
+ * Controlador para la gestión de productos
+ * 
+ * Permite:
+ * - Listar productos (activos/eliminados)
+ * - Crear nuevos productos
+ * - Editar productos existentes  
+ * - Eliminar/activar productos (soft delete)
+ */
 class ProductoController extends BaseController {
 
+    /**
+     * Constructor - Inicializa helpers y sesión
+     */
     public function __construct() {
         helper(['url', 'form']);
         $session = session(); // Inicia la sesión
     }    
 
+    /**
+     * Muestra el listado de productos
+     * @return View Vista de administración de productos
+     */
     public function index() {
         $perfil = session()->get('perfil_id');
 
@@ -38,6 +54,7 @@ class ProductoController extends BaseController {
 
     /**
      * Muestra el formulario de alta de producto
+     * @return View Vista del formulario de creación
      */
     public function create_alta_producto() {
         $perfil = session()->get('perfil_id');
@@ -57,6 +74,7 @@ class ProductoController extends BaseController {
 
     /**
      * Valida y procesa el formulario de alta de producto
+     * @return Redirect Redirección con mensaje de éxito/error
      */
     public function formValidation() {
         $rules = [
@@ -125,6 +143,8 @@ class ProductoController extends BaseController {
 
     /**
      * Marca un producto como eliminado (soft delete)
+     * @param int $id ID del producto a eliminar
+     * @return Redirect Redirección al listado
      */
     public function delete_producto($id) {
         $productoModel = new Productos_model();
@@ -135,7 +155,9 @@ class ProductoController extends BaseController {
     }
 
     /**
-     * Activa nuevamente un producto marcado como eliminado
+     * Reactiva un producto marcado como eliminado
+     * @param int $id ID del producto a activar
+     * @return Redirect Redirección al listado
      */
     public function activar_producto($id) {
         $productoModel = new Productos_model();
@@ -146,7 +168,9 @@ class ProductoController extends BaseController {
     }
 
     /**
-     * Muestra el formulario para editar un producto
+     * Muestra el formulario de edición de producto
+     * @param int $id ID del producto a editar
+     * @return View Vista del formulario de edición
      */
     public function index_editar_producto($id) {
         $perfil = session()->get('perfil_id');
@@ -170,13 +194,14 @@ class ProductoController extends BaseController {
     }
 
     /**
-     * Procesa la modificación del producto
+     * Procesa la actualización de un producto
+     * @param int $id ID del producto a modificar
+     * @return Redirect Redirección con mensaje de éxito
      */
     public function modificar_producto($id) {
         $productoModel = new Productos_model();
         $img = $this->request->getFile('imagen');
 
-        // Si hay imagen nueva, la guarda
         if ($img && $img->isValid()) {
             $nombre_aleatorio = $img->getRandomName();
             $img->move(ROOTPATH . 'assets/uploads', $nombre_aleatorio);
@@ -191,7 +216,6 @@ class ProductoController extends BaseController {
                 'stock_min' => $this->request->getVar('stock-min')
             ];
         } else {
-            // Si no hay nueva imagen, se actualizan solo los demás campos
             $data = [
                 'nombre_prod' => $this->request->getVar('nombre_producto'),
                 'categoria_id' => $this->request->getVar('categoria_id'),
