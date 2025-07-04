@@ -86,12 +86,14 @@
       <div class="btn usuario-boton-lateral">
         <a href="<?= base_url('/perfil') ?>">Usuario: <?= esc($nombre) ?></a>
       </div>
+      
       <ul class="list-unstyled">
         <li><a class="nav-link" href="<?= base_url('/alta-producto') ?>">Añadir Producto</a></li>
         <li><a class="nav-link" href="<?= base_url('/ventas-list') ?>">Lista de Ventas</a></li>
         <li><a class="nav-link" href="<?= base_url('/crud-usuarios') ?>">Lista de Usuarios</a></li>
         <li><a class="nav-link" href="<?= base_url('/crud-productos') ?>">Lista de Productos</a></li>
         <li><a class="nav-link" href="<?= base_url('/lista-consultas') ?>">Consultas</a></li>
+        <li><a class="nav-link" href="<?= base_url('/ventas_lista') ?>">Mis Compras</a></li>
       </ul>
     <?php elseif ($perfil == 2): ?>
       <div class="btn usuario-boton-lateral">
