@@ -206,7 +206,7 @@ class UsuarioController extends BaseController {
         return redirect()->to('/perfil')->with('success', 'Perfil actualizado correctamente');
     }
 
-        public function delete_usuario($id) {
+    public function delete_usuario($id) {
         $usuarioModel = new Usuarios_model();
         $usuarioModel->update($id, ['baja' => 'SI']);
 

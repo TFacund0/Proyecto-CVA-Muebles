@@ -54,11 +54,6 @@
                     <!-- Botón para ingresar -->
                     <div class="d-grid">
                         <button type="submit" class="btn btn-primary">Ingresar</button>
-
-                        <!-- Redirección si ya hay sesión activa -->
-                        <?php if (isset($_SESSION['usuario'])) { ?>
-                            <?php redirect()->to('/'); ?>
-                        <?php } ?>
                     </div>
                 </form>
             </div>

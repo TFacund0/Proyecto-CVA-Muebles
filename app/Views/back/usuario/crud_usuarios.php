@@ -92,11 +92,12 @@
                             <td>
                                 <div class="d-flex justify-content-center gap-2">
                                     <a class="btn btn-outline-primary btn-sm" href="<?= base_url('/editar-usuario/' . $usuario['id_usuario']) ?>">Cambiar perfil</a>
+                                    
                                     <?php if($vista == 'NO') { ?>
-                                    <a class="btn btn-outline-danger btn-sm" href="<?= base_url('/delete-usuario/' . $usuario['id_usuario'] . '?vista=' . $vista) ?>">Eliminar</a>
-                                <?php } else { ?>
-                                    <a class="btn btn-outline-success btn-sm" href="<?= base_url('/activar-usuario/' . $usuario['id_usuario'] . '?vista=' . $vista) ?>">Activar</a> 
-                                <?php } ?>
+                                        <a class="btn btn-outline-danger btn-sm" href="<?= base_url('/delete-usuario/' . $usuario['id_usuario'] . '?vista=' . $vista) ?>">Eliminar</a>
+                                    <?php } else { ?>
+                                        <a class="btn btn-outline-success btn-sm" href="<?= base_url('/activar-usuario/' . $usuario['id_usuario'] . '?vista=' . $vista) ?>">Activar</a> 
+                                    <?php } ?>
                                 </div>
                                 <?php $cant++; ?>
                             </td>
