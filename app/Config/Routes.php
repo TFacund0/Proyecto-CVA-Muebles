@@ -45,6 +45,8 @@ $routes->get('/ventas_detalle', 'VentasController::index_ventas', ['filter' => '
 $routes->get('/ventas_lista', 'VentasController::ver_facturas_usuario', ['filter' => 'auth']);
 $routes->get('/factura/(:num)', 'VentasController::ver_factura/$1', ['filter' => 'auth']);
 $routes->get('/carrito_comprar', 'VentasController::registrar_venta', ['filter' => 'auth']);
+$routes->post('/ventas/actualizar_estado/(:num)', 'VentasController::actualizar_estado/$1', ['filter' => 'auth']);
+$routes->get('/ventas-stats', 'VentasController::estadisticas', ['filter' => 'auth']);
 
 
 // -------------------- Gestión de Usuarios --------------------

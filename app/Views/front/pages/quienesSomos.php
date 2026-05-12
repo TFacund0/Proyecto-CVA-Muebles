@@ -16,13 +16,13 @@
         <div class="col-lg-6 col-sm-12 texto-historia-section">
             <h2 class="section-title">Nuestra Historia</h2>
             <p class="mt-3">
-                Fundada en 2023 en el barrio Mantilla, Corrientes, CVA Muebles es un taller familiar donde la madera cobra vida.
-                Lo que empezó como un sueño de crear muebles con alma, hoy se materializa en piezas únicas, hechas a mano con dedicación y pasión. Aunque somos pequeños en tamaño, nos enorgullece ofrecer calidad, calidez y atención personalizada a cada cliente.
-                "Cada mueble que sale de nuestro taller lleva no solo madera, sino también el cuidado y el oficio de quienes lo hacemos posible."
+                CVA Muebles nace en el corazón de Mantilla, Corrientes, como un tributo al oficio artesano y la nobleza de la madera. Bajo la visión de <strong>César Víctor Acevedo</strong>, nuestro taller se ha convertido en un referente de la <em>Carpintería de Autor</em>, donde cada pieza es concebida como una obra única e irrepetible.
             </p>
             <p>
-                Nos especializamos en crear piezas únicas donde cada veta de madera cuenta una historia. 
-                Nuestros diseños combinan técnicas tradicionales con un enfoque contemporáneo, resultando en muebles que son verdaderas obras de arte funcionales.
+                Lo que comenzó como una pasión familiar por transformar la materia prima, hoy es una realidad que combina técnicas tradicionales de ebanistería con un diseño contemporáneo y funcional. En CVA no fabricamos muebles en serie; creamos compañeros de vida para tu hogar, cuidando cada veta, cada ensamble y cada acabado con la dedicación que solo un artesano puede brindar.
+            </p>
+            <p>
+                "Nuestra misión es simple: que cada mueble que salga de nuestro taller cuente una historia de calidad, calidez y herencia correntina."
             </p>
         </div>
 

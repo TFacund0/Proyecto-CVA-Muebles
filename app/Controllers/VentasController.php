@@ -15,6 +15,8 @@ use App\Models\Productos_model;
  * - Listado y filtrado de ventas
  * - Registro de nuevas ventas
  * - Visualización de facturas
+ * - Gestión de estados (Artisan Panel)
+ * - Estadísticas de producción
  */
 class VentasController extends BaseController {
 
@@ -44,6 +46,7 @@ class VentasController extends BaseController {
         // Parámetros de filtrado
         $search = strtolower(trim($request->getGet('search') ?? ''));
         $tipo = $request->getGet('filtro_tipo') ?? '';
+        $estado_filtro = $request->getGet('estado') ?? '';
 
         $ventas = $ventasDetalle->getDetallesAll();
         $ventas_filtradas = [];
@@ -67,6 +70,10 @@ class VentasController extends BaseController {
                 }
             }
 
+            if ($estado_filtro && $venta['estado'] != $estado_filtro) {
+                $coincide = false;
+            }
+
             if ($coincide) {
                 // Calcula subtotal directamente en el foreach
                 $venta['subtotal'] = $venta['cantidad'] * $venta['precio'];
@@ -76,7 +83,12 @@ class VentasController extends BaseController {
 
         return view('front/main', [
             'title' => 'Ventas',
-            'content' => view('back/ventas/detalleVentas', ['ventas' => $ventas_filtradas, 'search' => $search, 'filtro_tipo' => $tipo])
+            'content' => view('back/ventas/detalleVentas', [
+                'ventas' => $ventas_filtradas, 
+                'search' => $search, 
+                'filtro_tipo' => $tipo,
+                'estado_filtro' => $estado_filtro
+            ])
         ]);
     }
 
@@ -172,6 +184,47 @@ class VentasController extends BaseController {
         return view('front/main', [
             'title' => 'Todas mis Compras',
             'content' => view('back/ventas/vistaCompras', $data)
+        ]);
+    }
+
+    /**
+     * @brief Actualiza el estado de una venta (Artisan Panel)
+     * @param int $venta_id ID de la venta
+     * @return Redirect Redirección con mensaje de éxito
+     */
+    public function actualizar_estado($venta_id) {
+        $perfil = session()->get('perfil_id');
+        if ($perfil != 1) return redirect()->to('/login');
+
+        $nuevo_estado = $this->request->getPost('estado');
+        $ventasModel = new VentasCabecera_model();
+        
+        $ventasModel->update($venta_id, ['estado' => $nuevo_estado]);
+
+        return redirect()->back()->with('success', 'Estado de pedido actualizado a: ' . $nuevo_estado);
+    }
+
+    /**
+     * @brief Muestra estadísticas de carga de trabajo y pedidos
+     * @return View Vista de estadísticas
+     */
+    public function estadisticas() {
+        $perfil = session()->get('perfil_id');
+        if ($perfil != 1) return redirect()->to('/login');
+
+        $ventasModel = new VentasCabecera_model();
+        
+        // Obtener conteo por estado
+        $data['stats'] = [
+            'PENDIENTE'  => $ventasModel->where('estado', 'PENDIENTE')->countAllResults(),
+            'EN_PROCESO' => $ventasModel->where('estado', 'EN_PROCESO')->countAllResults(),
+            'TERMINADO'  => $ventasModel->where('estado', 'TERMINADO')->countAllResults(),
+            'ENTREGADO'  => $ventasModel->where('estado', 'ENTREGADO')->countAllResults(),
+        ];
+
+        return view('front/main', [
+            'title' => 'Estadísticas del Taller',
+            'content' => view('back/ventas/estadisticas', $data)
         ]);
     }
 }

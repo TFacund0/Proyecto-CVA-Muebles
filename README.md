@@ -1,60 +1,71 @@
-# CodeIgniter 4 Framework
+# 🪵 CVA Muebles - Carpintería de Autor
 
-## What is CodeIgniter?
+![CVA Muebles Banner](https://img.shields.io/badge/Status-Artisan--Panel--Active-brightgreen)
+![PHP Version](https://img.shields.io/badge/PHP-8.1%2B-777bb4)
+![Framework](https://img.shields.io/badge/Framework-CodeIgniter--4-ee4323)
+![Database](https://img.shields.io/badge/Database-MySQL-4479a1)
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+**CVA Muebles** es una solución web integral diseñada para la profesionalización de un taller de carpintería artesanal en Mantilla, Corrientes. Este proyecto transforma un e-commerce tradicional en una herramienta de gestión estratégica y exhibición de catálogo (Showroom Mode).
 
-This repository holds the distributable version of the framework.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+---
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+## 🚀 Características Principales
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+### 🛋️ Modo Showroom (Consultoría de Autor)
+El sistema permite alternar entre un e-commerce funcional y un catálogo de exhibición. Al desactivar el carrito, los botones de compra se transforman en enlaces directos a **WhatsApp**, permitiendo una atención personalizada para muebles a medida.
 
-## Important Change with index.php
+### 🛠️ Artisan Panel (Gestión de Taller)
+Panel administrativo robusto para el artesano, que incluye:
+- **Control de Estados**: Seguimiento de pedidos desde `PENDIENTE` hasta `ENTREGADO`.
+- **Dashboard de Estadísticas**: Visualización en tiempo real de la carga de trabajo y pedidos listos.
+- **Gestión de Inventario**: Control de stock mínimo y alertas.
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+### 🔐 Seguridad y Perfiles
+- **Validaciones de Seguridad**: Control estricto de duplicados y sanitización de datos en perfiles.
+- **Arquitectura MVC**: Código limpio, escalable y siguiendo las mejores prácticas de CodeIgniter 4.
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+---
 
-**Please** read the user guide for a better explanation of how CI4 works!
+## 🛠️ Stack Tecnológico
 
-## Repository Management
+- **Backend**: PHP 8.1+ (CodeIgniter 4)
+- **Frontend**: HTML5, CSS3 (Vanilla), JavaScript, Bootstrap 5
+- **Base de Datos**: MySQL
+- **Servidor Local**: XAMPP (Apache)
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+---
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+## 📂 Estructura del Proyecto
 
-## Contributing
+```bash
+├── app/
+│   ├── Controllers/    # Lógica de negocio (Usuario, Ventas, Productos)
+│   ├── Models/         # Interacción con la DB
+│   └── Views/          # Interfaces de usuario (Front & Back Office)
+├── assets/             # Recursos estáticos (CSS, JS, Imágenes)
+├── public/             # Punto de entrada público
+└── writable/           # Archivos temporales y logs
+```
 
-We welcome contributions from the community.
+---
 
-Please read the [*Contributing to CodeIgniter*](https://github.com/codeigniter4/CodeIgniter4/blob/develop/CONTRIBUTING.md) section in the development repository.
+## 📝 Instalación y Configuración
 
-## Server Requirements
+1. Clonar el repositorio: `git clone https://github.com/TFacund0/Proyecto-CVA-Muebles.git`
+2. Configurar el archivo `.env`:
+   ```env
+   app.baseURL = 'http://localhost/Proyecto-CVA-Muebles'
+   SHOPPING_CART_ENABLED = false
+   ```
+3. Importar la base de datos `arce_acevedo.sql`.
+4. Configurar el Alias en Apache para apuntar a la raíz del proyecto.
 
-PHP version 8.1 or higher is required, with the following extensions installed:
+---
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
+## 🧔 Autor
+Desarrollado para la profesionalización del portfolio personal y uso real de **César Víctor Acevedo**.
 
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - If you are still using PHP 7.4 or 8.0, you should upgrade immediately.
-> - The end of life date for PHP 8.1 will be December 31, 2025.
+---
 
-Additionally, make sure that the following extensions are enabled in your PHP:
-
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+> [!TIP]
+> **Carpintería de Autor**: Cada veta de madera cuenta una historia. Este software asegura que el proceso detrás de cada historia sea impecable.

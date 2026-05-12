@@ -35,20 +35,32 @@
                             </div>
                         </div>
 
-                        <?php if (session()->get('logged_in')) { ?>
-
                         <div class="card-footer">
-                            <form action="<?= base_url('carrito/add') ?>" method="post">
-                                <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>">
-                                <input type="hidden" name="id_producto" value="<?= esc($row['id_producto']) ?>">
-                                <input type="hidden" name="precio_vta" value="<?= esc($row['precio_vta']) ?>">
-                                <input type="hidden" name="nombre_prod" value="<?= esc($row['nombre_prod']) ?>">
-                                <input type="hidden" name="imagen" value="<?= esc($row['imagen']) ?>">
-                                <input type="submit" class="btn btn-secondary fuenteBotones" value="Agregar al Carrito" name="action">
-                            </form>
+                            <?php if (env('SHOPPING_CART_ENABLED')): ?>
+                                <?php if (session()->get('logged_in')): ?>
+                                    <form action="<?= base_url('carrito/add') ?>" method="post">
+                                        <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>">
+                                        <input type="hidden" name="id_producto" value="<?= esc($row['id_producto']) ?>">
+                                        <input type="hidden" name="precio_vta" value="<?= esc($row['precio_vta']) ?>">
+                                        <input type="hidden" name="nombre_prod" value="<?= esc($row['nombre_prod']) ?>">
+                                        <input type="hidden" name="imagen" value="<?= esc($row['imagen']) ?>">
+                                        <input type="submit" class="btn btn-secondary fuenteBotones" value="Agregar al Carrito" name="action">
+                                    </form>
+                                <?php else: ?>
+                                    <a href="<?= base_url('login') ?>" class="btn btn-outline-secondary fuenteBotones">Iniciá sesión para comprar</a>
+                                <?php endif; ?>
+                            <?php else: ?>
+                                <?php 
+                                    $whatsapp_num = "5493794098511";
+                                    $mensaje = urlencode("Hola! Estoy interesado en el producto: " . $row['nombre_prod'] . " (ID: " . $row['id_producto'] . "). Me podrías dar más información?");
+                                    $url_whatsapp = "https://wa.me/{$whatsapp_num}?text={$mensaje}";
+                                ?>
+                                <a href="<?= $url_whatsapp ?>" target="_blank" class="btn btn-success w-100 d-flex align-items-center justify-content-center gap-2">
+                                    <img src="<?= base_url('assets/img/iconos/whatsapp.svg') ?>" alt="WhatsApp" width="20" height="20" style="filter: brightness(0) invert(1);">
+                                    Consultar
+                                </a>
+                            <?php endif; ?>
                         </div>
-                        
-                        <?php }?>
 
                     </div>
                 </div>

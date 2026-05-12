@@ -58,9 +58,11 @@
             <img src="<?= base_url('assets/img/iconos/person.svg') ?>" alt="Registrarse" class="icono">
           </a>
         <?php else: ?>
+          <?php if (env('SHOPPING_CART_ENABLED')): ?>
           <a class="btn btn-beige boton-links" href="<?= base_url('/muestro') ?>">
             <img src="<?= base_url('assets/img/iconos/cart-check.svg') ?>" alt="Carrito" class="icono">
           </a>
+          <?php endif; ?>
 
           <button class="btn btn-beige boton-links" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasPerfil" aria-controls="offcanvasScrolling">
             <img src="<?= base_url('assets/img/iconos/person.svg') ?>" alt="Opciones de perfil de usuario" class="icono">
@@ -100,7 +102,9 @@
         <a href="<?= base_url('/perfil') ?>">Cliente: <?= esc($nombre) ?></a>
       </div>
       <ul class="list-unstyled">
+        <?php if (env('SHOPPING_CART_ENABLED')): ?>
         <li><a class="nav-link" href="<?= base_url('/muestro') ?>">Carrito</a></li>
+        <?php endif; ?>
         <li><a class="nav-link" href="<?= base_url('/ventas_lista') ?>">Mis Compras</a></li>
       </ul>
     <?php endif; ?>

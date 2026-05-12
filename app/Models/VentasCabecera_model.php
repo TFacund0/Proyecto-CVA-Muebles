@@ -4,10 +4,14 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
+/**
+ * @class VentasCabecera_model
+ * @brief Modelo para la gestión de la cabecera de ventas.
+ */
 class VentasCabecera_model extends Model {
     protected $table = 'ventas_cabecera';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['fecha', 'usuario_id', 'total_venta'];
+    protected $allowedFields = ['fecha', 'usuario_id', 'total_venta', 'estado'];
 
     public function getVentas($id = null, $id_usuario = null) {
         $db = \Config\Database::connect();
