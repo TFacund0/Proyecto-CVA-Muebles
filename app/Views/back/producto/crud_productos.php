@@ -1,143 +1,138 @@
 <!-- 
   =============================================
-  CRUD DE PRODUCTOS
-  Interfaz para gestionar productos (Crear, Leer, Actualizar, Eliminar)
+  ARTISAN PRODUCT MANAGEMENT - CRUD
   =============================================
 -->
 
-<!-- Contenedor principal del CRUD -->
-<div class="crud-productos container my-5 p-3">
-
-    <!-- 
-      FORMULARIO DE FILTROS
-      Permite controlar qué productos se muestran
-    -->
-    <form action="<?php echo base_url('/crud-productos'); ?>" method="POST" class="crud-formulario mb-3">
-        <div class="row g-3 align-items-end">
-            
-            <!-- Filtro: Cantidad de productos a mostrar -->
-            <div class="col-md-auto">
-                <select class="form-select" name="option" id="option">
-                    <!-- Opción seleccionada actualmente -->
-                    <option selected disabled> 
-                        <?php 
-                            if($select > 1 && $select < 10) {
-                                echo $select . ' productos';
-                            } elseif ($select == 10){
-                                echo 'Todos';
-                            } else {
-                                echo $select . ' producto';
-                            }
-                        ?> 
-                    </option>
-                    
-                    <!-- Opciones numéricas del 1 al 9 -->
-                    <?php for ($i = 1; $i <= 9; $i++): ?>
-                        <option value="<?= $i ?>"><?= $i ?> producto<?= $i > 1 ? 's' : '' ?></option>
-                    <?php endfor; ?>
-                    
-                    <!-- Opción para mostrar todos -->
-                    <option value="Todos">Todos</option>
-                </select>
-            </div>
-
-            <!-- Filtro: Estado de productos (activos/eliminados) -->
-            <div class="col-md-auto d-flex align-items-center mb-1">
-                
-                <!-- Radio button para productos activos -->
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="vista" id="activos" value="NO" <?= ($vista == 'NO') ? 'checked' : '' ?>>
-                    <label class="form-check-label text-secondary" for="activos">Activos</label>
+<div class="crud-productos-wrapper py-4">
+    <div class="container card-container">
+        <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+        <!-- Cabecera -->
+        <div class="card-header bg-artisan-dark py-4 text-white">
+            <div class="row align-items-center px-3">
+                <div class="col-md-6">
+                    <h2 class="mb-0 fw-bold font-lora">Gestión de Catálogo</h2>
+                    <p class="small mb-0 opacity-75">Administra tus muebles y existencias</p>
                 </div>
-                
-                <!-- Radio button para productos eliminados -->
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="vista" id="eliminados" value="SI" <?= ($vista == 'SI') ? 'checked' : '' ?>>
-                    <label class="form-check-label text-secondary" for="eliminados">Eliminados</label>
-                </div>
-
-            </div>
-
-            <!-- Botones de acción -->
-            <div class="col-md-auto ms-auto">
-                <div class="d-flex gap-2">
-                    <!-- Botón para aplicar filtros -->
-                    <button type="submit" class="btn btn-outline-light">Actualizar</button>
-                    <!-- Botón para agregar nuevo producto -->
-                    <a class="btn btn-outline-light" href="<?php echo base_url('/alta-producto') ?>">Agregar</a>
+                <div class="col-md-6 text-md-end mt-3 mt-md-0">
+                    <a href="<?= base_url('/alta-producto') ?>" class="btn btn-success py-2 px-4 shadow-sm fw-bold">
+                        <i class="bi bi-plus-circle me-2"></i> AGREGAR PRODUCTO
+                    </a>
                 </div>
             </div>
-
         </div>
-    </form>
 
+        <div class="card-body p-4 bg-light">
+            <!-- Filtros Avanzados -->
+            <form action="<?= base_url('/crud-productos'); ?>" method="get" class="bg-white p-4 rounded-4 shadow-sm border mb-4">
+                <div class="row g-3 align-items-end">
+                    <!-- Buscador General -->
+                    <div class="col-md-4">
+                        <label class="form-label small fw-bold">BUSCAR PRODUCTO</label>
+                        <input type="text" name="search" class="form-control" placeholder="Nombre del mueble..." value="<?= $_GET['search'] ?? '' ?>">
+                    </div>
 
-    <!-- 
-      TABLA DE PRODUCTOS
-      Muestra los productos según los filtros aplicados
-    -->
-    <div class="crud-tabla table-responsive shadow-lg rounded border border-dark-subtle">
-        <table class="table table-bordered text-center align-middle" style="background-color: #f8f9fa; border-color: #343a40;">
-            <!-- Cabecera de la tabla -->
-            <thead class="text-dark">
-                <tr>
-                    <th class="border-dark">ID</th>
-                    <th class="border-dark">Producto</th>
-                    <th class="border-dark">Precio</th>
-                    <th class="border-dark">Precio Venta</th>
-                    <th class="border-dark">Stock</th>
-                    <th class="border-dark">Imagen</th>
-                    <th class="border-dark">Acción</th>
-                </tr>
-            </thead>
-            
-            <!-- Cuerpo de la tabla -->
-            <tbody>
-                <?php 
-                $cant = 0;
-                foreach ($productos as $producto) {
-                    // Filtra productos según selección y estado
-                    if(($select > $cant || $select == 10) && ($producto['eliminado'] == $vista)) { ?>
-                        <tr class="text-black border-dark">
-                            <td><?php echo $producto['id_producto'] ?></td>
-                            <td><?php echo $producto['nombre_prod'] ?></td>
-                            <td>$<?php echo $producto['precio'] ?></td>
-                            <td>$<?php echo $producto['precio_vta'] ?></td>
-                            <td><?php echo $producto['stock'] ?></td>
-                            <td class="text-center" style="width: 250px;">
-                                <img src="<?= base_url('assets/uploads/' . $producto['imagen']) ?>" 
-                                     alt="Imagen producto" 
-                                     class="img-producto img-thumbnail border border-dark" 
-                                     style="max-width: 200px; width: 150px; height: auto;">
-                            </td>
-                            <td class="border-dark m-auto">
-                                <!-- Botón de edición -->
-                                <a class="btn btn-outline-primary btn-sm mb-1" 
-                                   href="<?= base_url('/editar-producto/' . $producto['id_producto']) ?>">
-                                   Editar
-                                </a>
-                                
-                                <?php if($vista == 'NO') { ?>
-                                    <!-- Botón para eliminar (si está viendo activos) -->
-                                    <a class="btn btn-outline-danger btn-sm mb-1" 
-                                       href="<?= base_url('/delete-producto/' . $producto['id_producto'] . '?vista=' . $vista) ?>">
-                                       Eliminar
-                                    </a>
-                                <?php } else { ?>
-                                    <!-- Botón para activar (si está viendo eliminados) -->
-                                    <a class="btn btn-outline-success btn-sm mb-1" 
-                                       href="<?= base_url('/activar-producto/' . $producto['id_producto'] . '?vista=' . $vista) ?>">
-                                       Activar
-                                    </a> 
-                                <?php } ?>
-                            </td>
+                    <!-- Filtro por Categoría -->
+                    <div class="col-md-3">
+                        <label class="form-label small fw-bold">CATEGORÍA</label>
+                        <select name="categoria_id" class="form-select">
+                            <option value="">Todas las categorías</option>
+                            <?php foreach ($categorias as $cat): ?>
+                                <option value="<?= $cat['id_categoria'] ?>" <?= ($_GET['categoria_id'] ?? '') == $cat['id_categoria'] ? 'selected' : '' ?>>
+                                    <?= esc($cat['descripcion']) ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+
+                    <!-- Filtro Estado -->
+                    <div class="col-md-2">
+                        <label class="form-label small fw-bold">ESTADO</label>
+                        <select name="vista" class="form-select">
+                            <option value="NO" <?= ($vista == 'NO') ? 'selected' : '' ?>>Activos</option>
+                            <option value="SI" <?= ($vista == 'SI') ? 'selected' : '' ?>>Eliminados</option>
+                        </select>
+                    </div>
+
+                    <!-- Botones de Acción -->
+                    <div class="col-md-3 d-flex gap-2">
+                        <button type="submit" class="btn btn-dark w-100">FILTRAR</button>
+                        <a href="<?= base_url('/crud-productos') ?>" class="btn btn-outline-secondary w-50">Limpiar</a>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Tabla de Productos -->
+            <div class="table-responsive bg-white rounded-4 shadow-sm border">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="bg-light">
+                        <tr class="text-brown">
+                            <th class="py-3 px-4 text-center">ID</th>
+                            <th class="py-3">Producto</th>
+                            <th class="py-3">Categoría</th>
+                            <th class="py-3 text-center">Stock</th>
+                            <th class="py-3 text-end">Precio Vta</th>
+                            <th class="py-3 text-center">Imagen</th>
+                            <th class="py-3 text-center">Acciones</th>
                         </tr>
-                <?php 
-                        $cant++;
-                    }
-                } ?>
-            </tbody>
-        </table>
+                    </thead>
+                    <tbody>
+                        <?php if(!empty($productos)): ?>
+                            <?php foreach ($productos as $p): ?>
+                                <tr>
+                                    <td class="text-center fw-bold text-muted"><?= $p['id_producto'] ?></td>
+                                    <td>
+                                        <div class="fw-bold"><?= esc($p['nombre_prod']) ?></div>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-light text-dark border"><?= esc($p['categoria'] ?? 'Sin categoría') ?></span>
+                                    </td>
+                                    <td class="text-center">
+                                        <span class="fw-bold <?= $p['stock'] <= 5 ? 'text-danger' : 'text-success' ?>">
+                                            <?= $p['stock'] ?>
+                                        </span>
+                                    </td>
+                                    <td class="text-end fw-bold">$<?= number_format($p['precio_vta'], 2, ',', '.') ?></td>
+                                    <td class="text-center">
+                                        <img src="<?= base_url('assets/uploads/' . $p['imagen']) ?>" 
+                                             alt="Imagen producto" 
+                                             class="rounded-3 shadow-sm border" 
+                                             style="width: 100px; height: 100px; object-fit: cover;">
+                                    </td>
+                                    <td class="text-center">
+                                        <div class="d-flex flex-column align-items-center gap-2 px-2">
+                                            <a href="<?= base_url('/editar-producto/' . $p['id_producto']) ?>" class="btn btn-sm btn-outline-primary w-100 fw-bold py-1" style="font-size: 0.7rem;">
+                                                <i class="bi bi-pencil-square me-1"></i> EDITAR
+                                            </a>
+                                            <?php if($vista == 'NO'): ?>
+                                                <a href="<?= base_url('/delete-producto/' . $p['id_producto'] . '?vista=' . $vista) ?>" class="btn btn-sm btn-outline-danger w-100 fw-bold py-1" style="font-size: 0.7rem;">
+                                                    <i class="bi bi-trash me-1"></i> ELIMINAR
+                                                </a>
+                                            <?php else: ?>
+                                                <a href="<?= base_url('/activar-producto/' . $p['id_producto'] . '?vista=' . $vista) ?>" class="btn btn-sm btn-outline-success w-100 fw-bold py-1" style="font-size: 0.7rem;">
+                                                    <i class="bi bi-arrow-up-circle me-1"></i> ACTIVAR
+                                                </a>
+                                            <?php endif; ?>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <tr>
+                                <td colspan="7" class="text-center py-5 text-muted">
+                                    No se encontraron productos.
+                                </td>
+                            </tr>
+                        <?php endif; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-
 </div>
+
+<style>
+    .bg-artisan-dark { background-color: #3e2723; }
+    .text-brown { color: #3e2723; }
+    .font-lora { font-family: 'Lora', serif; }
+</style>

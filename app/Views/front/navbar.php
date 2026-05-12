@@ -76,43 +76,112 @@
   </div> <!-- Fin container-fluid -->
 </nav>
 
-<!-- MENÚ LATERAL (OFFCANVAS) -->
-<div class="offcanvas offcanvas-end menu-lateral" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasPerfil" aria-labelledby="offcanvasScrollingLabel">
-  <div class="offcanvas-header titulo-menu-lateral">
-    <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Menú de Opciones</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+<!-- MENÚ LATERAL (OFFCANVAS) - REDISEÑO ARTISAN -->
+<div class="offcanvas offcanvas-end menu-lateral shadow-lg border-0" data-bs-scroll="true" data-bs-backdrop="true" tabindex="-1" id="offcanvasPerfil">
+  
+  <!-- Cabecera del Menú -->
+  <div class="offcanvas-header text-white" style="background: linear-gradient(135deg, #3e2723 0%, #5d4037 100%);">
+    <div class="d-flex align-items-center">
+      <i class="bi bi-person-badge fs-4 me-2 text-gold"></i>
+      <h5 class="offcanvas-title font-lora fw-bold" id="offcanvasScrollingLabel">Panel de Gestión</h5>
+    </div>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
   </div>
 
-  <div class="offcanvas-body cuerpo-menu-lateral">
-    <?php if ($perfil == 1): ?>
-      <div class="btn usuario-boton-lateral">
-        <a href="<?= base_url('/perfil') ?>">Usuario: <?= esc($nombre) ?></a>
+  <div class="offcanvas-body p-0 bg-artisan-soft">
+    
+    <!-- Sección de Usuario -->
+    <div class="user-profile-card p-4 mb-3 border-bottom bg-white text-center shadow-sm">
+      <div class="avatar-wrapper mx-auto mb-3 position-relative" style="width: 90px; height: 90px;">
+          <!-- Avatar Estándar (El humanito) -->
+          <div class="avatar-bg shadow-sm" style="background-color: #f0f2f5; border-radius: 50%; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; border: 2px solid #e0e0e0;">
+              <i class="bi bi-person-fill text-secondary" style="font-size: 3.5rem;"></i>
+          </div>
+          <!-- Indicador de Estado -->
+          <div class="status-indicator" style="position: absolute; bottom: 5px; right: 5px; background: #2ecc71; width: 20px; height: 20px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.1);"></div>
       </div>
-      
-      <ul class="list-unstyled">
-        <li><a class="nav-link" href="<?= base_url('/alta-producto') ?>">Añadir Producto</a></li>
-        <li><a class="nav-link" href="<?= base_url('/ventas-list') ?>">Lista de Ventas</a></li>
-        <li><a class="nav-link" href="<?= base_url('/crud-usuarios') ?>">Lista de Usuarios</a></li>
-        <li><a class="nav-link" href="<?= base_url('/crud-productos') ?>">Lista de Productos</a></li>
-        <li><a class="nav-link" href="<?= base_url('/lista-consultas') ?>">Consultas</a></li>
-        <li><a class="nav-link" href="<?= base_url('/ventas_lista') ?>">Mis Compras</a></li>
-      </ul>
-    <?php elseif ($perfil == 2): ?>
-      <div class="btn usuario-boton-lateral">
-        <a href="<?= base_url('/perfil') ?>">Cliente: <?= esc($nombre) ?></a>
+      <h5 class="mb-1 fw-bold text-dark"><?= esc($nombre) ?></h5>
+      <div class="d-flex justify-content-center mb-3">
+          <span class="badge bg-dark rounded-pill px-3 py-1 text-uppercase" style="font-size: 0.65rem; letter-spacing: 1px;">
+            <i class="bi bi-shield-lock me-1"></i> <?= ($perfil == 1) ? 'ADMINISTRADOR' : 'CLIENTE' ?>
+          </span>
       </div>
-      <ul class="list-unstyled">
-        <?php if (env('SHOPPING_CART_ENABLED')): ?>
-        <li><a class="nav-link" href="<?= base_url('/muestro') ?>">Carrito</a></li>
-        <?php endif; ?>
-        <li><a class="nav-link" href="<?= base_url('/ventas_lista') ?>">Mis Compras</a></li>
-      </ul>
-    <?php endif; ?>
-
-    <div class="btn-cerrar-sesion mt-3">
-      <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="<?= base_url('/logout') ?>">
-        Cerrar sesión
-      </a>
+      <a href="<?= base_url('/perfil') ?>" class="btn btn-sm btn-outline-secondary rounded-pill px-4 fw-bold">CONFIGURAR PERFIL</a>
     </div>
+
+    <!-- Lista de Opciones -->
+    <div class="menu-options-container p-3">
+      <?php if ($perfil == 1): ?>
+        <p class="text-muted small fw-bold px-3 mb-2 opacity-50">ADMINISTRACIÓN</p>
+        <div class="list-group list-group-flush rounded-4 overflow-hidden border shadow-sm">
+          <a href="<?= base_url('/alta-producto') ?>" class="list-group-item list-group-item-action py-3 d-flex align-items-center">
+            <i class="bi bi-plus-circle me-3 text-gold fs-5"></i> Añadir Producto
+          </a>
+          <a href="<?= base_url('/ventas-list') ?>" class="list-group-item list-group-item-action py-3 d-flex align-items-center">
+            <i class="bi bi-receipt-cutoff me-3 text-gold fs-5"></i> Lista de Ventas
+          </a>
+          <a href="<?= base_url('/crud-usuarios') ?>" class="list-group-item list-group-item-action py-3 d-flex align-items-center">
+            <i class="bi bi-people me-3 text-gold fs-5"></i> Gestión de Usuarios
+          </a>
+          <a href="<?= base_url('/crud-productos') ?>" class="list-group-item list-group-item-action py-3 d-flex align-items-center">
+            <i class="bi bi-box-seam me-3 text-gold fs-5"></i> Catálogo de Productos
+          </a>
+          <a href="<?= base_url('/lista-consultas') ?>" class="list-group-item list-group-item-action py-3 d-flex align-items-center">
+            <i class="bi bi-chat-dots me-3 text-gold fs-5"></i> Bandeja de Consultas
+          </a>
+        </div>
+
+        <p class="text-muted small fw-bold px-3 mt-4 mb-2 opacity-50">MI ACTIVIDAD</p>
+        <div class="list-group list-group-flush rounded-4 overflow-hidden border shadow-sm">
+          <a href="<?= base_url('/ventas_lista') ?>" class="list-group-item list-group-item-action py-3 d-flex align-items-center">
+            <i class="bi bi-bag-check me-3 text-brown fs-5"></i> Mis Compras
+          </a>
+        </div>
+
+      <?php elseif ($perfil == 2): ?>
+        <div class="list-group list-group-flush rounded-4 overflow-hidden border shadow-sm">
+          <?php if (env('SHOPPING_CART_ENABLED')): ?>
+          <a href="<?= base_url('/muestro') ?>" class="list-group-item list-group-item-action py-3 d-flex align-items-center">
+            <i class="bi bi-cart3 me-3 text-gold fs-5"></i> Mi Carrito
+          </a>
+          <?php endif; ?>
+          <a href="<?= base_url('/ventas_lista') ?>" class="list-group-item list-group-item-action py-3 d-flex align-items-center">
+            <i class="bi bi-bag-check me-3 text-gold fs-5"></i> Mis Compras
+          </a>
+        </div>
+      <?php endif; ?>
+
+      <!-- Botón Cerrar Sesión -->
+      <div class="px-3 mt-5 pb-5">
+        <a href="<?= base_url('/logout') ?>" class="btn btn-outline-danger w-100 py-2 fw-bold rounded-pill shadow-sm d-flex align-items-center justify-content-center">
+          <i class="bi bi-box-arrow-right me-2"></i> Cerrar Sesión
+        </a>
+      </div>
+    </div>
+
   </div>
 </div>
+
+<style>
+  .bg-artisan-soft { background-color: #fdfaf7; }
+  .text-brown { color: #3e2723; }
+  .text-gold { color: #b8860b; }
+  .font-lora { font-family: 'Lora', serif; }
+  
+  .list-group-item-action:hover {
+    background-color: #fff;
+    color: #b8860b;
+    padding-left: 1.5rem !important;
+    transition: all 0.3s;
+  }
+
+  .btn-outline-brown {
+    border: 1px solid #3e2723;
+    color: #3e2723;
+    transition: all 0.3s;
+  }
+  .btn-outline-brown:hover {
+    background-color: #3e2723;
+    color: white;
+  }
+</style>

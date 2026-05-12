@@ -33,6 +33,9 @@
                                 <p class="fw-bold">Precio: $<?= esc($row['precio_vta']) ?></p>
                                 <p class="fw-bold">Stock: <?= esc($row['stock']) ?></p>
                             </div>
+                            <div class="mt-3">
+                                <a href="<?= base_url('producto/detalle/' . $row['id_producto']) ?>" class="btn btn-outline-brown btn-sm w-100">🔍 Ver Ficha Técnica</a>
+                            </div>
                         </div>
 
                         <div class="card-footer">

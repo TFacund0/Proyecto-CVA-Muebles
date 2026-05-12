@@ -20,6 +20,7 @@ $routes->get('/comercializacion', 'Pages::comercializacion');
 $routes->get('/informacionContacto', 'Pages::informacionContacto');
 $routes->get('/terminosYCondiciones', 'Pages::terminosYCondiciones');
 $routes->get('/productos', 'Pages::productos');
+$routes->get('/producto/detalle/(:num)', 'ProductoController::ver_detalle/$1');
 
 // -------------------- Registro de usuarios --------------------
 $routes->get('/registro', 'UsuarioController::index_registrar');
@@ -50,6 +51,8 @@ $routes->get('/ventas-stats', 'VentasController::estadisticas', ['filter' => 'au
 $routes->get('/ventas/gestion/(:num)', 'VentasController::ver_gestion_pedido/$1', ['filter' => 'auth']);
 $routes->post('/ventas/registrar_pago', 'VentasController::registrar_pago', ['filter' => 'auth']);
 $routes->post('/ventas/guardar_observaciones', 'VentasController::guardar_observaciones', ['filter' => 'auth']);
+$routes->get('/ventas/nuevo-personalizado', 'VentasController::nuevo_pedido_personalizado', ['filter' => 'auth']);
+$routes->post('/ventas/guardar-personalizado', 'VentasController::guardar_pedido_personalizado', ['filter' => 'auth']);
 
 
 // -------------------- Gestión de Usuarios --------------------

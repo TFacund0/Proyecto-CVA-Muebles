@@ -38,17 +38,35 @@ class ProductoController extends BaseController {
         }
 
         $productoModel = new Productos_model();
-        $vista = $this->request->getVar('vista') ?? 'NO'; // 'NO' para activos, 'SI' para eliminados
+        $categoriaModel = new Categorias_model();
+
+        $search = $this->request->getGet('search');
+        $cat_id = $this->request->getGet('categoria_id');
+        $vista = $this->request->getVar('vista') ?? 'NO';
+        $limit = $this->request->getVar('option') ?? 10;
+
+        $builder = $productoModel->select('productos.*, categorias.descripcion as categoria')
+                                 ->join('categorias', 'categorias.id_categoria = productos.categoria_id')
+                                 ->where('productos.eliminado', $vista);
+
+        if (!empty($search)) {
+            $builder->like('productos.nombre_prod', $search);
+        }
+
+        if (!empty($cat_id)) {
+            $builder->where('productos.categoria_id', $cat_id);
+        }
 
         $data = [
-            'productos' => $productoModel->where('eliminado', $vista)->findAll(),
-            'select' => $this->request->getVar('option') ?? 10,
+            'productos' => $builder->findAll(),
+            'categorias' => $categoriaModel->findAll(),
+            'select' => $limit,
             'vista' => $vista
         ];
 
         return view('front/main', [
-            'title' => 'Crud productos',
-            'content' => view('back/producto/crud_productos', $data),
+            'title' => 'Gestión de Productos',
+            'content' => view('back/producto/crud_productos', $data)
         ]);
     }
 
@@ -131,7 +149,8 @@ class ProductoController extends BaseController {
             'precio' => $this->request->getVar('precio'),
             'precio_vta' => $this->request->getVar('precio-vta'),
             'stock' => $this->request->getVar('stock'),
-            'stock_min' => $this->request->getVar('stock-min')
+            'stock_min' => $this->request->getVar('stock-min'),
+            'descripcion' => $this->request->getVar('descripcion')
         ];
 
         $productoModel = new Productos_model();
@@ -213,7 +232,8 @@ class ProductoController extends BaseController {
                 'precio' => $this->request->getVar('precio'),
                 'precio_vta' => $this->request->getVar('precio-vta'),
                 'stock' => $this->request->getVar('stock'),
-                'stock_min' => $this->request->getVar('stock-min')
+                'stock_min' => $this->request->getVar('stock-min'),
+                'descripcion' => $this->request->getVar('descripcion')
             ];
         } else {
             $data = [
@@ -222,12 +242,32 @@ class ProductoController extends BaseController {
                 'precio' => $this->request->getVar('precio'),
                 'precio_vta' => $this->request->getVar('precio-vta'),
                 'stock' => $this->request->getVar('stock'),
-                'stock_min' => $this->request->getVar('stock-min')
+                'stock_min' => $this->request->getVar('stock-min'),
+                'descripcion' => $this->request->getVar('descripcion')
             ];
         }
 
         $productoModel->update($id, $data);
         session()->setFlashdata('success', 'Modificación exitosa');
         return redirect()->to('/crud-productos');
+    }
+
+    /**
+     * @brief Muestra la ficha de detalle de un producto específico (Estilo Mercado Libre)
+     * @param int $id ID del producto
+     * @return View Vista de detalle
+     */
+    public function ver_detalle($id) {
+        $productoModel = new Productos_model();
+        $data['producto'] = $productoModel->getProducto($id);
+
+        if (!$data['producto']) {
+            return redirect()->to('/productos')->with('error', 'Producto no encontrado');
+        }
+
+        return view('front/main', [
+            'title' => 'Detalle de ' . $data['producto']['nombre_prod'],
+            'content' => view('front/pages/detalle_producto', $data)
+        ]);
     }
 }

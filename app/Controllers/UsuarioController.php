@@ -106,18 +106,25 @@ class UsuarioController extends BaseController {
     }
 
     // Método para mostrar el listado de usuarios (solo si el perfil es administrador)
-    public function index (){
+    public function index() {
         $perfil = session()->get('perfil_id');
         $vista = $this->request->getVar('vista') ?? 'NO';
-        // Si el perfil no es administrador (id = 1), redirigir al login
-        if ($perfil != 1) {
-            return redirect()->to('/login');
+        
+        if ($perfil != 1) return redirect()->to('/login');
+
+        $usuariosModel = new Usuarios_model();
+        $search = $this->request->getGet('search');
+
+        if (!empty($search)) {
+            $data['usuarios'] = $usuariosModel->like('nombre', $search)
+                                              ->orLike('apellido', $search)
+                                              ->orLike('email', $search)
+                                              ->orLike('usuario', $search)
+                                              ->findAll();
+        } else {
+            $data['usuarios'] = $usuariosModel->getUsuariosAll();
         }
 
-        $usuarios = new Usuarios_model();
-        // Obtener todos los usuarios
-        $data['usuarios'] = $usuarios->getUsuariosAll();
-        // Obtener el valor del selector o asignar 10 por defecto
         $data['select'] = $this->request->getVar('option') ?? 10;
         $data['vista'] = $vista;
         

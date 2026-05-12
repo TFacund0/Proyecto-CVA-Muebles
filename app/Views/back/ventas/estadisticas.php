@@ -58,11 +58,32 @@
                 </div>
             </a>
         </div>
+
+        <!-- Tarjeta: Consultas (Inbox) -->
+        <div class="col-12">
+            <a href="<?= base_url('/consultas') ?>" class="text-decoration-none">
+                <div class="card stat-card border-0 shadow-sm" style="background: linear-gradient(135deg, #fce4ec 0%, #f06292 100%);">
+                    <div class="card-body py-3 text-white d-flex justify-content-between align-items-center px-4">
+                        <div class="d-flex align-items-center gap-4">
+                            <div class="stat-icon" style="font-size: 2rem;">📬</div>
+                            <div class="text-start">
+                                <h4 class="mb-0 fw-bold"><?= $total_consultas ?> Consultas Pendientes</h4>
+                                <small class="opacity-75">Nuevas oportunidades de venta esperando respuesta</small>
+                            </div>
+                        </div>
+                        <div class="btn btn-light btn-sm fw-bold px-3 py-2" style="color: #f06292; border-radius: 50px;">GESTIONAR INBOX</div>
+                    </div>
+                </div>
+            </a>
+        </div>
     </div>
 
-    <div class="mt-5 text-center">
+    <div class="mt-5 text-center d-flex justify-content-center gap-3">
         <a href="<?= base_url('/ventas-list') ?>" class="btn btn-outline-brown px-4 py-2 rounded-pill">
             <i class="bi bi-list-ul me-2"></i>Ver Listado Completo
+        </a>
+        <a href="<?= base_url('ventas/nuevo-personalizado') ?>" class="btn btn-dark px-4 py-2 rounded-pill shadow-sm" style="background-color: var(--color-madera-oscura); border: none;">
+            <i class="bi bi-plus-lg me-2"></i>Registrar Pedido Manual
         </a>
     </div>
 </div>

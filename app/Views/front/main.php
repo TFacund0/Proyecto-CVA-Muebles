@@ -51,4 +51,4 @@
     <!-- Footer -->
     <?= view('front/footer') ?>
 </body>
-</body>
+</html>

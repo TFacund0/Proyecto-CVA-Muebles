@@ -223,10 +223,79 @@ class VentasController extends BaseController {
             'ENTREGADO'  => $ventasModel->where('estado', 'ENTREGADO')->countAllResults(),
         ];
 
+        // Consultas activas
+        $consultasModel = new \App\Models\Consultas_model();
+        $data['total_consultas'] = $consultasModel->where('activo', 'SI')->countAllResults();
+
         return view('front/main', [
             'title' => 'Estadísticas del Taller',
             'content' => view('back/ventas/estadisticas', $data)
         ]);
+    }
+
+    /**
+     * @brief Muestra el formulario para registrar un pedido manual (mueble a medida)
+     * @return View Vista del formulario
+     */
+    public function nuevo_pedido_personalizado() {
+        $perfil = session()->get('perfil_id');
+        if ($perfil != 1) return redirect()->to('/login');
+
+        return view('front/main', [
+            'title' => 'Nuevo Pedido Personalizado',
+            'content' => view('back/ventas/nuevo_pedido_personalizado')
+        ]);
+    }
+
+    /**
+     * @brief Procesa el registro de un pedido manual
+     * @return Redirect Redirección a la gestión del pedido
+     */
+    public function guardar_pedido_personalizado() {
+        $perfil = session()->get('perfil_id');
+        if ($perfil != 1) return redirect()->to('/login');
+
+        $usuariosModel = new Usuarios_model();
+        $ventasModel = new VentasCabecera_model();
+        $ventasDetalleModel = new VentasDetalle_model();
+
+        // 1. Obtener el usuario genérico para pedidos WhatsApp
+        $usuario_gen = $usuariosModel->where('usuario', 'cliente_whatsapp')->first();
+        $usuario_id = $usuario_gen['id_usuario'];
+
+        // 2. Crear la cabecera de la venta
+        $nombre_cliente = $this->request->getPost('nombre_cliente');
+        $total = $this->request->getPost('total_venta');
+        $observaciones = "CLIENTE: " . $nombre_cliente . "\n" . $this->request->getPost('detalles_obra');
+
+        $venta_id = $ventasModel->insert([
+            'usuario_id'    => $usuario_id,
+            'total_venta'   => $total,
+            'estado'        => 'PENDIENTE',
+            'observaciones' => $observaciones,
+            'fecha'         => date('Y-m-d H:i:s')
+        ]);
+
+        // 3. Crear el detalle (mueble custom)
+        $ventasDetalleModel->insert([
+            'venta_id'    => $venta_id,
+            'producto_id' => null, // Es a medida
+            'cantidad'    => 1,
+            'precio'      => $total
+        ]);
+
+        // 4. Si hubo una seña inicial, registrarla como primer pago
+        $monto_sena = $this->request->getPost('monto_sena');
+        if ($monto_sena > 0) {
+            $pagosModel = new VentasPagos_model();
+            $pagosModel->insert([
+                'venta_id' => $venta_id,
+                'monto'    => $monto_sena,
+                'nota'     => 'Seña inicial - Pedido Manual'
+            ]);
+        }
+
+        return redirect()->to('ventas/gestion/' . $venta_id)->with('success', 'Pedido personalizado registrado correctamente.');
     }
 
     /**

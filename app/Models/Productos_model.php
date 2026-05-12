@@ -7,7 +7,7 @@ class Productos_model extends Model
 {
     protected $table = 'productos';
     protected $primaryKey = 'id_producto';
-    protected $allowedFields = ['nombre_prod', 'imagen', 'categoria_id', 'precio', 'precio_vta', 'stock', 'stock_min', 'eliminado'];
+    protected $allowedFields = ['nombre_prod', 'imagen', 'categoria_id', 'precio', 'precio_vta', 'stock', 'stock_min', 'eliminado', 'descripcion'];
 
     public function getProductoAll() {
         return $this->select('productos.*, categorias.descripcion as categoria')
@@ -18,7 +18,7 @@ class Productos_model extends Model
     public function getBuilderProductos() {
         $db = \Config\Database::connect();
         $builder = $db->table('productos');
-        $builder->select('*');
+        $builder->select('productos.*, categorias.descripcion as categoria');
         $builder->join('categorias', 'categorias.id_categoria = productos.categoria_id');
         
         return $builder;
