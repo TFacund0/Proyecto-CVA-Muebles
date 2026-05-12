@@ -1,3 +1,10 @@
+<?= $this->extend('layout/main') ?>
+
+<?= $this->section('extra-css') ?>
+    <link rel="stylesheet" href="<?= base_url('assets/css/pages/productos.css?v=1.2')?>">
+<?= $this->endSection() ?>
+
+<?= $this->section('content') ?>
 <section id="productos" class="contenedor-productos text-center">
     <div class="titulo-productos text-center">
         <h2>Productos</h2>
@@ -59,7 +66,7 @@
                                     $url_whatsapp = "https://wa.me/{$whatsapp_num}?text={$mensaje}";
                                 ?>
                                 <a href="<?= $url_whatsapp ?>" target="_blank" class="btn btn-success w-100 d-flex align-items-center justify-content-center gap-2">
-                                    <img src="<?= base_url('assets/img/iconos/whatsapp.svg') ?>" alt="WhatsApp" width="20" height="20" style="filter: brightness(0) invert(1);">
+                                    <img src="<?= base_url('assets/img/ui/icons/whatsapp.svg') ?>" alt="WhatsApp" width="20" height="20" style="filter: brightness(0) invert(1);">
                                     Consultar
                                 </a>
                             <?php endif; ?>
@@ -69,9 +76,11 @@
                 </div>
             <?php } ?>
         </div>
+    </div>
 </section>
+<?= $this->endSection() ?>
 
-
+<?= $this->section('extra-js') ?>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const botones = document.querySelectorAll('.filtro-categoria');
@@ -93,3 +102,4 @@
         });
     });
 </script>
+<?= $this->endSection() ?>

@@ -66,7 +66,7 @@ class ProductoController extends BaseController {
 
         return view('front/main', [
             'title' => 'Gestión de Productos',
-            'content' => view('back/producto/crud_productos', $data)
+            'content' => view('back/products/crud_productos', $data)
         ]);
     }
 
@@ -86,7 +86,7 @@ class ProductoController extends BaseController {
 
         return view('front/main', [
             'title' => 'Alta Producto',
-            'content' => view('back/producto/alta_producto', $data)
+            'content' => view('back/products/alta_producto', $data)
         ]);
     }
 
@@ -208,7 +208,7 @@ class ProductoController extends BaseController {
 
         return view('front/main', [
             'title' => 'Editar Producto',
-            'content' => view('back/producto/editar_producto', $data)
+            'content' => view('back/products/editar_producto', $data)
         ]);
     }
 

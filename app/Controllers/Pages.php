@@ -19,9 +19,8 @@ class Pages extends BaseController
      */
     public function quienesSomos()
     {
-        return view('front/main', [
-            'title' => 'CVA quienes somos',
-            'content' => view('front/pages/quienesSomos')
+        return view('front/pages/quienesSomos', [
+            'title' => 'Quiénes Somos - CVA Muebles'
         ]);
     }
 
@@ -32,9 +31,8 @@ class Pages extends BaseController
      */
     public function comercializacion()
     {   
-        return view('front/main', [
-            'title' => 'CVA contactanos',
-            'content' => view('front/pages/comercializacion')
+        return view('front/pages/comercializacion', [
+            'title' => 'Comercialización - CVA Muebles'
         ]);
     }
 
@@ -45,9 +43,8 @@ class Pages extends BaseController
      */
     public function informacionContacto()
     {
-        return view('front/main', [
-            'title' => 'CVA contactanos',
-            'content' => view('front/pages/informacionContacto')
+        return view('front/pages/informacionContacto', [
+            'title' => 'Contacto - CVA Muebles'
         ]);
     }
 
@@ -58,9 +55,8 @@ class Pages extends BaseController
      */
     public function terminosYCondiciones()
     {
-        return view('front/main', [
-            'title' => 'CVA contactanos',
-            'content' => view('front/pages/terminosYCondiciones')
+        return view('front/pages/terminosYCondiciones', [
+            'title' => 'Términos y Condiciones - CVA Muebles'
         ]);
     }
 
@@ -80,10 +76,8 @@ class Pages extends BaseController
                                 ->findAll();
 
         $data['categorias'] = $categorias->select('descripcion')->distinct()->findAll();
+        $data['title'] = 'Nuestros Productos - CVA Muebles';
 
-        return view('front/main', [
-            'title' => 'Producto',
-            'content' => view('front/pages/productos', $data)
-        ]);
+        return view('front/pages/productos', $data);
     }
 }

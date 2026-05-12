@@ -29,7 +29,7 @@ class ConsultaController extends BaseController {
 
         return view('front/main', [
             'title' => 'Consulta',
-            'content' => view('back/consultas/lista_consultas', $data)
+            'content' => view('back/messages/lista_consultas', $data)
         ]);
     }
 
@@ -105,7 +105,7 @@ class ConsultaController extends BaseController {
 
         return view('front/main', [
             'title' => 'Consulta',
-            'content' => view('back/consultas/lista_consultas', $data)
+            'content' => view('back/messages/lista_consultas', $data)
         ]);
     }
 

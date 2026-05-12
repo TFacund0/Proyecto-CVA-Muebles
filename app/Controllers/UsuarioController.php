@@ -19,9 +19,8 @@ class UsuarioController extends BaseController {
             return redirect()->to('/');
         }
 
-        return view('front/main', [
-            'title' => 'Registro',
-            'content' => view('back/usuario/registro')
+        return view('back/users/registro', [
+            'title' => 'Registro'
         ]);
     }
 
@@ -84,9 +83,8 @@ class UsuarioController extends BaseController {
             session()->setFlashData('fail', 'No se cumple con todos los requerimientos de los campos');
 
             // Volver a cargar la vista de registro con el mensaje de error
-            return view('front/main', [
-                'title' => 'Registro',
-                'content' => view('back/usuario/registro')
+            return view('back/users/registro', [
+                'title' => 'Registro'
             ]);
         } else {
             // Si la validación pasa, guardar el usuario en la base de datos
@@ -132,7 +130,7 @@ class UsuarioController extends BaseController {
         // Cargar la vista principal con la lista de usuarios
         return view('front/main', [
             'title' => 'Crud Usuarios',
-            'content' => view('back/usuario/crud_usuarios', $data),
+            'content' => view('back/users/crud_usuarios', $data),
         ]);
     }
 
@@ -146,7 +144,7 @@ class UsuarioController extends BaseController {
 
         return view('front/main', [
             'title' => 'Configuracion Perfil',
-            'content' => view('back/usuario/perfil_config'),
+            'content' => view('back/users/perfil_config'),
         ]);
     }
 

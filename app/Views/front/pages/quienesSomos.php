@@ -1,3 +1,10 @@
+<?= $this->extend('layout/main') ?>
+
+<?= $this->section('extra-css') ?>
+    <link rel="stylesheet" href="<?= base_url('assets/css/pages/quienesSomos.css?v=1.2')?>">
+<?= $this->endSection() ?>
+
+<?= $this->section('content') ?>
 <!-- Sección de encabezado con título y subtítulo -->
 <header class="header-section">
     <div class="container-fluid text-center p-5 fondo-header">
@@ -28,7 +35,7 @@
 
         <!-- Imagen representativa de la historia -->
         <div class="col-lg-5 col-sm-12 d-flex img-historia-section">
-            <img src="assets/img/texturas/carpienteria.jpg" 
+            <img src="<?= base_url('assets/img/ui/textures/carpienteria.jpg') ?>" 
                 alt="Taller CVA Muebles" 
                 class="img-fluid history-img">
         </div>
@@ -55,7 +62,7 @@
             <!-- Miembro 1 -->
             <div class="col-md-4 col-sm-12">
                 <div class="card team-card">
-                    <img src="assets/img/team/viejo.jpg" class="card-img-top" alt="Carlos Vega">
+                    <img src="<?= base_url('assets/img/team/viejo.jpg') ?>" class="card-img-top" alt="Carlos Vega">
                     <div class="card-body">
                         <h5>Acevedo Cesar</h5>
                         <p class="position">Fundador y Maestro Carpintero</p>
@@ -67,7 +74,7 @@
             <!-- Miembro 2 -->
             <div class="col-md-4 col-sm-12">
                 <div class="card team-card">
-                    <img src="assets/img/team/diseñadora.jpg" class="card-img-top" alt="Valeria Acevedo">
+                    <img src="<?= base_url('assets/img/team/diseñadora.jpg') ?>" class="card-img-top" alt="Valeria Acevedo">
                     <div class="card-body">
                         <h5>Valeria Acevedo</h5>
                         <p class="position">Diseñadora y Proyectista</p>
@@ -79,7 +86,7 @@
             <!-- Miembro 3 -->
             <div class="col-md-4 col-sm-12">
                 <div class="card team-card">
-                    <img src="assets/img/team/diseñador.jpg" class="card-img-top" alt="Andrés Rojas">
+                    <img src="<?= base_url('assets/img/team/diseñador.jpg') ?>" class="card-img-top" alt="Andrés Rojas">
                     <div class="card-body">
                         <h5>Andrés Rojas</h5>
                         <p class="position">Especialista en Acabados</p>
@@ -91,3 +98,4 @@
     </div>
 
 </section>
+<?= $this->endSection() ?>

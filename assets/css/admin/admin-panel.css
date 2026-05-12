@@ -1,0 +1,111 @@
+/* 
+  =============================================
+  CVA MUEBLES - ADMIN DASHBOARD STYLES
+  =============================================
+*/
+
+.admin-wrapper {
+    background-color: var(--admin-bg);
+    min-height: 100vh;
+}
+
+/* Card Styling */
+.admin-card {
+    border: none;
+    border-radius: 1rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+.admin-card-header {
+    background-color: var(--admin-card-header);
+    color: var(--cva-white);
+    padding: 1.5rem 2rem;
+}
+
+.admin-card-header h2 {
+    color: var(--cva-white);
+    margin-bottom: 0;
+}
+
+/* Forms & Filters */
+.admin-filter-bar {
+    background-color: var(--cva-white);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(0,0,0,0.05);
+    margin-bottom: 2rem;
+}
+
+.admin-input {
+    border-radius: 0.5rem;
+    border: 1px solid #dee2e6;
+    padding: 0.6rem 1rem;
+}
+
+.admin-input:focus {
+    border-color: var(--admin-accent);
+    box-shadow: 0 0 0 0.25rem rgba(184, 134, 11, 0.25);
+}
+
+/* Table Styling */
+.admin-table-container {
+    background-color: var(--cva-white);
+    border-radius: 1rem;
+    border: 1px solid rgba(0,0,0,0.05);
+    overflow: hidden;
+}
+
+.admin-table thead {
+    background-color: #fcfaf7;
+}
+
+.admin-table th {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--cva-brown);
+    padding: 1.25rem 1rem;
+}
+
+.admin-table td {
+    padding: 1.25rem 1rem;
+}
+
+.admin-table tr:hover {
+    background-color: var(--admin-table-hover);
+}
+
+/* Action Buttons */
+.btn-admin-gold {
+    background-color: var(--cva-gold);
+    color: var(--cva-white);
+    border: none;
+    font-weight: 700;
+    transition: var(--transition-base);
+}
+
+.btn-admin-gold:hover {
+    background-color: var(--cva-gold-light);
+    color: var(--cva-white);
+    transform: translateY(-2px);
+}
+
+/* Badges */
+.badge-admin {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0.5em 1em;
+}
+
+.btn-outline-brown {
+    border: 1px solid var(--cva-brown);
+    color: var(--cva-brown);
+    transition: var(--transition-base);
+}
+
+.btn-outline-brown:hover {
+    background-color: var(--cva-brown);
+    color: var(--cva-white);
+}

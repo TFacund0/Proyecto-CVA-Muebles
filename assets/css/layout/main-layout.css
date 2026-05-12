@@ -1,0 +1,125 @@
+/* 
+  =============================================
+  CVA MUEBLES - LAYOUT COMPONENTS (NAVBAR & FOOTER)
+  =============================================
+*/
+
+/* --- NAVBAR PRINCIPAL --- */
+nav.navbar.artisan-main-nav {
+    background-image: var(--navbar-bg), url('../../img/ui/textures/madera.jpg') !important;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-bottom: 3px solid var(--cva-gold);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    padding: var(--space-xs) 0;
+    transition: var(--transition-base);
+}
+
+.artisan-main-nav .titulo-logo {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--cva-white);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    font-size: 1.5rem;
+}
+
+/* Enlaces de Navegación */
+.artisan-main-nav .nav-link-custom {
+    background: transparent;
+    border: none;
+    color: var(--cva-white);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    padding: 10px 15px;
+    position: relative;
+    text-decoration: none;
+    transition: var(--transition-base);
+}
+
+.artisan-main-nav .nav-link-custom:hover {
+    color: var(--cva-gold-light);
+}
+
+.artisan-main-nav .nav-link-custom::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--cva-gold);
+    transition: var(--transition-base);
+    transform: translateX(-50%);
+}
+
+.artisan-main-nav .nav-link-custom:hover::after {
+    width: 70%;
+}
+
+/* Botones de Iconos (Perfil/Carrito) */
+.artisan-main-nav .boton-icon-circle {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-base);
+}
+
+.artisan-main-nav .boton-icon-circle:hover {
+    background: var(--cva-gold);
+    border-color: var(--cva-gold);
+    transform: scale(1.1);
+}
+
+.artisan-main-nav .boton-icon-circle .icono-svg {
+    filter: brightness(0) invert(1);
+    width: 20px;
+}
+
+/* --- OFFCANVAS (MENÚ LATERAL) --- */
+.menu-lateral .offcanvas-header {
+    background: var(--sidebar-header);
+    color: var(--cva-white);
+}
+
+.menu-lateral .offcanvas-body {
+    background-color: var(--sidebar-bg);
+}
+
+.user-profile-card {
+    background-color: var(--cva-white);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+/* --- FOOTER --- */
+footer.artisan-footer {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url('../../img/ui/textures/madera.jpg') !important;
+    background-size: cover;
+    background-position: center;
+    color: var(--cva-white);
+    padding: var(--space-lg) 0 var(--space-sm);
+    border-top: 4px solid var(--cva-gold);
+}
+
+.artisan-footer .footer-title {
+    color: var(--cva-gold);
+    font-weight: 700;
+    margin-bottom: var(--space-sm);
+}
+
+.artisan-footer .footer-link {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    transition: var(--transition-base);
+}
+
+.artisan-footer .footer-link:hover {
+    color: var(--cva-gold);
+    padding-left: 5px;
+}

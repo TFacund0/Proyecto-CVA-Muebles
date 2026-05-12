@@ -28,9 +28,8 @@ class LoginController extends BaseController {
             return redirect()->to('/');
         }
 
-        return view('front/main', [
-            'title' => 'Login',
-            'content' => view('back/usuario/login')
+        return view('back/users/login', [
+            'title' => 'Login'
         ]);
     }
 

@@ -84,7 +84,7 @@ class VentasController extends BaseController {
 
         return view('front/main', [
             'title' => 'Ventas',
-            'content' => view('back/ventas/detalleVentas', [
+            'content' => view('back/sales/detalleVentas', [
                 'ventas' => $ventas_filtradas, 
                 'search' => $search, 
                 'filtro_tipo' => $tipo,
@@ -173,7 +173,7 @@ class VentasController extends BaseController {
 
         return view('front/main', [
             'title' => 'Mi Compra',
-            'content' => view('back/ventas/ver_factura_usuario', $data)
+            'content' => view('back/sales/ver_factura_usuario', $data)
         ]);
     }
 
@@ -184,7 +184,7 @@ class VentasController extends BaseController {
 
         return view('front/main', [
             'title' => 'Todas mis Compras',
-            'content' => view('back/ventas/vistaCompras', $data)
+            'content' => view('back/sales/vistaCompras', $data)
         ]);
     }
 
@@ -229,7 +229,7 @@ class VentasController extends BaseController {
 
         return view('front/main', [
             'title' => 'Estadísticas del Taller',
-            'content' => view('back/ventas/estadisticas', $data)
+            'content' => view('back/sales/estadisticas', $data)
         ]);
     }
 
@@ -243,7 +243,7 @@ class VentasController extends BaseController {
 
         return view('front/main', [
             'title' => 'Nuevo Pedido Personalizado',
-            'content' => view('back/ventas/nuevo_pedido_personalizado')
+            'content' => view('back/sales/nuevo_pedido_personalizado')
         ]);
     }
 
@@ -321,7 +321,7 @@ class VentasController extends BaseController {
 
         return view('front/main', [
             'title' => 'Gestión de Pedido #' . $venta_id,
-            'content' => view('back/ventas/gestion_pedido_admin', $data)
+            'content' => view('back/sales/gestion_pedido_admin', $data)
         ]);
     }
 

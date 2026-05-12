@@ -1,4 +1,10 @@
+<?= $this->extend('layout/main') ?>
 
+<?= $this->section('extra-css') ?>
+    <link rel="stylesheet" href="<?= base_url('assets/css/pages/contacto.css?v=1.2')?>">
+<?= $this->endSection() ?>
+
+<?= $this->section('content') ?>
 <!-- Sección de encabezado de contacto -->
 <header class="contact-header titulo-contacto">
     <h1>Contacto</h1>
@@ -139,3 +145,4 @@
         </div>
     </div>
 </section>
+<?= $this->endSection() ?>

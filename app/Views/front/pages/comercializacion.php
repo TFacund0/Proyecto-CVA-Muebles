@@ -1,3 +1,10 @@
+<?= $this->extend('layout/main') ?>
+
+<?= $this->section('extra-css') ?>
+    <link rel="stylesheet" href="<?= base_url('assets/css/pages/comercializacion.css?v=1.2')?>">
+<?= $this->endSection() ?>
+
+<?= $this->section('content') ?>
 <!-- Sección de encabezado -->
 <header class="comercializacion-header titulo-comercializacion">
     <h1>Comercialización</h1>
@@ -30,7 +37,7 @@
                     <!-- Pago en efectivo -->
                     <div class="col-md-6">
                         <div class="card-style text-center p-3 h-100">
-                            <img src="assets/img/iconos/cash.svg" alt="Efectivo" class="icon-comercializacion">
+                            <img src="<?= base_url('assets/img/ui/icons/cash.svg') ?>" alt="Efectivo" class="icon-comercializacion">
                             <h5 class="mt-3 subtitulo-comercializacion">Efectivo</h5>
                             <p>Pago en nuestro taller o contra entrega</p>
                         </div>
@@ -39,7 +46,7 @@
                     <!-- Pago con tarjeta -->
                     <div class="col-md-6">
                         <div class="card-style text-center p-3 h-100">
-                            <img src="assets/img/iconos/credit-card.svg" alt="Tarjetas" class="icon-comercializacion">
+                            <img src="<?= base_url('assets/img/ui/icons/credit-card.svg') ?>" alt="Tarjetas" class="icon-comercializacion">
                             <h5 class="mt-3 subtitulo-comercializacion">Tarjetas</h5>
                             <p>Visa, MasterCard y American Express (hasta 12 cuotas)</p>
                         </div>
@@ -48,7 +55,7 @@
                     <!-- Pago por transferencia -->
                     <div class="col-md-6">
                         <div class="card-style text-center p-3 h-100">
-                            <img src="assets/img/iconos/paypal.svg" alt="Transferencia" class="icon-comercializacion">
+                            <img src="<?= base_url('assets/img/ui/icons/paypal.svg') ?>" alt="Transferencia" class="icon-comercializacion">
                             <h5 class="mt-3 subtitulo-comercializacion">Transferencia</h5>
                             <p>Bancaria o por Mercado Pago</p>
                         </div>
@@ -57,7 +64,7 @@
                     <!-- Financiamiento -->
                     <div class="col-md-6">
                         <div class="card-style text-center p-3 h-100">
-                            <img src="assets/img/iconos/wallet.svg" alt="Financiación" class="icon-comercializacion">
+                            <img src="<?= base_url('assets/img/ui/icons/wallet.svg') ?>" alt="Financiación" class="icon-comercializacion">
                             <h5 class="mt-3 subtitulo-comercializacion">Financiación</h5>
                             <p>Planes especiales para pedidos mayores a $500.000</p>
                         </div>
@@ -151,3 +158,4 @@
         </div>
     </div>
 </section>
+<?= $this->endSection() ?>

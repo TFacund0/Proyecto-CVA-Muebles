@@ -1,0 +1,123 @@
+/* 
+  =============================================
+  CVA MUEBLES - GLOBAL DESIGN SYSTEM
+  =============================================
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Lora:wght@400;700&display=swap');
+
+:root {
+    /* Color Palette */
+    --cva-brown: #3E2723;
+    --cva-brown-light: #5D4037;
+    --cva-gold: #B8860B;
+    --cva-gold-light: #D4AF37;
+    --cva-parchment: #f8f5f0;
+    /* Match original Artisan Cream */
+    --cva-white: #FFFFFF;
+    --cva-text: #3e2723;
+    --cva-text-muted: #6C757D;
+
+    /* Spacing System */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 2rem;
+    --space-lg: 4rem;
+    --space-xl: 8rem;
+
+    /* Typography */
+    --font-main: 'Outfit', sans-serif;
+    --font-heading: 'Lora', serif;
+
+    /* Transitions */
+    --transition-base: all 0.3s ease;
+
+    /* Component Tokens */
+    --navbar-height: 80px;
+    --navbar-bg: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5));
+    --sidebar-bg: #fdfaf7;
+    --sidebar-header: linear-gradient(135deg, var(--cva-brown) 0%, #5d4037 100%);
+
+    /* Admin Tokens */
+    --admin-bg: #f8f9fa;
+    --admin-card-header: var(--cva-brown);
+    --admin-accent: var(--cva-gold);
+    --admin-table-hover: #fffbf5;
+}
+
+/* Base Reset & Typography */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--cva-parchment) !important;
+    font-family: var(--font-main);
+    color: var(--cva-text);
+    line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+
+}
+
+/* Utility class for Brand Color */
+.text-artisan {
+    color: var(--cva-brown) !important;
+}
+
+.text-gold {
+    color: var(--cva-gold) !important;
+}
+
+/* Global Utilities */
+.text-cva-brown {
+    color: var(--cva-brown);
+}
+
+.text-cva-gold {
+    color: var(--cva-gold);
+}
+
+.bg-cva-brown {
+    background-color: var(--cva-brown);
+}
+
+.bg-cva-parchment {
+    background-color: var(--cva-parchment);
+}
+
+/* Common Artisan Button */
+.btn-artisan {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    border-radius: 50px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: var(--transition-base);
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.btn-artisan-primary {
+    background-color: var(--cva-gold);
+    color: var(--cva-white);
+}
+
+.btn-artisan-primary:hover {
+    background-color: var(--cva-white);
+    color: var(--cva-brown);
+    border-color: var(--cva-gold);
+    transform: translateY(-2px);
+}

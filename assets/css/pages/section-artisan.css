@@ -1,0 +1,175 @@
+/* 
+  =============================================
+  CVA MUEBLES - STABLE ARTISAN DESIGN
+  =============================================
+*/
+
+/* 1. FONDO GLOBAL DEL SITIO (Color suave original) */
+body {
+    background-color: var(--cva-parchment) !important;
+    background-image: none !important;
+}
+
+/* 2. RECUADROS DE SECCIÓN (Base común) */
+.section-categorias, .section-destacados {
+    border-radius: 40px;
+    padding: 80px 40px;
+    margin: 80px auto;
+    max-width: 1300px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    transition: var(--transition-base);
+}
+
+/* --- ESPECIALIDADES: DARK ARTISAN --- */
+.section-categorias {
+    background: linear-gradient(rgba(62, 39, 35, 0.9), rgba(62, 39, 35, 0.9)), url('../../img/ui/textures/madera2.jpg');
+    background-size: cover;
+    border: 3px solid var(--cva-gold);
+    color: white;
+}
+
+/* --- DESTACADOS: WARM PARCHMENT --- */
+.section-destacados {
+    background-color: #f2e8da; /* Warm beige/parchment */
+    background-image: url('../../img/ui/textures/madera-clara.jpg');
+    background-blend-mode: soft-light;
+    background-size: cover;
+    border: 1px solid var(--cva-brown);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.2) !important;
+}
+
+.section-destacados .titulo-producto {
+    background-color: var(--cva-brown);
+    color: var(--cva-gold) !important;
+    border: 2px solid var(--cva-gold);
+}
+
+/* --- UBICACIÓN: FULL WIDTH WARM CREAM --- */
+.section-ubicacion {
+    background-color: #f5eedc; /* Color cremita cálido */
+    background-image: none !important;
+    padding: 100px 0;
+    margin: 80px 0 60px 0 !important; /* Separación con el bloque superior y con el footer */
+    width: 100% !important;
+    max-width: none !important;
+    border-top: 2px solid var(--cva-gold);
+    border-bottom: 2px solid var(--cva-gold);
+    border-radius: 0 !important; /* No es un recuadro */
+    box-shadow: none !important;
+}
+
+.section-ubicacion .container {
+    background-color: transparent !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.section-ubicacion h3 {
+    color: var(--cva-brown);
+    font-weight: 700;
+}
+
+.section-ubicacion h4 {
+    color: var(--cva-gold);
+    font-weight: 700;
+}
+
+.section-ubicacion .lead {
+    color: var(--cva-text);
+}
+
+/* Separación extra entre bloques */
+section {
+    margin-bottom: 80px !important;
+}
+
+/* 2. TÍTULOS CON ESTILO ARTISAN */
+.titulo, .titulo-producto {
+    font-family: var(--font-heading);
+    background-color: var(--cva-brown);
+    color: white !important;
+    padding: 15px 40px;
+    border-radius: 50px;
+    border: 2px solid var(--cva-gold);
+    display: inline-block;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    margin-bottom: 2rem;
+}
+
+/* 3. CATEGORÍAS (CATÁLOGO CARD) */
+.catalogo-card {
+    height: 400px;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transition: var(--transition-base);
+    cursor: pointer;
+    border: none;
+}
+
+.catalogo-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.muebles-card { background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('../../img/content/products/Muebles 56.jpeg') center/cover; }
+.dormitorios-card { background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('../../img/content/products/Muebles 64.jpeg') center/cover; }
+.cocina-card { background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('../../img/content/products/Muebles 10.jpeg') center/cover; }
+
+.text-card {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    color: white;
+    text-align: center;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+}
+
+.text-card h3 { font-weight: 700; margin-bottom: 0.5rem; }
+
+/* 4. SECCIÓN PROMOCIÓN (Sin recuadro, actúa como separador) */
+.section-texto {
+    background-image: linear-gradient(rgba(62, 39, 35, 0.9), rgba(62, 39, 35, 0.9)), url('../../img/ui/textures/madera.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    color: white;
+    padding: 80px 20px;
+    margin: 40px 0;
+    text-align: center;
+}
+
+.bloque-texto h2 { color: var(--cva-gold); }
+
+/* 5. BOTÓN VER TODOS */
+.btn-ver-todos {
+    background: var(--cva-brown) !important;
+    border: 1px solid var(--cva-gold) !important;
+    color: white !important;
+    transition: var(--transition-base) !important;
+}
+
+.btn-ver-todos:hover {
+    background: var(--cva-gold) !important;
+    color: var(--cva-brown) !important;
+    transform: scale(1.05);
+}
+
+/* 6. PRODUCT CARDS */
+.product-card {
+    border: none !important;
+    border-radius: 15px !important;
+    overflow: hidden;
+    transition: var(--transition-base);
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15) !important;
+}
