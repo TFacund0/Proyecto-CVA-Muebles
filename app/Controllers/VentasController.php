@@ -7,6 +7,7 @@ use App\Models\Usuarios_model;
 use App\Models\VentasCabecera_model;
 use App\Models\VentasDetalle_model;
 use App\Models\Productos_model;
+use App\Models\VentasPagos_model;
 
 /**
  * Controlador para gestión de ventas
@@ -226,5 +227,71 @@ class VentasController extends BaseController {
             'title' => 'Estadísticas del Taller',
             'content' => view('back/ventas/estadisticas', $data)
         ]);
+    }
+
+    /**
+     * @brief Vista de gestión detallada para el administrador (Artisan Panel)
+     * @param int $venta_id ID de la venta
+     * @return View Vista de gestión
+     */
+    public function ver_gestion_pedido($venta_id) {
+        $perfil = session()->get('perfil_id');
+        if ($perfil != 1) return redirect()->to('/login');
+
+        $ventasModel = new VentasCabecera_model();
+        $ventasDetalle = new VentasDetalle_model();
+        $pagosModel = new VentasPagos_model();
+
+        $data['venta'] = $ventasModel->getVentas($venta_id)[0] ?? null;
+        if (!$data['venta']) return redirect()->to('ventas-list')->with('error', 'Pedido no encontrado.');
+
+        $data['detalles'] = $ventasDetalle->getDetalles($venta_id);
+        $data['pagos'] = $pagosModel->getPagosPorVenta($venta_id);
+        $data['total_pagado'] = $pagosModel->getTotalPagado($venta_id);
+        $data['saldo_pendiente'] = $data['venta']['total_venta'] - $data['total_pagado'];
+
+        return view('front/main', [
+            'title' => 'Gestión de Pedido #' . $venta_id,
+            'content' => view('back/ventas/gestion_pedido_admin', $data)
+        ]);
+    }
+
+    /**
+     * @brief Registra un pago parcial o total para una venta
+     * @return Redirect Redirección con mensaje de éxito
+     */
+    public function registrar_pago() {
+        $perfil = session()->get('perfil_id');
+        if ($perfil != 1) return redirect()->to('/login');
+
+        $venta_id = $this->request->getPost('venta_id');
+        $monto = $this->request->getPost('monto');
+        $nota = $this->request->getPost('nota');
+
+        $pagosModel = new VentasPagos_model();
+        $pagosModel->insert([
+            'venta_id' => $venta_id,
+            'monto'    => $monto,
+            'nota'     => $nota
+        ]);
+
+        return redirect()->back()->with('success', 'Pago registrado exitosamente.');
+    }
+
+    /**
+     * @brief Actualiza las observaciones/detalles de un pedido
+     * @return Redirect Redirección con mensaje de éxito
+     */
+    public function guardar_observaciones() {
+        $perfil = session()->get('perfil_id');
+        if ($perfil != 1) return redirect()->to('/login');
+
+        $venta_id = $this->request->getPost('venta_id');
+        $observaciones = $this->request->getPost('observaciones');
+
+        $ventasModel = new VentasCabecera_model();
+        $ventasModel->update($venta_id, ['observaciones' => $observaciones]);
+
+        return redirect()->back()->with('success', 'Detalles del pedido actualizados.');
     }
 }

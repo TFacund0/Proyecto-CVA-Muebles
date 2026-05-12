@@ -65,6 +65,7 @@
                     <th>Precio</th>
                     <th>Subtotal</th>
                     <th>Estado de Pedido</th>
+                    <th>Gestión</th>
                 </tr>
             </thead>
             
@@ -72,12 +73,14 @@
             <tbody>
                 <?php foreach ($ventas as $item): ?>
                     <tr class="align-middle">
-                        <td class="text-center"><?= esc($item['venta_id']) ?></td>
+                        <td class="text-center">
+                            <span class="badge bg-light text-dark border"><?= esc($item['venta_id']) ?></span>
+                        </td>
                         <td><?= esc($item['usuario']) ?></td>
                         <td><?= esc($item['nombre_prod']) ?></td>
                         <td class="text-center"><?= esc($item['cantidad']) ?></td>
                         <td class="text-end">$<?= esc(number_format($item['precio'], 2)) ?></td>
-                        <td class="text-end">$<?= esc(number_format($item['subtotal'], 2)) ?></td>
+                        <td class="text-end fw-bold">$<?= esc(number_format($item['subtotal'], 2)) ?></td>
                         <td>
                             <form action="<?= base_url('ventas/actualizar_estado/' . $item['venta_id']) ?>" method="post" class="d-flex gap-2">
                                 <?= csrf_field() ?>
@@ -89,6 +92,11 @@
                                 </select>
                                 <button type="submit" class="btn btn-sm btn-success">✓</button>
                             </form>
+                        </td>
+                        <td class="text-center">
+                            <a href="<?= base_url('ventas/gestion/' . $item['venta_id']) ?>" class="btn btn-sm btn-outline-primary" title="Gestionar Pagos y Detalles">
+                                🛠️ Gestionar
+                            </a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
