@@ -1,152 +1,301 @@
 <?= $this->extend('layout/main') ?>
 
 <?= $this->section('extra-css') ?>
-    <link rel="stylesheet" href="<?= base_url('assets/css/pages/auth/registro.css?v=1.2')?>">
+    <style>
+        :root {
+            --auth-bg: #f8f5f0;
+            --auth-card-shadow: 0 25px 50px -12px rgba(62, 39, 35, 0.15);
+        }
+
+        .auth-wrapper {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 1rem;
+            background: var(--auth-bg);
+        }
+
+        .auth-card {
+            background: white;
+            width: 100%;
+            max-width: 1100px;
+            border-radius: 2rem;
+            box-shadow: var(--auth-card-shadow);
+            overflow: hidden;
+            display: flex;
+            flex-direction: row;
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+
+        /* Branding Side */
+        .auth-side-branding {
+            flex: 1;
+            background: linear-gradient(rgba(62, 39, 35, 0.85), rgba(62, 39, 35, 0.85)), 
+                        url('<?= base_url('assets/img/branding/wood-texture.jpg') ?>');
+            background-size: cover;
+            background-position: center;
+            padding: 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: white;
+            position: relative;
+        }
+
+        .auth-logo-circle {
+            width: 70px;
+            height: 70px;
+            background: var(--cva-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+            color: #1a0f0d;
+        }
+
+        .auth-quote {
+            font-family: 'Lora', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 2rem;
+            color: var(--cva-gold);
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 1.2rem;
+            font-weight: 500;
+            opacity: 0.9;
+        }
+
+        .benefit-item i {
+            color: var(--cva-gold);
+            font-size: 1.2rem;
+        }
+
+        /* Form Side */
+        .auth-side-form {
+            flex: 1.2;
+            padding: 4rem;
+            background: #fff;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .auth-header {
+            margin-bottom: 2.5rem;
+        }
+
+        .auth-header h2 {
+            font-weight: 800;
+            color: var(--cva-brown);
+            margin-bottom: 0.5rem;
+        }
+
+        .artisan-input-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .artisan-label {
+            display: block;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 0.65rem;
+            color: #a08d7c;
+            letter-spacing: 1.2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .artisan-control {
+            width: 100%;
+            border: 2px solid #eeebe6;
+            border-radius: 12px;
+            padding: 0.8rem 1rem;
+            font-weight: 600;
+            color: var(--cva-brown);
+            transition: all 0.3s ease;
+        }
+
+        .artisan-control:focus {
+            border-color: var(--cva-gold);
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(184, 134, 11, 0.1);
+        }
+
+        .btn-auth-primary {
+            background: var(--cva-brown);
+            color: var(--cva-gold);
+            border: none;
+            border-radius: 50px;
+            padding: 1rem;
+            font-weight: 800;
+            width: 100%;
+            margin-top: 1.5rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-auth-primary:hover {
+            background: #1a0f0d;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .auth-footer {
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #9c8e7e;
+        }
+
+        .auth-footer a {
+            color: var(--cva-brown);
+            font-weight: 700;
+            text-decoration: none;
+            border-bottom: 2px solid var(--cva-gold);
+        }
+
+        /* Custom Checkbox */
+        .artisan-check {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85rem;
+            color: #7d6b5d;
+            margin-top: 1.5rem;
+        }
+
+        .artisan-check input {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--cva-brown);
+        }
+
+        @media (max-width: 991px) {
+            .auth-card { flex-direction: column; }
+            .auth-side-branding { padding: 3rem; }
+            .auth-side-form { padding: 3rem; max-height: none; }
+        }
+    </style>
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
-<!-- Contenedor principal del formulario de registro -->
-<div class="registro-contenedor container m-auto my-5 "> 
-    
-    <!-- Título de bienvenida -->
-    <h2 class="text-center mb-2 pb-1 titulo-registro">¡Bienvenido! Comienza tu experiencia con nosotros</h2>
+<?php $validation = \Config\Services::validation(); ?>
 
-    <!-- Carga del servicio de validación de CodeIgniter -->
-    <?php $validation = \Config\Services::validation(); ?>
-    
-    <!-- Fila principal que divide el contenido en dos columnas -->
-    <div class="row info-registro my-4">
-        
-        <!-- Columna izquierda: información motivacional -->
-        <div class="col-lg-6 col-sm-12 pb-1">
-            <div class="m-auto p-1">
-                <div class="text-center">
-                    <!-- Imagen ilustrativa del registro -->
-                    <img src="<?= base_url('assets/img/ui/icons/registro.svg') ?>" class="img-fluid img-registro" alt="">
-                    <h4 class="my-3">¡Crea tu cuenta y forma parte!</h4>
+<div class="auth-wrapper">
+    <div class="auth-card">
+        <!-- Branding Side -->
+        <div class="auth-side-branding">
+            <div class="auth-logo-circle">
+                <i class="bi bi-person-plus-fill"></i>
+            </div>
+            <h1 class="auth-quote">Únete a la comunidad de CVA Muebles.</h1>
+            
+            <div class="mt-4">
+                <div class="benefit-item">
+                    <i class="bi bi-patch-check-fill"></i>
+                    <span>Acceso a lanzamientos exclusivos y piezas limitadas.</span>
                 </div>
-
-                <!-- Lista de beneficios -->
-                <ul>
-                    <li>Registrate para acceder a beneficios exclusivos</li>
-                    <li>Accedé a todos nuestros servicios</li>
-                </ul>
+                <div class="benefit-item">
+                    <i class="bi bi-patch-check-fill"></i>
+                    <span>Seguimiento detallado de tus pedidos artesanales.</span>
+                </div>
+                <div class="benefit-item">
+                    <i class="bi bi-patch-check-fill"></i>
+                    <span>Gestión personalizada de tus obras a medida.</span>
+                </div>
             </div>
 
-            <!-- Botón a sección de más información -->
-            <div class="text-center">
-                <a class="btn btn-primary" href="<?php echo base_url('/informacionContacto')?>">Más información</a>
+            <div class="mt-auto pt-5">
+                <a href="<?= base_url('/informacionContacto') ?>" class="btn btn-outline-light rounded-pill px-4 btn-sm fw-bold">
+                    CONOCE NUESTRA HISTORIA
+                </a>
             </div>
         </div>
 
-        <!-- Columna derecha: formulario de registro -->
-        <div class="col-lg-6 col-sm-10">
+        <!-- Form Side -->
+        <div class="auth-side-form">
+            <div class="auth-header">
+                <h2>Crear Cuenta</h2>
+                <p class="text-muted">Completa tus datos para formar parte de la familia.</p>
+            </div>
 
-            <!-- Inicio del formulario: método POST y acción al controlador correspondiente -->
-            <form class="registro-form m-auto me-2" method="post" action="<?php echo base_url('/enviar-form') ?>">
-
-                <!-- Título del formulario -->
-                <h4 class="text-center">Formulario de Registro</h4>
-
-                <!-- Campo de nombre de usuario -->
-                <div class="form-floating mb-3">
-                    <input type="text" class="campo-registro form-control" id="nombreUser" name="user" placeholder="Nombre de Usuario" required>
-                    <label for="nombreUser">Nombre de Usuario</label>
-
-                    <!-- Validación del servidor para el campo "user" -->
-                    <?php if($validation->getError('user')) { ?>
-                        <div class="alert alert-danger mt-2">
-                            <?php echo $validation->getError('user') ?>
-                        </div>
-                    <?php } ?>
-                </div>
-
-                <!-- Fila para nombre y apellido -->
-                <div class="row mb-3">
-                    <div class="col-6">
-                        <!-- Campo de nombre -->
-                        <div class="form-floating">
-                            <input type="text" class="form-control" id="nombre" name="name" placeholder="Nombre" required>
-                            <label for="nombre">Nombre</label>
-                        </div>
-
-                        <!-- Validación del campo "name" -->
-                        <?php if($validation->getError('name')) { ?>
-                            <div class="alert alert-danger mt-2">
-                                <?php echo $validation->getError('name') ?>
-                            </div>
-                        <?php } ?>
-                    </div>
-
-                    <div class="col-6">
-                        <!-- Campo de apellido -->
-                        <div class="form-floating">
-                            <input type="text" class="form-control" id="apellido" name="surname" placeholder="Apellido" required>
-                            <label for="apellido">Apellido</label>
-                        </div>
-
-                        <!-- Validación del campo "surname" -->
-                        <?php if($validation->getError('surname')) { ?>
-                            <div class="alert alert-danger mt-2">
-                                <?php echo $validation->getError('surname') ?>
-                            </div>
-                        <?php } ?>
-                    </div>
-                </div>
-
-                <!-- Campo de correo electrónico -->
-                <div class="mb-3">
-                    <div class="form-floating">
-                        <input class="campo-registro form-control" type="email" id="email" name="email" placeholder="Correo Electrónico" required>
-                        <label for="email">Correo Electrónico</label>
-                    </div>
-
-                    <!-- Validación del campo "email" -->
-                    <?php if($validation->getError('email')) { ?>
-                        <div class="alert alert-danger mt-2">
-                            <?php echo $validation->getError('email') ?>
-                        </div>
-                    <?php } ?>
-                </div>
-
-                <!-- Campo de contraseña -->
-                <div class="mb-3">
-                    <div class="form-floating">
-                        <input class="campo-registro form-control" type="password" id="password" name="pass" placeholder="Contraseña" aria-describedby="passwordHelpBlock" required>
-                        <label for="password">Contraseña</label>
-
-                        <!-- Texto de ayuda para la contraseña -->
-                        <div id="passwordHelpBlock" class="form-text">
-                            Debe ser de 3 a 50 caracteres de largo
+            <form method="post" action="<?= base_url('/enviar-form') ?>">
+                <?= csrf_field(); ?>
+                
+                <div class="row g-3">
+                    <div class="col-md-12">
+                        <div class="artisan-input-group">
+                            <label>Nombre de Usuario</label>
+                            <input type="text" class="artisan-control" name="user" placeholder="Ej: artesano_maestro" required>
+                            <?php if($validation->getError('user')): ?>
+                                <div class="text-danger x-small mt-1 fw-bold"><?= $validation->getError('user') ?></div>
+                            <?php endif; ?>
                         </div>
                     </div>
 
-                    <!-- Validación del campo "pass" -->
-                    <?php if($validation->getError('pass')) { ?>
-                        <div class="alert alert-danger mt-2">
-                            <?php echo $validation->getError('pass') ?>
+                    <div class="col-md-6">
+                        <div class="artisan-input-group">
+                            <label>Nombre</label>
+                            <input type="text" class="artisan-control" name="name" placeholder="Tu nombre" required>
+                            <?php if($validation->getError('name')): ?>
+                                <div class="text-danger x-small mt-1 fw-bold"><?= $validation->getError('name') ?></div>
+                            <?php endif; ?>
                         </div>
-                    <?php } ?>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="artisan-input-group">
+                            <label>Apellido</label>
+                            <input type="text" class="artisan-control" name="surname" placeholder="Tu apellido" required>
+                            <?php if($validation->getError('surname')): ?>
+                                <div class="text-danger x-small mt-1 fw-bold"><?= $validation->getError('surname') ?></div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="artisan-input-group">
+                            <label>Email</label>
+                            <input type="email" class="artisan-control" name="email" placeholder="correo@ejemplo.com" required>
+                            <?php if($validation->getError('email')): ?>
+                                <div class="text-danger x-small mt-1 fw-bold"><?= $validation->getError('email') ?></div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="artisan-input-group">
+                            <label>Contraseña</label>
+                            <input type="password" class="artisan-control" name="pass" placeholder="Mínimo 3 caracteres" required>
+                            <?php if($validation->getError('pass')): ?>
+                                <div class="text-danger x-small mt-1 fw-bold"><?= $validation->getError('pass') ?></div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Casilla de verificación de Términos y Condiciones -->
-                <div class="mb-3 form-check check-registro">
-                    <input type="checkbox" class="form-check-input" id="check" name="terms">
-                    <label class="form-check-label" for="check">
-                        Estas de acuerdo con los 
-                        <a href="<?php echo base_url('/terminosYCondiciones')?>" target="_blank">Términos y Condiciones</a>
-                    </label>
+                <div class="artisan-check">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">Acepto los <a href="<?= base_url('/terminosYCondiciones') ?>" class="fw-bold text-cva-brown" target="_blank">Términos y Condiciones</a></label>
                 </div>
 
-                <!-- Botón de envío del formulario -->
-                <input class="btn btn-primary w-100 m-auto d-block boton-enviar-registro" type="submit" value="Registrarse">
+                <button type="submit" class="btn-auth-primary">
+                    <i class="bi bi-check-lg me-2"></i> Finalizar Registro
+                </button>
             </form>
-        </div>
-    </div>
 
-    <!-- Enlace para volver al login -->
-    <div class="m-1 text-center volver-registro">
-        <a href="<?php echo base_url('/login')?>">Volver</a>
+            <div class="auth-footer">
+                ¿Ya tienes una cuenta? <a href="<?= base_url('/login') ?>">Inicia sesión aquí</a>
+            </div>
+        </div>
     </div>
 </div>
 <?= $this->endSection() ?>
