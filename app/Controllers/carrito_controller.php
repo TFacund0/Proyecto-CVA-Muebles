@@ -93,10 +93,8 @@ class carrito_controller extends BaseController
 
         $data['categorias'] = $categorias->select('descripcion')->distinct()->findAll();
 
-        return view('front/main', [
-            'title' => 'Productos',
-            'content' => view('front/pages/productos', $data)
-        ]);
+        $data['title'] = 'Productos';
+        return view('front/pages/productos', $data);
     }
 
     /**
@@ -113,10 +111,8 @@ class carrito_controller extends BaseController
         $cart = $cart->contents();
         $data['cart'] = $cart;
 
-        return view('front/main', [
-            'title' => 'Carrito de Compras',
-            'content' => view('front/pages/Carrito_parte_view', $data)
-        ]);
+        $data['title'] = 'Carrito de Compras';
+        return view('front/pages/Carrito_parte_view', $data);
     }
 
     /**

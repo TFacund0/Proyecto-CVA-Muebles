@@ -9,11 +9,11 @@
     <div class="container">
         
         <!-- Cabecera de Creación -->
-        <div class="admin-card-header rounded-5 shadow-lg mb-5">
+        <div class="admin-card-header mb-5">
             <div class="row align-items-center">
                 <div class="col-md-8">
                     <div class="d-flex align-items-center gap-3 mb-3">
-                        <span class="badge bg-cva-gold px-3 py-2 text-uppercase badge-admin">Nuevo Registro</span>
+                        <span class="badge badge-admin">Nuevo Registro</span>
                         <span class="opacity-75">|</span>
                         <span class="small opacity-75"><i class="bi bi-hammer me-1"></i> Creando nueva obra artesanal</span>
                     </div>
@@ -138,7 +138,7 @@
                             <!-- Botones de Acción -->
                             <div class="row g-3 pt-4 border-top">
                                 <div class="col-md-6">
-                                    <button type="submit" class="btn btn-success w-100 py-3 fw-bold fs-5 shadow-sm rounded-pill">
+                                    <button type="submit" class="btn btn-admin-gold w-100 py-3 fw-bold fs-5 shadow-sm">
                                         <i class="bi bi-cloud-arrow-up me-2"></i> REGISTRAR PRODUCTO
                                     </button>
                                 </div>

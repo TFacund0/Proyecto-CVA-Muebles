@@ -7,15 +7,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Lora:wght@400;700&display=swap');
 
 :root {
-    /* Color Palette */
-    --cva-brown: #3E2723;
+    /* Color Palette - VIVID ARTISAN EDITION */
+    --cva-brown: #2D1B19;       /* Marrón más profundo y rico */
     --cva-brown-light: #5D4037;
-    --cva-gold: #B8860B;
-    --cva-gold-light: #D4AF37;
+    --cva-gold: #E5A00D;        /* Oro más vibrante y luminoso */
+    --cva-gold-light: #F1C40F;
+    --cva-vivid: #D35400;       /* Terracota/Óxido (Color de atracción) */
+    --cva-forest: #1E3D33;      /* Verde Bosque profundo (Contraste premium) */
     --cva-parchment: #f8f5f0;
-    /* Match original Artisan Cream */
+    --cva-sand: #efede6;       /* Color arena para alternar secciones y dar descanso visual */
     --cva-white: #FFFFFF;
-    --cva-text: #3e2723;
+    --cva-text: #2D1B19;
     --cva-text-muted: #6C757D;
 
     /* Spacing System */
@@ -36,7 +38,8 @@
     --navbar-height: 80px;
     --navbar-bg: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5));
     --sidebar-bg: #fdfaf7;
-    --sidebar-header: linear-gradient(135deg, var(--cva-brown) 0%, #5d4037 100%);
+    --sidebar-header: #EAE0D5; /* Marrón muy claro / Café con leche */
+    --sidebar-header-text: var(--cva-brown);
 
     /* Admin Tokens */
     --admin-bg: #f8f9fa;
@@ -53,7 +56,7 @@
 }
 
 body {
-    background-color: var(--cva-parchment) !important;
+    background-color: var(--cva-sand) !important;
     font-family: var(--font-main);
     color: var(--cva-text);
     line-height: 1.6;
@@ -113,11 +116,33 @@ h6 {
 .btn-artisan-primary {
     background-color: var(--cva-gold);
     color: var(--cva-white);
+    border-color: var(--cva-gold);
+    box-shadow: 0 4px 15px rgba(229, 160, 13, 0.2);
 }
 
 .btn-artisan-primary:hover {
-    background-color: var(--cva-white);
-    color: var(--cva-brown);
-    border-color: var(--cva-gold);
+    background-color: var(--cva-brown);
+    color: var(--cva-white);
+    border-color: var(--cva-brown);
     transform: translateY(-2px);
+}
+
+/* New Vivid Attraction Button */
+.btn-vivid {
+    background-color: var(--cva-vivid) !important;
+    color: white !important;
+    border: none !important;
+    padding: 0.8rem 2.5rem !important;
+    border-radius: 50px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 5px 20px rgba(211, 84, 0, 0.3);
+    transition: var(--transition-base);
+}
+
+.btn-vivid:hover {
+    background-color: #A04000 !important;
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 8px 25px rgba(211, 84, 0, 0.4);
 }

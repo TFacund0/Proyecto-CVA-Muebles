@@ -13,11 +13,11 @@
         <div class="admin-card-header">
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <h2 class="fw-bold"><i class="bi bi-box-seam me-2"></i> Gestión de Catálogo</h2>
-                    <p class="small mb-0 opacity-75">Administra tus muebles y existencias</p>
+                    <h1 class="fw-bold"><i class="bi bi-box-seam me-2"></i> Gestión de Catálogo</h1>
+                    <p class="small mb-0 opacity-75">Administra tus muebles y existencias con precisión artesanal</p>
                 </div>
                 <div class="col-md-6 text-md-end mt-3 mt-md-0">
-                    <a href="<?= base_url('/alta-producto') ?>" class="btn btn-admin-gold py-2 px-4 shadow-sm">
+                    <a href="<?= base_url('/alta-producto') ?>" class="btn btn-admin-gold shadow-sm">
                         <i class="bi bi-plus-circle me-2"></i> AGREGAR PRODUCTO
                     </a>
                 </div>

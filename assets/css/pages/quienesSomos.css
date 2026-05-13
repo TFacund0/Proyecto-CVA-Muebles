@@ -1,175 +1,194 @@
-* {
-    font-family: "Open Sans", sans-serif;
+/* 
+  =============================================
+  CVA MUEBLES - INFORMACIÓN (QUIÉNES SOMOS)
+  =============================================
+*/
+
+/* 1. FONDO GENERAL */
+#quienes-somos-wrapper {
+    background-color: transparent;
+    padding-bottom: 0; /* Tocar el footer */
+    margin-top: -30px; /* Eliminar separación del navbar si existe */
 }
 
-/*------------- ESTILO DEL HEADER ----------*/
-
-/* Fondo con imagen de herramientas y estilos de borde y sombra */
-.container-quienes-somos {
-    background-color: rgb(0, 0, 0, 0) !important;
-}
-
-/* Estilo para el fondo del encabezado */
-.fondo-header {
-    background-image: url('../../img/texturas/herramientas.jpg');
-    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.355);
-    border-bottom: 3px solid rgb(0, 0, 0);
-    background-size: cover;
-    background-position: top;
-}
-
-/* Estilos principales del título del header */
-.fondo-header h1 {
-    color: rgb(255, 255, 255);
-    border: 3px solid black;
-    box-shadow: 0 0 3px rgb(255, 255, 255); /* Sombra externa */
-    box-shadow: inset 0 0 5px rgb(255, 255, 255); /* Sombra interna */
-    border-radius: 15px;
-    
-    display: inline-block;
-
-    padding: 15px;
-    margin: 3px;
-
-    font-size: 43.1247px;
-    font-weight: bold;
-
-    scale: 1.0;
-    transition: scale 0.5ms ease-in-out;
-}
-
-/* Efecto al pasar el mouse sobre el título */
-.fondo-header h1:hover {
-    box-shadow: inset 0 0 15px rgb(255, 255, 255);
-    scale: 1.05;
-    transition: scale 1ms ease-in-out;
-}
-
-/* Subtítulo o texto complementario del header */
-.fondo-header p {
-    font-size: 25px;
-    text-shadow: 0 0 5px rgb(255, 255, 255);
-}
-
-/*-------------- ESTILO DE CONTENEDOR HISTORIA -------------*/
-
-/* Contenedor general de la sección Historia */
-.contenedor-historia {
-    background-color: #faf9ec;
-    background-image: url('../../img/texturas/madera-lisa.jpg');
-
-    border-radius: 10px;
-    box-shadow: 0 0 3px rgb(0, 0, 0);
-    border: 2px solid black;
-}
-
-/* Estilo del bloque de texto de la Historia */
-.texto-historia-section {
-    background-color: #cdcdcdcb;
-    padding: 30px;
-    
-    border: 1px solid rgb(0, 0, 0);
-    border-radius: 10px;
-    box-shadow: 0 0 3px rgb(0, 0, 0);
-}
-
-/* Efecto visual en hover para el texto de la Historia */
-.texto-historia-section:hover {
-    box-shadow: 0 0 7px rgb(0, 0, 0);
-}
-
-/* Contenedor de la imagen de la Historia */
-.img-historia-section {
-    justify-content: center;
-    align-items: center;
-}
-
-/* Imagen en la sección Historia */
-.img-historia-section img {
-    border-radius: 50px;
-    border: 1px solid rgb(0, 0, 0);
-    scale: 1.0;
-    transition: scale 0.5ms ease-in-out;
-}
-
-/* Efecto al pasar el mouse sobre la imagen */
-.img-historia-section img:hover {
-    box-shadow: 0 0 7px rgb(0, 0, 0);
-    scale: 1.01;
-    transition: scale 1ms ease-in-out;
-}
-
-/* ------------------- ESTILO DE CONTENEDOR DE FILOSOFIA ----------------------- */
-
-/* Contenedor general de la sección Filosofía */
-.contenedor-filosofia {
-    background-color: #faf9ec;
-
-    border-radius: 10px;
-    box-shadow: 0 0 3px rgb(0, 0, 0);
-    font-size: 20px;
-}
-
-/* ------------------ ESTILO DE CONTENEDOR EQUIPO -------------------------- */
-
-/* Contenedor principal de la sección Equipo */
-.contenedor-equipo {
-    background-color: #faf9ec;
-    background-image: url('../../img/texturas/madera-lisa.jpg');
-    background-position: bottom;
-
-    border-radius: 10px;
-    box-shadow: 0 0 3px rgb(0, 0, 0);
-    border: 2px solid black;
+/* 2. CABECERA (FONDO FIJO / PARALLAX) */
+.info-header {
+    background-image: linear-gradient(rgba(38, 20, 18, 0.8), rgba(38, 20, 18, 0.6)),
+                      url('../../img/ui/textures/hojas.jpg') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-attachment: fixed !important;
+    padding: 220px 0 180px; /* Ajuste para que empiece desde arriba */
+    color: white;
     text-align: center;
-    padding-top: 15px;
-    padding-bottom: 15px;
 }
 
-/* Títulos y subtítulos del equipo */
-.contenedor-equipo h5, .contenedor-equipo h2 {
-    font-weight: bold;
+.info-header h1 {
+    font-family: 'Lora', serif;
+    font-size: 5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
 }
 
-/* Contenedor flexible para tarjetas del equipo */
-.team-box {
+/* 3. QUOTE PREMIUM */
+.artisan-quote-premium {
+    border-left: 6px solid var(--cva-gold);
+    padding: 2rem 3rem;
+    background: #fdfbf8;
+    border-radius: 0 2rem 2rem 0;
+    font-family: 'Lora', serif;
+    font-size: 1.5rem;
+    color: var(--cva-brown);
+    margin-top: 3rem;
+}
+
+/* 4. VALUE CARDS */
+.value-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 2rem;
+    height: 100%;
+    transition: all 0.4s ease;
+    border: 1px solid rgba(0,0,0,0.03);
+}
+
+.value-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+}
+
+/* 1. FONDO GENERAL */
+#quienes-somos-wrapper {
+    background-color: transparent;
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+    margin-top: -30px;
+}
+
+.section-equipo-full {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+/* 5. TEAM CARDS (RECUADROS SÓLIDOS) */
+.team-card-premium {
+    background: #ffffff !important; /* Blanco sólido forzado */
+    border: 2px solid rgba(184, 134, 11, 0.1) !important; /* Borde sutil oro */
+    border-radius: 2.5rem;
+    overflow: hidden;
+    height: 100%;
+    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2) !important;
+    position: relative;
+}
+
+.team-card-premium:hover {
+    transform: translateY(-20px) scale(1.02);
+    box-shadow: 0 40px 80px rgba(0,0,0,0.3);
+    border-color: var(--cva-gold);
+}
+
+.team-img-wrapper {
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+}
+
+.team-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.8s ease;
+}
+
+/* Overlay Dinámico */
+.team-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent 40%, rgba(62, 39, 35, 0.8));
     display: flex;
-    justify-content: space-between;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 2rem;
+    opacity: 0;
+    transition: all 0.4s ease;
+    transform: translateY(20px);
+}
+
+.team-card-premium:hover .team-overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.social-links-team {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-links-team a {
+    width: 45px;
+    height: 45px;
+    background: white;
+    color: var(--cva-brown);
+    border-radius: 50%;
+    display: flex;
     align-items: center;
-    padding: 10px;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
 }
 
-/* Estilo base de las tarjetas del equipo */
-.team-box .team-card {
-    border: 1px solid rgb(0, 0, 0);
-    box-shadow: 0 0 5px rgb(0, 0, 0);
-    scale: 1.00;
-    transition: scale 100ms ease-out;
+.social-links-team a:hover {
+    background: var(--cva-gold);
+    color: white;
+    transform: rotate(360deg);
 }
 
-/* Efecto visual al pasar el mouse sobre cada tarjeta del equipo */
-.team-box .team-card:hover {
-    box-shadow: 0 0 9px rgb(0, 0, 0);
-    scale: 1.05;
-    transition: scale 100ms ease-in;
+.team-card-premium:hover .team-img-wrapper img {
+    transform: scale(1.1);
 }
 
-/* Estilos adaptativos para móviles o pantallas pequeñas */
-@media (max-width: 768px) {
-    .team-box {
-        gap: 25px;
-        width: 80%;
-    }
+.team-body {
+    padding: 2.5rem;
+    color: var(--cva-brown);
+    background: white;
+    transition: all 0.4s ease;
+}
 
-    .texto-historia-section, .contenedor-filosofia {
-        font-size: 15px;
-    }
+.team-body h5 {
+    font-family: 'Lora', serif;
+    font-weight: 800;
+    font-size: 1.4rem;
+}
 
-    .fondo-header h1 {
-        font-size: 20px !important;
-    }
+/* Bio Reveal */
+.team-bio-short {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    opacity: 0;
+}
 
-    .fondo-header p {
-        font-size: 15px !important;
+.team-card-premium:hover .team-bio-short {
+    max-height: 100px;
+    opacity: 1;
+    margin-top: 1rem;
+}
+
+/* 6. RESPONSIVE */
+@media (max-width: 991.98px) {
+    .info-header h1 {
+        font-size: 3.5rem;
+    }
+    .info-header {
+        background-attachment: scroll !important;
+        padding: 120px 0 80px;
+    }
+    #quienes-somos-wrapper {
+        margin-top: 0;
     }
 }

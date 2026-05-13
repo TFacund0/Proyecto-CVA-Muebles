@@ -27,10 +27,8 @@ class ConsultaController extends BaseController {
         $consultasModel = new Consultas_model();
         $data['consultas'] = $consultasModel->findAll();
 
-        return view('front/main', [
-            'title' => 'Consulta',
-            'content' => view('back/messages/lista_consultas', $data)
-        ]);
+        $data['title'] = 'Consultas Recibidas';
+        return view('back/messages/lista_consultas', $data);
     }
 
     /**
@@ -103,10 +101,8 @@ class ConsultaController extends BaseController {
             ->orderBy('fecha', 'DESC')
             ->findAll();
 
-        return view('front/main', [
-            'title' => 'Consulta',
-            'content' => view('back/messages/lista_consultas', $data)
-        ]);
+        $data['title'] = 'Consultas Recibidas';
+        return view('back/messages/lista_consultas', $data);
     }
 
     /**

@@ -128,10 +128,8 @@ class UsuarioController extends BaseController {
         
 
         // Cargar la vista principal con la lista de usuarios
-        return view('front/main', [
-            'title' => 'Crud Usuarios',
-            'content' => view('back/users/crud_usuarios', $data),
-        ]);
+        $data['title'] = 'Crud Usuarios';
+        return view('back/users/crud_usuarios', $data);
     }
 
     // Mostrar la configuración del perfil, accesible para perfil 1 y 2
@@ -142,10 +140,8 @@ class UsuarioController extends BaseController {
             return redirect()->to('/login');
         }
 
-        return view('front/main', [
-            'title' => 'Configuracion Perfil',
-            'content' => view('back/users/perfil_config'),
-        ]);
+        $data['title'] = 'Configuracion Perfil';
+        return view('back/users/perfil_config', $data);
     }
 
     // Método para guardar los cambios en el perfil del usuario

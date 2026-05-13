@@ -1,148 +1,175 @@
 <?= $this->extend('layout/main') ?>
 
 <?= $this->section('extra-css') ?>
-    <link rel="stylesheet" href="<?= base_url('assets/css/pages/contacto.css?v=1.2')?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/pages/contacto.css?v=5.0')?>">
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
-<!-- Sección de encabezado de contacto -->
-<header class="contact-header titulo-contacto">
-    <h1>Contacto</h1>
-    <p class="lead">Estamos aquí para ayudarte con tus proyectos en madera</p>
-</header>
+<div id="container-contacto-wrapper">
+    <!-- Cabecera Premium (FONDO FIJO) -->
+    <header class="contact-header">
+        <div class="container animate-fade-in">
+            <span class="text-gold fw-bold text-uppercase x-small" style="letter-spacing: 3px;">Atención Personalizada</span>
+            <h1 class="display-3 fw-bold font-lora">Contacto</h1>
+            <div class="divider-artisan mx-auto mb-4"></div>
+            <p class="lead">Estamos aquí para ayudarte a dar vida a tus proyectos en madera noble.</p>
+        </div>
+    </header>
 
-<!-- Contenedor principal de contacto -->
-<section class="container" id="container-contacto">
+    <!-- BLOQUE 1: DATOS DE CONTACTO (ARENA) -->
+    <section class="section-contact-data py-5" style="background-color: var(--cva-sand);">
+        <div class="container py-5">
+            <!-- Título de Sección Agregado -->
+            <div class="row mb-5 text-center">
+                <div class="col-lg-8 mx-auto">
+                    <span class="text-vivid fw-bold text-uppercase small" style="letter-spacing: 2px;">Vías Directas</span>
+                    <h2 class="display-4 fw-bold font-lora text-cva-brown mt-2">Nuestros Canales</h2>
+                    <div class="divider-artisan mx-auto"></div>
+                </div>
+            </div>
 
-    <!-- Fila con tarjetas de dirección, teléfonos y correos -->
-    <div class="row my-4 p-3 contenedor-datos">
-        
-        <!-- Tarjeta: Dirección física -->
-        <div class="col-md-4">
-            <div class="card text-center h-100 card-style">
-                <div class="card-body">
-                    <h5>Dirección</h5>
-                    <p>9 de Julio 1449<br>Mantilla, Corrientes<br>Argentina</p>
-                    <a href="https://maps.google.com/?q=9+de+Julio+1449,Mantilla,Corrientes" class="btn btn-sm boton-card">
-                        Ver en mapa
-                    </a>
+            <div class="row g-4 justify-content-center">
+                <!-- Dirección -->
+                <div class="col-md-4">
+                    <div class="artisan-contact-card">
+                        <div class="icon-contact-wrapper"><i class="bi bi-geo-alt"></i></div>
+                        <h4 class="font-lora fw-bold">Dirección</h4>
+                        <p class="text-muted mb-4">9 de Julio 1449<br>Mantilla, Corrientes</p>
+                        <a href="https://maps.google.com/?q=9+de+Julio+1449,Mantilla,Corrientes" target="_blank" class="btn btn-premium-action">
+                            <span>COMO LLEGAR</span>
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Teléfonos -->
+                <div class="col-md-4">
+                    <div class="artisan-contact-card">
+                        <div class="icon-contact-wrapper"><i class="bi bi-whatsapp"></i></div>
+                        <h4 class="font-lora fw-bold">WhatsApp</h4>
+                        <p class="text-muted mb-4">+54 9 3794 098511<br>Atención Inmediata</p>
+                        <a href="https://wa.me/5493794098511" target="_blank" class="btn btn-premium-action w-whatsapp">
+                            <span>HABLAR AHORA</span>
+                            <i class="bi bi-chat-dots"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Email -->
+                <div class="col-md-4">
+                    <div class="artisan-contact-card">
+                        <div class="icon-contact-wrapper"><i class="bi bi-envelope-at"></i></div>
+                        <h4 class="font-lora fw-bold">Email</h4>
+                        <p class="text-muted mb-4">info@cvamuebles.com<br>ventas@cvamuebles.com</p>
+                        <a href="mailto:info@cvamuebles.com" class="btn btn-premium-action w-email">
+                            <span>ENVIAR CORREO</span>
+                            <i class="bi bi-send"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Tarjeta: Teléfonos de contacto -->
-        <div class="col-md-4">
-            <div class="card text-center h-100 card-style">
-                <div class="card-body">
-                    <h5>Teléfonos</h5>
-                    <p>+54 9 3794 098511<br>Lunes a Viernes<br>8:00 - 12:00 / 15:00 - 19:00</p>
-                    <a href="tel:+5493794098511" class="btn btn-sm boton-card">
-                        Llamar ahora
-                    </a>
+    <!-- BLOQUE 2: FORMULARIO Y LEGAL (BLANCO) -->
+    <section class="section-form-contacto py-5 bg-white">
+        <div class="container py-5">
+            <!-- Título de Sección Solicitado -->
+            <div class="row mb-5 text-center">
+                <div class="col-lg-8 mx-auto">
+                    <span class="text-vivid fw-bold text-uppercase small" style="letter-spacing: 2px;">Consultas</span>
+                    <h2 class="display-4 fw-bold font-lora text-cva-brown mt-2">Canales de Atención</h2>
+                    <div class="divider-artisan mx-auto"></div>
                 </div>
             </div>
-        </div>
 
-        <!-- Tarjeta: Correos electrónicos -->
-        <div class="col-md-4">
-            <div class="card text-center h-100 card-style">
-                <div class="card-body">
-                    <h5>Correo Electrónico</h5>
-                    <p>
-                        info@cvamuebles.com<br>
-                        ventas@cvamuebles.com<br>
-                        soporte@cvamuebles.com
-                    </p>
-                    <a href="mailto:info@cvamuebles.com" class="btn btn-sm boton-card">
-                        Enviar email
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+            <div class="row g-5 align-items-stretch">
+                <!-- Info Institucional (REDiseño) -->
+                <div class="col-lg-5">
+                    <div class="institutional-box-premium p-4 p-xl-5 rounded-5 h-100 d-flex flex-column">
+                        <span class="text-gold fw-bold text-uppercase x-small" style="letter-spacing: 3px;">CVA Muebles</span>
+                        <h2 class="font-lora h1 fw-bold text-white mt-2 mb-4">Nuestra Identidad</h2>
+                        
+                        <div class="legal-item-premium mb-3">
+                            <label>Razón Social</label>
+                            <p>CVA Muebles S.R.L.</p>
+                        </div>
+                        <div class="legal-item-premium mb-3">
+                            <label>Titular Responsable</label>
+                            <p>Acevedo Cesar Victor</p>
+                        </div>
+                        <div class="legal-item-premium mb-4">
+                            <label>Identificación Tributaria</label>
+                            <p>CUIT 30-12345678-9</p>
+                        </div>
 
-    <!-- Fila con datos legales y formulario de contacto -->
-    <div class="row d-flex justify-content-around my-5 py-4 gap-4 px-5 contenedor-datos">
-        
-        <!-- Columna: Datos legales de la empresa -->
-        <div class="col-lg-5 card-style">
-            <div class="mx-3">
-                <h4 class="text-center my-3 mb-4 fw-bold">Datos Legales</h4>
-                <p><strong>Razón Social:</strong> CVA Muebles S.R.L.</p>
-                <p><strong>Titular:</strong> Acevedo Cesar Victor</p>
-                <p><strong>CUIT:</strong> 30-12345678-9</p>
-                <p><strong>Horario de atención:</strong> Lunes a Viernes de 8:00 a 12:00 y de 15:00 a 19:00</p>
-                <p><strong>Días no laborales:</strong> Sábados, Domingos y feriados nacionales</p>
-            </div>
-        </div>
-
-        <!-- Columna: Formulario de Consulta -->
-        <div class="col-lg-6 card-style">
-            <div class="contact-form">
-                <h4 class="text-center my-3" style="color: var(--color-madera-oscura);">Formulario de Consulta</h4>
-                <form action="<?= base_url('/enviar-consulta') ?>" method="post">
-                    <?= csrf_field() ?>
-
-                    <!-- Fila con nombre y apellido -->
-                    <div class="row form-group">    
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="nombre" placeholder="Nombre" required>
+                        <div class="horarios-premium-card p-4 rounded-4 bg-white shadow-sm mb-4">
+                            <h6 class="fw-bold text-cva-brown mb-3 text-uppercase small">Horarios de Taller</h6>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="text-muted small">Lunes a Viernes</span>
+                                <span class="fw-bold text-cva-brown">08:00 - 19:00</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center opacity-50">
+                                <span class="text-muted small">Sábados y Domingos</span>
+                                <span class="fw-bold">Cerrado</span>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="apellido" placeholder="Apellido" required>
-                            </div>
+
+                        <div class="artisan-seal-quote mt-auto">
+                            <i class="bi bi-quote h1 text-gold opacity-25"></i>
+                            <p class="fst-italic text-white opacity-75 small">"La madera es un material vivo; responder a cada consulta es para nosotros el primer paso para darle una nueva forma."</p>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Email -->
-                    <div class="form-group">
-                        <input type="email" class="form-control" name="email" placeholder="Correo electrónico" required>
+                <!-- Formulario (RECUADRO REDONDEADO) -->
+                <div class="col-lg-7">
+                    <div class="artisan-form-container-box h-100 p-4 p-xl-5">
+                        <h3 class="font-lora h2 fw-bold mb-5 text-center text-cva-brown">Escribinos tu Consulta</h3>
+                        <form action="<?= base_url('/enviar-consulta') ?>" method="post" class="row g-4">
+                            <?= csrf_field() ?>
+                            <div class="col-md-6">
+                                <div class="form-floating-custom">
+                                    <input type="text" class="form-control" name="nombre" placeholder="Nombre" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating-custom">
+                                    <input type="text" class="form-control" name="apellido" placeholder="Apellido" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating-custom">
+                                    <input type="email" class="form-control" name="email" placeholder="Email" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating-custom">
+                                    <input type="tel" class="form-control" name="telefono" placeholder="Teléfono" required>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <select class="form-select form-control" name="asunto" required>
+                                    <option value="" disabled selected>Seleccioná un motivo</option>
+                                    <option value="Presupuesto">Presupuesto para Mueble</option>
+                                    <option value="Pedido">Consulta sobre mi Pedido</option>
+                                    <option value="Garantia">Garantía y Soporte</option>
+                                    <option value="Otro">Otros motivos</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <textarea class="form-control" name="descripcion" rows="6" placeholder="¿Cómo podemos ayudarte hoy?" required></textarea>
+                            </div>
+                            <div class="col-12 mt-5">
+                                <button type="submit" class="btn btn-vivid-premium w-100 py-3 rounded-pill">
+                                    <span>ENVIAR CONSULTA</span>
+                                    <i class="bi bi-send-fill ms-2"></i>
+                                </button>
+                            </div>
+                        </form>
                     </div>
-
-                    <!-- Teléfono -->
-                    <div class="form-group">
-                        <input type="tel" class="form-control" name="telefono" placeholder="Teléfono" required>
-                    </div>
-
-                    <!-- Asunto del mensaje -->
-                    <div class="form-group">
-                        <select class="form-control" name="asunto" required>
-                            <option value="" disabled selected>Seleccione un asunto</option>
-                            <option value="Consulta general">Consulta general</option>
-                            <option value="Solicitud de presupuesto">Solicitud de presupuesto</option>
-                            <option value="Estado de mi pedido">Estado de mi pedido</option>
-                            <option value="Consulta sobre garantía">Consulta sobre garantía</option>
-                            <option value="Otro">Otro</option>
-                        </select>
-                    </div>
-
-                    <!-- Mensaje -->
-                    <div class="form-group">
-                        <textarea class="form-control" name="descripcion" rows="5" placeholder="Escribe tu mensaje aquí..." required></textarea>
-                    </div>
-
-                    <!-- Botón de envío -->
-                    <button type="submit" class="btn btn-contact boton-contacto mb-2">Enviar Mensaje</button>
-                </form>
-
-                <!-- Mensaje de éxito o error -->
-                <?php if (session()->getFlashdata('success')): ?>
-                    <div class="alert alert-success mt-3 alert-dismissible fade show" role="alert">
-                        <?= session()->getFlashdata('success') ?>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                <?php elseif (session()->getFlashdata('error')): ?>
-                    <div class="alert alert-danger mt-3 alert-dismissible fade show" role="alert">
-                        <?= session()->getFlashdata('error') ?>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                <?php endif; ?>
-                
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+</div>
+</div>
 <?= $this->endSection() ?>

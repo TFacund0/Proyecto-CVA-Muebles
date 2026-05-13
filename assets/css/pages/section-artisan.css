@@ -10,34 +10,30 @@ body {
     background-image: none !important;
 }
 
-/* 2. RECUADROS DE SECCIÓN (Base común) */
+/* 2. RECUADROS DE SECCIÓN (Base común - AHORA BLOQUES COMPLETOS) */
 .section-categorias, .section-destacados {
-    border-radius: 40px;
-    padding: 80px 40px;
-    margin: 80px auto;
-    max-width: 1300px;
+    padding: 100px 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
     transition: var(--transition-base);
 }
 
-/* --- ESPECIALIDADES: DARK ARTISAN --- */
+/* --- ESPECIALIDADES: CLEAN ARTISAN (FONDO BLANCO) --- */
 .section-categorias {
-    background: linear-gradient(rgba(62, 39, 35, 0.9), rgba(62, 39, 35, 0.9)), url('../../img/ui/textures/madera2.jpg');
-    background-size: cover;
-    border: 3px solid var(--cva-gold);
-    color: white;
+    background-color: #ffffff !important;
+    background-image: none !important;
+    color: var(--cva-brown);
 }
 
-/* --- DESTACADOS: WARM PARCHMENT --- */
+/* --- DESTACADOS: SAND BACKGROUND (FONDO ARENA NOTORIO) --- */
 .section-destacados {
-    background-color: #f2e8da; /* Warm beige/parchment */
-    background-image: url('../../img/ui/textures/madera-clara.jpg');
-    background-blend-mode: soft-light;
-    background-size: cover;
-    border: 1px solid var(--cva-brown);
-    box-shadow: 0 30px 60px rgba(0,0,0,0.2) !important;
+    background-color: #f7f3ed !important; 
 }
 
 .section-destacados .titulo-producto {
@@ -46,18 +42,13 @@ body {
     border: 2px solid var(--cva-gold);
 }
 
-/* --- UBICACIÓN: FULL WIDTH WARM CREAM --- */
+/* --- UBICACIÓN: SOFT CREAM (FONDO CREMA) --- */
 .section-ubicacion {
-    background-color: #f5eedc; /* Color cremita cálido */
+    background-color: #faf7f2 !important; 
     background-image: none !important;
-    padding: 100px 0;
-    margin: 80px 0 60px 0 !important; /* Separación con el bloque superior y con el footer */
+    padding: 100px 0 !important;
     width: 100% !important;
-    max-width: none !important;
-    border-top: 2px solid var(--cva-gold);
-    border-bottom: 2px solid var(--cva-gold);
-    border-radius: 0 !important; /* No es un recuadro */
-    box-shadow: none !important;
+    border-top: 1px solid rgba(0,0,0,0.03);
 }
 
 .section-ubicacion .container {
@@ -82,9 +73,9 @@ body {
     color: var(--cva-text);
 }
 
-/* Separación extra entre bloques */
+/* Separación extra entre bloques - DESACTIVADO PARA FLUJO CONTINUO */
 section {
-    margin-bottom: 80px !important;
+    margin-bottom: 0 !important;
 }
 
 /* 2. TÍTULOS CON ESTILO ARTISAN */
@@ -136,12 +127,10 @@ section {
 
 /* 4. SECCIÓN PROMOCIÓN (Sin recuadro, actúa como separador) */
 .section-texto {
-    background-image: linear-gradient(rgba(62, 39, 35, 0.9), rgba(62, 39, 35, 0.9)), url('../../img/ui/textures/madera.jpg');
-    background-size: cover;
-    background-attachment: fixed;
+    background-color: var(--cva-forest);
     color: white;
-    padding: 80px 20px;
-    margin: 40px 0;
+    padding: 200px 20px !important;
+    margin: 0 !important;
     text-align: center;
 }
 

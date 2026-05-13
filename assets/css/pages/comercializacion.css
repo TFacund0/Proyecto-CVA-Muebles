@@ -1,106 +1,89 @@
-/* ----------- SECCIÓN COMERCIALIZACIÓN ----------- */
-/* Encabezado */
-.titulo-comercializacion {
-    background-image: url('../../img/texturas/treeplant.jpg');
-    background-position: center;
-    border-bottom: 3px solid black;
+/* 
+  =============================================
+  CVA MUEBLES - COMERCIALIZACIÓN ARTISAN
+  =============================================
+*/
+
+/* 1. FONDO GENERAL */
+#container-comercializacion-wrapper {
+    background-color: transparent;
+    padding-bottom: 100px;
+}
+
+/* 2. CABECERA (FONDO FIJO / PARALLAX) */
+.comercializacion-header {
+    background-image: linear-gradient(rgba(38, 20, 18, 0.8), rgba(38, 20, 18, 0.6)),
+                      url('../../img/ui/textures/treeplant.jpg') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-attachment: fixed !important; /* Fondo Fijo solicitado */
+    padding: 180px 0;
+    color: white;
     text-align: center;
-    background-position: top;
-    background-size: cover;
-    box-shadow: 0 0 10px rgb(0, 0, 0);
-    color: rgb(255, 255, 255);
-    padding: 15px;
 }
 
-/* Estilo para el titulo y parrafo de comercializacion */
-.titulo-comercializacion h1, 
-.titulo-comercializacion p {
-    text-shadow: 0 0 5px rgb(0, 0, 0);
+.comercializacion-header h1 {
+    font-family: 'Lora', serif;
+    font-size: 5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
-/* Estilo de cada subtitulo de los distintos articulos */
-#container-comercializacion .subtitulo-comercializacion {
-    font-weight: bold;
+/* 3. PAYMENT CARDS (PREMIUM) */
+.payment-card-premium {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 2rem;
+    height: 100%;
+    transition: all 0.4s ease;
+    border: 1px solid rgba(0,0,0,0.03);
 }
 
-/* Contenedor principal */
-#container-comercializacion {
-    background-color: rgb(0, 0, 0, 0);
+.payment-card-premium:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(62, 39, 35, 0.08);
 }
 
-/* Secciones */
-#container-comercializacion .contenedor-seccion {
-    background-image: url('../../img/texturas/madera-claritaa.jpg');
-    background-position: center;
-    border-radius: 30px;
-    box-shadow: 0 0 7px rgb(0, 0, 0);
-    border: 1.9px solid rgb(0, 0, 0);
+.payment-card-premium .icon-wrap {
+    width: 60px;
+    height: 60px;
+    background: var(--cva-sand);
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: var(--cva-gold);
+    margin-bottom: 1.5rem;
 }
 
-/* Tarjetas */
-#container-comercializacion .card-style {
-    border: 1px solid rgb(0, 0, 0);
-    border-radius: 15px;
-    box-shadow: 0 0 7px rgb(0, 0, 0);
-    background-color: #f5f2d6ab;
+.payment-card-premium h5 {
+    font-family: 'Lora', serif;
+    font-weight: 800;
+    color: var(--cva-brown);
 }
 
-/* Mapa de cobertura */
-#container-comercializacion .mapa-cobertura {
-    border: 1px solid black;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+/* 4. LOGÍSTICA BADGES */
+.badge-logistica {
+    width: 50px;
+    height: 50px;
+    border: 2px solid var(--cva-gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    color: var(--cva-gold);
+    flex-shrink: 0;
 }
 
-/* Botones */
-#container-comercializacion .boton-comercializacion {
-    border: 1px solid black !important;
-    background-color: rgba(255, 255, 255, 0.536) !important;
-    transition: all 0.3s ease;
-}
-
-#container-comercializacion .boton-comercializacion:hover {
-    background-color: rgb(76, 76, 76);
-    color: rgb(255, 255, 255);
-    transform: scale(1.03);
-}
-
-/* Tamaño de los iconos */
-.icon-comercializacion {
-    width: 30px;
-}
-/* Texto introductorio */
-.intro-text {
-    font-size: 1.1rem;
-    color: var(--color-madera-oscura);
-}
-
-/* ----------------- AJUSTE PARA LAS DISTINTAS RESOLUCIONES DE PANTALLA ------------------- */
-@media (max-width: 1024px) {
-    #container-comercializacion p {
-        font-size: 20px !important;
+/* 5. RESPONSIVE */
+@media (max-width: 991.98px) {
+    .comercializacion-header h1 {
+        font-size: 3.5rem;
     }
-}
-
-@media (max-width: 912px) {
-    #container-comercializacion h5 {
-        font-size: 16px !important;
-    }
-
-    #container-comercializacion p{
-        font-size: 15px !important;
-    }
-}
-
-@media (max-width: 759px) {
-    .titulo-comercializacion h1 {
-        font-size: 25px;
-    }
-
-    .titulo-comercializacion p {
-        font-size: 15px;
-    }
-    
-    #container-comercializacion .contenedor-seccion {
-        padding: 15px !important;
+    .comercializacion-header {
+        background-attachment: scroll !important; /* Deshabilitar fijo en móvil por performance */
     }
 }

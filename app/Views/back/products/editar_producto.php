@@ -9,11 +9,11 @@
     <div class="container">
         
         <!-- Cabecera de Edición -->
-        <div class="admin-card-header rounded-5 shadow-lg mb-5">
+        <div class="admin-card-header mb-5">
             <div class="row align-items-center">
                 <div class="col-md-8">
                     <div class="d-flex align-items-center gap-3 mb-3">
-                        <span class="badge bg-cva-gold px-3 py-2 text-uppercase badge-admin">Edición de Catálogo</span>
+                        <span class="badge badge-admin">Edición de Catálogo</span>
                         <span class="opacity-75">|</span>
                         <span class="small opacity-75">ID Producto: #<?= $producto['id_producto'] ?></span>
                     </div>
@@ -136,7 +136,7 @@
 
                             <!-- Botones de Acción -->
                             <div class="d-flex flex-column flex-md-row gap-3 pt-4 border-top">
-                                <button type="submit" class="btn bg-cva-brown text-white w-100 py-3 fw-bold fs-5 shadow rounded-pill">
+                                <button type="submit" class="btn btn-admin-gold w-100 py-3 fw-bold fs-5 shadow">
                                     <i class="bi bi-check2-circle me-2"></i> GUARDAR CAMBIOS
                                 </button>
                                 <a href="<?= base_url('/crud-productos') ?>" class="btn btn-outline-danger w-100 py-3 fw-bold fs-5 rounded-pill">

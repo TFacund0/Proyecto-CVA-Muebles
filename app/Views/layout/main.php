@@ -16,8 +16,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     
     <!-- Design System & Global Styles -->
-    <link rel="stylesheet" href="<?= base_url('assets/css/base/global.css?v=2.1')?>">
-    <link rel="stylesheet" href="<?= base_url('assets/css/layout/main-layout.css?v=1.0')?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/base/global.css?v=3.0')?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/layout/main-layout.css?v=3.0')?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/pages/miestilo.css?v=1.2')?>">
 
     <!-- Page Specific CSS Section -->
@@ -30,7 +30,11 @@
     <?= view('partials/navbar') ?>
 
     <main>
-        <?= $this->renderSection('content') ?>
+        <?php if (isset($content)): ?>
+            <?= $content ?>
+        <?php else: ?>
+            <?= $this->renderSection('content') ?>
+        <?php endif; ?>
     </main>
     
     <!-- Footer -->

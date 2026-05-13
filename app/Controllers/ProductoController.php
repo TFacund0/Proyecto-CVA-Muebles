@@ -64,10 +64,8 @@ class ProductoController extends BaseController {
             'vista' => $vista
         ];
 
-        return view('front/main', [
-            'title' => 'Gestión de Productos',
-            'content' => view('back/products/crud_productos', $data)
-        ]);
+        $data['title'] = 'Gestión de Productos';
+        return view('back/products/crud_productos', $data);
     }
 
     /**
@@ -84,10 +82,8 @@ class ProductoController extends BaseController {
         $categoriasModel = new Categorias_model();
         $data['categorias'] = $categoriasModel->getCategorias();
 
-        return view('front/main', [
-            'title' => 'Alta Producto',
-            'content' => view('back/products/alta_producto', $data)
-        ]);
+        $data['title'] = 'Alta Producto';
+        return view('back/products/alta_producto', $data);
     }
 
     /**
@@ -206,10 +202,8 @@ class ProductoController extends BaseController {
             'categorias' => $categoriasModel->getCategorias()
         ];
 
-        return view('front/main', [
-            'title' => 'Editar Producto',
-            'content' => view('back/products/editar_producto', $data)
-        ]);
+        $data['title'] = 'Editar Producto';
+        return view('back/products/editar_producto', $data);
     }
 
     /**
@@ -265,9 +259,7 @@ class ProductoController extends BaseController {
             return redirect()->to('/productos')->with('error', 'Producto no encontrado');
         }
 
-        return view('front/main', [
-            'title' => 'Detalle de ' . $data['producto']['nombre_prod'],
-            'content' => view('front/pages/detalle_producto', $data)
-        ]);
+        $data['title'] = 'Detalle de ' . $data['producto']['nombre_prod'];
+        return view('front/pages/detalle_producto', $data);
     }
 }

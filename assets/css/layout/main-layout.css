@@ -38,7 +38,8 @@ nav.navbar.artisan-main-nav {
     transition: var(--transition-base);
 }
 
-.artisan-main-nav .nav-link-custom:hover {
+.artisan-main-nav .nav-link-custom:hover,
+.artisan-main-nav .nav-link-custom.active {
     color: var(--cva-gold-light);
 }
 
@@ -54,7 +55,8 @@ nav.navbar.artisan-main-nav {
     transform: translateX(-50%);
 }
 
-.artisan-main-nav .nav-link-custom:hover::after {
+.artisan-main-nav .nav-link-custom:hover::after,
+.artisan-main-nav .nav-link-custom.active::after {
     width: 70%;
 }
 
@@ -84,8 +86,14 @@ nav.navbar.artisan-main-nav {
 
 /* --- OFFCANVAS (MENÚ LATERAL) --- */
 .menu-lateral .offcanvas-header {
-    background: var(--sidebar-header);
-    color: var(--cva-white);
+    background-color: var(--sidebar-header) !important;
+    background-image: none !important;
+    color: var(--sidebar-header-text);
+    border-bottom: 2px solid var(--cva-gold); /* Línea dorada sutil */
+}
+
+.menu-lateral .btn-close {
+    filter: none !important; /* Volver a botón oscuro */
 }
 
 .menu-lateral .offcanvas-body {
@@ -93,8 +101,58 @@ nav.navbar.artisan-main-nav {
 }
 
 .user-profile-card {
-    background-color: var(--cva-white);
-    border-bottom: 1px solid rgba(0,0,0,0.05);
+    background-color: #fcf9f5;
+    padding: 1.5rem 1rem; /* Compactado */
+    border-bottom: 1px solid rgba(62, 39, 35, 0.08);
+    box-shadow: inset 0 -10px 15px -10px rgba(0,0,0,0.05);
+}
+
+.avatar-bg {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%; /* Redondo */
+    overflow: hidden;
+    background: white;
+    border: 2px solid var(--cva-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatar-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.status-indicator {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 14px;
+    height: 14px;
+    background-color: #4CAF50;
+    border: 2px solid white;
+    border-radius: 50%;
+}
+
+.user-profile-card h5 {
+    color: var(--cva-brown);
+    font-weight: 700;
+    font-size: 1rem; /* Más pequeño */
+}
+
+.sidebar-section-label {
+    color: var(--cva-brown) !important;
+    font-size: 0.7rem !important;
+    font-weight: 800 !important;
+    letter-spacing: 1.5px !important;
+    opacity: 0.6;
+    margin-top: 1.5rem;
+    margin-bottom: 0.8rem;
+    display: block;
+    padding-left: 1rem;
+    text-transform: uppercase;
 }
 
 /* --- FOOTER --- */

@@ -1,94 +1,156 @@
-/* Contenedor de toda la informacion de contacto */
-#container-contacto {
-    background-color: rgb(0, 0, 0, 0);
+/* 
+  =============================================
+  CVA MUEBLES - CONTACTO ARTISAN
+  =============================================
+*/
+
+/* 1. FONDO GENERAL */
+#container-contacto-wrapper {
+    background-color: transparent;
+    padding-bottom: 0 !important;
+    margin-top: -30px;
 }
 
-/* Contenedor principal del título de la sección de contacto */
-.titulo-contacto {
-    background-image: url('../../img/texturas/camara.jpg');
-    border-bottom: 3px solid black; 
-    text-align: center; 
-    background-position: top; 
-    background-size: cover; 
-    box-shadow: 0 0 10px rgb(0, 0, 0); 
-    color: rgb(255, 255, 255); 
-    padding: 15px;
+/* 2. CABECERA (FONDO FIJO / PARALLAX) */
+.contact-header {
+    background-image: linear-gradient(rgba(38, 20, 18, 0.8), rgba(38, 20, 18, 0.6)),
+        url('../../img/ui/textures/herramientas.jpg') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-attachment: fixed !important;
+    padding: 220px 0 180px;
+    color: white;
+    text-align: center;
 }
 
-/* Aplicación de sombra al texto dentro del título de contacto */
-.titulo-contacto h1, .titulo-contacto p {
-    text-shadow: 0 0 5px rgb(0, 0, 0);
+.contact-header h1 {
+    font-family: 'Lora', serif;
+    font-size: 5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
 }
 
-/* Contenedor para las tarjetas de datos de contacto */
-.contenedor-datos {
-    background-image: url('../../img/texturas/madera-clara.jpg');
-    border-radius: 30px; 
-    box-shadow: 0 0 7px rgb(0, 0, 0); 
-    border: 1.9px solid rgb(0, 0, 0); 
+/* 3. TARJETAS DE DATOS RÁPIDOS */
+.artisan-contact-card {
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 2.5rem;
+    padding: 3.5rem 2.5rem;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+    height: 100%;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    text-align: center;
 }
 
-/* Estilo de tarjetas individuales de contacto */
-.contenedor-datos .card-style {
-    border: 1px solid rgb(0, 0, 0); 
-    border-radius: 15px; 
-    box-shadow: 0 0 7px rgb(0, 0, 0);
-    background-color: #f5f2d6ab; 
+.artisan-contact-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 40px 70px rgba(62, 39, 35, 0.12);
+    border-color: var(--cva-gold);
 }
 
-/* Títulos dentro de las tarjetas */
-.contenedor-datos .card-style h5 {
-    font-weight: bold;
-}
-
-/* Estilo base de los botones de tarjeta y formulario */
-.contenedor-datos .boton-card, .contenedor-datos .boton-contacto {
-    border: 1px solid black;
-    background-color: rgba(255, 255, 255, 0.529);
-    scale: 1.0;
-    transition: scale 1m linear;
-}
-
-/* Efecto hover para botones */
-.contenedor-datos .boton-card:hover, .contenedor-datos .boton-contacto:hover {
-    background-color: rgb(76, 76, 76); 
-    color: rgb(255, 255, 255); 
-    scale: 1.03;
-    transition: scale 1ms linear; 
-}
-
-/* Contenedor de la sección de datos legales */
-.datos-legales-content {    
+/* BOTÓN PREMIUM ACCIÓN */
+.btn-premium-action {
+    background: var(--cva-brown);
+    color: white !important;
+    border-radius: 100px;
+    padding: 0.8rem 2rem;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    display: flex;
     align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.4s ease;
+    border: none;
+    width: 100%;
 }
 
-/* Separación vertical entre campos del formulario */
-.form-group {
-    margin-top: 5px;
+.btn-premium-action:hover {
+    background: var(--cva-gold);
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(229, 160, 13, 0.3);
+}
+
+.btn-premium-action i {
+    transition: transform 0.4s ease;
+}
+
+.btn-premium-action:hover i {
+    transform: translateX(5px);
+}
+
+/* 4. BLOQUE INSTITUCIONAL (IZQUIERDA) */
+.institutional-box-premium {
+    background: linear-gradient(135deg, var(--cva-brown), #3e2723);
+    color: white;
+    box-shadow: 0 30px 60px rgba(62, 39, 35, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.legal-item-premium label {
+    display: block;
+    color: var(--cva-gold);
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 2px;
     margin-bottom: 5px;
 }
 
-/* Estilo para los campos del formulario */
-.form-group input, .form-group textarea, .form-group select {
-    border: 1px solid rgb(0, 0, 0);
+.legal-item-premium p {
+    font-size: 1.2rem;
+    font-family: 'Lora', serif;
+    margin-bottom: 0;
 }
 
-/* Título del formulario de contacto */
-.contact-form h4 {
-    font-weight: bold;
+.horarios-premium-card {
+    border-left: 5px solid var(--cva-gold);
 }
 
-/* Adaptaciones para pantallas pequeñas */
-@media (max-width: 759px) {
-    .contenedor-datos {
-        gap: 15px;
+/* 5. FORMULARIO PREMIUM (RECUADRO REDONDEADO) */
+.artisan-form-container-box {
+    background-color: white;
+    border: 3px solid rgba(62, 39, 35, 0.08);
+    border-radius: 25px;
+    box-shadow: 0 30px 70px rgba(62, 39, 35, 0.08);
+    transition: all 0.4s ease;
+}
+
+.artisan-form-container-box:hover {
+    border-color: rgba(184, 134, 11, 0.2);
+    box-shadow: 0 40px 90px rgba(62, 39, 35, 0.12);
+}
+
+.btn-vivid-premium {
+    background: var(--cva-vivid);
+    color: white !important;
+    font-weight: 800;
+    letter-spacing: 2px;
+    transition: all 0.4s ease;
+    border: none;
+    box-shadow: 0 10px 30px rgba(211, 84, 0, 0.3);
+}
+
+.btn-vivid-premium:hover {
+    background: var(--cva-brown);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(62, 39, 35, 0.4);
+}
+
+/* 5. RESPONSIVE */
+@media (max-width: 991.98px) {
+    .contact-header h1 {
+        font-size: 3.5rem;
     }
 
-    .titulo-contacto h1 {
-        font-size: 25px;
+    .contact-header {
+        background-attachment: scroll !important;
+        padding: 120px 0 80px;
     }
 
-    .titulo-contacto p {
-        font-size: 15px;
+    #container-contacto-wrapper {
+        margin-top: 0;
     }
 }

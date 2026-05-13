@@ -1,98 +1,141 @@
 <!-- 
   =============================================
-  ARTISAN HERO CAROUSEL - BRAND IDENTITY
+  ARTISAN HERO - THE SOUL OF THE WORKSHOP
   =============================================
 -->
 
-<div id="heroCarousel" class="carousel slide carousel-fade shadow-lg" data-bs-ride="carousel">
+<div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
     
-    <!-- Indicadores de Navegación -->
-    <div class="carousel-indicators">
-        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <!-- Indicadores Minimalistas -->
+    <div class="carousel-indicators mb-5">
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
     </div>
 
-    <!-- Contenedor de los ítems -->
-    <div class="carousel-inner" style="height: 600px;">
+    <div class="carousel-inner" style="height: 85vh; min-height: 600px;">
 
         <!-- Slide 1: El Taller -->
         <div class="carousel-item active h-100">
-            <div class="carousel-img-overlay"></div>
-            <img src="<?= base_url('assets/img/content/hero/taller.jpg') ?>" class="d-block w-100 h-100 object-fit-cover" alt="Taller de carpintería">
-            <div class="carousel-caption d-md-block text-start" style="bottom: 20%; left: 10%; right: 10%;">
-                <h1 class="display-3 fw-bold font-lora mb-3">Bienvenidos a <span class="text-gold">CVA Muebles</span></h1>
-                <p class="fs-4 mb-4 opacity-90">Diseño y fabricación artesanal de muebles a medida con maderas seleccionadas.</p>
-                <div>
-                    <a href="<?= base_url('quienesSomos') ?>" class="btn btn-gold-artisan rounded-pill px-5 py-3 fw-bold text-uppercase shadow-lg">
-                        Nuestra Historia <i class="bi bi-chevron-right ms-2"></i>
-                    </a>
+            <div class="hero-overlay-artisan"></div>
+            <img src="<?= base_url('assets/img/content/hero/taller.jpg') ?>" class="d-block w-100 h-100 object-fit-cover zoom-animation" alt="Taller">
+            <div class="carousel-caption d-flex align-items-center justify-content-center h-100 text-center">
+                <div class="glass-caption animate-up">
+                    <span class="badge bg-gold mb-3 px-3 py-2 rounded-pill text-uppercase" style="letter-spacing: 2px;">Mueblería de Autor</span>
+                    <h1 class="display-2 fw-bold font-lora mb-3">La Esencia de la <br><span class="text-gold">Madera Noble</span></h1>
+                    <p class="fs-5 mb-4 opacity-90 mx-auto" style="max-width: 600px;">Transformamos maderas seleccionadas en piezas únicas que respiran historia y elegancia.</p>
+                    <div class="d-flex gap-3 justify-content-center">
+                        <a href="<?= base_url('productos') ?>" class="btn btn-vivid rounded-pill px-5 py-3 fw-bold shadow-lg">VER CATÁLOGO</a>
+                        <a href="<?= base_url('quienesSomos') ?>" class="btn btn-outline-light rounded-pill px-5 py-3 fw-bold">NUESTRO TALLER</a>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 2: Calidad -->
+        <!-- Slide 2: El Detalle -->
         <div class="carousel-item h-100">
-            <div class="carousel-img-overlay"></div>
-            <img src="<?= base_url('assets/img/content/hero/Muebles 22.jpeg') ?>" class="d-block w-100 h-100 object-fit-cover" alt="Muebles artesanales">
-            <div class="carousel-caption d-md-block text-center" style="bottom: 25%;">
-                <h2 class="display-4 fw-bold font-lora mb-3">Calidad Artesanal Incomparable</h2>
-                <p class="fs-5 mb-4 opacity-90">Cada pieza es única, hecha con dedicación y el alma de un maestro artesano.</p>
-                <a href="<?= base_url('productos') ?>" class="btn btn-outline-light rounded-pill px-5 py-2 fw-bold text-uppercase">Ver Colección</a>
+            <div class="hero-overlay-artisan"></div>
+            <img src="<?= base_url('assets/img/content/hero/Muebles 22.jpeg') ?>" class="d-block w-100 h-100 object-fit-cover zoom-animation" alt="Calidad">
+            <div class="carousel-caption d-flex align-items-center justify-content-start h-100 text-start ps-lg-5">
+                <div class="glass-caption left-align animate-left">
+                    <h2 class="display-3 fw-bold font-lora mb-3">Oficio que <br>Perdura</h2>
+                    <p class="fs-5 mb-4 opacity-90" style="max-width: 500px;">Cada veta cuenta una historia de paciencia, técnica y amor por lo artesanal.</p>
+                    <a href="<?= base_url('productos') ?>" class="btn btn-gold rounded-pill px-5 py-3 fw-bold">DESCUBRIR MÁS</a>
+                </div>
             </div>
         </div>
 
-        <!-- Slide 3: Pasión -->
+        <!-- Slide 3: El Hogar -->
         <div class="carousel-item h-100">
-            <div class="carousel-img-overlay"></div>
-            <img src="<?= base_url('assets/img/content/hero/Muebles 69.jpeg') ?>" class="d-block w-100 h-100 object-fit-cover" alt="Muebles familiares">
-            <div class="carousel-caption d-md-block text-end" style="bottom: 20%; right: 10%;">
-                <h2 class="display-4 fw-bold font-lora mb-3">Oficio Familiar</h2>
-                <p class="fs-5 mb-4 opacity-90">Transformamos tus espacios con muebles que cuentan una historia.</p>
-                <a href="<?= base_url('informacionContacto') ?>" class="btn btn-gold-artisan rounded-pill px-5 py-2 fw-bold text-uppercase">Contáctanos</a>
+            <div class="hero-overlay-artisan"></div>
+            <img src="<?= base_url('assets/img/content/hero/Muebles 69.jpeg') ?>" class="d-block w-100 h-100 object-fit-cover zoom-animation" alt="Pasión">
+            <div class="carousel-caption d-flex align-items-center justify-content-end h-100 text-end pe-lg-5">
+                <div class="glass-caption right-align animate-right">
+                    <h2 class="display-3 fw-bold font-lora mb-3">Diseño para <br>Toda la Vida</h2>
+                    <p class="fs-5 mb-4 opacity-90" style="max-width: 500px;">Creamos el corazón de tu hogar con muebles que trascienden generaciones.</p>
+                    <a href="<?= base_url('informacionContacto') ?>" class="btn btn-vivid rounded-pill px-5 py-3 fw-bold">PEDIR PRESUPUESTO</a>
+                </div>
             </div>
         </div>
 
     </div>
 
-    <!-- Controles -->
+    <!-- Controles Stylized -->
     <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon p-3 bg-dark rounded-circle opacity-50" aria-hidden="true"></span>
+        <div class="control-circle"><i class="bi bi-arrow-left"></i></div>
     </button>
     <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon p-3 bg-dark rounded-circle opacity-50" aria-hidden="true"></span>
+        <div class="control-circle"><i class="bi bi-arrow-right"></i></div>
     </button>
 
 </div>
 
 <style>
-    .font-lora { font-family: 'Lora', serif; }
-    .text-gold { color: #b8860b; }
-    
-    .carousel-caption h1, .carousel-caption h2, .carousel-caption p {
-        color: #ffffff !important;
-        text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
-    }
-
-    .carousel-img-overlay {
+    /* Hero Visuals */
+    .hero-overlay-artisan {
         position: absolute;
         top: 0; left: 0; width: 100%; height: 100%;
-        background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6));
+        background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 100%);
         z-index: 1;
     }
 
-    .carousel-caption { z-index: 2; }
-    .object-fit-cover { object-fit: cover; }
-
-    .btn-gold-artisan {
-        background-color: #b8860b;
+    .glass-caption {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        padding: 3rem;
+        border-radius: 2rem;
         color: white;
-        border: none;
+        z-index: 2;
+        box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+    }
+
+    .glass-caption.left-align { border-left: 5px solid var(--cva-gold); }
+    .glass-caption.right-align { border-right: 5px solid var(--cva-vivid); }
+
+    /* Animations */
+    .zoom-animation {
+        animation: slowZoom 20s infinite alternate linear;
+    }
+
+    @keyframes slowZoom {
+        from { transform: scale(1); }
+        to { transform: scale(1.1); }
+    }
+
+    .animate-up { animation: fadeInUp 1s ease-out; }
+    .animate-left { animation: fadeInLeft 1s ease-out; }
+    .animate-right { animation: fadeInRight 1s ease-out; }
+
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeInLeft { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
+    @keyframes fadeInRight { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
+
+    /* Controls */
+    .control-circle {
+        width: 60px; height: 60px;
+        background: rgba(255,255,255,0.1);
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255,255,255,0.2);
+        color: white;
+        font-size: 1.5rem;
         transition: all 0.3s;
     }
-    .btn-gold-artisan:hover {
-        background-color: #ffffff;
-        color: #3e2723;
-        transform: translateY(-3px);
+    .control-circle:hover {
+        background: var(--cva-gold);
+        color: white;
+        transform: scale(1.1);
     }
+
+    /* Minimalist Indicators */
+    .carousel-indicators [data-bs-target] {
+        width: 12px; height: 12px;
+        border-radius: 50%;
+        background-color: rgba(255,255,255,0.5);
+        margin: 0 8px;
+    }
+    .carousel-indicators .active { background-color: var(--cva-gold); width: 30px; border-radius: 10px; }
 </style>

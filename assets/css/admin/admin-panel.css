@@ -1,79 +1,107 @@
 /* 
   =============================================
-  CVA MUEBLES - ADMIN DASHBOARD STYLES
+  CVA MUEBLES - ADMIN DASHBOARD STYLES (ARTISAN)
   =============================================
 */
 
 .admin-wrapper {
-    background-color: var(--admin-bg);
+    background-color: var(--cva-parchment);
     min-height: 100vh;
+    padding-top: 3rem;
+    padding-bottom: 5rem;
 }
 
 /* Card Styling */
 .admin-card {
-    border: none;
-    border-radius: 1rem;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    border: 1px solid rgba(184, 134, 11, 0.1);
+    border-radius: 2rem;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
     overflow: hidden;
+    background-color: white;
 }
 
 .admin-card-header {
-    background-color: var(--admin-card-header);
+    background-image: linear-gradient(rgba(62, 39, 35, 0.9), rgba(62, 39, 35, 0.95)),
+        url('../../img/ui/textures/madera2.jpg');
+    background-size: cover;
+    background-position: center;
     color: var(--cva-white);
-    padding: 1.5rem 2rem;
+    padding: 2.5rem 3rem;
+    border-bottom: 4px solid var(--cva-gold);
 }
 
+.admin-card-header h1,
 .admin-card-header h2 {
+    font-family: var(--font-heading);
     color: var(--cva-white);
-    margin-bottom: 0;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+}
+
+.admin-card-header .badge-admin {
+    background-color: var(--cva-gold) !important;
+    color: white;
+    font-weight: 700;
 }
 
 /* Forms & Filters */
 .admin-filter-bar {
-    background-color: var(--cva-white);
-    padding: 1.5rem;
-    border-radius: 1rem;
-    border: 1px solid rgba(0,0,0,0.05);
-    margin-bottom: 2rem;
+    background-color: #fdfaf7;
+    padding: 2rem;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(184, 134, 11, 0.1);
+    margin-bottom: 2.5rem;
 }
 
 .admin-input {
-    border-radius: 0.5rem;
-    border: 1px solid #dee2e6;
-    padding: 0.6rem 1rem;
+    border-radius: 0.8rem;
+    border: 1px solid #e0d5c5;
+    padding: 0.8rem 1.2rem;
+    background-color: white;
+    transition: var(--transition-base);
 }
 
 .admin-input:focus {
-    border-color: var(--admin-accent);
-    box-shadow: 0 0 0 0.25rem rgba(184, 134, 11, 0.25);
+    border-color: var(--cva-gold);
+    box-shadow: 0 0 0 0.25rem rgba(184, 134, 11, 0.15);
+    outline: none;
 }
 
 /* Table Styling */
 .admin-table-container {
     background-color: var(--cva-white);
-    border-radius: 1rem;
-    border: 1px solid rgba(0,0,0,0.05);
+    border-radius: 1.5rem;
+    border: 1px solid #f0e6d6;
     overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.02);
 }
 
 .admin-table thead {
     background-color: #fcfaf7;
+    border-bottom: 2px solid #f0e6d6;
 }
 
 .admin-table th {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
     color: var(--cva-brown);
-    padding: 1.25rem 1rem;
+    padding: 1.5rem 1rem;
+    font-weight: 700;
 }
 
 .admin-table td {
-    padding: 1.25rem 1rem;
+    padding: 1.5rem 1rem;
+    vertical-align: middle;
+    border-bottom: 1px solid #f9f5f0;
+}
+
+.admin-table tr:last-child td {
+    border-bottom: none;
 }
 
 .admin-table tr:hover {
-    background-color: var(--admin-table-hover);
+    background-color: #fffbf5;
 }
 
 /* Action Buttons */
@@ -81,31 +109,45 @@
     background-color: var(--cva-gold);
     color: var(--cva-white);
     border: none;
+    border-radius: 50px;
+    padding: 0.7rem 1.5rem;
     font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     transition: var(--transition-base);
 }
 
 .btn-admin-gold:hover {
-    background-color: var(--cva-gold-light);
+    background-color: var(--cva-brown);
     color: var(--cva-white);
     transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(184, 134, 11, 0.3);
 }
 
-/* Badges */
-.badge-admin {
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    padding: 0.5em 1em;
-}
-
-.btn-outline-brown {
-    border: 1px solid var(--cva-brown);
-    color: var(--cva-brown);
+/* Preview Box for Images */
+.img-preview-box {
+    border: 2px dashed #e0d5c5 !important;
+    background-color: #fdfaf7 !important;
     transition: var(--transition-base);
 }
 
-.btn-outline-brown:hover {
-    background-color: var(--cva-brown);
-    color: var(--cva-white);
+.img-preview-box:hover {
+    border-color: var(--cva-gold) !important;
+}
+
+/* Form Sections */
+.form-section h5 {
+    font-family: var(--font-heading);
+    color: var(--cva-brown);
+    position: relative;
+}
+
+.form-section h5::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background-color: var(--cva-gold);
 }

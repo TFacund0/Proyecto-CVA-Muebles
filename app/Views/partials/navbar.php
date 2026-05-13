@@ -8,12 +8,12 @@
 
 <!-- BARRA DE NAVEGACIÓN PRINCIPAL -->
 <nav class="navbar navbar-expand-lg artisan-main-nav">
-  <div class="container-fluid">
+  <div class="container-fluid px-lg-5">
 
-    <!-- Logo y Título -->
-    <div class="d-flex align-items-center flex-wrap">
-      <img src="<?= base_url('assets/img/branding/cva2.png') ?>" alt="Logo CVA Muebles" width="50px" class="logo me-2 ms-2">
-      <a class="navbar-brand titulo-logo text-nowrap" href="<?= base_url('/') ?>">
+    <!-- Bloque Izquierdo: Logo (Ancho balanceado) -->
+    <div class="navbar-brand-wrapper d-flex align-items-center" style="flex: 1;">
+      <img src="<?= base_url('assets/img/branding/cva2.png') ?>" alt="Logo CVA Muebles" width="50px" class="logo me-2">
+      <a class="navbar-brand titulo-logo text-nowrap mb-0" href="<?= base_url('/') ?>">
         CVA Muebles
       </a>
     </div>
@@ -24,31 +24,37 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <!-- Contenido del menú -->
-    <div class="collapse navbar-collapse justify-content-between me-lg-5" id="navbarContent">
-
-      <!-- Enlaces principales -->
-      <ul class="navbar-nav mx-auto text-lg-center text-end content-list">
+    <!-- Contenido del menú (Centro) -->
+    <div class="collapse navbar-collapse justify-content-center" id="navbarContent" style="flex: 2;">
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <?php 
+          $current_uri = service('request')->getUri()->getPath(); 
+          $active_inicio = ($current_uri == '' || $current_uri == '/') ? 'active' : '';
+          $active_productos = (strpos($current_uri, 'productos') !== false || strpos($current_uri, 'todos_p') !== false || strpos($current_uri, 'producto/detalle') !== false) ? 'active' : '';
+          $active_comercializacion = (strpos($current_uri, 'comercializacion') !== false) ? 'active' : '';
+          $active_info = (strpos($current_uri, 'quienesSomos') !== false) ? 'active' : '';
+          $active_contacto = (strpos($current_uri, 'informacionContacto') !== false) ? 'active' : '';
+        ?>
         <li class="nav-item">
-          <a class="nav-link-custom mx-1" href="<?= base_url('/') ?>">Inicio</a>
+          <a class="nav-link-custom mx-lg-2 <?= $active_inicio ?>" href="<?= base_url('/') ?>">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link-custom mx-1" href="<?= $isLogged == 'SI' ? base_url('todos_p') : base_url('productos') ?>">Productos</a>
+          <a class="nav-link-custom mx-lg-2 <?= $active_productos ?>" href="<?= $isLogged == 'SI' ? base_url('todos_p') : base_url('productos') ?>">Productos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link-custom mx-1" href="<?= base_url('comercializacion') ?>">Comercialización</a>
+          <a class="nav-link-custom mx-lg-2 <?= $active_comercializacion ?>" href="<?= base_url('comercializacion') ?>">Comercialización</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link-custom mx-1" href="<?= base_url('quienesSomos') ?>">Información</a>
+          <a class="nav-link-custom mx-lg-2 <?= $active_info ?>" href="<?= base_url('quienesSomos') ?>">Información</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link-custom mx-1" href="<?= base_url('informacionContacto') ?>">Contacto</a>
+          <a class="nav-link-custom mx-lg-2 <?= $active_contacto ?>" href="<?= base_url('informacionContacto') ?>">Contacto</a>
         </li>
       </ul>
+    </div>
 
-      <!-- Íconos de perfil/carrito -->
-      <div class="d-flex content-account align-items-center gap-2">
-
+    <!-- Bloque Derecho: Íconos (Ancho balanceado para centrado perfecto) -->
+    <div class="d-flex align-items-center justify-content-end gap-2" style="flex: 1;">
         <?php if (!$isLogged): ?>
           <a class="boton-icon-circle" href="<?= base_url('login') ?>">
             <img src="<?= base_url('assets/img/ui/icons/person.svg') ?>" alt="Login" class="icono-svg">
@@ -64,10 +70,7 @@
             <img src="<?= base_url('assets/img/ui/icons/person.svg') ?>" alt="Perfil" class="icono-svg">
           </button>
         <?php endif; ?>
-        
-      </div>
-
-    </div> <!-- Fin navbar-collapse -->
+    </div>
 
   </div> <!-- Fin container-fluid -->
 </nav>
@@ -110,7 +113,7 @@
     <!-- Lista de Opciones -->
     <div class="menu-options-container p-3">
       <?php if ($perfil == 1): ?>
-        <p class="text-muted small fw-bold px-3 mb-2 opacity-50">ADMINISTRACIÓN</p>
+        <p class="sidebar-section-label">ADMINISTRACIÓN</p>
         <div class="list-group list-group-flush rounded-4 overflow-hidden border shadow-sm mb-4">
           <a href="<?= base_url('/alta-producto') ?>" class="list-group-item list-group-item-action d-flex align-items-center">
             <i class="bi bi-plus-circle me-3 text-cva-gold fs-5"></i> Añadir Producto
@@ -130,7 +133,7 @@
         </div>
       <?php endif; ?>
 
-      <p class="text-muted small fw-bold px-3 mb-2 opacity-50">MI ACTIVIDAD</p>
+      <p class="sidebar-section-label">MI ACTIVIDAD</p>
       <div class="list-group list-group-flush rounded-4 overflow-hidden border shadow-sm">
         <?php if (env('SHOPPING_CART_ENABLED')): ?>
         <a href="<?= base_url('/muestro') ?>" class="list-group-item list-group-item-action d-flex align-items-center">

@@ -82,15 +82,14 @@ class VentasController extends BaseController {
             }
         }
 
-        return view('front/main', [
-            'title' => 'Ventas',
-            'content' => view('back/sales/detalleVentas', [
-                'ventas' => $ventas_filtradas, 
-                'search' => $search, 
-                'filtro_tipo' => $tipo,
-                'estado_filtro' => $estado_filtro
-            ])
-        ]);
+        $data = [
+            'ventas' => $ventas_filtradas, 
+            'search' => $search, 
+            'filtro_tipo' => $tipo,
+            'estado_filtro' => $estado_filtro,
+            'title' => 'Ventas'
+        ];
+        return view('back/sales/detalleVentas', $data);
     }
 
     /**
@@ -171,10 +170,8 @@ class VentasController extends BaseController {
         $detalles_venta = new VentasDetalle_model();
         $data['venta'] = $detalles_venta->getDetalles($venta_id);
 
-        return view('front/main', [
-            'title' => 'Mi Compra',
-            'content' => view('back/sales/ver_factura_usuario', $data)
-        ]);
+        $data['title'] = 'Mi Compra';
+        return view('back/sales/ver_factura_usuario', $data);
     }
 
     public function ver_facturas_usuario() {
@@ -182,10 +179,8 @@ class VentasController extends BaseController {
         $ventasModel = new VentasCabecera_model();
         $data['ventas'] = $ventasModel->getVentas(NULL, $id_usuario);
 
-        return view('front/main', [
-            'title' => 'Todas mis Compras',
-            'content' => view('back/sales/vistaCompras', $data)
-        ]);
+        $data['title'] = 'Todas mis Compras';
+        return view('back/sales/vistaCompras', $data);
     }
 
     /**
@@ -227,10 +222,8 @@ class VentasController extends BaseController {
         $consultasModel = new \App\Models\Consultas_model();
         $data['total_consultas'] = $consultasModel->where('activo', 'SI')->countAllResults();
 
-        return view('front/main', [
-            'title' => 'Estadísticas del Taller',
-            'content' => view('back/sales/estadisticas', $data)
-        ]);
+        $data['title'] = 'Estadísticas del Taller';
+        return view('back/sales/estadisticas', $data);
     }
 
     /**
@@ -241,10 +234,8 @@ class VentasController extends BaseController {
         $perfil = session()->get('perfil_id');
         if ($perfil != 1) return redirect()->to('/login');
 
-        return view('front/main', [
-            'title' => 'Nuevo Pedido Personalizado',
-            'content' => view('back/sales/nuevo_pedido_personalizado')
-        ]);
+        $data['title'] = 'Nuevo Pedido Personalizado';
+        return view('back/sales/nuevo_pedido_personalizado', $data);
     }
 
     /**
@@ -319,10 +310,8 @@ class VentasController extends BaseController {
         $data['total_pagado'] = $pagosModel->getTotalPagado($venta_id);
         $data['saldo_pendiente'] = $data['venta']['total_venta'] - $data['total_pagado'];
 
-        return view('front/main', [
-            'title' => 'Gestión de Pedido #' . $venta_id,
-            'content' => view('back/sales/gestion_pedido_admin', $data)
-        ]);
+        $data['title'] = 'Gestión de Pedido #' . $venta_id;
+        return view('back/sales/gestion_pedido_admin', $data);
     }
 
     /**
