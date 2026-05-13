@@ -105,4 +105,4 @@ $routes->get('carrito_resta/(:any)', 'carrito_controller::resta/$1', ['filter' =
 // -------------------- Gestión de Consultas --------------------
 $routes->get('/lista-consultas', 'ConsultaController::index', ['filter' => 'auth']);
 $routes->get('/consultas', 'ConsultaController::listarConsultas', ['filter' => 'auth']);
-$routes->post('/consultas/eliminar/(:num)', 'ConsultaController::eliminarConsulta/$1', ['filter' => 'auth']);
+$routes->get('/consultas/eliminar/(:num)', 'ConsultaController::eliminarConsulta/$1', ['filter' => 'auth']);

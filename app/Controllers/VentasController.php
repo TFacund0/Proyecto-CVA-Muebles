@@ -39,56 +39,53 @@ class VentasController extends BaseController {
             return redirect()->to('/login');
         }
 
-        helper('text');
-        $request = service('request');
+        $ventasModel = new VentasCabecera_model();
+        
+        // Obtenemos todos los pedidos para el filtrado en tiempo real
+        $ventas = $ventasModel->getVentas(); 
 
-        $ventasDetalle = new VentasDetalle_model();
+        // Inicializamos contadores para los KPIs
+        $currentMonth = date('m');
+        $currentYear = date('Y');
+        $meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+        $nombreMes = $meses[(int)$currentMonth - 1];
 
-        // Parámetros de filtrado
-        $search = strtolower(trim($request->getGet('search') ?? ''));
-        $tipo = $request->getGet('filtro_tipo') ?? '';
-        $estado_filtro = $request->getGet('estado') ?? '';
+        $counts = [
+            'total'      => count($ventas),
+            'mensuales'  => 0,
+            'pendientes' => 0,
+            'en_proceso' => 0,
+            'terminados' => 0,
+            'ingresos'   => 0
+        ];
 
-        $ventas = $ventasDetalle->getDetallesAll();
-        $ventas_filtradas = [];
-
-        foreach ($ventas as $venta) {
-            $coincide = true;
-
-            if ($search) {
-                switch ($tipo) {
-                    case 'id':
-                        $coincide = strpos((string) $venta['venta_id'], $search) !== false;
-                        break;
-                    case 'usuario':
-                        $coincide = stripos($venta['usuario'], $search) !== false;
-                        break;
-                    case 'descripcion':
-                        $coincide = stripos($venta['nombre_prod'], $search) !== false;
-                        break;
-                    default:
-                        $coincide = true;
-                }
+        foreach ($ventas as &$venta) {
+            $ventaDate = strtotime($venta['fecha']);
+            
+            // Contabilizar pedidos del mes actual
+            if (date('m', $ventaDate) == $currentMonth && date('Y', $ventaDate) == $currentYear) {
+                $counts['mensuales']++;
+                // Sumar ingresos mensuales
+                $counts['ingresos'] += $venta['total_venta'];
             }
 
-            if ($estado_filtro && $venta['estado'] != $estado_filtro) {
-                $coincide = false;
-            }
-
-            if ($coincide) {
-                // Calcula subtotal directamente en el foreach
-                $venta['subtotal'] = $venta['cantidad'] * $venta['precio'];
-                $ventas_filtradas[] = $venta;
-            }
+            // Contabilizar por estado
+            if ($venta['estado'] == 'PENDIENTE') $counts['pendientes']++;
+            if ($venta['estado'] == 'EN_PROCESO') $counts['en_proceso']++;
+            if ($venta['estado'] == 'TERMINADO' || $venta['estado'] == 'ENTREGADO') $counts['terminados']++;
+            
+            // Preparar cadena de búsqueda para JS
+            $nombre_completo = ($venta['nombre'] ?? '') . ' ' . ($venta['apellido'] ?? '');
+            $venta['search_data'] = strtolower(esc($venta['id'] . ' ' . $nombre_completo . ' ' . ($venta['usuario'] ?? '')));
         }
 
         $data = [
-            'ventas' => $ventas_filtradas, 
-            'search' => $search, 
-            'filtro_tipo' => $tipo,
-            'estado_filtro' => $estado_filtro,
-            'title' => 'Ventas'
+            'ventas'    => $ventas,
+            'counts'    => $counts,
+            'nombreMes' => $nombreMes,
+            'title'     => 'Control de Pedidos'
         ];
+
         return view('back/sales/detalleVentas', $data);
     }
 

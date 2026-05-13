@@ -7,47 +7,51 @@
     </div>
     
     <nav class="sidebar-nav">
-        <!-- Dashboard Principal -->
+        <!-- 1. DASHBOARD & MÉTRICAS -->
+        <div class="sidebar-group-label">Métricas y Control</div>
         <a href="<?= base_url('/admin-dashboard') ?>" class="nav-item-admin <?= (current_url() == base_url('/admin-dashboard') || current_url() == base_url('/admin-stats')) ? 'active' : '' ?>">
             <i class="bi bi-speedometer2"></i>
             <span>Dashboard</span>
         </a>
 
-        <div class="px-4 mt-4 mb-2 small text-uppercase opacity-50 fw-bold" style="letter-spacing: 1px; font-size: 0.7rem;">Gestión de Catálogo</div>
-        
+        <!-- 2. OPERACIONES TALLER -->
+        <div class="sidebar-group-label">Operaciones Taller</div>
+        <a href="<?= base_url('/ventas-list') ?>" class="nav-item-admin <?= (current_url() == base_url('/ventas-list')) ? 'active' : '' ?>">
+            <i class="bi bi-tools"></i>
+            <span>Control de Ventas</span>
+        </a>
+        <a href="<?= base_url('/consultas') ?>" class="nav-item-admin <?= (current_url() == base_url('/consultas') || current_url() == base_url('/lista-consultas')) ? 'active' : '' ?>">
+            <i class="bi bi-chat-dots"></i>
+            <span>Inbox Consultas</span>
+        </a>
+
+        <!-- 3. INVENTARIO Y CATÁLOGO -->
+        <div class="sidebar-group-label">Catálogo de Obras</div>
         <a href="<?= base_url('/crud-productos') ?>" class="nav-item-admin <?= (current_url() == base_url('/crud-productos')) ? 'active' : '' ?>">
             <i class="bi bi-box-seam"></i>
-            <span>Productos</span>
+            <span>Ver Productos</span>
         </a>
-        
         <a href="<?= base_url('/alta-producto') ?>" class="nav-item-admin <?= (current_url() == base_url('/alta-producto')) ? 'active' : '' ?>">
             <i class="bi bi-plus-circle"></i>
-            <span>Nuevo Producto</span>
+            <span>Añadir Producto</span>
         </a>
 
-        <div class="px-4 mt-4 mb-2 small text-uppercase opacity-50 fw-bold" style="letter-spacing: 1px; font-size: 0.7rem;">Gestión de Usuarios</div>
-
+        <!-- 4. CONFIGURACIÓN -->
+        <div class="sidebar-group-label">Seguridad y Perfil</div>
         <a href="<?= base_url('/crud-usuarios') ?>" class="nav-item-admin <?= (current_url() == base_url('/crud-usuarios')) ? 'active' : '' ?>">
             <i class="bi bi-people"></i>
             <span>Usuarios</span>
         </a>
-
-        <div class="px-4 mt-4 mb-2 small text-uppercase opacity-50 fw-bold" style="letter-spacing: 1px; font-size: 0.7rem;">Ventas y Consultas</div>
-
-        <a href="<?= base_url('/ventas-list') ?>" class="nav-item-admin <?= (current_url() == base_url('/ventas-list')) ? 'active' : '' ?>">
-            <i class="bi bi-receipt-cutoff"></i>
-            <span>Control de Ventas</span>
+        <a href="<?= base_url('/perfil') ?>" class="nav-item-admin <?= (current_url() == base_url('/perfil')) ? 'active' : '' ?>">
+            <i class="bi bi-person-gear"></i>
+            <span>Mi Perfil</span>
         </a>
 
-        <a href="<?= base_url('/consultas') ?>" class="nav-item-admin <?= (current_url() == base_url('/consultas') || current_url() == base_url('/lista-consultas')) ? 'active' : '' ?>">
-            <i class="bi bi-chat-dots"></i>
-            <span>Consultas</span>
-        </a>
-
-
-        <div class="px-4 mt-auto pt-5">
-            <a href="<?= base_url('/') ?>" class="btn btn-outline-light btn-sm w-100 rounded-pill opacity-75">
-                <i class="bi bi-house-door me-2"></i> VER SITIO
+        <!-- Opción Salir a la Web -->
+        <div class="mt-5 px-4 mb-4">
+            <a href="<?= base_url('/') ?>" class="nav-item-admin-special">
+                <i class="bi bi-house-door"></i>
+                <span>Volver al Sitio</span>
             </a>
         </div>
     </nav>

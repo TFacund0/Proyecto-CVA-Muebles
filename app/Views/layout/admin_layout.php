@@ -36,7 +36,6 @@
                         <?= $this->renderSection('breadcrumbs') ?>
                     </ol>
                 </nav>
-                
                 <div class="admin-user-zone">
                     <div class="dropdown">
                         <a href="#" class="d-flex align-items-center gap-3 text-decoration-none dropdown-toggle hide-caret" data-bs-toggle="dropdown">

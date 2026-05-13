@@ -115,20 +115,20 @@
       <?php if ($perfil == 1): ?>
         <p class="sidebar-section-label">ADMINISTRACIÓN</p>
         <div class="list-group list-group-flush rounded-4 overflow-hidden border shadow-sm mb-4">
-          <a href="<?= base_url('/alta-producto') ?>" class="list-group-item list-group-item-action d-flex align-items-center">
-            <i class="bi bi-plus-circle me-3 text-cva-gold fs-5"></i> Añadir Producto
+          <a href="<?= base_url('/admin-dashboard') ?>" class="list-group-item list-group-item-action d-flex align-items-center">
+            <i class="bi bi-speedometer2 me-3 text-cva-gold fs-5"></i> Dashboard Principal
           </a>
           <a href="<?= base_url('/ventas-list') ?>" class="list-group-item list-group-item-action d-flex align-items-center">
-            <i class="bi bi-receipt-cutoff me-3 text-cva-gold fs-5"></i> Lista de Ventas
+            <i class="bi bi-tools me-3 text-cva-gold fs-5"></i> Control de Ventas
+          </a>
+          <a href="<?= base_url('/consultas') ?>" class="list-group-item list-group-item-action d-flex align-items-center">
+            <i class="bi bi-chat-dots me-3 text-cva-gold fs-5"></i> Inbox Consultas
+          </a>
+          <a href="<?= base_url('/crud-productos') ?>" class="list-group-item list-group-item-action d-flex align-items-center">
+            <i class="bi bi-box-seam me-3 text-cva-gold fs-5"></i> Gestión de Productos
           </a>
           <a href="<?= base_url('/crud-usuarios') ?>" class="list-group-item list-group-item-action d-flex align-items-center">
             <i class="bi bi-people me-3 text-cva-gold fs-5"></i> Gestión de Usuarios
-          </a>
-          <a href="<?= base_url('/crud-productos') ?>" class="list-group-item list-group-item-action d-flex align-items-center">
-            <i class="bi bi-box-seam me-3 text-cva-gold fs-5"></i> Catálogo de Productos
-          </a>
-          <a href="<?= base_url('/lista-consultas') ?>" class="list-group-item list-group-item-action d-flex align-items-center">
-            <i class="bi bi-chat-dots me-3 text-cva-gold fs-5"></i> Bandeja de Consultas
           </a>
         </div>
       <?php endif; ?>

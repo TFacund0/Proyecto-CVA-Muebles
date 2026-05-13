@@ -25,9 +25,48 @@ class ConsultaController extends BaseController {
         }
 
         $consultasModel = new Consultas_model();
-        $data['consultas'] = $consultasModel->findAll();
+        
+        // Obtenemos todas las consultas (activas por defecto para el inbox principal)
+        $consultas = $consultasModel->orderBy('fecha', 'DESC')->findAll();
 
-        $data['title'] = 'Consultas Recibidas';
+        $currentMonth = date('m');
+        $currentYear = date('Y');
+        $meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+        $nombreMes = $meses[(int)$currentMonth - 1];
+
+        $counts = [
+            'total'     => count($consultas),
+            'mensuales' => 0,
+            'activos'   => 0,
+            'presupuestos' => 0
+        ];
+
+        foreach ($consultas as &$c) {
+            $cDate = strtotime($c['fecha']);
+            
+            // Contabilizar consultas del mes actual
+            if (date('m', $cDate) == $currentMonth && date('Y', $cDate) == $currentYear) {
+                $counts['mensuales']++;
+            }
+
+            if ($c['activo'] == 'SI') $counts['activos']++;
+            
+            // Contabilizar si es solicitud de presupuesto
+            if (stripos($c['asunto'], 'presupuesto') !== false) {
+                $counts['presupuestos']++;
+            }
+
+            // Preparar cadena de búsqueda para JS
+            $c['search_data'] = strtolower(esc($c['nombre'] . ' ' . $c['apellido'] . ' ' . $c['email'] . ' ' . $c['asunto']));
+        }
+
+        $data = [
+            'consultas' => $consultas,
+            'counts'    => $counts,
+            'nombreMes' => $nombreMes,
+            'title'     => 'Gestión de Consultas'
+        ];
+
         return view('back/messages/lista_consultas', $data);
     }
 
@@ -68,41 +107,7 @@ class ConsultaController extends BaseController {
      * Lista las consultas con opciones de filtrado (solo para administradores)
      */
     public function listarConsultas() {
-        $perfil = session()->get('perfil_id');
-        
-        // Si el perfil no es administrador (id = 1), redirigir al login
-        if ($perfil != 1) {
-            return redirect()->to('/login');
-        }
-
-        $consultasModel = new Consultas_model();
-
-        $search = $this->request->getGet('search');
-        $filtroTipo = $this->request->getGet('filtro_tipo');
-        $asunto = $this->request->getGet('asunto');
-
-        // Iniciar filtro por las activas
-        $consultasModel->where('activo', 'SI');
-
-        // Filtro por nombre o apellido
-        if ($filtroTipo == 'nombre_apellido' && !empty($search)) {
-            $consultasModel->groupStart()
-                ->like('nombre', $search)
-                ->orLike('apellido', $search)
-                ->groupEnd();
-        }
-
-        // Filtro por asunto
-        if ($filtroTipo == 'asunto' && !empty($asunto)) {
-            $consultasModel->where('asunto', $asunto);
-        }
-
-        $data['consultas'] = $consultasModel
-            ->orderBy('fecha', 'DESC')
-            ->findAll();
-
-        $data['title'] = 'Consultas Recibidas';
-        return view('back/messages/lista_consultas', $data);
+        return $this->index();
     }
 
     /**
