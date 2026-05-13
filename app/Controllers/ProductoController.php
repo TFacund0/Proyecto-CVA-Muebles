@@ -22,7 +22,7 @@ class ProductoController extends BaseController {
      * Constructor - Inicializa helpers y sesión
      */
     public function __construct() {
-        helper(['url', 'form']);
+        helper(['url', 'form', 'text']);
         $session = session(); // Inicia la sesión
     }    
 
@@ -46,8 +46,8 @@ class ProductoController extends BaseController {
         $limit = $this->request->getVar('option') ?? 10;
 
         $builder = $productoModel->select('productos.*, categorias.descripcion as categoria')
-                                 ->join('categorias', 'categorias.id_categoria = productos.categoria_id')
-                                 ->where('productos.eliminado', $vista);
+                                 ->join('categorias', 'categorias.id_categoria = productos.categoria_id');
+                                 // Traemos todos para filtrar con JS sin recargar
 
         if (!empty($search)) {
             $builder->like('productos.nombre_prod', $search);
@@ -146,7 +146,8 @@ class ProductoController extends BaseController {
             'precio_vta' => $this->request->getVar('precio-vta'),
             'stock' => $this->request->getVar('stock'),
             'stock_min' => $this->request->getVar('stock-min'),
-            'descripcion' => $this->request->getVar('descripcion')
+            'descripcion' => $this->request->getVar('descripcion'),
+            'eliminado' => $this->request->getVar('eliminado') ?? 'NO'
         ];
 
         $productoModel = new Productos_model();

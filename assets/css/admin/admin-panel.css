@@ -1,153 +1,203 @@
 /* 
   =============================================
-  CVA MUEBLES - ADMIN DASHBOARD STYLES (ARTISAN)
+  CVA MUEBLES - ADMIN DASHBOARD (MASTER DESIGN)
   =============================================
 */
 
-.admin-wrapper {
-    background-color: var(--cva-parchment);
+:root {
+    --admin-sidebar-width: 280px;
+    --admin-bg: #f8f5f0;
+    --admin-card-shadow: 0 10px 30px rgba(0,0,0,0.04);
+}
+
+.admin-body {
+    background-color: var(--admin-bg);
     min-height: 100vh;
-    padding-top: 3rem;
-    padding-bottom: 5rem;
 }
 
-/* Card Styling */
-.admin-card {
-    border: 1px solid rgba(184, 134, 11, 0.1);
-    border-radius: 2rem;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
-    overflow: hidden;
-    background-color: white;
+/* 1. LAYOUT ESTRUCTURAL */
+.admin-main-container {
+    display: flex;
+    min-height: 100vh;
 }
 
-.admin-card-header {
-    background-image: linear-gradient(rgba(62, 39, 35, 0.9), rgba(62, 39, 35, 0.95)),
-        url('../../img/ui/textures/madera2.jpg');
-    background-size: cover;
-    background-position: center;
-    color: var(--cva-white);
-    padding: 2.5rem 3rem;
-    border-bottom: 4px solid var(--cva-gold);
-}
-
-.admin-card-header h1,
-.admin-card-header h2 {
-    font-family: var(--font-heading);
-    color: var(--cva-white);
-    margin-bottom: 0.5rem;
-    letter-spacing: 1px;
-}
-
-.admin-card-header .badge-admin {
-    background-color: var(--cva-gold) !important;
+/* SIDEBAR PREMIUM */
+.admin-sidebar {
+    width: var(--admin-sidebar-width);
+    background: #1a0f0d; /* Un marrón casi negro muy profundo */
     color: white;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    border-right: 1px solid rgba(229, 160, 13, 0.1);
+}
+
+.sidebar-header {
+    padding: 2.5rem 2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.sidebar-logo {
+    font-family: 'Lora', serif;
     font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--cva-gold);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-/* Forms & Filters */
-.admin-filter-bar {
-    background-color: #fdfaf7;
-    padding: 2rem;
+.sidebar-nav {
+    padding: 2rem 0;
+}
+
+.nav-item-admin {
+    padding: 0.8rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+}
+
+.nav-item-admin:hover,
+.nav-item-admin.active {
+    background: rgba(229, 160, 13, 0.1);
+    color: var(--cva-gold);
+    border-left-color: var(--cva-gold);
+}
+
+.nav-item-admin i {
+    font-size: 1.2rem;
+}
+
+/* CONTENIDO PRINCIPAL */
+.admin-content {
+    flex: 1;
+    margin-left: var(--admin-sidebar-width);
+    padding: 2rem 3rem;
+}
+
+/* 2. COMPONENTES DE INTERFAZ */
+.admin-card-v2 {
+    background: white;
     border-radius: 1.5rem;
-    border: 1px solid rgba(184, 134, 11, 0.1);
-    margin-bottom: 2.5rem;
+    border: 1px solid rgba(0,0,0,0.05);
+    box-shadow: var(--admin-card-shadow);
+    overflow: hidden;
 }
 
-.admin-input {
-    border-radius: 0.8rem;
-    border: 1px solid #e0d5c5;
-    padding: 0.8rem 1.2rem;
-    background-color: white;
-    transition: var(--transition-base);
+.admin-card-header-v2 {
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid #f0e6d6;
+    background: #fdfaf7;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.admin-input:focus {
+.admin-card-body-v2 {
+    padding: 2.5rem;
+}
+
+/* INPUTS FUNCIONALES */
+.admin-control {
+    border: 2px solid #eeebe6;
+    border-radius: 1rem;
+    padding: 0.9rem 1.2rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    background-color: #fff;
+}
+
+.admin-control:focus {
     border-color: var(--cva-gold);
-    box-shadow: 0 0 0 0.25rem rgba(184, 134, 11, 0.15);
+    box-shadow: 0 0 0 4px rgba(184, 134, 11, 0.1);
     outline: none;
 }
 
-/* Table Styling */
-.admin-table-container {
-    background-color: var(--cva-white);
-    border-radius: 1.5rem;
-    border: 1px solid #f0e6d6;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.02);
-}
-
-.admin-table thead {
-    background-color: #fcfaf7;
-    border-bottom: 2px solid #f0e6d6;
-}
-
-.admin-table th {
-    font-size: 0.8rem;
+.admin-label {
+    font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: var(--cva-brown);
-    padding: 1.5rem 1rem;
-    font-weight: 700;
-}
-
-.admin-table td {
-    padding: 1.5rem 1rem;
-    vertical-align: middle;
-    border-bottom: 1px solid #f9f5f0;
-}
-
-.admin-table tr:last-child td {
-    border-bottom: none;
-}
-
-.admin-table tr:hover {
-    background-color: #fffbf5;
-}
-
-/* Action Buttons */
-.btn-admin-gold {
-    background-color: var(--cva-gold);
-    color: var(--cva-white);
-    border: none;
-    border-radius: 50px;
-    padding: 0.7rem 1.5rem;
-    font-weight: 700;
-    text-transform: uppercase;
+    font-size: 0.75rem;
     letter-spacing: 1px;
-    transition: var(--transition-base);
-}
-
-.btn-admin-gold:hover {
-    background-color: var(--cva-brown);
-    color: var(--cva-white);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(184, 134, 11, 0.3);
-}
-
-/* Preview Box for Images */
-.img-preview-box {
-    border: 2px dashed #e0d5c5 !important;
-    background-color: #fdfaf7 !important;
-    transition: var(--transition-base);
-}
-
-.img-preview-box:hover {
-    border-color: var(--cva-gold) !important;
-}
-
-/* Form Sections */
-.form-section h5 {
-    font-family: var(--font-heading);
     color: var(--cva-brown);
-    position: relative;
+    margin-bottom: 0.6rem;
+    display: block;
 }
 
-.form-section h5::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 40px;
-    height: 3px;
-    background-color: var(--cva-gold);
+/* BOTONES DE ACCIÓN */
+.btn-admin-primary {
+    background: var(--cva-brown);
+    color: white;
+    border: none;
+    border-radius: 1rem;
+    padding: 1rem 2rem;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-admin-primary:hover {
+    background: #1a0f0d;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    color: white;
+}
+
+.btn-admin-outline {
+    background: transparent;
+    border: 2px solid #eeebe6;
+    color: var(--cva-brown);
+    border-radius: 1rem;
+    padding: 0.9rem 1.8rem;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.btn-admin-outline:hover {
+    background: #eeebe6;
+    color: var(--cva-brown);
+}
+
+/* PREVIEW BOX */
+.admin-img-preview {
+    background: #fdfaf7;
+    border: 2px dashed #e0d5c5;
+    border-radius: 1.5rem;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.admin-img-preview:hover {
+    border-color: var(--cva-gold);
+    background: #f9f4eb;
+}
+
+/* 3. RESPONSIVE */
+@media (max-width: 991.98px) {
+    .admin-sidebar {
+        transform: translateX(-100%);
+    }
+    .admin-content {
+        margin-left: 0;
+        padding: 1.5rem;
+    }
 }

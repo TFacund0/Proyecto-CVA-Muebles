@@ -74,6 +74,7 @@ class LoginController extends BaseController {
                     'usuario' => $data['usuario'],
                     
                     'perfil_id' => $data['perfil_id'],
+                    'imagen' => $data['imagen'],
                     'logged_in' => TRUE
                 ];
 

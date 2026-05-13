@@ -16,7 +16,8 @@
         url('../../img/ui/textures/textura-clara-hoja.jpg') !important;
     background-size: cover !important;
     background-position: center !important;
-    background-attachment: fixed !important; /* Efecto Parallax */
+    background-attachment: fixed !important;
+    /* Efecto Parallax */
     padding: 160px 0;
     color: white;
     text-align: center;
@@ -74,14 +75,16 @@
 
 .filtro-categoria:hover {
     color: var(--cva-gold) !important;
-    transform: translateY(-5px); /* Dinamismo: Levantarse */
+    transform: translateY(-5px);
+    /* Dinamismo: Levantarse */
 }
 
 .filtro-categoria.active {
     background-color: var(--cva-gold) !important;
     color: white !important;
     box-shadow: 0 10px 25px rgba(229, 160, 13, 0.4);
-    transform: none; /* Mantenerse en el suelo cuando está activo */
+    transform: none;
+    /* Mantenerse en el suelo cuando está activo */
 }
 
 /* 4. PRODUCT CARDS (VIVID STYLE) */

@@ -14,7 +14,7 @@
 /* 2. CABECERA (FONDO FIJO / PARALLAX) */
 .info-header {
     background-image: linear-gradient(rgba(38, 20, 18, 0.8), rgba(38, 20, 18, 0.6)),
-                      url('../../img/ui/textures/hojas.jpg') !important;
+                      url('../../img/ui/textures/info_header.png') !important;
     background-size: cover !important;
     background-position: center !important;
     background-attachment: fixed !important;

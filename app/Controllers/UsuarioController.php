@@ -111,24 +111,32 @@ class UsuarioController extends BaseController {
         if ($perfil != 1) return redirect()->to('/login');
 
         $usuariosModel = new Usuarios_model();
-        $search = $this->request->getGet('search');
+        
+        // Traemos todos para el filtrado en tiempo real
+        $usuarios = $usuariosModel->getUsuariosAll();
 
-        if (!empty($search)) {
-            $data['usuarios'] = $usuariosModel->like('nombre', $search)
-                                              ->orLike('apellido', $search)
-                                              ->orLike('email', $search)
-                                              ->orLike('usuario', $search)
-                                              ->findAll();
-        } else {
-            $data['usuarios'] = $usuariosModel->getUsuariosAll();
+        // KPIs
+        $counts = [
+            'total' => count($usuarios),
+            'activos' => 0,
+            'admins' => 0,
+            'suspendidos' => 0
+        ];
+
+        foreach ($usuarios as $u) {
+            if ($u['baja'] == 'NO') $counts['activos']++;
+            else $counts['suspendidos']++;
+            
+            if ($u['perfil_id'] == 1) $counts['admins']++;
         }
 
-        $data['select'] = $this->request->getVar('option') ?? 10;
-        $data['vista'] = $vista;
+        $data = [
+            'usuarios' => $usuarios,
+            'counts' => $counts,
+            'vista' => $vista,
+            'title' => 'Gestión de Usuarios'
+        ];
         
-
-        // Cargar la vista principal con la lista de usuarios
-        $data['title'] = 'Crud Usuarios';
         return view('back/users/crud_usuarios', $data);
     }
 
