@@ -56,9 +56,11 @@
     <!-- Bloque Derecho: Íconos (Ancho balanceado para centrado perfecto) -->
     <div class="d-flex align-items-center justify-content-end gap-2" style="flex: 1;">
         <?php if (!$isLogged): ?>
-          <a class="boton-icon-circle" href="<?= base_url('login') ?>">
-            <img src="<?= base_url('assets/img/ui/icons/person.svg') ?>" alt="Login" class="icono-svg">
-          </a>
+          <div class="auth-pill-artisan d-flex align-items-center">
+            <a href="<?= base_url('login') ?>" class="auth-pill-link">Entrar</a>
+            <div class="auth-pill-divider"></div>
+            <a href="<?= base_url('registro') ?>" class="auth-pill-link">Registrarse</a>
+          </div>
         <?php else: ?>
           <?php if (env('SHOPPING_CART_ENABLED')): ?>
           <a class="boton-icon-circle" href="<?= base_url('/muestro') ?>">

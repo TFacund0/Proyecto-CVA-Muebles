@@ -74,6 +74,14 @@ class ConsultaController extends BaseController {
      * Procesa el envío de una nueva consulta desde el formulario
      */
     public function cargarConsulta() {
+        $throttler = \Config\Services::throttler();
+
+        // Límite: 3 consultas cada 24 horas (86400 segundos)
+        // Usamos la IP del usuario como identificador
+        if ($throttler->check(md5($this->request->getIPAddress()), 3, 86400) === false) {
+            return redirect()->back()->withInput()->with('error', 'Has alcanzado el límite máximo de 3 consultas por día. Por favor, intenta mañana.');
+        }
+
         $consultas = new Consultas_model();
         
         $data = [

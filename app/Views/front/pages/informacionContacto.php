@@ -122,43 +122,73 @@
 
                 <!-- Formulario (RECUADRO REDONDEADO) -->
                 <div class="col-lg-7">
-                    <div class="artisan-form-container-box h-100 p-4 p-xl-5">
-                        <h3 class="font-lora h2 fw-bold mb-5 text-center text-cva-brown">Escribinos tu Consulta</h3>
-                        <form action="<?= base_url('/enviar-consulta') ?>" method="post" class="row g-4">
+                    <div class="artisan-form-container-box h-100 p-4 p-xl-5 d-flex flex-column">
+                        <div class="text-center mb-4">
+                            <h3 class="font-lora h2 fw-bold text-cva-brown mb-2">Escribinos tu Consulta</h3>
+                            <p class="text-muted small">Contanos qué tenés en mente y te responderemos a la brevedad con una propuesta personalizada.</p>
+                        </div>
+
+                        <!-- Alertas de estado -->
+                        <?php if (session()->getFlashdata('success')): ?>
+                            <div class="alert alert-success rounded-4 border-0 shadow-sm mb-4">
+                                <i class="bi bi-check-circle-fill me-2"></i> <?= session()->getFlashdata('success') ?>
+                            </div>
+                        <?php endif; ?>
+                        <?php if (session()->getFlashdata('error')): ?>
+                            <div class="alert alert-danger rounded-4 border-0 shadow-sm mb-4">
+                                <i class="bi bi-exclamation-triangle-fill me-2"></i> <?= session()->getFlashdata('error') ?>
+                            </div>
+                        <?php endif; ?>
+
+                        <form action="<?= base_url('/enviar-consulta') ?>" method="post" class="row g-4 mt-auto">
                             <?= csrf_field() ?>
+                            
+                            <!-- Campo Honeypot (Trampa para bots) -->
+                            <div style="display:none">
+                                <label>Si eres humano, deja esto vacío</label>
+                                <input type="text" name="honeypot" value="">
+                            </div>
+
                             <div class="col-md-6">
                                 <div class="form-floating-custom">
-                                    <input type="text" class="form-control" name="nombre" placeholder="Nombre" required>
+                                    <input type="text" class="form-control" name="nombre" placeholder="Nombre" value="<?= old('nombre') ?>" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating-custom">
-                                    <input type="text" class="form-control" name="apellido" placeholder="Apellido" required>
+                                    <input type="text" class="form-control" name="apellido" placeholder="Apellido" value="<?= old('apellido') ?>" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating-custom">
-                                    <input type="email" class="form-control" name="email" placeholder="Email" required>
+                                    <input type="email" class="form-control" name="email" placeholder="Email" value="<?= old('email') ?>" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating-custom">
-                                    <input type="tel" class="form-control" name="telefono" placeholder="Teléfono" required>
+                                    <input type="tel" class="form-control" name="telefono" placeholder="Teléfono" value="<?= old('telefono') ?>" required>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <select class="form-select form-control" name="asunto" required>
                                     <option value="" disabled selected>Seleccioná un motivo</option>
-                                    <option value="Presupuesto">Presupuesto para Mueble</option>
-                                    <option value="Pedido">Consulta sobre mi Pedido</option>
-                                    <option value="Garantia">Garantía y Soporte</option>
-                                    <option value="Otro">Otros motivos</option>
+                                    <option value="Presupuesto" <?= old('asunto') == 'Presupuesto' ? 'selected' : '' ?>>Presupuesto para Mueble</option>
+                                    <option value="Pedido" <?= old('asunto') == 'Pedido' ? 'selected' : '' ?>>Consulta sobre mi Pedido</option>
+                                    <option value="Garantia" <?= old('asunto') == 'Garantia' ? 'selected' : '' ?>>Garantía y Soporte</option>
+                                    <option value="Otro" <?= old('asunto') == 'Otro' ? 'selected' : '' ?>>Otros motivos</option>
                                 </select>
                             </div>
                             <div class="col-12">
-                                <textarea class="form-control" name="descripcion" rows="6" placeholder="¿Cómo podemos ayudarte hoy?" required></textarea>
+                                <textarea class="form-control" name="descripcion" rows="6" placeholder="¿Cómo podemos ayudarte hoy?" required><?= old('descripcion') ?></textarea>
                             </div>
-                            <div class="col-12 mt-5">
+
+                            <div class="col-12 text-center">
+                                <p class="x-small text-muted mb-0">
+                                    <i class="bi bi-shield-check text-gold"></i> Formulario protegido contra SPAM. Límite de 3 consultas diarias.
+                                </p>
+                            </div>
+
+                            <div class="col-12 mt-3">
                                 <button type="submit" class="btn btn-vivid-premium w-100 py-3 rounded-pill">
                                     <span>ENVIAR CONSULTA</span>
                                     <i class="bi bi-send-fill ms-2"></i>
@@ -172,4 +202,79 @@
     </section>
 </div>
 </div>
+    <!-- BLOQUE 3: PREGUNTAS FRECUENTES (ARENA SUAVE) -->
+    <section class="section-faq py-5" style="background-color: #fdfaf7;">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <span class="text-vivid fw-bold text-uppercase small" style="letter-spacing: 2px;">Resolviendo Dudas</span>
+                <h2 class="display-4 fw-bold font-lora text-cva-brown mt-2">Preguntas Frecuentes</h2>
+                <div class="divider-artisan mx-auto"></div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="accordion artisan-accordion" id="faqAccordion">
+                        
+                        <!-- Pregunta 1 -->
+                        <div class="accordion-item mb-3 border-0 rounded-4 shadow-sm overflow-hidden">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button fw-bold text-cva-brown py-4 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" style="background: white;">
+                                    ¿Cuánto tiempo tarda la fabricación de un mueble?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-muted pb-4 bg-white">
+                                    Como realizamos trabajos artesanales, el tiempo de entrega varía entre **15 y 30 días hábiles** dependiendo de la complejidad de la pieza y la demanda del taller. Cada etapa (corte, ensamble, lijado y acabado) requiere su tiempo para garantizar la calidad que nos caracteriza.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pregunta 2 -->
+                        <div class="accordion-item mb-3 border-0 rounded-4 shadow-sm overflow-hidden">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed fw-bold text-cva-brown py-4 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" style="background: white;">
+                                    ¿Realizan envíos fuera de Mantilla?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-muted pb-4 bg-white">
+                                    Sí, realizamos envíos a toda la provincia de **Corrientes** y provincias vecinas. El costo se coordina según la zona y el volumen del mueble. Trabajamos con transportes de confianza para asegurar que tu obra llegue en perfectas condiciones.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pregunta 3 -->
+                        <div class="accordion-item mb-3 border-0 rounded-4 shadow-sm overflow-hidden">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed fw-bold text-cva-brown py-4 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" style="background: white;">
+                                    ¿Puedo pedir un mueble con medidas personalizadas?
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-muted pb-4 bg-white">
+                                    ¡Por supuesto! En CVA Muebles nos especializamos en **muebles a medida**. Si viste un modelo en nuestro catálogo pero necesitas otras dimensiones o un color de madera específico, contáctanos por WhatsApp para que podamos armar un presupuesto personalizado.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pregunta 4 -->
+                        <div class="accordion-item mb-3 border-0 rounded-4 shadow-sm overflow-hidden">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed fw-bold text-cva-brown py-4 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" style="background: white;">
+                                    ¿Qué tipos de madera utilizan?
+                                </button>
+                            </h2>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-muted pb-4 bg-white">
+                                    Trabajamos principalmente con maderas nobles de la región, como **Algarrobo, Pino seleccionado y Eucalipto**. Todas nuestras maderas pasan por un proceso de secado natural para evitar futuras deformaciones, asegurando muebles para toda la vida.
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 <?= $this->endSection() ?>

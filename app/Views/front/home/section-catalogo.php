@@ -62,7 +62,26 @@
         transition: all 0.3s; border: none; text-decoration: none;
     }
     .btn-detail-artisan:hover { background: var(--cva-gold); transform: rotate(90deg); color: white; }
+
+    /* --- SWIPER CAROUSEL CUSTOM --- */
+    .swiper-destacados { padding: 0 0 4rem !important; }
+    .swiper-button-next, .swiper-button-prev {
+        color: var(--cva-brown) !important;
+        background: white;
+        width: 50px !important;
+        height: 50px !important;
+        border-radius: 50%;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        border: 1px solid #f0e6d6;
+        transition: all 0.3s ease;
+    }
+    .swiper-button-next:after, .swiper-button-prev:after { font-size: 1.2rem !important; font-weight: 800; }
+    .swiper-button-next:hover, .swiper-button-prev:hover { background: var(--cva-gold); color: white !important; border-color: var(--cva-gold); }
+    .swiper-pagination-bullet-active { background: var(--cva-gold) !important; }
 </style>
+
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
 <!-- SECCIÓN ESPECIALIDADES -->
 <section class="section-categorias">
@@ -189,7 +208,7 @@
 <!-- SECCIÓN PRODUCTOS (REDISEÑADA PARA SER MÁS COMPACTA) -->
 <section class="section-destacados-dinamica"> 
     <div class="container">
-        <div class="row mb-5 align-items-center">
+        <div class="row mb-2 align-items-center">
             <div class="col-lg-6">
                 <span class="text-vivid fw-bold text-uppercase small" style="letter-spacing: 3px;">Colección de Autor</span>
                 <h2 class="display-5 fw-bold font-lora mt-2 text-cva-brown">Piezas Destacadas</h2>
@@ -201,33 +220,42 @@
             </div>
         </div>
 
-        <div class="row g-4">                
-            <?php 
-                $destacados = [
-                    ['id' => 1, 'img' => 'Muebles 56.jpeg', 'tit' => 'Mesa Comedor Roble', 'desc' => 'Roble macizo tallado a mano.', 'price' => '$1.2M'],
-                    ['id' => 2, 'img' => 'Muebles 10.jpeg', 'tit' => 'Alacena Rústica', 'desc' => 'Pino seleccionado con forja.', 'price' => '$650k'],
-                    ['id' => 3, 'img' => 'Muebles 46.jpeg', 'tit' => 'Set de 4 Sillas', 'desc' => 'Diseño ergonómico recuperado.', 'price' => '$1.2M'],
-                    ['id' => 4, 'img' => 'Muebles 68.jpeg', 'tit' => 'Mesa Ratona', 'desc' => 'Acabado rústico premium.', 'price' => '$450k'],
-                ];
-                foreach($destacados as $p):
-            ?>
-            <div class="col-lg-3 col-md-6">
-                <div class="product-card-vivid">
-                    <div class="product-img-container">
-                        <img src="<?= base_url('assets/img/content/products/'.$p['img']) ?>" alt="<?= $p['tit'] ?>">
-                        <div class="price-badge-artisan"><?= $p['price'] ?></div>
-                    </div>
-                    <div class="px-2">
-                        <h6 class="fw-bold text-cva-brown mb-1 font-lora"><?= $p['tit'] ?></h6>
-                        <p class="x-small text-muted mb-3"><?= $p['desc'] ?></p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="x-small fw-bold text-vivid">Única Pieza</span>
-                            <a href="<?= base_url('productos') ?>" class="btn-detail-artisan" style="width: 35px; height: 35px;"><i class="bi bi-eye"></i></a>
+        <div class="swiper swiper-destacados">
+            <div class="swiper-wrapper">                
+                <?php 
+                    $destacados = [
+                        ['id' => 1, 'img' => 'Muebles 56.jpeg', 'tit' => 'Mesa Comedor Roble', 'desc' => 'Roble macizo tallado a mano.', 'price' => '$1.2M'],
+                        ['id' => 2, 'img' => 'Muebles 10.jpeg', 'tit' => 'Alacena Rústica', 'desc' => 'Pino seleccionado con forja.', 'price' => '$650k'],
+                        ['id' => 3, 'img' => 'Muebles 46.jpeg', 'tit' => 'Set de 4 Sillas', 'desc' => 'Diseño ergonómico recuperado.', 'price' => '$1.2M'],
+                        ['id' => 4, 'img' => 'Muebles 68.jpeg', 'tit' => 'Mesa Ratona', 'desc' => 'Acabado rústico premium.', 'price' => '$450k'],
+                        ['id' => 5, 'img' => 'Muebles 22.jpeg', 'tit' => 'Mueble de TV', 'desc' => 'Líneas modernas y madera noble.', 'price' => '$850k'],
+                        ['id' => 6, 'img' => 'Muebles 69.jpeg', 'tit' => 'Respaldo de Cama', 'desc' => 'Textura natural y robustez.', 'price' => '$550k'],
+                    ];
+                    foreach($destacados as $p):
+                ?>
+                <div class="swiper-slide p-3">
+                    <div class="product-card-vivid h-100">
+                        <div class="product-img-container">
+                            <img src="<?= base_url('assets/img/content/products/'.$p['img']) ?>" alt="<?= $p['tit'] ?>">
+                            <div class="price-badge-artisan"><?= $p['price'] ?></div>
+                        </div>
+                        <div class="px-2">
+                            <h6 class="fw-bold text-cva-brown mb-1 font-lora"><?= $p['tit'] ?></h6>
+                            <p class="x-small text-muted mb-3"><?= $p['desc'] ?></p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="x-small fw-bold text-vivid">Pieza de Autor</span>
+                                <a href="<?= base_url('productos') ?>" class="btn-detail-artisan" style="width: 35px; height: 35px;"><i class="bi bi-eye"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <?php endforeach; ?>
             </div>
-            <?php endforeach; ?>
+            
+            <!-- Controles -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination mt-4"></div>
         </div>
     </div>
 </section>
@@ -273,3 +301,43 @@
         </div>
     </div>
 </section>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<!-- Inicialización de Swiper -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const swiper = new Swiper('.swiper-destacados', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
+            autoplay: {
+                delay: 3500,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 1.2,
+                    spaceBetween: 20,
+                },
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 30,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                },
+            }
+        });
+    });
+</script>

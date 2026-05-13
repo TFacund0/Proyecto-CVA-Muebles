@@ -42,8 +42,13 @@
                         <span><?= number_format($producto['precio_vta'], 0, ',', '.') ?></span>
                     </div>
                     <div class="stock-info">
-                        <i class="bi bi-check-circle-fill"></i>
-                        <span><?= $producto['stock'] ?> unidades disponibles para entrega inmediata</span>
+                        <?php if ($producto['stock'] > 0): ?>
+                            <i class="bi bi-check-circle-fill text-success"></i>
+                            <span>Disponible para entrega inmediata</span>
+                        <?php else: ?>
+                            <i class="bi bi-clock-history text-warning"></i>
+                            <span>Sin stock por el momento - ¡Consultanos!</span>
+                        <?php endif; ?>
                     </div>
                 </div>
 
@@ -67,16 +72,23 @@
                 <div class="actions-area mt-auto">
                     <?php if (env('SHOPPING_CART_ENABLED')): ?>
                         <?php if (session()->get('logged_in')): ?>
-                            <form action="<?= base_url('carrito/add') ?>" method="post" class="mb-3">
-                                <?= csrf_field() ?>
-                                <input type="hidden" name="id_producto" value="<?= esc($producto['id_producto']) ?>">
-                                <input type="hidden" name="precio_vta" value="<?= esc($producto['precio_vta']) ?>">
-                                <input type="hidden" name="nombre_prod" value="<?= esc($producto['nombre_prod']) ?>">
-                                <input type="hidden" name="imagen" value="<?= esc($producto['imagen']) ?>">
-                                <button type="submit" class="btn btn-artisan-primary w-100 py-3 rounded-3 fs-5">
-                                    <i class="bi bi-cart-plus me-2"></i> AGREGAR AL CARRITO
-                                </button>
-                            </form>
+                            <?php if ($producto['stock'] > 0): ?>
+                                <form action="<?= base_url('carrito/add') ?>" method="post" class="mb-3">
+                                    <?= csrf_field() ?>
+                                    <input type="hidden" name="id_producto" value="<?= esc($producto['id_producto']) ?>">
+                                    <input type="hidden" name="precio_vta" value="<?= esc($producto['precio_vta']) ?>">
+                                    <input type="hidden" name="nombre_prod" value="<?= esc($producto['nombre_prod']) ?>">
+                                    <input type="hidden" name="imagen" value="<?= esc($producto['imagen']) ?>">
+                                    <button type="submit" class="btn btn-artisan-primary w-100 py-3 rounded-3 fs-5">
+                                        <i class="bi bi-cart-plus me-2"></i> AGREGAR AL CARRITO
+                                    </button>
+                                </form>
+                            <?php else: ?>
+                                <a href="https://wa.me/5493794098511?text=Hola!%20Me%20interesa%20el%20mueble%20<?= urlencode($producto['nombre_prod']) ?>%20pero%20no%20hay%20stock.%20¿Me%20avisarías%20cuando%20vuelvan%20a%20fabricar?" 
+                                   target="_blank" class="btn btn-outline-brown w-100 py-3 mb-3 rounded-3 fs-5">
+                                    <i class="bi bi-whatsapp me-2"></i> CONSULTAR DISPONIBILIDAD
+                                </a>
+                            <?php endif; ?>
                         <?php else: ?>
                             <a href="<?= base_url('login') ?>" class="btn btn-outline-secondary w-100 py-3 mb-3 rounded-3">
                                 <i class="bi bi-person-lock me-2"></i> INICIÁ SESIÓN PARA COMPRAR

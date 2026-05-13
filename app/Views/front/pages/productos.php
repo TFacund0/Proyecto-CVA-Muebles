@@ -44,7 +44,11 @@
                             
                             <div class="d-flex justify-content-between align-items-center mb-4 mt-auto">
                                 <span class="precio-tag">$<?= number_format($row['precio_vta'], 0, ',', '.') ?></span>
-                                <span class="badge-stock">Stock: <?= esc($row['stock']) ?></span>
+                                <?php if ($row['stock'] > 0): ?>
+                                    <span class="badge-stock available"><i class="bi bi-check-circle-fill me-1"></i> Disponible</span>
+                                <?php else: ?>
+                                    <span class="badge-stock out-of-stock"><i class="bi bi-clock-history me-1"></i> Sin Stock</span>
+                                <?php endif; ?>
                             </div>
                             
                             <div class="action-buttons">
@@ -57,14 +61,21 @@
                         <div class="card-footer border-0 bg-transparent pb-4 px-4">
                             <?php if (env('SHOPPING_CART_ENABLED')): ?>
                                 <?php if (session()->get('logged_in')): ?>
-                                    <form action="<?= base_url('carrito/add') ?>" method="post">
-                                        <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>">
-                                        <input type="hidden" name="id_producto" value="<?= esc($row['id_producto']) ?>">
-                                        <input type="hidden" name="precio_vta" value="<?= esc($row['precio_vta']) ?>">
-                                        <input type="hidden" name="nombre_prod" value="<?= esc($row['nombre_prod']) ?>">
-                                        <input type="hidden" name="imagen" value="<?= esc($row['imagen']) ?>">
-                                        <input type="submit" class="btn btn-brown-solid w-100" value="Agregar al Carrito" name="action">
-                                    </form>
+                                    <?php if ($row['stock'] > 0): ?>
+                                        <form action="<?= base_url('carrito/add') ?>" method="post">
+                                            <?= csrf_field(); ?>
+                                            <input type="hidden" name="id_producto" value="<?= esc($row['id_producto']) ?>">
+                                            <input type="hidden" name="precio_vta" value="<?= esc($row['precio_vta']) ?>">
+                                            <input type="hidden" name="nombre_prod" value="<?= esc($row['nombre_prod']) ?>">
+                                            <input type="hidden" name="imagen" value="<?= esc($row['imagen']) ?>">
+                                            <input type="submit" class="btn btn-brown-solid w-100" value="Agregar al Carrito" name="action">
+                                        </form>
+                                    <?php else: ?>
+                                        <a href="https://wa.me/5493794098511?text=Hola!%20Me%20interesa%20el%20mueble%20<?= urlencode($row['nombre_prod']) ?>%20pero%20veo%20que%20no%20hay%20stock.%20¿Cuándo%20volverán%20a%20tener?" 
+                                           target="_blank" class="btn btn-outline-brown w-100">
+                                            <i class="bi bi-whatsapp me-2"></i> Consultar Disponibilidad
+                                        </a>
+                                    <?php endif; ?>
                                 <?php else: ?>
                                     <a href="<?= base_url('login') ?>" class="btn btn-outline-secondary w-100">Iniciá sesión para comprar</a>
                                 <?php endif; ?>

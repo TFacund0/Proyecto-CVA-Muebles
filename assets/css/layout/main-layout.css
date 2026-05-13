@@ -84,6 +84,50 @@ nav.navbar.artisan-main-nav {
     width: 20px;
 }
 
+/* --- AUTH PILL (GUEST LOGIN) --- */
+.auth-pill-artisan {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 50px !important;
+    padding: 6px 20px !important;
+    display: flex !important;
+    align-items: center !important;
+    transition: all 0.4s ease !important;
+    backdrop-filter: blur(8px) !important;
+    margin-left: 10px;
+}
+
+.auth-pill-artisan:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+    border-color: var(--cva-gold) !important;
+    box-shadow: 0 0 20px rgba(229, 160, 13, 0.4) !important;
+    transform: translateY(-1px);
+}
+
+.auth-pill-link {
+    color: #FFFFFF !important;
+    text-decoration: none !important;
+    font-size: 0.75rem !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1.2px !important;
+    transition: all 0.3s !important;
+    white-space: nowrap !important;
+}
+
+.auth-pill-link:hover {
+    color: var(--cva-gold) !important;
+    text-shadow: 0 0 8px rgba(229, 160, 13, 0.5);
+}
+
+.auth-pill-divider {
+    width: 2px !important;
+    height: 16px !important;
+    background: rgba(255, 255, 255, 0.2) !important;
+    margin: 0 15px !important;
+    border-radius: 2px;
+}
+
 /* --- OFFCANVAS (MENÚ LATERAL) --- */
 .menu-lateral .offcanvas-header {
     background-color: var(--sidebar-header) !important;
