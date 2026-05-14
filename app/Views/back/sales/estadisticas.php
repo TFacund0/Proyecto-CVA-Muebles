@@ -6,20 +6,20 @@
 
 <?= $this->section('content') ?>
 <!-- Encabezado Dinámico Refinado -->
-<div class="row mb-5 align-items-center">
-    <div class="col-md-8">
-        <div class="d-flex align-items-center gap-4 mb-3">
+<div class="row mb-5 align-items-center g-4">
+    <div class="col-lg-8">
+        <div class="d-flex align-items-center gap-3 gap-md-4 mb-1 mb-md-3">
             <div class="dashboard-icon-main bg-brown text-gold shadow">
                 <i class="bi bi-activity"></i>
             </div>
             <div>
-                <h1 class="display-5 fw-bold text-cva-brown mb-1">Estado de Producción</h1>
-                <p class="text-muted mb-0"><i class="bi bi-check2-circle text-success me-1"></i> Monitoreo en tiempo real de pedidos y consultas.</p>
+                <h1 class="display-6 display-md-5 fw-bold text-cva-brown mb-1">Producción</h1>
+                <p class="text-muted mb-0 small"><i class="bi bi-check2-circle text-success me-1"></i> Monitoreo en tiempo real.</p>
             </div>
         </div>
     </div>
-    <div class="col-md-4 text-md-end">
-        <div class="stats-timer shadow-sm border">
+    <div class="col-lg-4 text-lg-end">
+        <div class="stats-timer shadow-sm border w-sm-100 justify-content-center">
             <span class="pulse-dot"></span>
             ACTUALIZACIÓN VIVA: <?= date('H:i') ?>
         </div>
@@ -37,7 +37,7 @@
     ];
     foreach($kpis as $kpi): 
     ?>
-    <div class="col-md-3">
+    <div class="col-6 col-md-3">
         <a href="<?= base_url($kpi['link']) ?>" class="text-decoration-none h-100 d-block">
             <div class="kpi-card-premium border-<?= $kpi['color'] ?> h-100">
                 <div class="kpi-body p-4 text-center">
@@ -68,39 +68,39 @@
                 <span class="badge bg-light text-muted border rounded-pill px-3">Accesos Rápidos</span>
             </div>
             <div class="row g-3 h-100 pb-4">
-                <div class="col-md-6 d-flex">
+                <div class="col-12 col-md-6 d-flex">
                     <a href="<?= base_url('ventas/nuevo-personalizado') ?>" class="action-btn-v2 flex-grow-1">
                         <div class="action-icon"><i class="bi bi-hammer"></i></div>
                         <div class="action-text">
                             <span class="d-block fw-bold">Pedido Manual</span>
-                            <small class="text-muted">Venta local / WhatsApp</small>
+                            <small class="text-muted">WhatsApp / Local</small>
                         </div>
                     </a>
                 </div>
-                <div class="col-md-6 d-flex">
+                <div class="col-12 col-md-6 d-flex">
                     <a href="<?= base_url('/alta-producto') ?>" class="action-btn-v2 flex-grow-1">
                         <div class="action-icon"><i class="bi bi-cloud-arrow-up"></i></div>
                         <div class="action-text">
                             <span class="d-block fw-bold">Subir Producto</span>
-                            <small class="text-muted">Actualizar catálogo</small>
+                            <small class="text-muted">Catálogo</small>
                         </div>
                     </a>
                 </div>
-                <div class="col-md-6 d-flex">
+                <div class="col-12 col-md-6 d-flex">
                     <a href="<?= base_url('/ventas-list') ?>" class="action-btn-v2 flex-grow-1">
                         <div class="action-icon"><i class="bi bi-card-checklist"></i></div>
                         <div class="action-text">
                             <span class="d-block fw-bold">Ver Ventas</span>
-                            <small class="text-muted">Control de facturas</small>
+                            <small class="text-muted">Facturación</small>
                         </div>
                     </a>
                 </div>
-                <div class="col-md-6 d-flex">
+                <div class="col-12 col-md-6 d-flex">
                     <a href="<?= base_url('/consultas') ?>" class="action-btn-v2 flex-grow-1">
                         <div class="action-icon"><i class="bi bi-envelope-paper"></i></div>
                         <div class="action-text">
                             <span class="d-block fw-bold">Inbox Consultas</span>
-                            <small class="text-muted">Gestión de clientes</small>
+                            <small class="text-muted">Clientes</small>
                         </div>
                     </a>
                 </div>
@@ -204,5 +204,14 @@
     .bg-info-soft { background: #e7f5ff; }
     .bg-success-soft { background: #ebfbee; }
     .bg-gold-soft { background: #fff4e6; }
+
+    @media (max-width: 767.98px) {
+        .kpi-value { font-size: 2rem; }
+        .kpi-icon-container { width: 50px; height: 50px; font-size: 1.4rem; }
+        .kpi-body { padding: 1.5rem 1rem !important; }
+        .action-btn-v2 { padding: 1rem; }
+        .action-icon { width: 35px; height: 35px; font-size: 1rem; }
+        .action-text span { font-size: 0.9rem; }
+    }
 </style>
 <?= $this->endSection() ?>

@@ -12,8 +12,8 @@
 
 /* Header Banner - Similar to Catalog */
 .header-detalle {
-    background-image: linear-gradient(rgba(248, 245, 240, 0.8), rgba(248, 245, 240, 0.8)), 
-                      url('../../img/ui/textures/textura-clara-hoja.jpg');
+    background-image: linear-gradient(rgba(248, 245, 240, 0.8), rgba(248, 245, 240, 0.8)),
+        url('../../img/ui/textures/textura-clara-hoja.jpg');
     background-size: cover;
     background-position: center;
     border-bottom: 2px solid var(--cva-gold);
@@ -24,7 +24,7 @@
     background-color: white;
     border: none !important;
     border-radius: 2rem !important;
-    box-shadow: 0 30px 80px rgba(0,0,0,0.06);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.06);
     margin-bottom: 3rem;
 }
 
@@ -35,12 +35,13 @@
     align-items: center;
     justify-content: center;
     padding: 2rem;
-    border-right: 1px solid rgba(0,0,0,0.05);
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .image-container {
     width: 100%;
-    height: 450px; /* Reducido */
+    height: 450px;
+    /* Reducido */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -50,13 +51,14 @@
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
-    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.08));
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.08));
     transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 /* Info Column */
 .info-column {
-    padding: 2.5rem !important; /* Más compacto */
+    padding: 2.5rem !important;
+    /* Más compacto */
     background: white;
 }
 
@@ -73,7 +75,8 @@
 .product-title {
     font-family: 'Lora', serif;
     color: var(--cva-brown);
-    font-size: 2.5rem; /* Más pequeño */
+    font-size: 2.5rem;
+    /* Más pequeño */
     font-weight: 700;
     line-height: 1.2;
     margin-bottom: 1rem;
@@ -105,7 +108,8 @@
 }
 
 .price-value {
-    font-size: 2.8rem; /* Reducido */
+    font-size: 2.8rem;
+    /* Reducido */
     font-weight: 800;
     color: var(--cva-vivid);
     font-family: 'Inter', sans-serif;
@@ -142,7 +146,8 @@
 }
 
 .feature-icon {
-    width: 45px; /* Más compacto */
+    width: 45px;
+    /* Más compacto */
     height: 45px;
     background-color: white;
     color: var(--cva-gold);
@@ -151,7 +156,7 @@
     align-items: center;
     justify-content: center;
     font-size: 1.2rem;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.04);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.04);
     flex-shrink: 0;
 }
 
@@ -174,7 +179,8 @@
 .btn-artisan-primary {
     background-color: var(--cva-brown) !important;
     color: white !important;
-    padding: 0.9rem !important; /* Más bajo */
+    padding: 0.9rem !important;
+    /* Más bajo */
     border-radius: 1rem !important;
     font-weight: 800 !important;
     letter-spacing: 0.5px;
@@ -287,8 +293,15 @@
 
 /* Animations */
 @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .animate-fade-in-up {
@@ -300,9 +313,11 @@
     .image-container {
         height: 400px;
     }
+
     .info-column {
         padding: 2rem;
     }
+
     .product-title {
         font-size: 2.2rem;
     }

@@ -7,18 +7,19 @@
 /* 1. FONDO GENERAL */
 #quienes-somos-wrapper {
     background-color: transparent;
-    padding-bottom: 0; /* Tocar el footer */
-    margin-top: -30px; /* Eliminar separación del navbar si existe */
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+    margin-top: -30px;
 }
 
 /* 2. CABECERA (FONDO FIJO / PARALLAX) */
 .info-header {
     background-image: linear-gradient(rgba(38, 20, 18, 0.8), rgba(38, 20, 18, 0.6)),
-                      url('../../img/ui/textures/info_header.png') !important;
+        url('../../img/ui/textures/info_header.png') !important;
     background-size: cover !important;
     background-position: center !important;
     background-attachment: fixed !important;
-    padding: 220px 0 180px; /* Ajuste para que empiece desde arriba */
+    padding: 220px 0 180px;
     color: white;
     text-align: center;
 }
@@ -49,20 +50,12 @@
     border-radius: 2rem;
     height: 100%;
     transition: all 0.4s ease;
-    border: 1px solid rgba(0,0,0,0.03);
+    border: 1px solid rgba(0, 0, 0, 0.03);
 }
 
 .value-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-}
-
-/* 1. FONDO GENERAL */
-#quienes-somos-wrapper {
-    background-color: transparent;
-    padding-bottom: 0 !important;
-    margin-bottom: 0 !important;
-    margin-top: -30px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
 }
 
 .section-equipo-full {
@@ -72,19 +65,19 @@
 
 /* 5. TEAM CARDS (RECUADROS SÓLIDOS) */
 .team-card-premium {
-    background: #ffffff !important; /* Blanco sólido forzado */
-    border: 2px solid rgba(184, 134, 11, 0.1) !important; /* Borde sutil oro */
+    background: #ffffff !important;
+    border: 2px solid rgba(184, 134, 11, 0.1) !important;
     border-radius: 2.5rem;
     overflow: hidden;
     height: 100%;
     transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.2) !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2) !important;
     position: relative;
 }
 
 .team-card-premium:hover {
     transform: translateY(-20px) scale(1.02);
-    box-shadow: 0 40px 80px rgba(0,0,0,0.3);
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.3);
     border-color: var(--cva-gold);
 }
 
@@ -101,7 +94,6 @@
     transition: all 0.8s ease;
 }
 
-/* Overlay Dinámico */
 .team-overlay {
     position: absolute;
     top: 0;
@@ -165,7 +157,6 @@
     font-size: 1.4rem;
 }
 
-/* Bio Reveal */
 .team-bio-short {
     max-height: 0;
     overflow: hidden;
@@ -179,16 +170,35 @@
     margin-top: 1rem;
 }
 
-/* 6. RESPONSIVE */
+/* 6. RESPONSIVE (DIMENSIONES ESTABLECIDAS) */
 @media (max-width: 991.98px) {
-    .info-header h1 {
-        font-size: 3.5rem;
-    }
-    .info-header {
-        background-attachment: scroll !important;
-        padding: 120px 0 80px;
-    }
-    #quienes-somos-wrapper {
-        margin-top: 0;
-    }
+    .info-header { padding: 100px 20px 60px; background-attachment: scroll !important; }
+    .info-header h1 { font-size: 2.2rem; }
+    .display-4 { font-size: 1.8rem !important; }
+    .display-6 { font-size: 1.4rem !important; }
+    .lead { font-size: 0.95rem !important; }
+    
+    #quienes-somos-wrapper { margin-top: 0; }
+    
+    .section-historia-full .p-5 { padding: 3rem 1.5rem !important; }
+    .img-historia-full { min-height: 350px !important; }
+    
+    .artisan-quote-premium { padding: 1.5rem; font-size: 1.1rem; margin-top: 2rem; border-radius: 0 1.5rem 1.5rem 0; }
+    
+    .section-filosofia-full, .section-equipo-full { padding: 40px 15px !important; }
+    
+    .value-card { padding: 1.5rem; border-radius: 1.5rem; }
+    .value-card h6 { font-size: 1rem; }
+    
+    .team-card-premium { border-radius: 2rem; }
+    .team-img-wrapper { height: 320px; }
+    .team-body { padding: 1.5rem; }
+    .team-body h5 { font-size: 1.2rem; }
+}
+
+@media (max-width: 575.98px) {
+    .info-header h1 { font-size: 1.8rem; }
+    .display-4 { font-size: 1.6rem !important; }
+    .display-6 { font-size: 1.2rem !important; }
+    .img-historia-full { min-height: 280px !important; }
 }

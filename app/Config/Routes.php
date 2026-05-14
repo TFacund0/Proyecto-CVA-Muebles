@@ -19,7 +19,14 @@ $routes->get('/quienesSomos', 'Pages::quienesSomos');
 $routes->get('/comercializacion', 'Pages::comercializacion');
 $routes->get('/informacionContacto', 'Pages::informacionContacto');
 $routes->get('/terminosYCondiciones', 'Pages::terminosYCondiciones');
+$routes->get('/beneficios', 'Pages::beneficios');
 $routes->get('/productos', 'Pages::productos');
+$routes->get('/galeria', 'GaleriaController::index');
+$routes->get('/galeria/setup', 'GaleriaController::setupDb');
+$routes->post('/galeria/subir', 'GaleriaController::subir', ['filter' => 'auth']);
+$routes->get('/admin/galeria', 'GaleriaController::admin_index', ['filter' => 'auth']);
+$routes->get('/admin/galeria/aprobar/(:num)', 'GaleriaController::aprobar/$1', ['filter' => 'auth']);
+$routes->get('/admin/galeria/eliminar/(:num)', 'GaleriaController::eliminar/$1', ['filter' => 'auth']);
 $routes->get('/producto/detalle/(:num)', 'ProductoController::ver_detalle/$1');
 
 // -------------------- Registro de usuarios --------------------
@@ -101,6 +108,11 @@ $routes->get('/borrar','carrito_controller::borrar_carrito', ['filter' => 'auth'
 $routes->get('carrito_suma/(:any)', 'carrito_controller::suma/$1', ['filter' => 'auth']);
 $routes->get('carrito_resta/(:any)', 'carrito_controller::resta/$1', ['filter' => 'auth']);
 
+
+// -------------------- Gestión de Favoritos (Wishlist) --------------------
+$routes->get('/favoritos/setup', 'FavoritosController::setupDb');
+$routes->get('/favoritos/toggle/(:num)', 'FavoritosController::toggleFavorito/$1', ['filter' => 'auth']);
+$routes->get('/mis-favoritos', 'FavoritosController::misFavoritos', ['filter' => 'auth']);
 
 // -------------------- Gestión de Consultas --------------------
 $routes->get('/lista-consultas', 'ConsultaController::index', ['filter' => 'auth']);

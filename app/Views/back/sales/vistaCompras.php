@@ -66,6 +66,34 @@
             border-radius: 2rem;
             border: 2px dashed #eeebe6;
         }
+
+        /* ESTILO WHATSAPP VIP */
+        .btn-whatsapp-vip {
+            background-color: #25D366;
+            color: white;
+            border: none;
+            font-weight: 800;
+            font-size: 0.65rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-whatsapp-vip:hover {
+            background-color: #128C7E;
+            color: white;
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .animate-pulse-subtle {
+            animation: pulse-vip 3s infinite;
+        }
+
+        @keyframes pulse-vip {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
     </style>
 <?= $this->endSection() ?>
 
@@ -113,6 +141,18 @@
                                 </div>
                             </div>
                         </a>
+                        
+                        <!-- BOTÓN WHATSAPP VIP (PASO 4) -->
+                        <div class="text-end mt-n2 mb-4 pe-3">
+                            <?php 
+                                $wa_num = "5493794098511";
+                                $msg = urlencode("Hola! Soy " . session()->get('nombre') . ", quería hacer una consulta VIP sobre mi pedido #" . $venta['id'] . " realizado el " . date('d/m/Y', strtotime($venta['fecha'])));
+                                $wa_url = "https://wa.me/{$wa_num}?text={$msg}";
+                            ?>
+                            <a href="<?= $wa_url ?>" target="_blank" class="btn btn-sm btn-whatsapp-vip rounded-pill px-3 shadow-sm animate-pulse-subtle">
+                                <i class="bi bi-whatsapp me-2"></i> AYUDA VIP SOBRE ESTE PEDIDO
+                            </a>
+                        </div>
                     <?php endforeach; ?>
                 </div>
             </div>

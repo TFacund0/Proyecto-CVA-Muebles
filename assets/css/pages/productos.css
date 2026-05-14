@@ -195,3 +195,97 @@
     background-color: #1b5e20 !important;
     transform: scale(1.02);
 }
+/* 2. FILTROS */
+.filter-group {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.filtro-categoria {
+    padding: 0.8rem 1.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
+/* RESPONSIVE PRODUCTOS */
+@media (max-width: 991.98px) {
+    .contenedor-productos { padding-bottom: 60px; }
+    .header-productos { padding: 50px 15px; }
+    .header-productos h2 { font-size: 1.8rem !important; margin-bottom: 1rem; }
+    .header-productos p { font-size: 0.85rem; line-height: 1.4; }
+    
+    .filter-container {
+        margin: -20px 0 30px;
+        width: 100%;
+        overflow-x: auto;
+        padding: 15px 5px; /* Más padding vertical para evitar cortes */
+        white-space: nowrap;
+        background: white;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        -webkit-overflow-scrolling: touch;
+        display: block;
+    }
+    
+    .filter-group { 
+        display: inline-block !important; /* Robusto para scroll */
+        white-space: nowrap;
+        padding-left: 10px;
+        padding-right: 20px;
+    }
+    
+    .filtro-categoria {
+        display: inline-block !important;
+        padding: 0.5rem 1.2rem !important;
+        font-size: 0.75rem !important;
+        border-radius: 50px !important;
+        margin-right: 8px;
+        width: auto !important;
+    }
+
+/* Grid 2 columnas móvil ultra-compacto */
+    .product-card { 
+        border-radius: 0.8rem !important; 
+        box-shadow: 0 8px 20px rgba(0,0,0,0.05) !important;
+        max-width: 100% !important;
+    }
+    
+    .product-card .img-wrapper { height: 110px; }
+    .product-card .card-body { padding: 0.5rem !important; }
+    
+    .product-card .card-title { 
+        font-size: 0.75rem !important; 
+        margin-bottom: 0.2rem; 
+        height: 2.2rem; 
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        line-height: 1.1;
+    }
+    
+    .product-card p.small { display: none; }
+    
+    .precio-tag { font-size: 0.85rem !important; font-weight: 700 !important; }
+    
+    .badge-stock { 
+        padding: 1px 4px; 
+        font-size: 0.45rem; 
+        border-radius: 2px;
+    }
+    
+    .badge-stock i { font-size: 0.5rem; }
+    .card-footer { padding: 0.4rem !important; }
+    
+    .btn-artisan-gold, .btn-brown-solid, .btn-whatsapp-artisan { 
+        padding: 0.3rem 0.4rem !important; 
+        font-size: 0.55rem !important; 
+        border-radius: 4px !important;
+    }
+    .btn-fav-artisan { width: 24px; height: 24px; top: 5px; right: 5px; font-size: 0.6rem; }
+    
+    .contenedor-muebles-artisan { padding: 0 5px; }
+}
+

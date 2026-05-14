@@ -139,18 +139,36 @@
     box-shadow: 0 15px 40px rgba(62, 39, 35, 0.4);
 }
 
-/* 5. RESPONSIVE */
+/* 5. RESPONSIVE (DIMENSIONES ESTABLECIDAS) */
 @media (max-width: 991.98px) {
-    .contact-header h1 {
-        font-size: 3.5rem;
-    }
+    .contact-header { padding: 100px 20px 60px; background-attachment: scroll !important; }
+    .contact-header h1 { font-size: 2.2rem; }
+    .display-4 { font-size: 1.8rem !important; }
+    .lead { font-size: 0.95rem !important; }
+    
+    #container-contacto-wrapper { margin-top: 0; }
+    
+    .section-contact-data, .section-form-contacto, .section-faq { padding: 40px 15px !important; }
+    
+    .artisan-contact-card { padding: 2rem 1.5rem; border-radius: 2rem; }
+    .artisan-contact-card h4 { font-size: 1.3rem; }
+    .artisan-contact-card p { font-size: 0.85rem; }
+    
+    .institutional-box-premium { padding: 2rem 1.5rem !important; border-radius: 2rem !important; }
+    .institutional-box-premium h2 { font-size: 1.8rem !important; }
+    .legal-item-premium p { font-size: 1rem; }
+    
+    .artisan-form-container-box { padding: 1.8rem 1.2rem !important; border-radius: 2rem !important; margin-top: 0.5rem; }
+    .artisan-form-container-box h3 { font-size: 1.4rem !important; margin-bottom: 0.5rem !important; }
+    .artisan-form-container-box p.text-muted { font-size: 0.8rem !important; margin-bottom: 1rem !important; }
+    .artisan-form-container-box .mb-4 { margin-bottom: 1rem !important; }
+    .artisan-form-container-box form { margin-top: 0 !important; }
+    .artisan-form-container-box .row.g-4 { --bs-gutter-y: 0.8rem; --bs-gutter-x: 0.8rem; }
+}
 
-    .contact-header {
-        background-attachment: scroll !important;
-        padding: 120px 0 80px;
-    }
-
-    #container-contacto-wrapper {
-        margin-top: 0;
-    }
+@media (max-width: 575.98px) {
+    .contact-header h1 { font-size: 1.8rem; }
+    .display-4 { font-size: 1.6rem !important; }
+    .btn-premium-action span { font-size: 0.7rem; }
+    .btn-vivid-premium { padding: 1rem !important; font-size: 0.85rem; }
 }

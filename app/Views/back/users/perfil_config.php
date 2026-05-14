@@ -178,9 +178,32 @@
         }
 
         @media (max-width: 991px) {
-            .profile-main-card { flex-direction: column; }
-            .profile-sidebar-summary { width: 100%; border-right: none; border-bottom: 1px solid #f0e6d6; }
-            .profile-form-content { padding: 2rem; }
+            .profile-container-v3 { margin: 0; padding: 0; max-width: 100%; }
+            .profile-main-card { flex-direction: column; border-radius: 0; border: none; }
+            .profile-sidebar-summary { 
+                width: 100%; 
+                border-right: none; 
+                border-bottom: 1px solid #f0e6d6; 
+                padding: 3rem 1.5rem 2rem;
+            }
+            .avatar-circle-v3 { width: 130px; height: 130px; }
+            .profile-sidebar-summary h3 { font-size: 1.5rem; }
+            
+            .profile-form-content { padding: 2.5rem 1.5rem; }
+            .profile-form-content h2 { font-size: 1.6rem !important; }
+            
+            .artisan-label-v3 { font-size: 0.65rem; }
+            .artisan-control-v3 { padding: 0.8rem 1rem; font-size: 0.9rem; }
+            
+            .btn-artisan-v3 { width: 100%; padding: 1rem; }
+            .btnGroup .d-flex { flex-direction: column; gap: 10px !important; }
+            #cancelEdit { width: 100%; }
+        }
+
+        @media (max-width: 575px) {
+            .profile-sidebar-summary { padding: 2rem 1.5rem 1.5rem; }
+            .avatar-circle-v3 { width: 110px; height: 110px; }
+            .form-section-title { font-size: 1.2rem; }
         }
     </style>
 <?= $this->endSection() ?>

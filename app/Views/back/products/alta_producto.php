@@ -6,20 +6,20 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
-<div class="row mb-5 align-items-center">
-    <div class="col-md-7">
-        <div class="d-flex align-items-center gap-4">
+<div class="row mb-5 align-items-center g-4">
+    <div class="col-lg-7">
+        <div class="d-flex align-items-center gap-3 gap-md-4">
             <div class="dashboard-icon-main bg-brown text-gold shadow">
                 <i class="bi bi-hammer"></i>
             </div>
             <div>
-                <h1 class="display-5 fw-bold text-cva-brown mb-1">Nueva Obra</h1>
-                <p class="text-muted mb-0"><i class="bi bi-pencil-square text-gold me-1"></i> Registra una pieza única en el catálogo digital.</p>
+                <h1 class="display-6 display-md-5 fw-bold text-cva-brown mb-1">Nueva Obra</h1>
+                <p class="text-muted mb-0 small"><i class="bi bi-pencil-square text-gold me-1"></i> Registra una pieza única en el catálogo.</p>
             </div>
         </div>
     </div>
-    <div class="col-md-5 text-md-end">
-        <a href="<?= base_url('/crud-productos') ?>" class="btn btn-outline-dark rounded-pill px-4 py-2 x-small fw-bold border-2">
+    <div class="col-lg-5 text-lg-end">
+        <a href="<?= base_url('/crud-productos') ?>" class="btn btn-outline-dark rounded-pill px-4 py-2 x-small fw-bold border-2 w-sm-100">
             <i class="bi bi-arrow-left me-2"></i> VOLVER AL LISTADO
         </a>
     </div>
@@ -70,11 +70,11 @@
                 </div>
                 <div class="p-4">
                     <div class="row g-4">
-                        <div class="col-md-8">
+                        <div class="col-md-8 col-12">
                             <label class="x-small fw-bold text-muted text-uppercase mb-2 tracking-wider">Nombre de la Pieza</label>
-                            <input type="text" name="nombre_producto" class="form-control border-0 bg-light py-3 px-4 rounded-3 shadow-sm" placeholder="Ej: Mesa de Comedor Minimalista" required style="height: 58px;">
+                            <input type="text" name="nombre_producto" class="form-control border-0 bg-light py-3 px-4 rounded-3 shadow-sm" placeholder="Ej: Mesa de Comedor" required style="height: 58px;">
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 col-12">
                             <label class="x-small fw-bold text-muted text-uppercase mb-2 tracking-wider">Categoría</label>
                             <select name="categoria_id" class="form-select border-0 bg-light py-3 px-4 rounded-3 shadow-sm" required style="height: 58px;">
                                 <option selected disabled>Seleccionar...</option>
@@ -100,7 +100,7 @@
                 </div>
                 <div class="p-4">
                     <div class="row g-4 align-items-end">
-                        <div class="col-md-3">
+                        <div class="col-md-3 col-6">
                             <div style="min-height: 40px;" class="d-flex align-items-end mb-2">
                                 <label class="x-small fw-bold text-muted text-uppercase mb-0">Costo ($)</label>
                             </div>
@@ -109,24 +109,24 @@
                                 <input type="number" step="0.01" name="precio" id="costo" class="form-control border-0 bg-light py-3 shadow-sm" style="border-radius: 0 10px 10px 0; height: 58px;" placeholder="0.00" required>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3 col-6">
                             <div style="min-height: 40px;" class="d-flex align-items-end mb-2">
-                                <label class="x-small fw-bold text-muted text-uppercase mb-0">Precio Venta ($)</label>
+                                <label class="x-small fw-bold text-muted text-uppercase mb-0">Venta ($)</label>
                             </div>
                             <div class="input-group">
                                 <span class="input-group-text bg-white border-0 text-gold fw-bold shadow-sm" style="border-radius: 10px 0 0 10px;">$</span>
                                 <input type="number" step="0.01" name="precio-vta" id="venta" class="form-control border-0 py-3 fw-bold text-cva-brown shadow-sm" style="background: #fffdf5; border-radius: 0 10px 10px 0; height: 58px;" placeholder="0.00" required>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3 col-6">
                             <div style="min-height: 40px;" class="d-flex align-items-end mb-2">
                                 <label class="x-small fw-bold text-muted text-uppercase mb-0">Stock</label>
                             </div>
                             <input type="number" name="stock" class="form-control border-0 bg-light py-3 shadow-sm" style="border-radius: 10px; height: 58px;" placeholder="0" required>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3 col-6">
                             <div style="min-height: 40px;" class="d-flex align-items-end mb-2">
-                                <label class="x-small fw-bold text-muted text-uppercase mb-0">Visibilidad</label>
+                                <label class="x-small fw-bold text-muted text-uppercase mb-0">Estado</label>
                             </div>
                             <select name="eliminado" class="form-select border-0 py-3 shadow-sm fw-bold text-uppercase" style="font-size: 0.75rem; border-radius: 10px; height: 58px; background-color: #f8fafc;">
                                 <option value="NO">Activo</option>
@@ -136,21 +136,21 @@
                     </div>
                     
                     <!-- Widget de Margen de Ganancia Premium -->
-                    <div class="mt-5 p-4 rounded-4 border-0 shadow-sm overflow-hidden position-relative bg-white border-gold-glow">
+                    <div class="mt-4 mt-md-5 p-3 p-md-4 rounded-4 border-0 shadow-sm overflow-hidden position-relative bg-white border-gold-glow">
                         <div class="position-absolute top-0 start-0 w-100 h-100 bg-gold-soft opacity-25"></div>
-                        <div class="position-relative d-flex justify-content-between align-items-center">
-                            <div class="d-flex align-items-center gap-4">
-                                <div class="bg-white p-3 rounded-circle shadow-sm border border-gold border-opacity-25">
-                                    <i class="bi bi-graph-up-arrow fs-4 text-gold"></i>
+                        <div class="position-relative d-flex flex-column flex-sm-row justify-content-between align-items-center gap-3 gap-md-4 text-center text-sm-start">
+                            <div class="d-flex align-items-center gap-3 gap-md-4">
+                                <div class="bg-white p-2 p-md-3 rounded-circle shadow-sm border border-gold border-opacity-25">
+                                    <i class="bi bi-graph-up-arrow fs-5 fs-md-4 text-gold"></i>
                                 </div>
                                 <div>
-                                    <span class="d-block x-small text-uppercase fw-bold text-muted mb-1">Rendimiento Estimado</span>
-                                    <h3 id="margen-porcentaje" class="fw-bold text-cva-brown mb-0">0%</h3>
+                                    <span class="d-block x-small text-uppercase fw-bold text-muted mb-1">Rentabilidad</span>
+                                    <h4 id="margen-porcentaje" class="fw-bold text-cva-brown mb-0">0%</h4>
                                 </div>
                             </div>
-                            <div class="text-end border-start ps-4">
-                                <span class="d-block x-small text-uppercase fw-bold text-muted mb-1">Ganancia por Pieza</span>
-                                <h2 id="margen-dinero" class="fw-bold text-success mb-0 tracking-tight">$0.00</h2>
+                            <div class="text-sm-end border-sm-start ps-sm-4 pt-2 pt-sm-0 w-100 w-sm-auto border-top border-sm-top-0">
+                                <span class="d-block x-small text-uppercase fw-bold text-muted mb-1">Utilidad Neta</span>
+                                <h3 id="margen-dinero" class="fw-bold text-success mb-0 tracking-tight">$0.00</h3>
                             </div>
                         </div>
                     </div>
@@ -187,13 +187,13 @@
                 </div>
             </div>
 
-            <div class="d-grid gap-3 mt-4">
-                <button type="submit" class="btn btn-admin-primary py-4 rounded-pill shadow-gold justify-content-center animate__animated animate__pulse animate__infinite infinite">
+            <div class="d-grid gap-2 mt-4">
+                <button type="submit" class="btn btn-admin-primary py-3 py-md-4 rounded-pill shadow-gold justify-content-center">
                     <i class="bi bi-check2-all fs-4"></i>
                     <span class="fs-5 fw-bold ms-2">PUBLICAR OBRA</span>
                 </button>
-                <button type="reset" class="btn btn-link text-muted text-decoration-none x-small fw-bold text-uppercase tracking-widest">
-                    <i class="bi bi-trash3 me-2"></i> Borrar Todo
+                <button type="reset" class="btn btn-link text-muted text-decoration-none x-small fw-bold text-uppercase tracking-widest py-3">
+                    <i class="bi bi-trash3 me-2"></i> LIMPIAR FORMULARIO
                 </button>
             </div>
         </div>
@@ -240,6 +240,12 @@
         background: white !important;
         border-color: var(--cva-gold) !important;
         box-shadow: 0 0 0 4px rgba(201, 161, 107, 0.1) !important;
+    }
+
+    @media (max-width: 767.98px) {
+        .dropzone-premium-v2 { height: 280px !important; }
+        .display-3 { font-size: 3rem !important; }
+        .h2 { font-size: 1.5rem !important; }
     }
 </style>
 

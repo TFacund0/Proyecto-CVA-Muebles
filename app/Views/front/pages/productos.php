@@ -1,7 +1,34 @@
 <?= $this->extend('layout/main') ?>
 
 <?= $this->section('extra-css') ?>
-    <link rel="stylesheet" href="<?= base_url('assets/css/pages/productos.css?v=7.0')?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/pages/productos.css?v=8.5')?>">
+    <style>
+        .btn-fav-artisan {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            background: white;
+            border: none;
+            border-radius: 50%;
+            color: var(--cva-brown);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 5;
+        }
+        .btn-fav-artisan:hover {
+            transform: scale(1.1);
+            color: #e74c3c;
+        }
+        .btn-fav-artisan.active {
+            color: #e74c3c;
+            background: white;
+        }
+    </style>
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
@@ -20,7 +47,7 @@
 
         <!-- Pestañas de Filtro -->
         <div class="filter-container mb-5 animate-fade-in">
-            <div class="filter-group d-flex flex-wrap justify-content-center">
+            <div class="filter-group d-flex">
                 <button type="button" class="btn filtro-categoria active" data-categoria="todos">Todos</button>
                 <?php foreach ($categorias as $cat) { ?>
                     <button type="button" class="btn filtro-categoria" data-categoria="<?= esc($cat['descripcion']) ?>">
@@ -30,12 +57,20 @@
             </div>
         </div>
 
-        <div class="row" id="lista-productos">
+        <div class="row g-3" id="lista-productos">
             <?php foreach ($producto as $row) { ?>
-                <div class="col-md-4 col-sm-6 mb-5" data-categorias="<?= esc($row['categoria']) ?>">
+                <div class="col-lg-4 col-md-6 col-6 mb-4" data-categorias="<?= esc($row['categoria']) ?>">
                     <div class="card h-100 product-card">
                         <div class="img-wrapper">
                             <img src="<?= base_url('assets/uploads/' . $row['imagen']) ?>" alt="<?= esc($row['nombre_prod']) ?>">
+                            
+                            <!-- Botón Favoritos (Paso 2) -->
+                            <?php if (session()->get('logged_in')): ?>
+                                <?php $isFav = in_array($row['id_producto'], $user_favs ?? []); ?>
+                                <button onclick="toggleFav(<?= $row['id_producto'] ?>, this)" class="btn-fav-artisan <?= $isFav ? 'active' : '' ?>" title="Guardar en mis piezas favoritas">
+                                    <i class="bi <?= $isFav ? 'bi-heart-fill' : 'bi-heart' ?>"></i>
+                                </button>
+                            <?php endif; ?>
                         </div>
                         
                         <div class="card-body d-flex flex-column">
@@ -101,9 +136,34 @@
 
 <?= $this->section('extra-js') ?>
 <script>
+    function toggleFav(id, btn) {
+        if (typeof event !== 'undefined') {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+
+        fetch('<?= base_url('favoritos/toggle/') ?>' + id)
+            .then(response => response.json())
+            .then(data => {
+                const icon = btn.querySelector('i');
+                if (data.status === 'added') {
+                    btn.classList.add('active');
+                    icon.classList.remove('bi-heart');
+                    icon.classList.add('bi-heart-fill');
+                } else if (data.status === 'removed') {
+                    btn.classList.remove('active');
+                    icon.classList.remove('bi-heart-fill');
+                    icon.classList.add('bi-heart');
+                } else if (data.status === 'error') {
+                    window.location.href = '<?= base_url('login') ?>';
+                }
+            })
+            .catch(err => console.error('Error:', err));
+    }
+
     document.addEventListener('DOMContentLoaded', function () {
         const botones = document.querySelectorAll('.filtro-categoria');
-        const productos = document.querySelectorAll('#lista-productos .col-md-4 col-sm-6'); // Selector corregido
+        const productos = document.querySelectorAll('#lista-productos > div');
 
         botones.forEach(btn => {
             btn.addEventListener('click', () => {

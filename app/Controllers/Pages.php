@@ -78,6 +78,26 @@ class Pages extends BaseController
         $data['categorias'] = $categorias->select('descripcion')->distinct()->findAll();
         $data['title'] = 'Nuestros Productos - CVA Muebles';
 
+        // Cargar favoritos si el usuario está logueado
+        $data['user_favs'] = [];
+        if (session()->get('logged_in')) {
+            $favModel = new \App\Models\Favoritos_model();
+            $favs = $favModel->where('usuario_id', session()->get('id_usuario'))->findAll();
+            foreach ($favs as $f) {
+                $data['user_favs'][] = $f['producto_id'];
+            }
+        }
+
         return view('front/pages/productos', $data);
+    }
+
+    /**
+     * Muestra la página de Beneficios y Programa de Fidelidad.
+     */
+    public function beneficios()
+    {
+        return view('front/pages/beneficios', [
+            'title' => 'Programa de Fidelidad - CVA Muebles'
+        ]);
     }
 }

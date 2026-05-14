@@ -130,12 +130,22 @@
         transform: scale(1.1);
     }
 
-    /* Minimalist Indicators */
-    .carousel-indicators [data-bs-target] {
-        width: 12px; height: 12px;
-        border-radius: 50%;
-        background-color: rgba(255,255,255,0.5);
-        margin: 0 8px;
+    /* Responsive Hero */
+    @media (max-width: 991.98px) {
+        .carousel-inner { height: 70vh !important; min-height: 500px !important; }
+        .glass-caption { padding: 2rem !important; margin: 0 1rem; }
+        .display-2 { font-size: 2.5rem !important; }
+        .display-3 { font-size: 2.2rem !important; }
+        .fs-5 { font-size: 1rem !important; }
+        .btn-vivid, .btn-outline-light, .btn-gold { padding: 0.8rem 1.5rem !important; font-size: 0.9rem !important; }
+        .carousel-caption { padding-bottom: 2rem !important; }
     }
-    .carousel-indicators .active { background-color: var(--cva-gold); width: 30px; border-radius: 10px; }
+
+    @media (max-width: 575.98px) {
+        .carousel-inner { height: 60vh !important; min-height: 400px !important; }
+        .display-2 { font-size: 2rem !important; }
+        .display-3 { font-size: 1.8rem !important; }
+        .glass-caption { padding: 1.5rem !important; border-radius: 1.5rem !important; }
+        .carousel-control-prev, .carousel-control-next { display: none; } /* Ocultar flechas en móvil muy pequeño */
+    }
 </style>

@@ -3,11 +3,6 @@
     $isLogged = $session->get('logged_in');
 ?>
 
-<?php
-    $session = session();
-    $isLogged = $session->get('logged_in');
-?>
-
 <style>
     /* --- ESPECIALIDADES PREMIUM (RESTAURADO) --- */
     .section-categorias { padding: 80px 0; background-color: white !important; background-image: none !important; }
@@ -38,8 +33,16 @@
         color: white; transition: background 0.4s;
     }
     .catalogo-card-premium:hover .card-overlay-modern { background: linear-gradient(to top, var(--cva-brown) 0%, rgba(62, 39, 35, 0.6) 100%); }
-    .category-line { width: 40px; height: 3px; background: var(--cva-gold); margin-bottom: 1rem; transition: width 0.4s; }
     .catalogo-card-premium:hover .category-line { width: 100%; }
+
+    /* Responsive Categorías */
+    @media (max-width: 991.98px) {
+        .section-categorias { padding: 60px 0; }
+        .catalogo-card-premium { height: 280px; border-radius: 1.5rem; }
+        .card-overlay-modern { padding: 1.2rem; }
+        .display-5 { font-size: 2.2rem !important; }
+        .card-overlay-modern h3 { font-size: 1.5rem !important; }
+    }
 
     /* --- PRODUCTOS DESTACADOS --- */
     .section-destacados-dinamica { padding: 100px 0; background-color: var(--cva-sand); }
@@ -184,6 +187,19 @@
     }
     .mission-quote::before { top: -20px; left: 0; }
     .mission-quote::after { bottom: -60px; right: 0; }
+
+    /* Responsive Misión */
+    @media (max-width: 991.98px) {
+        .mission-statement-premium { padding: 100px 0 !important; }
+        .display-3 { font-size: 2.5rem !important; }
+        .mission-quote { font-size: 1.2rem; padding: 0 20px; }
+        .mission-bg-accent { font-size: 15rem; }
+    }
+    @media (max-width: 575.98px) {
+        .mission-statement-premium { padding: 80px 0 !important; }
+        .display-3 { font-size: 2rem !important; }
+        .mission-quote { font-size: 1.1rem; }
+    }
 </style>
 
 <!-- SECCIÓN MISIÓN (Verde Bosque Premium) -->
@@ -300,6 +316,17 @@
             </div>
         </div>
     </div>
+    
+    <style>
+        /* Responsive Ubicación */
+        @media (max-width: 991.98px) {
+            .section-ubicacion .row.g-0 { flex-direction: column; } /* Texto primero, luego mapa */
+            .section-ubicacion .col-lg-5 { padding: 40px 20px !important; }
+            .section-ubicacion .display-3 { font-size: 2.5rem !important; }
+            .section-ubicacion iframe { min-height: 400px !important; }
+            .section-ubicacion .row.g-0 { min-height: auto !important; }
+        }
+    </style>
 </section>
 
 <!-- Swiper JS -->

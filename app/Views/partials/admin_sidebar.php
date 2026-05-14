@@ -1,9 +1,14 @@
 <aside class="admin-sidebar">
     <div class="sidebar-header">
-        <a href="<?= base_url('/admin-dashboard') ?>" class="sidebar-logo">
-            <i class="bi bi-hammer text-gold"></i>
-            <span>CVA ADMIN</span>
-        </a>
+        <div class="d-flex align-items-center justify-content-between w-100">
+            <a href="<?= base_url('/admin-dashboard') ?>" class="sidebar-logo">
+                <i class="bi bi-hammer text-gold"></i>
+                <span>CVA ADMIN</span>
+            </a>
+            <button class="btn text-white d-lg-none p-0" id="sidebarClose">
+                <i class="bi bi-x-lg fs-4"></i>
+            </button>
+        </div>
     </div>
     
     <nav class="sidebar-nav">

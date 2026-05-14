@@ -1,7 +1,7 @@
 <?= $this->extend('layout/main') ?>
 
 <?= $this->section('extra-css') ?>
-    <link rel="stylesheet" href="<?= base_url('assets/css/pages/quienesSomos.css?v=5.0')?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/pages/quienesSomos.css?v=6.1')?>">
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
@@ -19,10 +19,10 @@
     <!-- BLOQUE 1: HISTORIA (BLANCO / SPLIT) -->
     <section class="section-historia-full bg-white overflow-hidden">
         <div class="row g-0 align-items-center">
-            <div class="col-lg-6">
+            <div class="col-lg-6 order-2 order-lg-1">
                 <div class="img-historia-full" style="background-image: url('<?= base_url('assets/img/ui/textures/carpienteria.jpg') ?>'); min-height: 700px; background-size: cover; background-position: center;"></div>
             </div>
-            <div class="col-lg-6 p-5 p-xl-5">
+            <div class="col-lg-6 p-5 p-xl-5 order-1 order-lg-2">
                 <div class="max-width-600 mx-auto">
                     <span class="text-gold fw-bold text-uppercase small" style="letter-spacing: 2px;">Nuestros Inicios</span>
                     <h2 class="display-4 fw-bold font-lora text-cva-brown mt-2 mb-4">Legado y Tradición</h2>
@@ -157,6 +157,8 @@
                         </div>
                     </div>
                 </div>
+            </div> <!-- Fin Row Equipo -->
+        </div> <!-- Fin Container Equipo -->
     </section>
 </div>
 <?= $this->endSection() ?>

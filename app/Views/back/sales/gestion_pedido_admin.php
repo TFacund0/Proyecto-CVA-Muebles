@@ -7,21 +7,21 @@
 
 <?= $this->section('content') ?>
 <!-- Encabezado Estilo Artisan -->
-<div class="row mb-5 align-items-center">
-    <div class="col-md-7">
-        <div class="d-flex align-items-center gap-4">
+<div class="row mb-5 align-items-center g-4">
+    <div class="col-lg-7">
+        <div class="d-flex align-items-center gap-3 gap-md-4">
             <div class="dashboard-icon-main bg-brown text-gold shadow">
                 <i class="bi bi-tools"></i>
             </div>
             <div>
-                <h1 class="display-5 fw-bold text-cva-brown mb-1">Gestión de Producción</h1>
-                <p class="text-muted mb-0"><i class="bi bi-person-badge text-gold me-1"></i> Cliente: <?= esc($venta['nombre'] . ' ' . $venta['apellido']) ?></p>
+                <h1 class="display-6 display-md-5 fw-bold text-cva-brown mb-1">Producción</h1>
+                <p class="text-muted mb-0 small"><i class="bi bi-person-badge text-gold me-1"></i> <?= esc($venta['nombre'] . ' ' . $venta['apellido']) ?></p>
             </div>
         </div>
     </div>
-    <div class="col-md-5 text-md-end">
-        <div class="badge bg-gold-soft text-gold px-4 py-2 rounded-pill fs-6 fw-bold border border-gold shadow-sm">
-            PEDIDO #<?= $venta['id'] ?> | <?= date('d M, Y', strtotime($venta['fecha'])) ?>
+    <div class="col-lg-5 text-lg-end">
+        <div class="badge bg-gold-soft text-gold px-4 py-2 rounded-pill fs-6 fw-bold border border-gold shadow-sm w-sm-100 justify-content-center">
+            #<?= $venta['id'] ?> | <?= date('d M, Y', strtotime($venta['fecha'])) ?>
         </div>
     </div>
 </div>
@@ -58,19 +58,19 @@
             <form action="<?= base_url('ventas/actualizar_estado/' . $venta['id']) ?>" method="post" class="mt-5 pt-4 border-top">
                 <?= csrf_field() ?>
                 <div class="row align-items-center g-3">
-                    <div class="col-md-6">
-                        <p class="small text-muted mb-0">Cambia la etapa de producción del mueble:</p>
+                    <div class="col-lg-6">
+                        <p class="small text-muted mb-0">Cambia la etapa de producción:</p>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-lg-4 col-8">
                         <select name="estado" class="form-select admin-control py-2 fw-bold text-uppercase x-small">
                             <?php foreach($steps as $step): ?>
                                 <option value="<?= $step ?>" <?= $venta['estado'] == $step ? 'selected' : '' ?>><?= $step ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
-                    <div class="col-md-2">
-                        <button class="btn btn-admin-gold w-100 py-2" type="submit" title="Actualizar Estado">
-                            <i class="bi bi-arrow-repeat me-1"></i> <span class="x-small fw-bold">OK</span>
+                    <div class="col-lg-2 col-4">
+                        <button class="btn btn-admin-gold w-100 py-2" type="submit">
+                            <i class="bi bi-check-lg"></i>
                         </button>
                     </div>
                 </div>
@@ -101,37 +101,37 @@
         </div>
 
         <!-- LISTADO DE ÍTEMS -->
-        <div class="admin-card-v2 border-0 shadow-sm overflow-hidden">
+        <div class="admin-card-v2 border-0 shadow-sm overflow-hidden mb-4">
             <div class="bg-light py-3 px-4 border-bottom">
-                <h6 class="mb-0 fw-bold text-brown">Detalle del Pedido</h6>
+                <h6 class="mb-0 fw-bold text-brown">Artículos en la Obra</h6>
             </div>
-            <div class="table-responsive">
+            <div class="table-responsive-stack">
                 <table class="table table-hover align-middle mb-0">
-                    <thead class="bg-white">
+                    <thead class="bg-white d-none d-md-table-header-group">
                         <tr class="x-small text-uppercase text-muted fw-bold">
-                            <th class="py-3 px-4 border-0">Producto / Descripción</th>
+                            <th class="py-3 px-4 border-0">Producto</th>
                             <th class="py-3 text-center border-0">Cant.</th>
-                            <th class="py-3 text-end border-0">Precio Unit.</th>
+                            <th class="py-3 text-end border-0">Unit.</th>
                             <th class="py-3 text-end px-4 border-0">Subtotal</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php foreach ($detalles as $det): ?>
                         <tr>
-                            <td class="px-4 py-3">
+                            <td class="px-4 py-3" data-label="PRODUCTO">
                                 <div class="fw-bold text-brown"><?= esc($det['nombre_prod']) ?></div>
-                                <div class="x-small text-muted">Referencia: #ID-<?= $det['producto_id'] ?? 'PERSONALIZADO' ?></div>
+                                <div class="x-small text-muted">ID: <?= $det['producto_id'] ?? 'CUSTOM' ?></div>
                             </td>
-                            <td class="text-center fw-bold"><?= $det['cantidad'] ?></td>
-                            <td class="text-end text-muted small">$ <?= number_format($det['precio'], 2, ',', '.') ?></td>
-                            <td class="text-end px-4 fw-bold text-brown">$ <?= number_format($det['cantidad'] * $det['precio'], 2, ',', '.') ?></td>
+                            <td class="text-center fw-bold" data-label="CANTIDAD"><?= $det['cantidad'] ?></td>
+                            <td class="text-end text-muted small" data-label="UNITARIO">$ <?= number_format($det['precio'], 2, ',', '.') ?></td>
+                            <td class="text-end px-4 fw-bold text-brown" data-label="SUBTOTAL">$ <?= number_format($det['cantidad'] * $det['precio'], 2, ',', '.') ?></td>
                         </tr>
                         <?php endforeach; ?>
                     </tbody>
                     <tfoot class="bg-light border-top border-2">
-                        <tr class="fs-5">
-                            <td colspan="3" class="text-end py-3 px-4 text-muted x-small fw-bold text-uppercase">Total Venta</td>
-                            <td class="text-end py-3 px-4 text-brown fw-bold font-lora">$ <?= number_format($venta['total_venta'], 2, ',', '.') ?></td>
+                        <tr>
+                            <td colspan="3" class="text-end py-3 px-4 text-muted x-small fw-bold text-uppercase d-none d-md-table-cell">Total Venta</td>
+                            <td class="text-end py-3 px-4 text-brown fw-bold font-lora fs-5" data-label="TOTAL FINAL">$ <?= number_format($venta['total_venta'], 2, ',', '.') ?></td>
                         </tr>
                     </tfoot>
                 </table>
@@ -282,6 +282,14 @@
         color: white;
         transform: translateY(-3px);
         box-shadow: 0 8px 20px rgba(184, 134, 11, 0.2);
+    }
+
+    @media (max-width: 767.98px) {
+        .step-item span { font-size: 0.6rem !important; }
+        .production-stepper { padding-bottom: 0 !important; }
+        .finance-card h3 { font-size: 1.5rem !important; }
+        .finance-card h2 { font-size: 1.8rem !important; }
+        .artisan-notebook-textarea { padding: 1rem; font-size: 0.9rem; }
     }
 </style>
 
