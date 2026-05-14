@@ -2,7 +2,7 @@
 namespace App\Models;
 use CodeIgniter\Model;
 
-class GaleriaClientes_model extends Model {
+class GaleriaClienteModel extends Model {
     protected $table = 'galeria_clientes';
     protected $primaryKey = 'id';
     protected $allowedFields = ['usuario_id', 'imagen', 'comentario', 'fecha', 'activo'];

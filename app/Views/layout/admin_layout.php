@@ -18,6 +18,25 @@
     <link rel="stylesheet" href="<?= base_url('assets/css/base/global.css?v=3.0')?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/admin/admin-panel.css?v=23.0')?>">
 
+    <style>
+        .hide-caret::after { display: none !important; }
+        .avatar-circle-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+        .avatar-circle-wrapper img {
+            position: relative;
+            z-index: 5;
+            background: white;
+        }
+        #avatar-fallback {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+    </style>
+
     <?= $this->renderSection('extra-css') ?>
 </head>
 <body class="admin-body">
@@ -57,9 +76,9 @@
                                     $imagen_user = session()->get('imagen');
                                     $inicial = strtoupper(substr($nombre_user, 0, 1));
                                 ?>
-                                <div class="avatar-circle-wrapper position-relative" style="width: 55px; height: 55px;">
+                                <div class="avatar-circle-wrapper" style="width: 50px; height: 50px;">
                                     <?php if ($imagen_user): ?>
-                                        <img src="<?= base_url('assets/uploads/usuarios/' . $imagen_user) ?>" 
+                                        <img src="<?= base_url('assets/uploads/perfil/' . $imagen_user) ?>" 
                                              class="avatar-circle shadow-sm border border-gold" 
                                              style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;" 
                                              alt="Perfil"
@@ -68,7 +87,7 @@
                                     
                                     <div id="avatar-fallback" 
                                          class="avatar-circle bg-brown text-white fw-bold d-flex align-items-center justify-content-center shadow-sm border border-gold" 
-                                         style="width: 100%; height: 100%; border-radius: 50%; font-size: 1.5rem; <?= $imagen_user ? 'display:none;' : 'display:flex;' ?>">
+                                         style="width: 100%; height: 100%; border-radius: 50%; font-size: 1.2rem; <?= $imagen_user ? 'display:none;' : '' ?>">
                                         <?= $inicial ?>
                                     </div>
                                 </div>

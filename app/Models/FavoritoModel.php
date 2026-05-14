@@ -2,7 +2,7 @@
 namespace App\Models;
 use CodeIgniter\Model;
 
-class Favoritos_model extends Model {
+class FavoritoModel extends Model {
     protected $table = 'favoritos';
     protected $primaryKey = 'id';
     protected $allowedFields = ['usuario_id', 'producto_id', 'fecha'];

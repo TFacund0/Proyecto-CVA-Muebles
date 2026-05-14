@@ -7,7 +7,7 @@ use CodeIgniter\Router\RouteCollection;
  */
 
 // -------------------- RUTA PRINCIPAL --------------------
-$routes->get('/', 'Home::index');
+$routes->get('/', 'HomeController::index');
 
 
 // ====================================================================
@@ -15,12 +15,12 @@ $routes->get('/', 'Home::index');
 // ====================================================================
 
 // -------------------- Páginas informativas --------------------
-$routes->get('/quienesSomos', 'Pages::quienesSomos');
-$routes->get('/comercializacion', 'Pages::comercializacion');
-$routes->get('/informacionContacto', 'Pages::informacionContacto');
-$routes->get('/terminosYCondiciones', 'Pages::terminosYCondiciones');
-$routes->get('/beneficios', 'Pages::beneficios');
-$routes->get('/productos', 'Pages::productos');
+$routes->get('/quienesSomos', 'PagesController::quienesSomos');
+$routes->get('/comercializacion', 'PagesController::comercializacion');
+$routes->get('/informacionContacto', 'PagesController::informacionContacto');
+$routes->get('/terminosYCondiciones', 'PagesController::terminosYCondiciones');
+$routes->get('/beneficios', 'PagesController::beneficios');
+$routes->get('/productos', 'PagesController::productos');
 $routes->get('/galeria', 'GaleriaController::index');
 $routes->get('/galeria/setup', 'GaleriaController::setupDb');
 $routes->post('/galeria/subir', 'GaleriaController::subir', ['filter' => 'auth']);
@@ -49,14 +49,11 @@ $routes->post('/enviar-consulta', 'ConsultaController::cargarConsulta');
 
 // -------------------- Gestión de Ventas --------------------
 $routes->get('/ventas-list', 'VentasController::index_ventas', ['filter' => 'auth']);
-$routes->get('/ventas_detalle', 'VentasController::index_ventas', ['filter' => 'auth']);
 $routes->get('/ventas_lista', 'VentasController::ver_facturas_usuario', ['filter' => 'auth']);
 $routes->get('/factura/(:num)', 'VentasController::ver_factura/$1', ['filter' => 'auth']);
 $routes->get('/carrito_comprar', 'VentasController::registrar_venta', ['filter' => 'auth']);
 $routes->post('/ventas/actualizar_estado/(:num)', 'VentasController::actualizar_estado/$1', ['filter' => 'auth']);
-$routes->get('/admin-stats', 'VentasController::estadisticas', ['filter' => 'auth']);
 $routes->get('/admin-dashboard', 'VentasController::estadisticas', ['filter' => 'auth']);
-$routes->get('/ventas-stats', 'VentasController::estadisticas', ['filter' => 'auth']);
 $routes->get('/ventas/gestion/(:num)', 'VentasController::ver_gestion_pedido/$1', ['filter' => 'auth']);
 $routes->post('/ventas/registrar_pago', 'VentasController::registrar_pago', ['filter' => 'auth']);
 $routes->post('/ventas/guardar_observaciones', 'VentasController::guardar_observaciones', ['filter' => 'auth']);
@@ -66,7 +63,6 @@ $routes->post('/ventas/guardar-personalizado', 'VentasController::guardar_pedido
 
 // -------------------- Gestión de Usuarios --------------------
 $routes->get('/crud-usuarios', 'UsuarioController::index', ['filter' => 'auth']);
-$routes->post('/crud-usuarios', 'UsuarioController::index', ['filter' => 'auth']);
 $routes->get('/editar-usuario/(:num)', 'UsuarioController::editar_usuario/$1', ['filter' => 'auth']);
 $routes->get('/delete-usuario/(:num)', 'UsuarioController::delete_usuario/$1', ['filter' => 'auth']);
 $routes->get('/activar-usuario/(:num)', 'UsuarioController::activar_usuario/$1', ['filter' => 'auth']);
@@ -79,42 +75,38 @@ $routes->post('/guardarCambios', 'UsuarioController::guardarCambios', ['filter' 
 
 // -------------------- Gestión de Productos --------------------
 $routes->get('/crud-productos', 'ProductoController::index', ['filter' => 'auth']);
-$routes->post('/crud-productos', 'ProductoController::index', ['filter' => 'auth']);
-
-// ---- Alta de producto ----
 $routes->get('/alta-producto', 'ProductoController::create_alta_producto', ['filter' => 'auth']);
 $routes->post('/enviar-alta-producto', 'ProductoController::formValidation', ['filter' => 'auth']);
-
-// ---- Edición y eliminación de producto ----
 $routes->get('/delete-producto/(:num)', 'ProductoController::delete_producto/$1', ['filter' => 'auth']);
 $routes->get('/activar-producto/(:num)', 'ProductoController::activar_producto/$1', ['filter' => 'auth']);
 $routes->get('/editar-producto/(:num)', 'ProductoController::index_editar_producto/$1', ['filter' => 'auth']);
 $routes->post('modificar-producto/(:num)', 'ProductoController::modificar_producto/$1', ['filter' => 'auth']);
 
 
+// -------------------- Gestión de Categorías --------------------
+$routes->get('/crud-categorias', 'CategoriaController::index', ['filter' => 'auth']);
+$routes->post('/admin/categorias/guardar', 'CategoriaController::guardar', ['filter' => 'auth']);
+$routes->post('/admin/categorias/editar/(:num)', 'CategoriaController::editar/$1', ['filter' => 'auth']);
+$routes->get('/admin/categorias/eliminar/(:num)', 'CategoriaController::eliminar/$1', ['filter' => 'auth']);
+$routes->get('/admin/categorias/toggle/(:num)', 'CategoriaController::toggle/$1', ['filter' => 'auth']);
+
+
+
 // -------------------- Funcionalidad del Carrito --------------------
-
-// ---- Catálogo y visualización ----
-$routes->get('/todos_p','carrito_controller::catalogo', ['filter' => 'auth']);
-$routes->get('/muestro','carrito_controller::muestra', ['filter' => 'auth']);
-
-// ---- Operaciones sobre el carrito ----
-$routes->get('/carrito_actualiza','carrito_controller::actualiza_carrito', ['filter' => 'auth']);
-$routes->post('/carrito/add','carrito_controller::add', ['filter' => 'auth']);
-$routes->get('/carrito_elimina/(:any)','carrito_controller::remove/$1', ['filter' => 'auth']);
-$routes->get('/borrar','carrito_controller::borrar_carrito', ['filter' => 'auth']);
-
-// ---- Suma y resta de ítems ----
-$routes->get('carrito_suma/(:any)', 'carrito_controller::suma/$1', ['filter' => 'auth']);
-$routes->get('carrito_resta/(:any)', 'carrito_controller::resta/$1', ['filter' => 'auth']);
+$routes->get('/muestro','CarritoController::muestra', ['filter' => 'auth']);
+$routes->post('/carrito/add','CarritoController::add', ['filter' => 'auth']);
+$routes->get('/carrito_elimina/(:any)','CarritoController::remove/$1', ['filter' => 'auth']);
+$routes->get('/borrar','CarritoController::borrar_carrito', ['filter' => 'auth']);
+$routes->get('carrito_suma/(:any)', 'CarritoController::suma/$1', ['filter' => 'auth']);
+$routes->get('carrito_resta/(:any)', 'CarritoController::resta/$1', ['filter' => 'auth']);
 
 
 // -------------------- Gestión de Favoritos (Wishlist) --------------------
-$routes->get('/favoritos/setup', 'FavoritosController::setupDb');
 $routes->get('/favoritos/toggle/(:num)', 'FavoritosController::toggleFavorito/$1', ['filter' => 'auth']);
 $routes->get('/mis-favoritos', 'FavoritosController::misFavoritos', ['filter' => 'auth']);
 
+
 // -------------------- Gestión de Consultas --------------------
-$routes->get('/lista-consultas', 'ConsultaController::index', ['filter' => 'auth']);
-$routes->get('/consultas', 'ConsultaController::listarConsultas', ['filter' => 'auth']);
+$routes->get('/consultas', 'ConsultaController::index', ['filter' => 'auth']);
 $routes->get('/consultas/eliminar/(:num)', 'ConsultaController::eliminarConsulta/$1', ['filter' => 'auth']);
+

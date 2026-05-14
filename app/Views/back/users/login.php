@@ -165,9 +165,23 @@
         }
 
         @media (max-width: 991px) {
-            .auth-card { flex-direction: column; max-width: 500px; }
-            .auth-side-branding { padding: 3rem; text-align: center; align-items: center; }
-            .auth-side-form { padding: 3rem; }
+            .auth-wrapper { padding: 1rem; }
+            .auth-card { flex-direction: column; max-width: 600px; border-radius: 1.5rem; }
+            .auth-side-branding { padding: 2.5rem 2rem; min-height: 200px; text-align: center; align-items: center; }
+            .auth-quote { font-size: 1.4rem; margin-bottom: 0.5rem; }
+            .auth-side-branding p { font-size: 0.85rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+            .auth-side-form { padding: 2.5rem 2rem; }
+            .auth-header { margin-bottom: 1.5rem; }
+            .auth-header h2 { font-size: 1.5rem; }
+        }
+
+        @media (max-width: 480px) {
+            .auth-wrapper { padding: 0.5rem; }
+            .auth-card { border-radius: 1rem; }
+            .auth-side-branding { padding: 2rem 1.5rem; min-height: 180px; }
+            .auth-side-form { padding: 2rem 1.5rem; }
+            .artisan-control { padding: 0.8rem 1rem; font-size: 0.9rem; }
+            .btn-auth-primary { padding: 0.8rem; }
         }
     </style>
 <?= $this->endSection() ?>
@@ -191,19 +205,15 @@
                 <p>Ingresa tus credenciales para continuar.</p>
             </div>
 
-            <!-- Alerta de Error -->
-            <?php if (session()->getFlashdata('fallo_login')): ?>
-                <div class="alert alert-danger border-0 rounded-4 shadow-sm mb-4 small py-3">
-                    <i class="bi bi-exclamation-circle-fill me-2"></i> <?= session()->getFlashdata('fallo_login') ?>
-                </div>
-            <?php endif; ?>
+            <!-- Mensajes de Estado Modularizados -->
+            <?= view('components/alert_message') ?>
 
             <form method="post" action="<?= base_url('enviar-login') ?>">
                 <?= csrf_field(); ?>
                 
                 <div class="artisan-input-group">
                     <label for="email">Usuario o Email</label>
-                    <input type="text" class="artisan-control" id="email" name="email" placeholder="Ingresa tu usuario" required autofocus>
+                    <input type="text" class="artisan-control" id="email" name="email" value="<?= old('email') ?>" placeholder="Ingresa tu usuario" required autofocus>
                 </div>
 
                 <div class="artisan-input-group">

@@ -1,37 +1,36 @@
 <?php
-namespace App\Controllers;
-use App\Models\GaleriaClientes_model;
-use CodeIgniter\Controller;
 
+namespace App\Controllers;
+
+/**
+ * Controlador para la galería refactorizado para usar Capa de Servicios.
+ */
 class GaleriaController extends BaseController {
 
+    protected $galeriaService;
+
+    public function __construct() {
+        $this->galeriaService = new \App\Services\GaleriaService();
+    }
+
     public function index() {
-        $model = new GaleriaClientes_model();
-        $data['fotos'] = $model->getActivas();
-        $data['title'] = 'CVA en tu Hogar - Galería de Clientes';
-        
-        return view('front/pages/galeria_clientes', $data);
+        return view('front/pages/galeria_clientes', [
+            'fotos' => $this->galeriaService->getAprobadas(),
+            'title' => 'CVA en tu Hogar - Galería de Clientes'
+        ]);
     }
 
     public function subir() {
-        if (!session()->get('logged_in')) {
-            return redirect()->to('/login');
-        }
+        if (!session()->get('logged_in')) return redirect()->to('/login');
 
         $img = $this->request->getFile('imagen');
-        if ($img->isValid() && !$img->hasMoved()) {
-            $newName = $img->getRandomName();
-            $img->move(FCPATH . 'assets/uploads/galeria', $newName);
+        $resultado = $this->galeriaService->subir(
+            session()->get('id_usuario'),
+            $img,
+            $this->request->getPost('comentario')
+        );
 
-            $model = new GaleriaClientes_model();
-            $model->insert([
-                'usuario_id' => session()->get('id_usuario'),
-                'imagen' => $newName,
-                'comentario' => $this->request->getPost('comentario'),
-                'fecha' => date('Y-m-d H:i:s'),
-                'activo' => 'NO' // El admin debe aprobarla
-            ]);
-
+        if ($resultado) {
             return redirect()->back()->with('success', '¡Gracias! Tu foto ha sido enviada y será publicada tras ser revisada.');
         }
 
@@ -41,32 +40,21 @@ class GaleriaController extends BaseController {
     public function admin_index() {
         if (session()->get('perfil_id') != 1) return redirect()->to('/login');
 
-        $model = new GaleriaClientes_model();
-        $data['fotos'] = $model->select('galeria_clientes.*, usuarios.nombre')
-                              ->join('usuarios', 'usuarios.id_usuario = galeria_clientes.usuario_id')
-                              ->orderBy('activo', 'ASC')
-                              ->orderBy('fecha', 'DESC')
-                              ->findAll();
-        
-        $data['title'] = 'Moderación de Galería';
-        return view('back/gallery/gestion_galeria', $data);
+        return view('back/gallery/gestion_galeria', [
+            'fotos' => $this->galeriaService->getAllConUsuarios(),
+            'title' => 'Moderación de Galería'
+        ]);
     }
 
     public function aprobar($id) {
         if (session()->get('perfil_id') != 1) return redirect()->to('/login');
-
-        $model = new GaleriaClientes_model();
-        $model->update($id, ['activo' => 'SI']);
-
-        return redirect()->back()->with('success', 'Foto aprobada y publicada en la galería.');
+        $this->galeriaService->aprobar($id);
+        return redirect()->back()->with('success', 'Foto aprobada y publicada.');
     }
 
     public function eliminar($id) {
         if (session()->get('perfil_id') != 1) return redirect()->to('/login');
-
-        $model = new GaleriaClientes_model();
-        $model->delete($id);
-
+        $this->galeriaService->eliminar($id);
         return redirect()->back()->with('success', 'La foto ha sido eliminada.');
     }
 
@@ -83,7 +71,7 @@ class GaleriaController extends BaseController {
         
         try {
             $db->query($sql);
-            return "Tabla 'galeria_clientes' creada exitosamente.";
+            return "Tabla 'galeria_clientes' configurada.";
         } catch (\Exception $e) {
             return "Error: " . $e->getMessage();
         }

@@ -113,6 +113,9 @@
             <p class="text-muted">Piezas artesanales seleccionadas para tu espacio personal.</p>
         </div>
 
+        <!-- Mensajes de Estado Modularizados (Paso 3) -->
+        <?= view('components/alert_message') ?>
+
         <?php if (empty($cart)): ?>
             <div class="empty-cart-state bg-white rounded-5 p-5 shadow-sm text-center border">
                 <div class="mb-4">

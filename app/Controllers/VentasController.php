@@ -2,350 +2,169 @@
 
 namespace App\Controllers;
 
-use CodeIgniter\Controller;
-use App\Models\Usuarios_model;
-use App\Models\VentasCabecera_model;
-use App\Models\VentasDetalle_model;
-use App\Models\Productos_model;
-use App\Models\VentasPagos_model;
+use App\Models\VentasCabeceraModel;
+use App\Models\VentasDetalleModel;
 
 /**
- * Controlador para gestión de ventas
- * 
- * Funcionalidades:
- * - Listado y filtrado de ventas
- * - Registro de nuevas ventas
- * - Visualización de facturas
- * - Gestión de estados (Artisan Panel)
- * - Estadísticas de producción
+ * Controlador para gestión de ventas refactorizado para usar Capa de Servicios.
  */
 class VentasController extends BaseController {
 
-    /**
-     * Constructor - Inicializa helpers
-     */
+    protected $ventasService;
+
     public function __construct() {
         helper(['url', 'form']);
+        $this->ventasService = new \App\Services\VentasService();
     }
 
     /**
-     * Muestra el listado de ventas con filtros
-     * @return View Vista de detalle de ventas
+     * Muestra el listado de ventas con estadísticas procesadas por el servicio.
      */
     public function index_ventas() {
-        $perfil = session()->get('perfil_id');
+        if (session()->get('perfil_id') != 1) return redirect()->to('/login');
 
-        if ($perfil != 1) {
-            return redirect()->to('/login');
-        }
-
-        $ventasModel = new VentasCabecera_model();
+        $resultado = $this->ventasService->getVentasConEstadisticas();
         
-        // Obtenemos todos los pedidos para el filtrado en tiempo real
-        $ventas = $ventasModel->getVentas(); 
-
-        // Inicializamos contadores para los KPIs
-        $currentMonth = date('m');
-        $currentYear = date('Y');
         $meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
-        $nombreMes = $meses[(int)$currentMonth - 1];
-
-        $counts = [
-            'total'      => count($ventas),
-            'mensuales'  => 0,
-            'pendientes' => 0,
-            'en_proceso' => 0,
-            'terminados' => 0,
-            'ingresos'   => 0
-        ];
-
-        foreach ($ventas as &$venta) {
-            $ventaDate = strtotime($venta['fecha']);
-            
-            // Contabilizar pedidos del mes actual
-            if (date('m', $ventaDate) == $currentMonth && date('Y', $ventaDate) == $currentYear) {
-                $counts['mensuales']++;
-                // Sumar ingresos mensuales
-                $counts['ingresos'] += $venta['total_venta'];
-            }
-
-            // Contabilizar por estado
-            if ($venta['estado'] == 'PENDIENTE') $counts['pendientes']++;
-            if ($venta['estado'] == 'EN_PROCESO') $counts['en_proceso']++;
-            if ($venta['estado'] == 'TERMINADO' || $venta['estado'] == 'ENTREGADO') $counts['terminados']++;
-            
-            // Preparar cadena de búsqueda para JS
-            $nombre_completo = ($venta['nombre'] ?? '') . ' ' . ($venta['apellido'] ?? '');
-            $venta['search_data'] = strtolower(esc($venta['id'] . ' ' . $nombre_completo . ' ' . ($venta['usuario'] ?? '')));
-        }
-
-        $data = [
-            'ventas'    => $ventas,
-            'counts'    => $counts,
-            'nombreMes' => $nombreMes,
+        
+        return view('back/sales/detalleVentas', [
+            'ventas'    => $resultado['ventas'],
+            'counts'    => $resultado['counts'],
+            'nombreMes' => $meses[(int)date('m') - 1],
             'title'     => 'Control de Pedidos'
-        ];
-
-        return view('back/sales/detalleVentas', $data);
+        ]);
     }
 
     /**
-     * Procesa el registro de una nueva venta
-     * @return Redirect Redirección con mensaje de estado
+     * Procesa el registro de una nueva venta delegando al servicio.
      */
     public function registrar_venta() {
-        $session = session();
-        require(APPPATH . 'Controllers/carrito_controller.php');
-        $cartController = new carrito_controller();
-        $carrito_contents = $cartController->devolver_carrito();
+        $cartController = new CarritoController();
+        $resultado = $this->ventasService->procesarVenta(session()->get('id_usuario'), $cartController->devolver_carrito());
 
-        $productoModel = new Productos_model();
-        $ventasModel = new VentasCabecera_model();
-        $ventasDetalleModel = new VentasDetalle_model();
-
-        $productos_validos = [];
-        $productos_sin_stock = [];
-        $total = 0;
-
-        foreach ($carrito_contents as $item) {
-            $producto = $productoModel->getProducto($item['id']);
-
-            if ($producto && $producto['stock'] >= $item['qty']) {
-                $productos_validos[] = $item;
-                $total += $item['subtotal'];
-            } else {
-                $productos_sin_stock[] = $item['name'];
-                $cartController->eliminar_item($item['rowid']);
-            }
+        if ($resultado['status'] === 'success') {
+            $cartController->borrar_carrito();
+            return redirect()->to('/muestro')->with('success', 'Venta registrada exitosamente. Total: ' . $resultado['total']);
+        } else {
+            return redirect()->to('/muestro')->with('error', $resultado['message']);
         }
-
-        if(!empty($productos_sin_stock)) {
-            $mensaje = 'Los siguientes productos no tienen stock suficiente: ' . implode(', ', $productos_sin_stock);
-            $session->setFlashdata('error', $mensaje);
-            return redirect()->to('muestro');
-        }
-
-        if(empty($productos_validos)) {
-            $session->setFlashdata('error', 'No hay productos válidos en el carrito.');
-            return redirect()->to('muestro');
-        }
-
-        $nueva_venta = [
-            'usuario_id' => $session->get('id_usuario'),
-            'fecha' => date('Y-m-d H:i:s'),
-            'total_venta' => $total
-        ];
-
-        $venta_id = $ventasModel->insert($nueva_venta);
-
-        //Registrar detalles de la venta y actualizar stock
-        foreach ($productos_validos as $item) {
-            $detalle_venta = [
-                'venta_id' => $venta_id,
-                'producto_id' => $item['id'],
-                'cantidad' => $item['qty'],
-                'precio' => $item['price'],
-            ];
-            $ventasDetalleModel->insert($detalle_venta);
-
-            $producto = $productoModel->getProducto($item['id']);
-            $productoModel->update($item['id'], ['stock' => $producto['stock'] - $item['qty']]);
-        }
-        
-        //Vaciar Carrito y mostrar confirmación
-        $cartController->borrar_carrito();
-        $session->setFlashdata('success', 'Venta registrada exitosamente. Total: ' . $total);
-        return redirect()->to('muestro');
     }
 
     /**
-     * Muestra la factura de una venta específica
-     * @param int $venta_id ID de la venta
-     * @return View Vista de factura
+     * Muestra la factura de una venta específica.
      */
     public function ver_factura($venta_id) {
-        $detalles_venta = new VentasDetalle_model();
-        $data['venta'] = $detalles_venta->getDetalles($venta_id);
+        $data = $this->ventasService->getGestionDetalle($venta_id);
+        if (!$data) return redirect()->to('/productos')->with('error', 'Pedido no encontrado.');
 
-        $data['title'] = 'Mi Compra';
-        return view('back/sales/ver_factura_usuario', $data);
-    }
-
-    public function ver_facturas_usuario() {
-        $id_usuario = session()->get('id_usuario');
-        $ventasModel = new VentasCabecera_model();
-        $data['ventas'] = $ventasModel->getVentas(NULL, $id_usuario);
-
-        $data['title'] = 'Todas mis Compras';
-        return view('back/sales/vistaCompras', $data);
+        return view('back/sales/ver_factura_usuario', [
+            'venta' => $data['detalles'],
+            'title' => 'Mi Compra'
+        ]);
     }
 
     /**
-     * @brief Actualiza el estado de una venta (Artisan Panel)
-     * @param int $venta_id ID de la venta
-     * @return Redirect Redirección con mensaje de éxito
+     * Muestra todas las facturas del usuario actual.
+     */
+    public function ver_facturas_usuario() {
+        $id_usuario = session()->get('id_usuario');
+        $ventas = $this->ventasService->getVentasPorUsuario($id_usuario);
+
+        return view('back/sales/vistaCompras', [
+            'ventas' => $ventas,
+            'title'  => 'Todas mis Compras'
+        ]);
+    }
+
+    /**
+     * Actualiza el estado de una venta delegando al servicio.
      */
     public function actualizar_estado($venta_id) {
-        $perfil = session()->get('perfil_id');
-        if ($perfil != 1) return redirect()->to('/login');
+        if (session()->get('perfil_id') != 1) return redirect()->to('/login');
 
         $nuevo_estado = $this->request->getPost('estado');
-        $ventasModel = new VentasCabecera_model();
-        
-        $ventasModel->update($venta_id, ['estado' => $nuevo_estado]);
+        $this->ventasService->actualizarEstado($venta_id, $nuevo_estado);
 
         return redirect()->back()->with('success', 'Estado de pedido actualizado a: ' . $nuevo_estado);
     }
 
     /**
-     * @brief Muestra estadísticas de carga de trabajo y pedidos
-     * @return View Vista de estadísticas
+     * Muestra estadísticas agregadas del taller.
      */
     public function estadisticas() {
-        $perfil = session()->get('perfil_id');
-        if ($perfil != 1) return redirect()->to('/login');
+        if (session()->get('perfil_id') != 1) return redirect()->to('/login');
 
-        $ventasModel = new VentasCabecera_model();
+        // Podríamos crear un ConsultaService, por ahora mantenemos el modelo para esta métrica específica
+        $consultasModel = new \App\Models\ConsultaModel();
         
-        // Obtener conteo por estado
-        $data['stats'] = [
-            'PENDIENTE'  => $ventasModel->where('estado', 'PENDIENTE')->countAllResults(),
-            'EN_PROCESO' => $ventasModel->where('estado', 'EN_PROCESO')->countAllResults(),
-            'TERMINADO'  => $ventasModel->where('estado', 'TERMINADO')->countAllResults(),
-            'ENTREGADO'  => $ventasModel->where('estado', 'ENTREGADO')->countAllResults(),
-        ];
-
-        // Consultas activas
-        $consultasModel = new \App\Models\Consultas_model();
-        $data['total_consultas'] = $consultasModel->where('activo', 'SI')->countAllResults();
-
-        $data['title'] = 'Estadísticas del Taller';
-        return view('back/sales/estadisticas', $data);
+        return view('back/sales/estadisticas', [
+            'stats' => $this->ventasService->getDashboardStats(),
+            'total_consultas' => $consultasModel->where('activo', 'SI')->countAllResults(),
+            'title' => 'Estadísticas del Taller'
+        ]);
     }
 
     /**
-     * @brief Muestra el formulario para registrar un pedido manual (mueble a medida)
-     * @return View Vista del formulario
+     * Muestra el formulario para registrar un pedido manual.
      */
     public function nuevo_pedido_personalizado() {
-        $perfil = session()->get('perfil_id');
-        if ($perfil != 1) return redirect()->to('/login');
-
-        $data['title'] = 'Nuevo Pedido Personalizado';
-        return view('back/sales/nuevo_pedido_personalizado', $data);
+        if (session()->get('perfil_id') != 1) return redirect()->to('/login');
+        return view('back/sales/nuevo_pedido_personalizado', ['title' => 'Nuevo Pedido Personalizado']);
     }
 
     /**
-     * @brief Procesa el registro de un pedido manual
-     * @return Redirect Redirección a la gestión del pedido
+     * Procesa el registro de un pedido manual delegando al servicio.
      */
     public function guardar_pedido_personalizado() {
-        $perfil = session()->get('perfil_id');
-        if ($perfil != 1) return redirect()->to('/login');
+        if (session()->get('perfil_id') != 1) return redirect()->to('/login');
 
-        $usuariosModel = new Usuarios_model();
-        $ventasModel = new VentasCabecera_model();
-        $ventasDetalleModel = new VentasDetalle_model();
+        $resultado = $this->ventasService->registrarPedidoPersonalizado($this->request->getPost());
 
-        // 1. Obtener el usuario genérico para pedidos WhatsApp
-        $usuario_gen = $usuariosModel->where('usuario', 'cliente_whatsapp')->first();
-        $usuario_id = $usuario_gen['id_usuario'];
-
-        // 2. Crear la cabecera de la venta
-        $nombre_cliente = $this->request->getPost('nombre_cliente');
-        $total = $this->request->getPost('total_venta');
-        $observaciones = "CLIENTE: " . $nombre_cliente . "\n" . $this->request->getPost('detalles_obra');
-
-        $venta_id = $ventasModel->insert([
-            'usuario_id'    => $usuario_id,
-            'total_venta'   => $total,
-            'estado'        => 'PENDIENTE',
-            'observaciones' => $observaciones,
-            'fecha'         => date('Y-m-d H:i:s')
-        ]);
-
-        // 3. Crear el detalle (mueble custom)
-        $ventasDetalleModel->insert([
-            'venta_id'    => $venta_id,
-            'producto_id' => null, // Es a medida
-            'cantidad'    => 1,
-            'precio'      => $total
-        ]);
-
-        // 4. Si hubo una seña inicial, registrarla como primer pago
-        $monto_sena = $this->request->getPost('monto_sena');
-        if ($monto_sena > 0) {
-            $pagosModel = new VentasPagos_model();
-            $pagosModel->insert([
-                'venta_id' => $venta_id,
-                'monto'    => $monto_sena,
-                'nota'     => 'Seña inicial - Pedido Manual'
-            ]);
+        if ($resultado['status'] === 'success') {
+            return redirect()->to('/ventas/gestion/' . $resultado['venta_id'])->with('success', 'Pedido personalizado registrado correctamente.');
+        } else {
+            return redirect()->back()->withInput()->with('error', 'Error: ' . $resultado['message']);
         }
-
-        return redirect()->to('ventas/gestion/' . $venta_id)->with('success', 'Pedido personalizado registrado correctamente.');
     }
 
     /**
-     * @brief Vista de gestión detallada para el administrador (Artisan Panel)
-     * @param int $venta_id ID de la venta
-     * @return View Vista de gestión
+     * Vista de gestión detallada para el administrador.
      */
     public function ver_gestion_pedido($venta_id) {
-        $perfil = session()->get('perfil_id');
-        if ($perfil != 1) return redirect()->to('/login');
+        if (session()->get('perfil_id') != 1) return redirect()->to('/login');
 
-        $ventasModel = new VentasCabecera_model();
-        $ventasDetalle = new VentasDetalle_model();
-        $pagosModel = new VentasPagos_model();
-
-        $data['venta'] = $ventasModel->getVentas($venta_id)[0] ?? null;
-        if (!$data['venta']) return redirect()->to('ventas-list')->with('error', 'Pedido no encontrado.');
-
-        $data['detalles'] = $ventasDetalle->getDetalles($venta_id);
-        $data['pagos'] = $pagosModel->getPagosPorVenta($venta_id);
-        $data['total_pagado'] = $pagosModel->getTotalPagado($venta_id);
-        $data['saldo_pendiente'] = $data['venta']['total_venta'] - $data['total_pagado'];
+        $data = $this->ventasService->getGestionDetalle($venta_id);
+        if (!$data) return redirect()->to('/ventas-list')->with('error', 'Pedido no encontrado.');
 
         $data['title'] = 'Gestión de Pedido #' . $venta_id;
         return view('back/sales/gestion_pedido_admin', $data);
     }
 
     /**
-     * @brief Registra un pago parcial o total para una venta
-     * @return Redirect Redirección con mensaje de éxito
+     * Registra un pago delegando al servicio.
      */
     public function registrar_pago() {
-        $perfil = session()->get('perfil_id');
-        if ($perfil != 1) return redirect()->to('/login');
+        if (session()->get('perfil_id') != 1) return redirect()->to('/login');
 
-        $venta_id = $this->request->getPost('venta_id');
-        $monto = $this->request->getPost('monto');
-        $nota = $this->request->getPost('nota');
-
-        $pagosModel = new VentasPagos_model();
-        $pagosModel->insert([
-            'venta_id' => $venta_id,
-            'monto'    => $monto,
-            'nota'     => $nota
-        ]);
+        $this->ventasService->registrarPago(
+            $this->request->getPost('venta_id'),
+            $this->request->getPost('monto'),
+            $this->request->getPost('nota')
+        );
 
         return redirect()->back()->with('success', 'Pago registrado exitosamente.');
     }
 
     /**
-     * @brief Actualiza las observaciones/detalles de un pedido
-     * @return Redirect Redirección con mensaje de éxito
+     * Actualiza las observaciones delegando al servicio.
      */
     public function guardar_observaciones() {
-        $perfil = session()->get('perfil_id');
-        if ($perfil != 1) return redirect()->to('/login');
+        if (session()->get('perfil_id') != 1) return redirect()->to('/login');
 
-        $venta_id = $this->request->getPost('venta_id');
-        $observaciones = $this->request->getPost('observaciones');
-
-        $ventasModel = new VentasCabecera_model();
-        $ventasModel->update($venta_id, ['observaciones' => $observaciones]);
+        $this->ventasService->actualizarObservaciones(
+            $this->request->getPost('venta_id'),
+            $this->request->getPost('observaciones')
+        );
 
         return redirect()->back()->with('success', 'Detalles del pedido actualizados.');
     }

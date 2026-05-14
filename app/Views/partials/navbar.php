@@ -7,7 +7,7 @@ $perfil = session()->get('perfil_id');
 
 // Detectar página activa (ejemplo básico)
 $active_inicio = (current_url() == base_url('/')) ? 'active' : '';
-$active_productos = (strpos(current_url(), 'productos') !== false || strpos(current_url(), 'todos_p') !== false) ? 'active' : '';
+$active_productos = (strpos(current_url(), 'productos') !== false) ? 'active' : '';
 $active_comercializacion = (strpos(current_url(), 'comercializacion') !== false) ? 'active' : '';
 $active_info = (strpos(current_url(), 'quienesSomos') !== false) ? 'active' : '';
 $active_contacto = (strpos(current_url(), 'informacionContacto') !== false) ? 'active' : '';
@@ -37,7 +37,7 @@ $active_galeria = (strpos(current_url(), 'galeria') !== false) ? 'active' : '';
     <div class="collapse navbar-collapse justify-content-center" id="navbarNav" style="flex: 2;">
       <ul class="navbar-nav gap-1">
         <li class="nav-item"><a class="nav-link-custom <?= $active_inicio ?>" href="<?= base_url('/') ?>">Inicio</a></li>
-        <li class="nav-item"><a class="nav-link-custom <?= $active_productos ?>" href="<?= $isLogged == 'SI' ? base_url('todos_p') : base_url('productos') ?>">Productos</a></li>
+        <li class="nav-item"><a class="nav-link-custom <?= $active_productos ?>" href="<?= base_url('productos') ?>">Productos</a></li>
         <li class="nav-item"><a class="nav-link-custom <?= $active_comercializacion ?>" href="<?= base_url('comercializacion') ?>">Comercialización</a></li>
         <li class="nav-item"><a class="nav-link-custom <?= $active_info ?>" href="<?= base_url('quienesSomos') ?>">Información</a></li>
         <li class="nav-item"><a class="nav-link-custom <?= $active_galeria ?>" href="<?= base_url('galeria') ?>">Galería</a></li>
@@ -45,7 +45,7 @@ $active_galeria = (strpos(current_url(), 'galeria') !== false) ? 'active' : '';
       </ul>
     </div>
 
-    <!-- [DERECHA] ICONOS USUARIO / AUTH -->
+    <!-- [DERECHA] ICONOS USUARIO / AUTH (Oculto en móvil por petición del usuario) -->
     <div class="d-flex align-items-center justify-content-end" style="flex: 1;">
         <?php if (!$isLogged): ?>
           <div class="auth-pill-artisan d-none d-lg-flex">
@@ -53,11 +53,10 @@ $active_galeria = (strpos(current_url(), 'galeria') !== false) ? 'active' : '';
             <div class="auth-pill-divider"></div>
             <a href="<?= base_url('registro') ?>" class="auth-pill-link">Registrarse</a>
           </div>
-          <a href="<?= base_url('login') ?>" class="boton-icon-circle d-lg-none">
-            <img src="<?= base_url('assets/img/ui/icons/person.svg') ?>" alt="Login" class="icono-svg">
-          </a>
+          <!-- Eliminado icono de persona en móvil para invitados -->
         <?php else: ?>
-          <button class="boton-icon-circle" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
+          <!-- Icono de persona solo visible en desktop para usuarios logueados -->
+          <button class="boton-icon-circle d-none d-lg-flex" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
             <img src="<?= base_url('assets/img/ui/icons/person.svg') ?>" alt="Perfil" class="icono-svg">
           </button>
         <?php endif; ?>
@@ -88,8 +87,13 @@ $active_galeria = (strpos(current_url(), 'galeria') !== false) ? 'active' : '';
         <br><a href="<?= base_url('/perfil') ?>" class="text-decoration-none small text-gold fw-bold">MI PERFIL <i class="bi bi-chevron-right"></i></a>
       </div>
     <?php else: ?>
-      <div class="auth-section-mobile p-4 text-center bg-light">
-          <p class="small text-muted mb-3">Bienvenido a nuestra carpintería.</p>
+      <div class="auth-section-mobile p-4 text-center">
+          <div class="avatar-wrapper mx-auto mb-3" style="width: 60px; height: 60px;">
+              <div class="avatar-bg shadow-sm" style="background: white; border: 1px solid var(--cva-brown); display: flex; align-items: center; justify-content: center; border-radius: 50%;">
+                  <i class="bi bi-person-plus text-cva-brown" style="font-size: 1.8rem;"></i>
+              </div>
+          </div>
+          <p class="small text-muted mb-3">Bienvenido a nuestra carpintería artesanal.</p>
           <div class="d-grid gap-2">
               <a href="<?= base_url('login') ?>" class="btn btn-brown-solid rounded-pill">Iniciar Sesión</a>
               <a href="<?= base_url('registro') ?>" class="btn btn-outline-brown rounded-pill">Registrarse</a>
@@ -99,7 +103,7 @@ $active_galeria = (strpos(current_url(), 'galeria') !== false) ? 'active' : '';
     <div class="menu-navigation-mobile d-lg-none p-3 border-bottom">
       <div class="list-group list-group-flush rounded-4 overflow-hidden border shadow-sm">
         <a href="<?= base_url('/') ?>" class="list-group-item list-group-item-action <?= $active_inicio == 'active' ? 'active-sidebar' : '' ?>"><i class="bi bi-house-door me-3"></i> Inicio</a>
-        <a href="<?= $isLogged == 'SI' ? base_url('todos_p') : base_url('productos') ?>" class="list-group-item list-group-item-action <?= $active_productos == 'active' ? 'active-sidebar' : '' ?>"><i class="bi bi-box-seam me-3"></i> Productos</a>
+        <a href="<?= base_url('productos') ?>" class="list-group-item list-group-item-action <?= $active_productos == 'active' ? 'active-sidebar' : '' ?>"><i class="bi bi-box-seam me-3"></i> Productos</a>
         <a href="<?= base_url('comercializacion') ?>" class="list-group-item list-group-item-action <?= $active_comercializacion == 'active' ? 'active-sidebar' : '' ?>"><i class="bi bi-truck me-3"></i> Comercialización</a>
         <a href="<?= base_url('quienesSomos') ?>" class="list-group-item list-group-item-action <?= $active_info == 'active' ? 'active-sidebar' : '' ?>"><i class="bi bi-info-circle me-3"></i> Información</a>
         <a href="<?= base_url('galeria') ?>" class="list-group-item list-group-item-action <?= $active_galeria == 'active' ? 'active-sidebar' : '' ?>"><i class="bi bi-images me-3"></i> Galería</a>

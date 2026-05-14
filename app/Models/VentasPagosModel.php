@@ -5,10 +5,10 @@ namespace App\Models;
 use CodeIgniter\Model;
 
 /**
- * @class VentasPagos_model
+ * @class VentasPagosModel
  * @brief Modelo para registrar y gestionar los pagos (señas/cuotas) de cada venta.
  */
-class VentasPagos_model extends Model {
+class VentasPagosModel extends Model {
     protected $table = 'ventas_pagos';
     protected $primaryKey = 'id';
     protected $allowedFields = ['venta_id', 'monto', 'fecha', 'nota'];

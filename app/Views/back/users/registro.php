@@ -179,9 +179,24 @@
         }
 
         @media (max-width: 991px) {
-            .auth-card { flex-direction: column; }
-            .auth-side-branding { padding: 3rem; }
-            .auth-side-form { padding: 3rem; max-height: none; }
+            .auth-wrapper { padding: 1.5rem 1rem; }
+            .auth-card { flex-direction: column; max-width: 600px; border-radius: 1.5rem; }
+            .auth-side-branding { padding: 2.5rem 2rem; min-height: 250px; text-align: center; align-items: center; }
+            .auth-quote { font-size: 1.5rem; margin-bottom: 1rem; }
+            .auth-side-branding .mt-4 { display: none; } /* Ocultar beneficios en móvil para ganar espacio */
+            .auth-side-branding .mt-auto { padding-top: 1.5rem !important; }
+            .auth-side-form { padding: 2.5rem 2rem; }
+            .auth-header { margin-bottom: 1.5rem; }
+            .auth-header h2 { font-size: 1.6rem; }
+        }
+
+        @media (max-width: 480px) {
+            .auth-wrapper { padding: 0.5rem; }
+            .auth-card { border-radius: 1rem; }
+            .auth-side-branding { padding: 2rem 1.5rem; min-height: 180px; }
+            .auth-side-form { padding: 2rem 1.5rem; }
+            .artisan-control { padding: 0.8rem 1rem; font-size: 0.9rem; }
+            .btn-auth-primary { padding: 0.8rem; margin-top: 1rem; }
         }
     </style>
 <?= $this->endSection() ?>
@@ -227,6 +242,9 @@
                 <p class="text-muted">Completa tus datos para formar parte de la familia.</p>
             </div>
 
+            <!-- Mensajes de Estado Modularizados -->
+            <?= view('components/alert_message') ?>
+
             <form method="post" action="<?= base_url('/enviar-form') ?>">
                 <?= csrf_field(); ?>
                 
@@ -234,7 +252,7 @@
                     <div class="col-md-12">
                         <div class="artisan-input-group">
                             <label>Nombre de Usuario</label>
-                            <input type="text" class="artisan-control" name="user" placeholder="Ej: artesano_maestro" required>
+                            <input type="text" class="artisan-control" name="user" value="<?= old('user') ?>" placeholder="Ej: artesano_maestro" required>
                             <?php if($validation->getError('user')): ?>
                                 <div class="text-danger x-small mt-1 fw-bold"><?= $validation->getError('user') ?></div>
                             <?php endif; ?>
@@ -244,7 +262,7 @@
                     <div class="col-md-6">
                         <div class="artisan-input-group">
                             <label>Nombre</label>
-                            <input type="text" class="artisan-control" name="name" placeholder="Tu nombre" required>
+                            <input type="text" class="artisan-control" name="name" value="<?= old('name') ?>" placeholder="Tu nombre" required>
                             <?php if($validation->getError('name')): ?>
                                 <div class="text-danger x-small mt-1 fw-bold"><?= $validation->getError('name') ?></div>
                             <?php endif; ?>
@@ -254,7 +272,7 @@
                     <div class="col-md-6">
                         <div class="artisan-input-group">
                             <label>Apellido</label>
-                            <input type="text" class="artisan-control" name="surname" placeholder="Tu apellido" required>
+                            <input type="text" class="artisan-control" name="surname" value="<?= old('surname') ?>" placeholder="Tu apellido" required>
                             <?php if($validation->getError('surname')): ?>
                                 <div class="text-danger x-small mt-1 fw-bold"><?= $validation->getError('surname') ?></div>
                             <?php endif; ?>
@@ -264,7 +282,7 @@
                     <div class="col-md-12">
                         <div class="artisan-input-group">
                             <label>Email</label>
-                            <input type="email" class="artisan-control" name="email" placeholder="correo@ejemplo.com" required>
+                            <input type="email" class="artisan-control" name="email" value="<?= old('email') ?>" placeholder="correo@ejemplo.com" required>
                             <?php if($validation->getError('email')): ?>
                                 <div class="text-danger x-small mt-1 fw-bold"><?= $validation->getError('email') ?></div>
                             <?php endif; ?>

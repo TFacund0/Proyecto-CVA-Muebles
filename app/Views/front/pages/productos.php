@@ -1,7 +1,7 @@
 <?= $this->extend('layout/main') ?>
 
 <?= $this->section('extra-css') ?>
-    <link rel="stylesheet" href="<?= base_url('assets/css/pages/productos.css?v=8.5')?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/pages/productos.css?v=9.5')?>">
     <style>
         .btn-fav-artisan {
             position: absolute;
@@ -44,6 +44,9 @@
 
     <!-- Contenedor de muebles (Mi diseño artisan) -->
     <div class="contenedor-muebles-artisan container-lg" id="catalogo-productos">
+        
+        <!-- Mensajes de Estado Modularizados -->
+        <?= view('components/alert_message') ?>
 
         <!-- Pestañas de Filtro -->
         <div class="filter-container mb-5 animate-fade-in">
@@ -59,76 +62,12 @@
 
         <div class="row g-3" id="lista-productos">
             <?php foreach ($producto as $row) { ?>
-                <div class="col-lg-4 col-md-6 col-6 mb-4" data-categorias="<?= esc($row['categoria']) ?>">
-                    <div class="card h-100 product-card">
-                        <div class="img-wrapper">
-                            <img src="<?= base_url('assets/uploads/' . $row['imagen']) ?>" alt="<?= esc($row['nombre_prod']) ?>">
-                            
-                            <!-- Botón Favoritos (Paso 2) -->
-                            <?php if (session()->get('logged_in')): ?>
-                                <?php $isFav = in_array($row['id_producto'], $user_favs ?? []); ?>
-                                <button onclick="toggleFav(<?= $row['id_producto'] ?>, this)" class="btn-fav-artisan <?= $isFav ? 'active' : '' ?>" title="Guardar en mis piezas favoritas">
-                                    <i class="bi <?= $isFav ? 'bi-heart-fill' : 'bi-heart' ?>"></i>
-                                </button>
-                            <?php endif; ?>
-                        </div>
-                        
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title"><?= esc($row['nombre_prod']) ?></h5>
-                            <p class="small text-muted mb-4">Pieza única de fabricación artesanal en madera seleccionada.</p>
-                            
-                            <div class="d-flex justify-content-between align-items-center mb-4 mt-auto">
-                                <span class="precio-tag">$<?= number_format($row['precio_vta'], 0, ',', '.') ?></span>
-                                <?php if ($row['stock'] > 0): ?>
-                                    <span class="badge-stock available"><i class="bi bi-check-circle-fill me-1"></i> Disponible</span>
-                                <?php else: ?>
-                                    <span class="badge-stock out-of-stock"><i class="bi bi-clock-history me-1"></i> Sin Stock</span>
-                                <?php endif; ?>
-                            </div>
-                            
-                            <div class="action-buttons">
-                                <a href="<?= base_url('producto/detalle/' . $row['id_producto']) ?>" class="btn btn-artisan-gold w-100 py-3 fw-bold">
-                                    VER DETALLES
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="card-footer border-0 bg-transparent pb-4 px-4">
-                            <?php if (env('SHOPPING_CART_ENABLED')): ?>
-                                <?php if (session()->get('logged_in')): ?>
-                                    <?php if ($row['stock'] > 0): ?>
-                                        <form action="<?= base_url('carrito/add') ?>" method="post">
-                                            <?= csrf_field(); ?>
-                                            <input type="hidden" name="id_producto" value="<?= esc($row['id_producto']) ?>">
-                                            <input type="hidden" name="precio_vta" value="<?= esc($row['precio_vta']) ?>">
-                                            <input type="hidden" name="nombre_prod" value="<?= esc($row['nombre_prod']) ?>">
-                                            <input type="hidden" name="imagen" value="<?= esc($row['imagen']) ?>">
-                                            <input type="submit" class="btn btn-brown-solid w-100" value="Agregar al Carrito" name="action">
-                                        </form>
-                                    <?php else: ?>
-                                        <a href="https://wa.me/5493794098511?text=Hola!%20Me%20interesa%20el%20mueble%20<?= urlencode($row['nombre_prod']) ?>%20pero%20veo%20que%20no%20hay%20stock.%20¿Cuándo%20volverán%20a%20tener?" 
-                                           target="_blank" class="btn btn-outline-brown w-100">
-                                            <i class="bi bi-whatsapp me-2"></i> Consultar Disponibilidad
-                                        </a>
-                                    <?php endif; ?>
-                                <?php else: ?>
-                                    <a href="<?= base_url('login') ?>" class="btn btn-outline-secondary w-100">Iniciá sesión para comprar</a>
-                                <?php endif; ?>
-                            <?php else: ?>
-                                <?php 
-                                    $whatsapp_num = "5493794098511";
-                                    $mensaje = urlencode("Hola! Estoy interesado en el producto: " . $row['nombre_prod'] . " (ID: " . $row['id_producto'] . "). Me podrías dar más información?");
-                                    $url_whatsapp = "https://wa.me/{$whatsapp_num}?text={$mensaje}";
-                                ?>
-                                <a href="<?= $url_whatsapp ?>" target="_blank" class="btn btn-whatsapp-artisan w-100">
-                                    <i class="bi bi-whatsapp me-2"></i> Consultar
-                                </a>
-                            <?php endif; ?>
-                        </div>
-
-                    </div>
+                <div class="col-lg-4 col-md-6 col-12 mb-4" data-categorias="<?= esc($row['categoria']) ?>">
+                    <?= view('components/product_card', ['producto' => $row, 'user_favs' => $user_favs ?? []]) ?>
                 </div>
             <?php } ?>
+        </div>
+    </div>
         </div>
     </div>
 </section>

@@ -58,7 +58,6 @@
     <?= csrf_field() ?>
     
     <div class="row g-4">
-    <div class="row g-4">
         <!-- Columna de Información Principal -->
         <div class="col-lg-8">
             <div class="admin-card-v2 mb-4 border-0 shadow-sm overflow-hidden">
@@ -69,7 +68,7 @@
                     <p class="x-small text-muted mb-0">Identifica y describe la pieza para el catálogo.</p>
                 </div>
                 <div class="p-4">
-                    <div class="row g-4">
+                    <div class="row g-3 g-md-4">
                         <div class="col-md-8 col-12">
                             <label class="x-small fw-bold text-muted text-uppercase mb-2 tracking-wider">Nombre de la Pieza</label>
                             <input type="text" name="nombre_producto" class="form-control border-0 bg-light py-3 px-4 rounded-3 shadow-sm" placeholder="Ej: Mesa de Comedor" required style="height: 58px;">
@@ -99,35 +98,27 @@
                     <p class="x-small text-muted mb-0">Configura valores y disponibilidad actual.</p>
                 </div>
                 <div class="p-4">
-                    <div class="row g-4 align-items-end">
-                        <div class="col-md-3 col-6">
-                            <div style="min-height: 40px;" class="d-flex align-items-end mb-2">
-                                <label class="x-small fw-bold text-muted text-uppercase mb-0">Costo ($)</label>
-                            </div>
+                    <div class="row g-3 g-md-4 align-items-end">
+                        <div class="col-md-3 col-12">
+                            <label class="x-small fw-bold text-muted text-uppercase mb-2">Costo ($)</label>
                             <div class="input-group">
                                 <span class="input-group-text bg-white border-0 text-muted shadow-sm" style="border-radius: 10px 0 0 10px;">$</span>
                                 <input type="number" step="0.01" name="precio" id="costo" class="form-control border-0 bg-light py-3 shadow-sm" style="border-radius: 0 10px 10px 0; height: 58px;" placeholder="0.00" required>
                             </div>
                         </div>
-                        <div class="col-md-3 col-6">
-                            <div style="min-height: 40px;" class="d-flex align-items-end mb-2">
-                                <label class="x-small fw-bold text-muted text-uppercase mb-0">Venta ($)</label>
-                            </div>
+                        <div class="col-md-3 col-12">
+                            <label class="x-small fw-bold text-muted text-uppercase mb-2">Venta ($)</label>
                             <div class="input-group">
                                 <span class="input-group-text bg-white border-0 text-gold fw-bold shadow-sm" style="border-radius: 10px 0 0 10px;">$</span>
                                 <input type="number" step="0.01" name="precio-vta" id="venta" class="form-control border-0 py-3 fw-bold text-cva-brown shadow-sm" style="background: #fffdf5; border-radius: 0 10px 10px 0; height: 58px;" placeholder="0.00" required>
                             </div>
                         </div>
                         <div class="col-md-3 col-6">
-                            <div style="min-height: 40px;" class="d-flex align-items-end mb-2">
-                                <label class="x-small fw-bold text-muted text-uppercase mb-0">Stock</label>
-                            </div>
+                            <label class="x-small fw-bold text-muted text-uppercase mb-2">Stock</label>
                             <input type="number" name="stock" class="form-control border-0 bg-light py-3 shadow-sm" style="border-radius: 10px; height: 58px;" placeholder="0" required>
                         </div>
                         <div class="col-md-3 col-6">
-                            <div style="min-height: 40px;" class="d-flex align-items-end mb-2">
-                                <label class="x-small fw-bold text-muted text-uppercase mb-0">Estado</label>
-                            </div>
+                            <label class="x-small fw-bold text-muted text-uppercase mb-2">Estado</label>
                             <select name="eliminado" class="form-select border-0 py-3 shadow-sm fw-bold text-uppercase" style="font-size: 0.75rem; border-radius: 10px; height: 58px; background-color: #f8fafc;">
                                 <option value="NO">Activo</option>
                                 <option value="SI">Archivado</option>
@@ -138,8 +129,8 @@
                     <!-- Widget de Margen de Ganancia Premium -->
                     <div class="mt-4 mt-md-5 p-3 p-md-4 rounded-4 border-0 shadow-sm overflow-hidden position-relative bg-white border-gold-glow">
                         <div class="position-absolute top-0 start-0 w-100 h-100 bg-gold-soft opacity-25"></div>
-                        <div class="position-relative d-flex flex-column flex-sm-row justify-content-between align-items-center gap-3 gap-md-4 text-center text-sm-start">
-                            <div class="d-flex align-items-center gap-3 gap-md-4">
+                        <div class="position-relative d-flex flex-column flex-md-row justify-content-between align-items-center gap-3 gap-md-4">
+                            <div class="d-flex align-items-center gap-3 w-100 w-md-auto">
                                 <div class="bg-white p-2 p-md-3 rounded-circle shadow-sm border border-gold border-opacity-25">
                                     <i class="bi bi-graph-up-arrow fs-5 fs-md-4 text-gold"></i>
                                 </div>
@@ -148,7 +139,7 @@
                                     <h4 id="margen-porcentaje" class="fw-bold text-cva-brown mb-0">0%</h4>
                                 </div>
                             </div>
-                            <div class="text-sm-end border-sm-start ps-sm-4 pt-2 pt-sm-0 w-100 w-sm-auto border-top border-sm-top-0">
+                            <div class="text-start text-md-end border-top border-md-top-0 border-md-start ps-0 ps-md-4 pt-3 pt-md-0 w-100 w-md-auto">
                                 <span class="d-block x-small text-uppercase fw-bold text-muted mb-1">Utilidad Neta</span>
                                 <h3 id="margen-dinero" class="fw-bold text-success mb-0 tracking-tight">$0.00</h3>
                             </div>
@@ -243,9 +234,12 @@
     }
 
     @media (max-width: 767.98px) {
-        .dropzone-premium-v2 { height: 280px !important; }
-        .display-3 { font-size: 3rem !important; }
-        .h2 { font-size: 1.5rem !important; }
+        .dropzone-premium-v2 { height: 300px !important; }
+        .dashboard-icon-main { width: 50px; height: 50px; font-size: 1.5rem; border-radius: 0.8rem; }
+        .display-6 { font-size: 1.8rem !important; }
+        .admin-card-v2 .p-4 { padding: 1.5rem !important; }
+        .btn-admin-primary { padding: 1.2rem !important; }
+        .shadow-gold { box-shadow: 0 10px 20px rgba(201, 161, 107, 0.2) !important; }
     }
 </style>
 

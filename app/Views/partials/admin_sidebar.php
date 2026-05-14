@@ -14,7 +14,7 @@
     <nav class="sidebar-nav">
         <!-- 1. DASHBOARD & MÉTRICAS -->
         <div class="sidebar-group-label">Métricas y Control</div>
-        <a href="<?= base_url('/admin-dashboard') ?>" class="nav-item-admin <?= (current_url() == base_url('/admin-dashboard') || current_url() == base_url('/admin-stats')) ? 'active' : '' ?>">
+        <a href="<?= base_url('/admin-dashboard') ?>" class="nav-item-admin <?= (current_url() == base_url('/admin-dashboard')) ? 'active' : '' ?>">
             <i class="bi bi-speedometer2"></i>
             <span>Dashboard</span>
         </a>
@@ -25,7 +25,7 @@
             <i class="bi bi-tools"></i>
             <span>Control de Ventas</span>
         </a>
-        <a href="<?= base_url('/consultas') ?>" class="nav-item-admin <?= (current_url() == base_url('/consultas') || current_url() == base_url('/lista-consultas')) ? 'active' : '' ?>">
+        <a href="<?= base_url('/consultas') ?>" class="nav-item-admin <?= (current_url() == base_url('/consultas')) ? 'active' : '' ?>">
             <i class="bi bi-chat-dots"></i>
             <span>Inbox Consultas</span>
         </a>
@@ -39,6 +39,10 @@
         <a href="<?= base_url('/alta-producto') ?>" class="nav-item-admin <?= (current_url() == base_url('/alta-producto')) ? 'active' : '' ?>">
             <i class="bi bi-plus-circle"></i>
             <span>Añadir Producto</span>
+        </a>
+        <a href="<?= base_url('/crud-categorias') ?>" class="nav-item-admin <?= (current_url() == base_url('/crud-categorias')) ? 'active' : '' ?>">
+            <i class="bi bi-tags"></i>
+            <span>Categorías</span>
         </a>
 
         <!-- 4. CONFIGURACIÓN -->

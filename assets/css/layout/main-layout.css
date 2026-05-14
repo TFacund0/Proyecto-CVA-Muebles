@@ -116,19 +116,40 @@ nav.navbar.artisan-main-nav {
     border: 1px solid rgba(255, 255, 255, 0.3) !important;
     border-radius: 50px !important;
     padding: 6px 18px !important;
-    display: flex !important;
+    display: none !important; /* Forzamos la ocultación total en móvil */
     align-items: center !important;
-    transition: all 0.4s ease !important;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
     backdrop-filter: blur(8px) !important;
+}
+
+@media (min-width: 992px) {
+    .auth-pill-artisan {
+        display: flex !important; /* Solo visible en desktop con alta prioridad */
+    }
+}
+
+.auth-pill-artisan:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+    border-color: var(--cva-gold) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
 .auth-pill-link {
     color: #FFFFFF !important;
     text-decoration: none !important;
-    font-size: 0.7rem !important;
-    font-weight: 800 !important;
+    font-size: 0.75rem !important;
+    font-weight: 700 !important;
     text-transform: uppercase !important;
     letter-spacing: 1px !important;
+    transition: all 0.3s ease !important;
+    padding: 4px 8px;
+    border-radius: 20px;
+}
+
+.auth-pill-link:hover {
+    color: var(--cva-gold) !important;
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .auth-pill-divider {
@@ -227,8 +248,43 @@ nav.navbar.artisan-main-nav {
 
 /* Auth Pill for Sidebar Mobile */
 .auth-section-mobile {
-    background-color: #f8f9fa;
-    border-bottom: 1px solid #eee;
+    background: linear-gradient(135deg, #fdfaf7 0%, #f4eee8 100%);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    padding: 30px 20px !important;
+}
+
+.btn-brown-solid {
+    background-color: var(--cva-brown) !important;
+    color: white !important;
+    border: none !important;
+    padding: 12px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(45, 27, 25, 0.2);
+}
+
+.btn-brown-solid:active {
+    transform: scale(0.98);
+}
+
+.btn-outline-brown {
+    background-color: transparent !important;
+    color: var(--cva-brown) !important;
+    border: 2px solid var(--cva-brown) !important;
+    padding: 10px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-brown:active {
+    background-color: rgba(45, 27, 25, 0.05) !important;
+    transform: scale(0.98);
 }
 
 /* FOOTER */

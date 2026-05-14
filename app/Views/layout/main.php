@@ -17,8 +17,8 @@
     
     <!-- Design System & Global Styles -->
     <link rel="stylesheet" href="<?= base_url('assets/css/base/global.css?v=3.0')?>">
-    <link rel="stylesheet" href="<?= base_url('assets/css/layout/main-layout.css?v=4.0')?>">
-    <link rel="stylesheet" href="<?= base_url('assets/css/pages/miestilo.css?v=1.2')?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/layout/main-layout.css?v=6.0')?>">
+
 
     <!-- Page Specific CSS Section -->
     <?= $this->renderSection('extra-css') ?>

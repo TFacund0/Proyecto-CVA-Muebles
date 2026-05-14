@@ -2,265 +2,156 @@
 
 namespace App\Controllers;
 
-use App\Models\Productos_model;
-use App\Models\Usuario_model;
-use App\Models\Categorias_model;
-use CodeIgniter\Controller;
+use App\Models\CategoriaModel;
 
 /**
- * Controlador para la gestión de productos
- * 
- * Permite:
- * - Listar productos (activos/eliminados)
- * - Crear nuevos productos
- * - Editar productos existentes  
- * - Eliminar/activar productos (soft delete)
+ * Controlador para gestión de productos refactorizado para usar Capa de Servicios.
  */
 class ProductoController extends BaseController {
 
-    /**
-     * Constructor - Inicializa helpers y sesión
-     */
+    protected $productoService;
+    protected $categoriaService;
+
     public function __construct() {
-        helper(['url', 'form', 'text']);
-        $session = session(); // Inicia la sesión
-    }    
+        helper(['form', 'url', 'text']);
+        $this->productoService = new \App\Services\ProductoService();
+        $this->categoriaService = new \App\Services\CategoriaService();
+    }
 
     /**
-     * Muestra el listado de productos
-     * @return View Vista de administración de productos
+     * Muestra el listado de productos para administración.
      */
     public function index() {
-        $perfil = session()->get('perfil_id');
+        if (session()->get('perfil_id') != 1) return redirect()->to('/login');
 
-        if ($perfil != 1) {
-            return redirect()->to('/login');
-        }
-
-        $productoModel = new Productos_model();
-        $categoriaModel = new Categorias_model();
-
-        $search = $this->request->getGet('search');
-        $cat_id = $this->request->getGet('categoria_id');
-        $vista = $this->request->getVar('vista') ?? 'NO';
-        $limit = $this->request->getVar('option') ?? 10;
-
-        $builder = $productoModel->select('productos.*, categorias.descripcion as categoria')
-                                 ->join('categorias', 'categorias.id_categoria = productos.categoria_id');
-                                 // Traemos todos para filtrar con JS sin recargar
-
-        if (!empty($search)) {
-            $builder->like('productos.nombre_prod', $search);
-        }
-
-        if (!empty($cat_id)) {
-            $builder->where('productos.categoria_id', $cat_id);
-        }
-
-        $data = [
-            'productos' => $builder->findAll(),
-            'categorias' => $categoriaModel->findAll(),
-            'select' => $limit,
-            'vista' => $vista
-        ];
-
-        $data['title'] = 'Gestión de Productos';
-        return view('back/products/crud_productos', $data);
+        $resultado = $this->productoService->getProductosConStats();
+        
+        return view('back/products/crud_productos', [
+            'productos' => $resultado['productos'],
+            'counts'    => $resultado['counts'],
+            'categorias' => $this->categoriaService->getCategoriasConStats(),
+            'vista'     => $this->request->getVar('vista') ?? 'NO',
+            'title'     => 'Gestión de Productos'
+        ]);
     }
 
     /**
-     * Muestra el formulario de alta de producto
-     * @return View Vista del formulario de creación
+     * Muestra el formulario de alta de producto.
      */
     public function create_alta_producto() {
-        $perfil = session()->get('perfil_id');
+        if (session()->get('perfil_id') != 1) return redirect()->to('/login');
 
-        if ($perfil != 1) {
-            return redirect()->to('/login');
-        }
-
-        $categoriasModel = new Categorias_model();
-        $data['categorias'] = $categoriasModel->getCategorias();
-
-        $data['title'] = 'Alta Producto';
-        return view('back/products/alta_producto', $data);
+        return view('back/products/alta_producto', [
+            'categorias' => $this->categoriaService->getCategoriasConStats(),
+            'title' => 'Alta de Producto'
+        ]);
     }
 
     /**
-     * Valida y procesa el formulario de alta de producto
-     * @return Redirect Redirección con mensaje de éxito/error
+     * Valida y crea un producto delegando al servicio.
      */
     public function formValidation() {
+        if (session()->get('perfil_id') != 1) return redirect()->to('/login');
+
         $rules = [
-            'nombre_producto' => 'required|min_length[3]|max_length[100]',
-            'image' => 'uploaded[image]|is_image[image]|mime_in[image,image/jpg,image/jpeg,image/png]',
-            'precio' => 'required|numeric',
-            'precio-vta' => 'required|numeric',
-            'stock' => 'required|numeric',
-            'stock-min' => 'required|numeric'
+            'nombre_producto' => 'required|min_length[2]',
+            'categoria_id'    => 'is_not_unique[categorias.id_categoria]',
+            'precio'          => 'required|numeric',
+            'precio-vta'      => 'required|numeric',
+            'stock'           => 'required|integer',
+            'stock-min'       => 'required|integer'
         ];
 
-        $messages = [
-            'nombre_producto' => [
-                'required' => 'El nombre del producto es obligatorio',
-                'min_length' => 'La cantidad mínima de caracteres es 3',
-                'max_length' => 'La cantidad máxima es de 100 caracteres'
-            ],
-            'image' => [
-                'uploaded' => 'La imagen del producto es obligatoria',
-                'is_image' => 'El archivo debe ser una imagen válida',
-                'mime_in' => 'La imagen debe ser de tipo jpg, jpeg o png'
-            ],
-            'precio' => [
-                'required' => 'El precio del producto es obligatorio',
-                'numeric' => 'El valor debe ser únicamente numérico'
-            ],
-            'precio-vta' => [
-                'required' => 'El precio de venta es obligatorio',
-                'numeric' => 'El valor debe ser únicamente numérico'
-            ],
-            'stock' => [
-                'required' => 'El stock es obligatorio',
-                'numeric' => 'El valor debe ser únicamente numérico'
-            ],
-            'stock-min' => [
-                'required' => 'El stock mínimo es obligatorio',
-                'numeric' => 'El valor debe ser únicamente numérico'
-            ]
-        ];
-
-        if (!$this->validate($rules, $messages)) {
+        if (!$this->validate($rules)) {
             session()->setFlashData('fail', 'No se cumple con todos los requisitos de los campos');
             return $this->create_alta_producto();
         }
 
-        $image = $this->request->getFile('image');
-        $nombre_imagen = $image->getRandomName();
-        $image->move(ROOTPATH . 'assets/uploads', $nombre_imagen);
-
-        $data = [
-            'nombre_prod' => $this->request->getVar('nombre_producto'),
-            'imagen' => $image->getName(),
+        $resultado = $this->productoService->crearProducto([
+            'nombre_prod'  => $this->request->getVar('nombre_producto'),
             'categoria_id' => $this->request->getVar('categoria_id'),
-            'precio' => $this->request->getVar('precio'),
-            'precio_vta' => $this->request->getVar('precio-vta'),
-            'stock' => $this->request->getVar('stock'),
-            'stock_min' => $this->request->getVar('stock-min'),
-            'descripcion' => $this->request->getVar('descripcion'),
-            'eliminado' => $this->request->getVar('eliminado') ?? 'NO'
-        ];
+            'precio'       => $this->request->getVar('precio'),
+            'precio_vta'   => $this->request->getVar('precio-vta'),
+            'stock'        => $this->request->getVar('stock'),
+            'stock_min'    => $this->request->getVar('stock-min'),
+            'descripcion'  => $this->request->getVar('descripcion'),
+            'eliminado'    => $this->request->getVar('eliminado') ?? 'NO'
+        ], $this->request->getFile('image'));
 
-        $productoModel = new Productos_model();
-        $productoModel->insert($data);
-
-        session()->setFlashData('success', 'El producto se ingresó con éxito');
-        return redirect()->to('/alta-producto');
+        if ($resultado['status'] === 'success') {
+            return redirect()->to('/alta-producto')->with('success', $resultado['message']);
+        } else {
+            return redirect()->back()->withInput()->with('fail', $resultado['message']);
+        }
     }
 
     /**
-     * Marca un producto como eliminado (soft delete)
-     * @param int $id ID del producto a eliminar
-     * @return Redirect Redirección al listado
-     */
-    public function delete_producto($id) {
-        $productoModel = new Productos_model();
-        $productoModel->update($id, ['eliminado' => 'SI']);
-
-        $vista = $this->request->getGet('vista') ?? 'NO';
-        return redirect()->to('/crud-productos?vista=' . $vista);
-    }
-
-    /**
-     * Reactiva un producto marcado como eliminado
-     * @param int $id ID del producto a activar
-     * @return Redirect Redirección al listado
-     */
-    public function activar_producto($id) {
-        $productoModel = new Productos_model();
-        $productoModel->update($id, ['eliminado' => 'NO']);
-
-        $vista = $this->request->getGet('vista') ?? 'SI';
-        return redirect()->to('/crud-productos?vista=' . $vista);
-    }
-
-    /**
-     * Muestra el formulario de edición de producto
-     * @param int $id ID del producto a editar
-     * @return View Vista del formulario de edición
+     * Muestra el formulario de edición de producto.
      */
     public function index_editar_producto($id) {
-        $perfil = session()->get('perfil_id');
+        if (session()->get('perfil_id') != 1) return redirect()->to('/login');
 
-        if ($perfil != 1) {
-            return redirect()->to('/login');
-        }
+        $producto = $this->productoService->getProducto($id);
+        if (!$producto) return redirect()->to('/crud-productos')->with('fail', 'Producto no encontrado');
 
-        $productoModel = new Productos_model();
-        $categoriasModel = new Categorias_model();
-
-        $data = [
-            'producto' => $productoModel->find($id),
-            'categorias' => $categoriasModel->getCategorias()
-        ];
-
-        $data['title'] = 'Editar Producto';
-        return view('back/products/editar_producto', $data);
+        return view('back/products/editar_producto', [
+            'producto'   => $producto,
+            'categorias' => $this->categoriaService->getCategoriasConStats(),
+            'title'      => 'Editar Producto'
+        ]);
     }
 
     /**
-     * Procesa la actualización de un producto
-     * @param int $id ID del producto a modificar
-     * @return Redirect Redirección con mensaje de éxito
+     * Actualiza un producto delegando al servicio.
      */
     public function modificar_producto($id) {
-        $productoModel = new Productos_model();
-        $img = $this->request->getFile('imagen');
+        if (session()->get('perfil_id') != 1) return redirect()->to('/login');
 
-        if ($img && $img->isValid()) {
-            $nombre_aleatorio = $img->getRandomName();
-            $img->move(ROOTPATH . 'assets/uploads', $nombre_aleatorio);
+        $resultado = $this->productoService->actualizarProducto($id, [
+            'nombre_prod'  => $this->request->getVar('nombre_producto'),
+            'categoria_id' => $this->request->getVar('categoria_id'),
+            'precio'       => $this->request->getVar('precio'),
+            'precio_vta'   => $this->request->getVar('precio-vta'),
+            'stock'        => $this->request->getVar('stock'),
+            'stock_min'    => $this->request->getVar('stock-min'),
+            'descripcion'  => $this->request->getVar('descripcion')
+        ], $this->request->getFile('imagen'));
 
-            $data = [
-                'imagen' => $img->getName(),
-                'nombre_prod' => $this->request->getVar('nombre_producto'),
-                'categoria_id' => $this->request->getVar('categoria_id'),
-                'precio' => $this->request->getVar('precio'),
-                'precio_vta' => $this->request->getVar('precio-vta'),
-                'stock' => $this->request->getVar('stock'),
-                'stock_min' => $this->request->getVar('stock-min'),
-                'descripcion' => $this->request->getVar('descripcion')
-            ];
+        if ($resultado['status'] === 'success') {
+            return redirect()->to('/crud-productos')->with('success', $resultado['message']);
         } else {
-            $data = [
-                'nombre_prod' => $this->request->getVar('nombre_producto'),
-                'categoria_id' => $this->request->getVar('categoria_id'),
-                'precio' => $this->request->getVar('precio'),
-                'precio_vta' => $this->request->getVar('precio-vta'),
-                'stock' => $this->request->getVar('stock'),
-                'stock_min' => $this->request->getVar('stock-min'),
-                'descripcion' => $this->request->getVar('descripcion')
-            ];
+            return redirect()->back()->with('fail', $resultado['message']);
         }
-
-        $productoModel->update($id, $data);
-        session()->setFlashdata('success', 'Modificación exitosa');
-        return redirect()->to('/crud-productos');
     }
 
     /**
-     * @brief Muestra la ficha de detalle de un producto específico (Estilo Mercado Libre)
-     * @param int $id ID del producto
-     * @return View Vista de detalle
+     * Elimina un producto delegando al servicio.
+     */
+    public function delete_producto($id) {
+        if (session()->get('perfil_id') != 1) return redirect()->to('/login');
+        $this->productoService->eliminar($id);
+        return redirect()->to('/crud-productos?vista=' . ($this->request->getGet('vista') ?? 'NO'));
+    }
+
+    /**
+     * Reactiva un producto delegando al servicio.
+     */
+    public function activar_producto($id) {
+        if (session()->get('perfil_id') != 1) return redirect()->to('/login');
+        $this->productoService->reactivar($id);
+        return redirect()->to('/crud-productos?vista=' . ($this->request->getGet('vista') ?? 'SI'));
+    }
+
+    /**
+     * Muestra el detalle del producto para el cliente.
      */
     public function ver_detalle($id) {
-        $productoModel = new Productos_model();
-        $data['producto'] = $productoModel->getProducto($id);
+        $producto = $this->productoService->getProducto($id);
+        if (!$producto) return redirect()->to('/productos')->with('fail', 'Producto no encontrado');
 
-        if (!$data['producto']) {
-            return redirect()->to('/productos')->with('error', 'Producto no encontrado');
-        }
-
-        $data['title'] = 'Detalle de ' . $data['producto']['nombre_prod'];
-        return view('front/pages/detalle_producto', $data);
+        return view('front/pages/detalle_producto', [
+            'producto' => $producto,
+            'title'    => $producto['nombre_prod']
+        ]);
     }
 }
