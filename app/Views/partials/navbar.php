@@ -1,159 +1,143 @@
 <?php
-  $session = session();
-  $nombre = $session->get('nombre');
-  $perfil = $session->get('perfil_id');
-  $isLogged = $session->get('logged_in');
-  $imagen = $session->get('imagen');
+// Recibir datos de sesión
+$isLogged = session()->get('logged_in');
+$nombre = session()->get('nombre');
+$imagen = session()->get('imagen');
+$perfil = session()->get('perfil_id');
+
+// Detectar página activa (ejemplo básico)
+$active_inicio = (current_url() == base_url('/')) ? 'active' : '';
+$active_productos = (strpos(current_url(), 'productos') !== false || strpos(current_url(), 'todos_p') !== false) ? 'active' : '';
+$active_comercializacion = (strpos(current_url(), 'comercializacion') !== false) ? 'active' : '';
+$active_info = (strpos(current_url(), 'quienesSomos') !== false) ? 'active' : '';
+$active_contacto = (strpos(current_url(), 'informacionContacto') !== false) ? 'active' : '';
+$active_galeria = (strpos(current_url(), 'galeria') !== false) ? 'active' : '';
 ?>
 
-<!-- BARRA DE NAVEGACIÓN PRINCIPAL -->
-<nav class="navbar navbar-expand-lg artisan-main-nav">
-  <div class="container-fluid px-lg-5">
+<!-- NAVBAR PRINCIPAL (ESTRUCTURA HÍBRIDA ARTISAN) -->
+<nav class="navbar navbar-expand-lg artisan-main-nav sticky-top">
+  <div class="container-fluid px-3 px-lg-5 d-flex align-items-center justify-content-between">
+    
+    <!-- [MÓVIL] BOTÓN MENÚ (Solo izquierda en celular) -->
+    <div class="d-lg-none d-flex align-items-center" style="flex: 1;">
+      <button class="boton-icon-circle" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
+        <i class="bi bi-list fs-4"></i>
+      </button>
+    </div>
 
-    <!-- Bloque Izquierdo: Logo (Ancho balanceado) -->
-    <div class="navbar-brand-wrapper d-flex align-items-center" style="flex: 1;">
-      <img src="<?= base_url('assets/img/branding/cva2.png') ?>" alt="Logo CVA Muebles" width="50px" class="logo me-2">
-      <a class="navbar-brand titulo-logo text-nowrap mb-0" href="<?= base_url('/') ?>">
-        CVA Muebles
+    <!-- [DESKTOP: IZQUIERDA / MÓVIL: CENTRO] LOGO -->
+    <div class="d-flex align-items-center justify-content-center justify-content-lg-start" style="flex: 1;">
+      <a class="navbar-brand d-flex align-items-center gap-2 m-0" href="<?= base_url('/') ?>">
+        <img src="<?= base_url('assets/img/branding/cva2.png') ?>" alt="Logo" class="logo-img-nav">
+        <h1 class="titulo-logo d-none d-lg-block">CVA Muebles</h1>
       </a>
     </div>
 
-    <!-- Botón hamburguesa (móvil) -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" 
-      aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <!-- Contenido del menú (Centro) -->
-    <div class="collapse navbar-collapse justify-content-center" id="navbarContent" style="flex: 2;">
-      <ul class="navbar-nav mb-2 mb-lg-0">
-        <?php 
-          $current_uri = service('request')->getUri()->getPath(); 
-          $active_inicio = ($current_uri == '' || $current_uri == '/') ? 'active' : '';
-          $active_productos = (strpos($current_uri, 'productos') !== false || strpos($current_uri, 'todos_p') !== false || strpos($current_uri, 'producto/detalle') !== false) ? 'active' : '';
-          $active_comercializacion = (strpos($current_uri, 'comercializacion') !== false) ? 'active' : '';
-          $active_info = (strpos($current_uri, 'quienesSomos') !== false) ? 'active' : '';
-          $active_contacto = (strpos($current_uri, 'informacionContacto') !== false) ? 'active' : '';
-        ?>
-        <li class="nav-item">
-          <a class="nav-link-custom mx-lg-2 <?= $active_inicio ?>" href="<?= base_url('/') ?>">Inicio</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link-custom mx-lg-2 <?= $active_productos ?>" href="<?= $isLogged == 'SI' ? base_url('todos_p') : base_url('productos') ?>">Productos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link-custom mx-lg-2 <?= $active_comercializacion ?>" href="<?= base_url('comercializacion') ?>">Comercialización</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link-custom mx-lg-2 <?= $active_info ?>" href="<?= base_url('quienesSomos') ?>">Información</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link-custom mx-lg-2 <?= $active_contacto ?>" href="<?= base_url('informacionContacto') ?>">Contacto</a>
-        </li>
+    <!-- [DESKTOP: CENTRO] NAVEGACIÓN (Oculto en móvil) -->
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav" style="flex: 2;">
+      <ul class="navbar-nav gap-1">
+        <li class="nav-item"><a class="nav-link-custom <?= $active_inicio ?>" href="<?= base_url('/') ?>">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link-custom <?= $active_productos ?>" href="<?= $isLogged == 'SI' ? base_url('todos_p') : base_url('productos') ?>">Productos</a></li>
+        <li class="nav-item"><a class="nav-link-custom <?= $active_comercializacion ?>" href="<?= base_url('comercializacion') ?>">Comercialización</a></li>
+        <li class="nav-item"><a class="nav-link-custom <?= $active_info ?>" href="<?= base_url('quienesSomos') ?>">Información</a></li>
+        <li class="nav-item"><a class="nav-link-custom <?= $active_galeria ?>" href="<?= base_url('galeria') ?>">Galería</a></li>
+        <li class="nav-item"><a class="nav-link-custom <?= $active_contacto ?>" href="<?= base_url('informacionContacto') ?>">Contacto</a></li>
       </ul>
     </div>
 
-    <!-- Bloque Derecho: Íconos (Ancho balanceado para centrado perfecto) -->
-    <div class="d-flex align-items-center justify-content-end gap-2" style="flex: 1;">
+    <!-- [DERECHA] ICONOS USUARIO / AUTH -->
+    <div class="d-flex align-items-center justify-content-end" style="flex: 1;">
         <?php if (!$isLogged): ?>
-          <div class="auth-pill-artisan d-flex align-items-center">
-            <a href="<?= base_url('login') ?>" class="auth-pill-link">Entrar</a>
+          <div class="auth-pill-artisan d-none d-lg-flex">
+            <a href="<?= base_url('login') ?>" class="auth-pill-link">Ingresar</a>
             <div class="auth-pill-divider"></div>
             <a href="<?= base_url('registro') ?>" class="auth-pill-link">Registrarse</a>
           </div>
-        <?php else: ?>
-          <?php if (env('SHOPPING_CART_ENABLED')): ?>
-          <a class="boton-icon-circle" href="<?= base_url('/muestro') ?>">
-            <img src="<?= base_url('assets/img/ui/icons/cart-check.svg') ?>" alt="Carrito" class="icono-svg">
+          <a href="<?= base_url('login') ?>" class="boton-icon-circle d-lg-none">
+            <img src="<?= base_url('assets/img/ui/icons/person.svg') ?>" alt="Login" class="icono-svg">
           </a>
-          <?php endif; ?>
-
-          <button class="boton-icon-circle" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasPerfil">
+        <?php else: ?>
+          <button class="boton-icon-circle" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
             <img src="<?= base_url('assets/img/ui/icons/person.svg') ?>" alt="Perfil" class="icono-svg">
           </button>
         <?php endif; ?>
     </div>
 
-  </div> <!-- Fin container-fluid -->
+  </div>
 </nav>
 
 <!-- MENÚ LATERAL (OFFCANVAS) -->
-<div class="offcanvas offcanvas-end menu-lateral shadow-lg border-0" data-bs-scroll="true" data-bs-backdrop="true" tabindex="-1" id="offcanvasPerfil">
-  
-  <!-- Cabecera del Menú -->
+<div class="offcanvas offcanvas-end menu-lateral shadow-lg border-0" tabindex="-1" id="offcanvasNavbar">
   <div class="offcanvas-header shadow-sm">
     <div class="d-flex align-items-center">
-      <i class="bi bi-person-badge fs-4 me-2 text-cva-gold"></i>
-      <h5 class="offcanvas-title fw-bold" id="offcanvasScrollingLabel">Panel de Gestión</h5>
+      <img src="<?= base_url('assets/img/branding/cva2.png') ?>" alt="Logo" width="35px" class="me-2">
+      <h5 class="offcanvas-title fw-bold text-cva-brown">CVA Muebles</h5>
     </div>
-    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
   </div>
-
   <div class="offcanvas-body p-0">
-    
-    <!-- Sección de Usuario -->
-    <div class="user-profile-card p-4 text-center">
-      <div class="avatar-wrapper mx-auto mb-3 position-relative" style="width: 90px; height: 90px;">
-          <div class="avatar-bg shadow-sm">
-              <?php if (!empty($imagen)): ?>
-                  <img src="<?= base_url('assets/uploads/perfil/' . $imagen) ?>" alt="Perfil" style="width: 100%; height: 100%; object-fit: cover;">
-              <?php else: ?>
-                  <i class="bi bi-person-fill text-secondary" style="font-size: 3.5rem;"></i>
-              <?php endif; ?>
+    <?php if ($isLogged): ?>
+      <div class="user-profile-card p-4 text-center">
+        <div class="avatar-wrapper mx-auto mb-3" style="width: 80px; height: 80px;">
+            <div class="avatar-bg shadow-sm">
+                <?php if (!empty($imagen)): ?><img src="<?= base_url('assets/uploads/perfil/' . $imagen) ?>" alt="Perfil"><?php else: ?><i class="bi bi-person-fill text-secondary" style="font-size: 3rem;"></i><?php endif; ?>
+            </div>
+        </div>
+        <h5 class="mb-1 fw-bold"><?= esc($nombre) ?></h5>
+        <span class="badge bg-cva-brown rounded-pill px-3 py-1 mb-2" style="font-size: 0.6rem;"><?= ($perfil == 1) ? 'ADMINISTRADOR' : 'CLIENTE CVA' ?></span>
+        <br><a href="<?= base_url('/perfil') ?>" class="text-decoration-none small text-gold fw-bold">MI PERFIL <i class="bi bi-chevron-right"></i></a>
+      </div>
+    <?php else: ?>
+      <div class="auth-section-mobile p-4 text-center bg-light">
+          <p class="small text-muted mb-3">Bienvenido a nuestra carpintería.</p>
+          <div class="d-grid gap-2">
+              <a href="<?= base_url('login') ?>" class="btn btn-brown-solid rounded-pill">Iniciar Sesión</a>
+              <a href="<?= base_url('registro') ?>" class="btn btn-outline-brown rounded-pill">Registrarse</a>
           </div>
-          <div class="status-indicator"></div>
       </div>
-      <h5 class="mb-1 fw-bold"><?= esc($nombre) ?></h5>
-      <div class="d-flex justify-content-center mb-3">
-          <span class="badge bg-cva-brown rounded-pill px-3 py-1 text-uppercase" style="font-size: 0.65rem; letter-spacing: 1px;">
-            <i class="bi bi-shield-lock me-1"></i> <?= ($perfil == 1) ? 'ADMINISTRADOR' : 'CLIENTE' ?>
-          </span>
+    <?php endif; ?>
+    <div class="menu-navigation-mobile d-lg-none p-3 border-bottom">
+      <div class="list-group list-group-flush rounded-4 overflow-hidden border shadow-sm">
+        <a href="<?= base_url('/') ?>" class="list-group-item list-group-item-action <?= $active_inicio == 'active' ? 'active-sidebar' : '' ?>"><i class="bi bi-house-door me-3"></i> Inicio</a>
+        <a href="<?= $isLogged == 'SI' ? base_url('todos_p') : base_url('productos') ?>" class="list-group-item list-group-item-action <?= $active_productos == 'active' ? 'active-sidebar' : '' ?>"><i class="bi bi-box-seam me-3"></i> Productos</a>
+        <a href="<?= base_url('comercializacion') ?>" class="list-group-item list-group-item-action <?= $active_comercializacion == 'active' ? 'active-sidebar' : '' ?>"><i class="bi bi-truck me-3"></i> Comercialización</a>
+        <a href="<?= base_url('quienesSomos') ?>" class="list-group-item list-group-item-action <?= $active_info == 'active' ? 'active-sidebar' : '' ?>"><i class="bi bi-info-circle me-3"></i> Información</a>
+        <a href="<?= base_url('galeria') ?>" class="list-group-item list-group-item-action <?= $active_galeria == 'active' ? 'active-sidebar' : '' ?>"><i class="bi bi-images me-3"></i> Galería</a>
+        <a href="<?= base_url('informacionContacto') ?>" class="list-group-item list-group-item-action <?= $active_contacto == 'active' ? 'active-sidebar' : '' ?>"><i class="bi bi-chat-left-text me-3"></i> Contacto</a>
       </div>
-      <a href="<?= base_url('/perfil') ?>" class="btn btn-sm btn-outline-secondary rounded-pill px-4 fw-bold">CONFIGURAR PERFIL</a>
     </div>
-
-    <!-- Lista de Opciones -->
     <div class="menu-options-container p-3">
-      <?php if ($perfil == 1): ?>
-        <p class="sidebar-section-label">ADMINISTRACIÓN</p>
-        <div class="list-group list-group-flush rounded-4 overflow-hidden border shadow-sm mb-4">
-          <a href="<?= base_url('/admin-dashboard') ?>" class="list-group-item list-group-item-action d-flex align-items-center">
-            <i class="bi bi-speedometer2 me-3 text-cva-gold fs-5"></i> Dashboard Principal
-          </a>
-          <a href="<?= base_url('/ventas-list') ?>" class="list-group-item list-group-item-action d-flex align-items-center">
-            <i class="bi bi-tools me-3 text-cva-gold fs-5"></i> Control de Ventas
-          </a>
-          <a href="<?= base_url('/consultas') ?>" class="list-group-item list-group-item-action d-flex align-items-center">
-            <i class="bi bi-chat-dots me-3 text-cva-gold fs-5"></i> Inbox Consultas
-          </a>
-          <a href="<?= base_url('/crud-productos') ?>" class="list-group-item list-group-item-action d-flex align-items-center">
-            <i class="bi bi-box-seam me-3 text-cva-gold fs-5"></i> Gestión de Productos
-          </a>
-          <a href="<?= base_url('/crud-usuarios') ?>" class="list-group-item list-group-item-action d-flex align-items-center">
-            <i class="bi bi-people me-3 text-cva-gold fs-5"></i> Gestión de Usuarios
-          </a>
+      <?php if ($isLogged): ?>
+        <?php if ($perfil == 1): ?>
+          <p class="sidebar-section-label">ADMINISTRACIÓN</p>
+          <div class="list-group list-group-flush rounded-4 overflow-hidden border shadow-sm mb-4">
+            <a href="<?= base_url('/admin-dashboard') ?>" class="list-group-item list-group-item-action"><i class="bi bi-speedometer2 me-3 text-cva-gold"></i> Dashboard</a>
+            <a href="<?= base_url('/ventas-list') ?>" class="list-group-item list-group-item-action"><i class="bi bi-receipt me-3 text-cva-gold"></i> Ventas</a>
+            <a href="<?= base_url('/crud-productos') ?>" class="list-group-item list-group-item-action"><i class="bi bi-box-seam me-3 text-cva-gold"></i> Productos</a>
+          </div>
+        <?php endif; ?>
+        <p class="sidebar-section-label">MI CUENTA</p>
+        <div class="list-group list-group-flush rounded-4 overflow-hidden border shadow-sm">
+          <a href="<?= base_url('/mis-favoritos') ?>" class="list-group-item list-group-item-action"><i class="bi bi-heart me-3 text-danger"></i> Favoritos</a>
+          <a href="<?= base_url('/ventas_lista') ?>" class="list-group-item list-group-item-action"><i class="bi bi-bag-check me-3 text-cva-gold"></i> Mis Compras</a>
+          <a href="<?= base_url('/logout') ?>" class="list-group-item list-group-item-action text-danger fw-bold"><i class="bi bi-box-arrow-right me-3"></i> Cerrar Sesión</a>
         </div>
       <?php endif; ?>
-
-      <p class="sidebar-section-label">MI ACTIVIDAD</p>
-      <div class="list-group list-group-flush rounded-4 overflow-hidden border shadow-sm">
-        <?php if (env('SHOPPING_CART_ENABLED')): ?>
-        <a href="<?= base_url('/muestro') ?>" class="list-group-item list-group-item-action d-flex align-items-center">
-          <i class="bi bi-cart3 me-3 text-cva-gold fs-5"></i> Mi Carrito
-        </a>
-        <?php endif; ?>
-        <a href="<?= base_url('/ventas_lista') ?>" class="list-group-item list-group-item-action d-flex align-items-center">
-          <i class="bi bi-bag-check me-3 text-cva-gold fs-5"></i> Mis Compras
-        </a>
-      </div>
-
-      <!-- Botón Cerrar Sesión -->
-      <div class="px-3 mt-5 pb-5">
-        <a href="<?= base_url('/logout') ?>" class="btn btn-outline-danger w-100 py-2 fw-bold rounded-pill shadow-sm d-flex align-items-center justify-content-center">
-          <i class="bi bi-box-arrow-right me-2"></i> Cerrar Sesión
-        </a>
-      </div>
     </div>
-
   </div>
 </div>
+
+<script>
+  function adjustOffcanvasPosition() {
+    const offcanvas = document.getElementById('offcanvasNavbar');
+    if (window.innerWidth < 992) {
+      offcanvas.classList.remove('offcanvas-end');
+      offcanvas.classList.add('offcanvas-start');
+    } else {
+      offcanvas.classList.remove('offcanvas-start');
+      offcanvas.classList.add('offcanvas-end');
+    }
+  }
+  window.addEventListener('resize', adjustOffcanvasPosition);
+  window.addEventListener('DOMContentLoaded', adjustOffcanvasPosition);
+</script>
