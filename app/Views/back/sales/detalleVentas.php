@@ -6,74 +6,74 @@
 
 <?= $this->section('content') ?>
 <!-- Encabezado Estilo Artisan -->
-<div class="row mb-5 align-items-center">
-    <div class="col-md-7">
-        <div class="d-flex align-items-center gap-4">
+<div class="row mb-5 align-items-center g-4">
+    <div class="col-lg-7">
+        <div class="d-flex align-items-center gap-3 gap-md-4">
             <div class="dashboard-icon-main bg-brown text-gold shadow">
                 <i class="bi bi-hammer"></i>
             </div>
             <div>
-                <h1 class="display-5 fw-bold text-cva-brown mb-1">Gestión de Pedidos</h1>
-                <p class="text-muted mb-0"><i class="bi bi-calendar-check text-gold me-1"></i> Control de producción, pagos y entregas de obras.</p>
+                <h1 class="display-6 display-md-5 fw-bold text-cva-brown mb-1">Gestión de Pedidos</h1>
+                <p class="text-muted mb-0 small"><i class="bi bi-calendar-check text-gold me-1"></i> Control de producción y entregas.</p>
             </div>
         </div>
     </div>
-    <div class="col-md-5 text-md-end">
-        <a href="<?= base_url('ventas/nuevo-personalizado') ?>" class="btn btn-admin-primary rounded-pill px-4 py-2 shadow-gold">
-            <i class="bi bi-plus-circle-fill me-2"></i> NUEVO PEDIDO MANUAL
+    <div class="col-lg-5 text-lg-end">
+        <a href="<?= base_url('ventas/nuevo-personalizado') ?>" class="btn btn-admin-primary rounded-pill px-4 py-2 shadow-gold w-sm-100 justify-content-center">
+            <i class="bi bi-plus-circle-fill me-2"></i> NUEVO PEDIDO
         </a>
     </div>
 </div>
 
 <!-- KPIs de Ventas y Producción -->
-<div class="row g-4 mb-5">
-    <div class="col-md-3">
-        <div class="admin-card-v2 p-4 border-start border-4 border-info h-100 shadow-sm cursor-pointer" onclick="filterByStatus('ALL')">
+<div class="row g-3 g-md-4 mb-5">
+    <div class="col-6 col-md-3">
+        <div class="admin-card-v2 p-3 p-md-4 border-start border-4 border-info h-100 shadow-sm cursor-pointer" onclick="filterByStatus('ALL')">
             <div class="d-flex justify-content-between align-items-center">
                 <div>
-                    <span class="d-block x-small text-uppercase fw-bold text-muted mb-1">Pedidos de <?= $nombreMes ?></span>
+                    <span class="d-block x-small text-uppercase fw-bold text-muted mb-1">Pedidos <?= $nombreMes ?></span>
                     <h3 class="fw-bold text-cva-brown mb-0"><?= $counts['mensuales'] ?></h3>
                 </div>
-                <div class="bg-light text-info p-3 rounded-circle">
+                <div class="bg-light text-info p-2 p-md-3 rounded-circle d-none d-sm-block">
                     <i class="bi bi-receipt fs-4"></i>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-md-3">
-        <div class="admin-card-v2 p-4 border-start border-4 h-100 shadow-sm cursor-pointer" style="border-color: var(--cva-gold) !important;" onclick="filterByStatus('EN_PROCESO')">
+    <div class="col-6 col-md-3">
+        <div class="admin-card-v2 p-3 p-md-4 border-start border-4 h-100 shadow-sm cursor-pointer" style="border-color: var(--cva-gold) !important;" onclick="filterByStatus('EN_PROCESO')">
             <div class="d-flex justify-content-between align-items-center">
                 <div>
                     <span class="d-block x-small text-uppercase fw-bold text-muted mb-1">En Taller</span>
-                    <h3 class="fw-bold text-gold mb-0"><?= $counts['en_proceso'] ?> Obras</h3>
+                    <h3 class="fw-bold text-gold mb-0"><?= $counts['en_proceso'] ?></h3>
                 </div>
-                <div class="bg-gold-soft text-gold p-3 rounded-circle">
+                <div class="bg-gold-soft text-gold p-2 p-md-3 rounded-circle d-none d-sm-block">
                     <i class="bi bi-tools fs-4"></i>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-md-3">
-        <div class="admin-card-v2 p-4 border-start border-4 border-warning h-100 shadow-sm cursor-pointer" onclick="filterByStatus('PENDIENTE')">
+    <div class="col-6 col-md-3">
+        <div class="admin-card-v2 p-3 p-md-4 border-start border-4 border-warning h-100 shadow-sm cursor-pointer" onclick="filterByStatus('PENDIENTE')">
             <div class="d-flex justify-content-between align-items-center">
                 <div>
                     <span class="d-block x-small text-uppercase fw-bold text-muted mb-1">Pendientes</span>
-                    <h3 class="fw-bold text-warning mb-0"><?= $counts['pendientes'] ?> Espera</h3>
+                    <h3 class="fw-bold text-warning mb-0"><?= $counts['pendientes'] ?></h3>
                 </div>
-                <div class="bg-light text-warning p-3 rounded-circle">
+                <div class="bg-light text-warning p-2 p-md-3 rounded-circle d-none d-sm-block">
                     <i class="bi bi-hourglass-split fs-4"></i>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-md-3">
-        <div class="admin-card-v2 p-4 border-start border-4 border-success h-100 shadow-sm">
+    <div class="col-6 col-md-3">
+        <div class="admin-card-v2 p-3 p-md-4 border-start border-4 border-success h-100 shadow-sm">
             <div class="d-flex justify-content-between align-items-center">
                 <div>
-                    <span class="d-block x-small text-uppercase fw-bold text-muted mb-1">Recaudación de <?= $nombreMes ?></span>
-                    <h3 class="fw-bold text-success mb-0">$ <?= number_format($counts['ingresos'], 0, ',', '.') ?></h3>
+                    <span class="d-block x-small text-uppercase fw-bold text-muted mb-1">Recaudación</span>
+                    <h4 class="fw-bold text-success mb-0">$ <?= number_format($counts['ingresos'], 0, ',', '.') ?></h4>
                 </div>
-                <div class="bg-light text-success p-3 rounded-circle">
+                <div class="bg-light text-success p-2 p-md-3 rounded-circle d-none d-sm-block">
                     <i class="bi bi-cash-stack fs-4"></i>
                 </div>
             </div>
@@ -91,7 +91,7 @@
     </div>
     <div class="p-4">
         <div class="row g-3 align-items-end">
-            <div class="col-md-6">
+            <div class="col-lg-6 col-md-12">
                 <label class="x-small fw-bold text-muted text-uppercase mb-2">Buscador en tiempo real</label>
                 <div class="input-group">
                     <span class="input-group-text bg-white border-end-0 border-2" style="border-radius: 1rem 0 0 1rem;">
@@ -99,22 +99,22 @@
                     </span>
                     <input type="text" id="input-search" class="form-control border-start-0 border-2 py-2" 
                            style="border-radius: 0 1rem 1rem 0;"
-                           placeholder="ID de pedido, nombre de cliente o usuario...">
+                           placeholder="ID, nombre o usuario...">
                 </div>
             </div>
-            <div class="col-md-3">
-                <label class="x-small fw-bold text-muted text-uppercase mb-2">Estado de Producción</label>
+            <div class="col-lg-3 col-6">
+                <label class="x-small fw-bold text-muted text-uppercase mb-2">Estado</label>
                 <select id="select-status" class="form-select border-2 py-2 rounded-3 x-small fw-bold text-uppercase">
-                    <option value="ALL">TODOS LOS ESTADOS</option>
+                    <option value="ALL">TODOS</option>
                     <option value="PENDIENTE">🟠 PENDIENTE</option>
                     <option value="EN_PROCESO">🔵 EN PROCESO</option>
                     <option value="TERMINADO">🟢 TERMINADO</option>
                     <option value="ENTREGADO">🔘 ENTREGADO</option>
                 </select>
             </div>
-            <div class="col-md-3">
+            <div class="col-lg-3 col-6">
                 <button type="button" id="btn-reset" class="btn btn-light border py-2 w-100 rounded-3 shadow-sm x-small fw-bold text-uppercase">
-                    <i class="bi bi-arrow-counterclockwise me-1"></i> Limpiar Filtros
+                    <i class="bi bi-arrow-counterclockwise me-1"></i> Limpiar
                 </button>
             </div>
         </div>
@@ -123,7 +123,7 @@
 
 <!-- Tabla de Pedidos -->
 <div class="admin-card-v2 border-0 shadow-sm overflow-hidden mb-5">
-    <div class="table-responsive">
+    <div class="table-responsive-stack">
         <table class="table table-hover align-middle mb-0">
             <thead class="bg-light">
                 <tr>
@@ -140,32 +140,43 @@
                     <tr class="order-row" 
                         data-search="<?= $v['search_data'] ?>"
                         data-estado="<?= $v['estado'] ?>">
-                        <td class="ps-4">
+                        <td class="ps-4 d-none d-lg-table-cell" data-label="ID">
                             <span class="badge bg-light text-muted border">#<?= $v['id'] ?></span>
                         </td>
-                        <td>
+                        <td class="d-none d-lg-table-cell" data-label="FECHA">
                             <div class="fw-bold text-cva-brown"><?= date('d/m/Y', strtotime($v['fecha'])) ?></div>
                             <div class="x-small text-muted"><?= date('H:i', strtotime($v['fecha'])) ?> hs</div>
                         </td>
-                        <td>
-                            <div class="d-flex align-items-center gap-3">
-                                <div class="avatar-premium bg-brown text-gold rounded-circle d-flex align-items-center justify-content-center fw-bold shadow-sm" style="width: 35px; height: 35px; font-size: 0.7rem;">
-                                    <?= strtoupper(substr($v['nombre'] ?? 'M', 0, 1)) ?><?= strtoupper(substr($v['apellido'] ?? 'P', 0, 1)) ?>
+                        <td data-label="CLIENTE">
+                            <div class="d-flex align-items-center gap-3 py-1 order-info-wrapper">
+                                <div class="position-relative">
+                                    <div class="avatar-premium bg-brown text-gold rounded-circle d-flex align-items-center justify-content-center fw-bold shadow-sm">
+                                        <?= strtoupper(substr($v['nombre'] ?? 'M', 0, 1)) ?><?= strtoupper(substr($v['apellido'] ?? 'P', 0, 1)) ?>
+                                    </div>
+                                    <span class="position-absolute top-0 start-0 badge rounded-pill bg-dark shadow-sm d-md-none" style="transform: translate(-30%, -30%); font-size: 0.6rem; border: 1px solid var(--cva-gold);">#<?= $v['id'] ?></span>
                                 </div>
-                                <div>
+                                <div class="order-text-details">
                                     <div class="fw-bold text-cva-brown"><?= esc(($v['nombre'] ?? 'VENTA') . ' ' . ($v['apellido'] ?? 'MANUAL')) ?></div>
-                                    <div class="x-small text-muted text-uppercase fw-bold" style="font-size: 0.6rem;">
-                                        <?= empty($v['usuario']) || $v['usuario'] == 'cliente_whatsapp' ? '<i class="bi bi-whatsapp text-success me-1"></i>LOCAL / WHATSAPP' : '<i class="bi bi-shop text-gold me-1"></i>TIENDA ONLINE' ?>
+                                    <div class="d-flex gap-2 align-items-center">
+                                        <span class="badge bg-light text-muted border d-none d-md-inline-block" style="font-size: 0.65rem;">PEDIDO: #<?= $v['id'] ?></span>
+                                        <div class="x-small text-muted text-uppercase fw-bold" style="font-size: 0.6rem;">
+                                            <?= empty($v['usuario']) || $v['usuario'] == 'cliente_whatsapp' ? '<i class="bi bi-whatsapp text-success me-1"></i>LOCAL' : '<i class="bi bi-shop text-gold me-1"></i>TIENDA' ?>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </td>
-                        <td class="text-end">
-                            <div class="fw-bold fs-6 text-dark">
-                                <span class="small opacity-50 fw-normal">$ </span><?= number_format($v['total_venta'], 2, ',', '.') ?>
+                        <td class="text-end" data-label="TOTAL">
+                            <div class="order-total-info">
+                                <div class="fw-bold text-dark">
+                                    <span class="small opacity-50 fw-normal d-none d-md-inline">$ </span>
+                                    <span class="d-md-none fw-normal x-small text-muted">Total: </span>
+                                    $ <?= number_format($v['total_venta'], 2, ',', '.') ?>
+                                </div>
+                                <div class="x-small text-muted d-md-none"><?= date('d/m/Y', strtotime($v['fecha'])) ?></div>
                             </div>
                         </td>
-                        <td class="text-center">
+                        <td class="text-center" data-label="ESTADO">
                             <?php 
                                 $badge_class = "bg-light text-muted border";
                                 $icon = "bi-clock";
@@ -179,7 +190,7 @@
                                 <?= strtoupper($v['estado']) ?>
                             </span>
                         </td>
-                        <td class="pe-4 text-center">
+                        <td class="pe-4 text-center" data-label="ACCIONES">
                             <div class="d-flex justify-content-center gap-2">
                                 <a href="<?= base_url('ventas/gestion/' . $v['id']) ?>" 
                                    class="btn btn-action-premium text-gold border-gold border-opacity-25 shadow-sm" 

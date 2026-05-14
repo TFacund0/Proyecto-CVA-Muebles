@@ -7,12 +7,14 @@
 :root {
     --admin-sidebar-width: 280px;
     --admin-bg: #f8f5f0;
-    --admin-card-shadow: 0 10px 30px rgba(0,0,0,0.04);
+    --admin-card-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
 }
 
 .admin-body {
     background-color: var(--admin-bg);
     min-height: 100vh;
+    overflow-x: hidden;
+    /* Evita scroll horizontal al mover el sidebar */
 }
 
 /* 1. LAYOUT ESTRUCTURAL */
@@ -39,14 +41,14 @@
 
 .sidebar-header {
     padding: 2.5rem 2rem;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
 }
 
 .btn-view-site-sidebar {
-    background: rgba(255,255,255,0.05);
+    background: rgba(255, 255, 255, 0.05);
     color: var(--cva-gold);
     text-decoration: none;
     font-size: 0.75rem;
@@ -88,7 +90,7 @@
     font-size: 0.65rem;
     font-weight: 800;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.3);
+    color: rgba(255, 255, 255, 0.3);
     letter-spacing: 1.5px;
 }
 
@@ -124,7 +126,7 @@
     display: flex;
     align-items: center;
     gap: 15px;
-    color: rgba(255,255,255,0.6);
+    color: rgba(255, 255, 255, 0.6);
     text-decoration: none;
     font-weight: 600;
     font-size: 0.95rem;
@@ -143,6 +145,43 @@
     font-size: 1.2rem;
 }
 
+@media (min-width: 992px) {
+    .table-responsive-stack table {
+        table-layout: fixed !important;
+        width: 100% !important;
+    }
+    
+    .inquiry-row td {
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+        padding-right: 15px !important;
+    }
+
+    .inquiry-row .inquiry-text-details,
+    .inquiry-row .message-cell,
+    .inquiry-row .small {
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+        max-width: 100% !important;
+        display: block !important;
+    }
+
+    .message-cell .message-preview {
+        max-width: 100% !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        display: block !important;
+        margin-bottom: 2px !important;
+    }
+
+    .message-cell .message-action {
+        display: block !important;
+    }
+}
+
 /* CONTENIDO PRINCIPAL */
 .admin-content {
     flex: 1;
@@ -154,7 +193,7 @@
 .admin-card-v2 {
     background: white;
     border-radius: 1.5rem;
-    border: 1px solid rgba(0,0,0,0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
     box-shadow: var(--admin-card-shadow);
     overflow: hidden;
 }
@@ -215,7 +254,7 @@
 .btn-admin-primary:hover {
     background: #1a0f0d;
     transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     color: white;
 }
 
@@ -233,6 +272,7 @@
     background: #eeebe6;
     color: var(--cva-brown);
 }
+
 .btn-view-site {
     background: white;
     color: var(--cva-brown);
@@ -251,7 +291,7 @@
     color: white;
     border-color: var(--cva-brown);
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05) !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05) !important;
 }
 
 .btn-view-site i {
@@ -284,14 +324,348 @@
     background: #f9f4eb;
 }
 
-/* 3. RESPONSIVE */
+/* 3. SIDEBAR RESPONSIVE & TOGGLE */
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(26, 15, 13, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.sidebar-visible .sidebar-overlay {
+    opacity: 1;
+    visibility: visible;
+}
+
+.btn-admin-toggle {
+    background: white;
+    border: 1px solid #eeebe6;
+    color: var(--cva-brown);
+    border-radius: 12px;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 10001;
+    /* Muy por encima de todo */
+}
+
+.btn-admin-toggle:hover {
+    background: var(--cva-brown);
+    color: white;
+}
+
+/* 4. RESPONSIVE UTILITIES & TABLES */
 @media (max-width: 991.98px) {
     .admin-sidebar {
-        transform: translateX(-100%);
+        transform: translateX(-100%) !important;
+        visibility: visible !important;
+        z-index: 10000;
     }
+
+    .sidebar-visible .admin-sidebar {
+        transform: translateX(0) !important;
+        box-shadow: 20px 0 50px rgba(0, 0, 0, 0.3);
+    }
+
     .admin-content {
         margin-left: 0;
+        padding: 1.5rem 1rem;
+    }
+
+    .admin-topbar {
+        margin-bottom: 2rem !important;
+    }
+
+    /* Transformación de Tablas a Cards en Mobile */
+    .table-responsive-stack .table thead {
+        display: none;
+    }
+
+    .table-responsive-stack .table tbody tr {
+        display: block;
+        background: white;
+        border-radius: 1.5rem;
+        margin-bottom: 1.5rem;
         padding: 1.5rem;
+        box-shadow: var(--admin-card-shadow);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .table-responsive-stack .table tbody td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.8rem 1rem !important;
+        /* Añadido padding lateral simétrico */
+        border-bottom: 1px solid #f0e6d6;
+        text-align: right;
+    }
+
+    .table-responsive-stack .table tbody td:last-child {
+        border-bottom: none;
+        justify-content: center;
+        padding-top: 1.5rem;
+    }
+
+    .table-responsive-stack .table tbody td::before {
+        content: attr(data-label);
+        font-weight: 800;
+        text-transform: uppercase;
+        font-size: 0.65rem;
+        color: var(--cva-brown);
+        opacity: 0.6;
+        text-align: left;
+        flex: 1;
+    }
+
+    /* Ajustes específicos para filas de productos */
+    .product-row td[data-label="PIEZA"] {
+        display: block !important;
+        background: #fdfaf5;
+        margin: -1.5rem -1.5rem 1rem -1.5rem;
+        padding: 1.2rem 1.5rem !important;
+        border-bottom: 1px solid #f0e6d6;
+    }
+
+    .product-row td[data-label="PIEZA"]::before {
+        display: none;
+    }
+
+    .product-row .product-info-wrapper {
+        flex-direction: row !important;
+        text-align: left !important;
+        gap: 1.2rem !important;
+        padding: 0 !important;
+    }
+
+    .product-row .product-img-container {
+        display: block !important;
+        margin: 0 !important;
+        width: 70px !important;
+        height: 70px !important;
+        flex-shrink: 0;
+    }
+
+    .product-row .product-img-container img {
+        width: 70px !important;
+        height: 70px !important;
+        border-radius: 12px !important;
+    }
+
+    .product-row .product-text-details {
+        width: 100%;
+    }
+
+    .product-row .product-text-details .h6 {
+        font-size: 1rem !important;
+        margin-bottom: 0.25rem !important;
+        line-height: 1.3;
+    }
+
+    .product-row td[data-label="STOCK"],
+    .product-row td[data-label="PRECIO"] {
+        padding: 1rem 1.5rem !important;
+        background: white;
+    }
+
+    .product-row .text-end {
+        text-align: center !important;
+    }
+
+    .product-row .d-flex {
+        justify-content: center !important;
+    }
+
+    /* Gestión full width en mobile */
+    .product-row td[data-label="GESTIÓN"] {
+        display: block !important;
+        text-align: center;
+        padding: 1.5rem !important;
+    }
+
+    .product-row td[data-label="GESTIÓN"]::before {
+        display: block;
+        margin-bottom: 1.5rem;
+        text-align: center;
+        width: 100%;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 0.5rem;
+    }
+
+    .btn-group-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .product-row .btn-action-premium {
+        width: 100% !important;
+        justify-content: center !important;
+        margin: 0 !important;
+    }
+
+    /* Ajustes específicos para Inbox (Consultas) */
+    .inquiry-row td[data-label="MENSAJE"] {
+        display: block !important;
+        text-align: center;
+        padding-top: 1.5rem !important;
+        border-top: 1px dashed #eee;
+    }
+
+    .inquiry-row td[data-label="MENSAJE"]::before {
+        display: block;
+        text-align: center;
+        margin-bottom: 0.5rem;
+    }
+
+    .message-preview {
+        max-width: 100% !important;
+        white-space: normal !important;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-align: center !important;
+        margin-bottom: 0.5rem;
+    }
+
+    .message-action {
+        text-align: center !important;
+        width: 100%;
+    }
+
+    .inquiry-row td[data-label="ACCIONES"] {
+        justify-content: center !important;
+        padding: 1.5rem !important;
+    }
+
+    /* Ajustes específicos para Usuarios */
+    .user-row td[data-label="IDENTIDAD"] {
+        display: block !important;
+        background: #fdfaf5;
+        margin: -1.5rem -1.5rem 1rem -1.5rem;
+        padding: 1.2rem 1.5rem !important;
+        border-bottom: 1px solid #f0e6d6;
+    }
+
+    .user-row td[data-label="IDENTIDAD"]::before {
+        display: none;
+    }
+
+    .user-row .user-info-wrapper {
+        flex-direction: row !important;
+        text-align: left !important;
+        gap: 1.2rem !important;
+        padding: 0 !important;
+    }
+
+    .user-row .avatar-premium {
+        width: 60px !important;
+        height: 60px !important;
+        font-size: 1.2rem !important;
+        margin: 0 !important;
+    }
+
+    .user-text-details .fw-bold {
+        font-size: 1.15rem;
+        line-height: 1.2;
+        margin-bottom: 0.25rem;
+    }
+
+    .user-access-info {
+        text-align: right !important;
+        font-size: 0.8rem;
+        color: #64748b !important;
+        width: 100%;
+    }
+
+    .user-access-info i {
+        color: var(--cva-gold);
+        margin-right: 4px;
+    }
+
+    .user-row td[data-label="PERFIL"] {
+        border-top: 1px dashed #eee;
+        padding-top: 1rem !important;
+        margin-top: 0.5rem;
+    }
+
+    .user-row td[data-label="ACCIONES"] {
+        padding: 1.5rem 0 0 0 !important;
+        justify-content: center !important;
+    }
+
+    /* Ajustes específicos para Pedidos (Ventas) */
+    .order-row td[data-label="CLIENTE"] {
+        display: block !important;
+        background: #fdfaf5;
+        margin: -1.5rem -1.5rem 1rem -1.5rem;
+        padding: 1.2rem 1.5rem !important;
+        border-bottom: 1px solid #f0e6d6;
+    }
+
+    .order-row td[data-label="CLIENTE"]::before {
+        display: none;
+    }
+
+    .order-row .order-info-wrapper {
+        flex-direction: row !important;
+        text-align: left !important;
+        gap: 1.2rem !important;
+        padding: 0 !important;
+    }
+
+    .order-total-info {
+        text-align: right !important;
+        width: 100%;
+    }
+
+    /* Ajustes específicos para Inbox (Consultas) */
+    .inquiry-row td[data-label="INTERESADO"] {
+        display: block !important;
+        background: #fdfaf5;
+        margin: -1.5rem -1.5rem 1rem -1.5rem;
+        padding: 1.2rem 1.5rem !important;
+        border-bottom: 1px solid #f0e6d6;
+    }
+
+    .inquiry-row td[data-label="INTERESADO"]::before {
+        display: none;
+    }
+
+    .inquiry-row .inquiry-info-wrapper {
+        flex-direction: row !important;
+        text-align: left !important;
+        gap: 1.2rem !important;
+        padding: 0 !important;
+    }
+
+    .inquiry-text-details .fw-bold {
+        font-size: 1.2rem !important;
+        color: #1a0f0d;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .admin-card-body-v2 {
+        padding: 1.5rem;
+    }
+
+    .btn-admin-primary {
+        width: 100%;
+        justify-content: center;
     }
 }
 

@@ -6,61 +6,61 @@
 
 <?= $this->section('content') ?>
 <!-- Encabezado Estilo Artisan -->
-<div class="row mb-5 align-items-center">
-    <div class="col-md-7">
-        <div class="d-flex align-items-center gap-4">
+<div class="row mb-5 align-items-center g-4">
+    <div class="col-lg-7">
+        <div class="d-flex align-items-center gap-3 gap-md-4">
             <div class="dashboard-icon-main bg-brown text-gold shadow">
                 <i class="bi bi-people-fill"></i>
             </div>
             <div>
-                <h1 class="display-5 fw-bold text-cva-brown mb-1">Usuarios</h1>
-                <p class="text-muted mb-0"><i class="bi bi-shield-lock text-gold me-1"></i> Control de accesos y perfiles del sistema.</p>
+                <h1 class="display-6 display-md-5 fw-bold text-cva-brown mb-1">Usuarios</h1>
+                <p class="text-muted mb-0 small"><i class="bi bi-shield-lock text-gold me-1"></i> Control de accesos y perfiles.</p>
             </div>
         </div>
     </div>
-    <div class="col-md-5 text-md-end">
-        <a href="<?= base_url('registro') ?>" class="btn btn-admin-primary rounded-pill px-4 py-2 shadow-gold">
-            <i class="bi bi-person-plus-fill me-2"></i> REGISTRAR USUARIO
+    <div class="col-lg-5 text-lg-end">
+        <a href="<?= base_url('registro') ?>" class="btn btn-admin-primary rounded-pill px-4 py-2 shadow-gold w-sm-100 justify-content-center">
+            <i class="bi bi-person-plus-fill me-2"></i> NUEVO USUARIO
         </a>
     </div>
 </div>
 
 <!-- KPIs de Usuarios -->
-<div class="row g-4 mb-5">
-    <div class="col-md-4">
-        <div class="admin-card-v2 p-4 border-start border-4 border-info h-100 shadow-sm">
+<div class="row g-3 g-md-4 mb-5">
+    <div class="col-6 col-md-4">
+        <div class="admin-card-v2 p-3 p-md-4 border-start border-4 border-info h-100 shadow-sm">
             <div class="d-flex justify-content-between align-items-center">
                 <div>
-                    <span class="d-block x-small text-uppercase fw-bold text-muted mb-1">Total Usuarios</span>
-                    <h3 class="fw-bold text-cva-brown mb-0"><?= $counts['total'] ?> Perfiles</h3>
+                    <span class="d-block x-small text-uppercase fw-bold text-muted mb-1">Total</span>
+                    <h4 class="fw-bold text-cva-brown mb-0"><?= $counts['total'] ?></h4>
                 </div>
-                <div class="bg-light text-info p-3 rounded-circle">
+                <div class="bg-light text-info p-2 p-md-3 rounded-circle d-none d-sm-block">
                     <i class="bi bi-people fs-4"></i>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-md-4">
-        <div class="admin-card-v2 p-4 border-start border-4 h-100 shadow-sm" style="border-color: var(--cva-gold) !important;">
+    <div class="col-6 col-md-4">
+        <div class="admin-card-v2 p-3 p-md-4 border-start border-4 h-100 shadow-sm" style="border-color: var(--cva-gold) !important;">
             <div class="d-flex justify-content-between align-items-center">
                 <div>
-                    <span class="d-block x-small text-uppercase fw-bold text-muted mb-1">Administradores</span>
-                    <h3 class="fw-bold text-gold mb-0"><?= $counts['admins'] ?> Equipos</h3>
+                    <span class="d-block x-small text-uppercase fw-bold text-muted mb-1">Admins</span>
+                    <h4 class="fw-bold text-gold mb-0"><?= $counts['admins'] ?></h4>
                 </div>
-                <div class="bg-gold-soft text-gold p-3 rounded-circle">
+                <div class="bg-gold-soft text-gold p-2 p-md-3 rounded-circle d-none d-sm-block">
                     <i class="bi bi-person-badge-fill fs-4"></i>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-md-4">
-        <div class="admin-card-v2 p-4 border-start border-4 border-success h-100 shadow-sm">
+    <div class="col-12 col-md-4">
+        <div class="admin-card-v2 p-3 p-md-4 border-start border-4 border-success h-100 shadow-sm">
             <div class="d-flex justify-content-between align-items-center">
                 <div>
-                    <span class="d-block x-small text-uppercase fw-bold text-muted mb-1">Cuentas Activas</span>
-                    <h3 class="fw-bold text-success mb-0"><?= $counts['activos'] ?> Online</h3>
+                    <span class="d-block x-small text-uppercase fw-bold text-muted mb-1">Activos Online</span>
+                    <h4 class="fw-bold text-success mb-0"><?= $counts['activos'] ?> Cuentas</h4>
                 </div>
-                <div class="bg-light text-success p-3 rounded-circle">
+                <div class="bg-light text-success p-2 p-md-3 rounded-circle d-none d-sm-block">
                     <i class="bi bi-person-check-fill fs-4"></i>
                 </div>
             </div>
@@ -78,7 +78,7 @@
     </div>
     <div class="p-4">
         <div class="row g-3 align-items-end">
-            <div class="col-md-6">
+            <div class="col-lg-6 col-md-12">
                 <label class="x-small fw-bold text-muted text-uppercase mb-2">Buscador en tiempo real</label>
                 <div class="input-group">
                     <span class="input-group-text bg-white border-end-0 border-2" style="border-radius: 1rem 0 0 1rem;">
@@ -89,15 +89,15 @@
                            placeholder="Nombre, email o usuario...">
                 </div>
             </div>
-            <div class="col-md-3">
-                <label class="x-small fw-bold text-muted text-uppercase mb-2">Estado</label>
+            <div class="col-lg-3 col-6">
+                <label class="x-small fw-bold text-muted text-uppercase mb-2">Filtro</label>
                 <button type="button" id="toggle-view" class="btn btn-outline-dark w-100 py-2 rounded-3 shadow-sm x-small fw-bold">
-                    <i class="bi bi-person-dash me-1"></i> VER SUSPENDIDOS
+                    <i class="bi bi-person-dash me-1"></i> SUSPENDIDOS
                 </button>
             </div>
-            <div class="col-md-3">
+            <div class="col-lg-3 col-6">
                 <button type="button" id="btn-reset" class="btn btn-light border py-2 w-100 rounded-3 shadow-sm x-small fw-bold text-uppercase">
-                    <i class="bi bi-arrow-counterclockwise me-1"></i> Limpiar Filtros
+                    <i class="bi bi-arrow-counterclockwise me-1"></i> Limpiar
                 </button>
             </div>
         </div>
@@ -106,7 +106,7 @@
 
 <!-- Tabla de Usuarios -->
 <div class="admin-card-v2 border-0 shadow-sm overflow-hidden mb-5">
-    <div class="table-responsive">
+    <div class="table-responsive-stack">
         <table class="table table-hover align-middle mb-0">
             <thead class="bg-light">
                 <tr>
@@ -124,31 +124,37 @@
                     <tr class="user-row" 
                         data-search="<?= strtolower(esc($u['nombre'] . ' ' . $u['apellido'] . ' ' . $u['email'] . ' ' . $u['usuario'])) ?>"
                         data-baja="<?= $u['baja'] ?>">
-                        <td class="ps-4">
+                        <td class="ps-4 d-none d-lg-table-cell" data-label="ID">
                             <span class="badge bg-light text-muted border">#<?= $u['id_usuario'] ?></span>
                         </td>
-                        <td>
-                            <div class="d-flex align-items-center gap-3 py-2">
-                                <div class="avatar-premium bg-brown text-gold rounded-circle d-flex align-items-center justify-content-center fw-bold shadow-sm">
-                                    <?php if(!empty($u['imagen'])): ?>
-                                        <img src="<?= base_url('assets/uploads/perfil/'.$u['imagen']) ?>" class="rounded-circle w-100 h-100" style="object-fit: cover;">
-                                    <?php else: ?>
-                                        <?= substr($u['nombre'], 0, 1) ?><?= substr($u['apellido'], 0, 1) ?>
-                                    <?php endif; ?>
+                        <td data-label="IDENTIDAD">
+                            <div class="d-flex align-items-center gap-3 py-1 user-info-wrapper">
+                                <div class="position-relative">
+                                    <div class="avatar-premium bg-brown text-gold rounded-circle d-flex align-items-center justify-content-center fw-bold shadow-sm">
+                                        <?php if(!empty($u['imagen'])): ?>
+                                            <img src="<?= base_url('assets/uploads/perfil/'.$u['imagen']) ?>" class="rounded-circle w-100 h-100" style="object-fit: cover;">
+                                        <?php else: ?>
+                                            <?= substr($u['nombre'], 0, 1) ?><?= substr($u['apellido'], 0, 1) ?>
+                                        <?php endif; ?>
+                                    </div>
+                                    <span class="position-absolute top-0 start-0 badge rounded-pill bg-dark shadow-sm d-md-none" style="transform: translate(-30%, -30%); font-size: 0.6rem; border: 1px solid var(--cva-gold);">#<?= $u['id_usuario'] ?></span>
                                 </div>
-                                <div>
+                                <div class="user-text-details">
                                     <div class="fw-bold text-cva-brown"><?= esc($u['nombre']) ?> <?= esc($u['apellido']) ?></div>
-                                    <?php if($isSelf): ?>
-                                        <span class="badge bg-gold-soft text-gold x-small fw-bold" style="font-size: 0.6rem;">TU SESIÓN</span>
-                                    <?php endif; ?>
+                                    <div class="d-flex gap-2 align-items-center">
+                                        <span class="badge bg-light text-muted border d-none d-md-inline-block" style="font-size: 0.65rem;">ID: #<?= $u['id_usuario'] ?></span>
+                                        <?php if($isSelf): ?>
+                                            <span class="badge bg-gold-soft text-gold x-small fw-bold" style="font-size: 0.6rem;">TU SESIÓN</span>
+                                        <?php endif; ?>
+                                    </div>
                                 </div>
                             </div>
                         </td>
-                        <td>
-                            <div class="small fw-bold text-muted mb-1"><i class="bi bi-at text-gold me-1"></i><?= esc($u['usuario']) ?></div>
-                            <div class="x-small text-muted"><i class="bi bi-envelope me-1"></i><?= esc($u['email']) ?></div>
+                        <td data-label="ACCESO">
+                            <div class="small fw-bold text-muted mb-1 user-access-info"><i class="bi bi-at text-gold me-1"></i><?= esc($u['usuario']) ?></div>
+                            <div class="x-small text-muted user-access-info"><i class="bi bi-envelope me-1"></i><?= esc($u['email']) ?></div>
                         </td>
-                        <td class="text-center">
+                        <td class="text-center" data-label="PERFIL">
                             <?php if($u['perfil_id'] == 1): ?>
                                 <span class="badge bg-brown text-gold px-3 py-2 rounded-pill x-small fw-bold border border-gold border-opacity-25 shadow-sm">
                                     <i class="bi bi-shield-fill-check me-1"></i> ADMIN
@@ -159,7 +165,7 @@
                                 </span>
                             <?php endif; ?>
                         </td>
-                        <td class="pe-4 text-center">
+                        <td class="pe-4 text-center" data-label="ACCIONES">
                             <div class="d-flex justify-content-center gap-2">
                                 <?php if($isSelf): ?>
                                     <a href="<?= base_url('/perfil') ?>" class="btn btn-action-premium text-gold border-gold border-opacity-25 shadow-sm">

@@ -5,27 +5,27 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
-<div class="row mb-5 align-items-center">
-    <div class="col-md-7">
-        <div class="d-flex align-items-center gap-4">
+<div class="row mb-5 align-items-center g-4">
+    <div class="col-lg-7">
+        <div class="d-flex align-items-center gap-3 gap-md-4">
             <div class="dashboard-icon-main bg-brown text-gold shadow">
                 <i class="bi bi-box-seam"></i>
             </div>
             <div>
-                <h1 class="display-5 fw-bold text-cva-brown mb-1">Inventario de Obras</h1>
-                <p class="text-muted mb-0"><i class="bi bi-check2-circle text-success me-1"></i> Control total sobre las piezas disponibles y su visibilidad.</p>
+                <h1 class="display-6 display-md-5 fw-bold text-cva-brown mb-1">Inventario de Obras</h1>
+                <p class="text-muted mb-0 small"><i class="bi bi-check2-circle text-success me-1"></i> Control total sobre las piezas disponibles.</p>
             </div>
         </div>
     </div>
-    <div class="col-md-5 text-md-end">
-        <a href="<?= base_url('/alta-producto') ?>" class="btn-admin-primary rounded-pill px-4 py-3 shadow-gold">
+    <div class="col-lg-5 text-lg-end">
+        <a href="<?= base_url('/alta-producto') ?>" class="btn-admin-primary rounded-pill px-4 py-3 shadow-gold w-sm-100">
             <i class="bi bi-plus-lg me-2"></i> NUEVA PIEZA
         </a>
     </div>
 </div>
 
 <!-- Resumen de Stock (KPIs Rápidos) -->
-<div class="row g-4 mb-5">
+<div class="row g-3 g-md-4 mb-5">
     <?php 
         $total_items = count($productos);
         $unidades_fisicas = 0;
@@ -35,40 +35,40 @@
             if(!empty($p['categoria'])) $categorias_activas[$p['categoria']] = true;
         }
     ?>
-    <div class="col-md-4">
-        <div class="admin-card-v2 p-4 border-start border-4 border-info h-100 shadow-sm">
+    <div class="col-6 col-md-4">
+        <div class="admin-card-v2 p-3 p-md-4 border-start border-4 border-info h-100 shadow-sm">
             <div class="d-flex justify-content-between align-items-center">
                 <div>
-                    <span class="d-block x-small text-uppercase fw-bold text-muted mb-1">Total Catálogo</span>
-                    <h3 class="fw-bold text-cva-brown mb-0"><?= $total_items ?> Obras</h3>
+                    <span class="d-block x-small text-uppercase fw-bold text-muted mb-1">Catálogo</span>
+                    <h4 class="fw-bold text-cva-brown mb-0"><?= $total_items ?></h4>
                 </div>
-                <div class="bg-info-soft text-info p-3 rounded-circle">
+                <div class="bg-info-soft text-info p-2 p-md-3 rounded-circle d-none d-sm-block">
                     <i class="bi bi-collection fs-4"></i>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-md-4">
-        <div class="admin-card-v2 p-4 border-start border-4 h-100 shadow-sm" style="border-color: var(--cva-gold) !important;">
+    <div class="col-6 col-md-4">
+        <div class="admin-card-v2 p-3 p-md-4 border-start border-4 h-100 shadow-sm" style="border-color: var(--cva-gold) !important;">
             <div class="d-flex justify-content-between align-items-center">
                 <div>
-                    <span class="d-block x-small text-uppercase fw-bold text-muted mb-1">Unidades en Stock</span>
-                    <h3 class="fw-bold text-gold mb-0"><?= $unidades_fisicas ?> Muebles</h3>
+                    <span class="d-block x-small text-uppercase fw-bold text-muted mb-1">Stock</span>
+                    <h4 class="fw-bold text-gold mb-0"><?= $unidades_fisicas ?></h4>
                 </div>
-                <div class="bg-gold-soft text-gold p-3 rounded-circle">
+                <div class="bg-gold-soft text-gold p-2 p-md-3 rounded-circle d-none d-sm-block">
                     <i class="bi bi-box-seam-fill fs-4"></i>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-md-4">
-        <div class="admin-card-v2 p-4 border-start border-4 border-success h-100 shadow-sm">
+    <div class="col-12 col-md-4">
+        <div class="admin-card-v2 p-3 p-md-4 border-start border-4 border-success h-100 shadow-sm">
             <div class="d-flex justify-content-between align-items-center">
                 <div>
-                    <span class="d-block x-small text-uppercase fw-bold text-muted mb-1">Categorías</span>
-                    <h3 class="fw-bold text-success mb-0"><?= count($categorias_activas) ?> Estilos</h3>
+                    <span class="d-block x-small text-uppercase fw-bold text-muted mb-1">Estilos Activos</span>
+                    <h4 class="fw-bold text-success mb-0"><?= count($categorias_activas) ?> Categorías</h4>
                 </div>
-                <div class="bg-success-soft text-success p-3 rounded-circle">
+                <div class="bg-success-soft text-success p-2 p-md-3 rounded-circle d-none d-sm-block">
                     <i class="bi bi-tags fs-4"></i>
                 </div>
             </div>
@@ -87,26 +87,26 @@
     <div class="p-4">
         <form id="filter-form">
             <div class="row g-3 align-items-end">
-                <div class="col-md-5">
-                    <label class="x-small fw-bold text-muted text-uppercase mb-2">Nombre o Palabra Clave</label>
+                <div class="col-lg-5 col-md-12">
+                    <label class="x-small fw-bold text-muted text-uppercase mb-2">Buscador</label>
                     <div class="input-group shadow-sm rounded-3 overflow-hidden border">
                         <span class="input-group-text bg-white border-0"><i class="bi bi-search text-gold"></i></span>
-                        <input type="text" id="input-search" class="form-control border-0 py-2" placeholder="Empieza a escribir para filtrar...">
+                        <input type="text" id="input-search" class="form-control border-0 py-2" placeholder="Buscar pieza...">
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-lg-4 col-6">
                     <label class="x-small fw-bold text-muted text-uppercase mb-2">Categoría</label>
                     <select id="select-category" class="form-select border shadow-sm py-2">
-                        <option value="all">Todas las categorías</option>
+                        <option value="all">Todas</option>
                         <?php foreach ($categorias as $cat): ?>
                             <option value="<?= esc($cat['descripcion']) ?>"><?= esc($cat['descripcion']) ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
-                <div class="col-md-3">
+                <div class="col-lg-3 col-6">
                     <div class="d-flex gap-2">
                         <button type="button" id="toggle-view" class="btn btn-outline-dark w-100 py-2 rounded-3 shadow-sm x-small fw-bold" data-current="<?= $vista ?>">
-                            <i class="bi bi-archive me-1"></i> VER ARCHIVADOS
+                            <i class="bi bi-archive"></i>
                         </button>
                         <button type="button" id="btn-reset" class="btn btn-light border py-2 px-3 rounded-3 shadow-sm">
                             <i class="bi bi-arrow-counterclockwise"></i>
@@ -120,7 +120,7 @@
 
 <!-- Listado Maestro -->
 <div class="admin-card-v2 border-0 shadow-sm overflow-hidden mb-5">
-    <div class="table-responsive">
+    <div class="table-responsive-stack">
         <table class="table table-hover align-middle mb-0" id="products-table">
             <thead class="bg-brown text-white">
                 <tr>
@@ -138,29 +138,28 @@
                             data-name="<?= strtolower(esc($p['nombre_prod'])) ?>" 
                             data-category="<?= esc($p['categoria'] ?? 'Sin Categoría') ?>"
                             data-eliminado="<?= $p['eliminado'] ?>">
-                            <td class="ps-4">
-                                <div class="d-flex align-items-center gap-4 py-3">
+                            <td class="ps-4" data-label="PIEZA">
+                                <div class="d-flex align-items-center gap-3 py-3 product-info-wrapper">
                                     <div class="flex-shrink-0 position-relative product-img-container">
                                         <img src="<?= base_url('assets/uploads/' . $p['imagen']) ?>" 
-                                             class="rounded-4 shadow-sm border p-1 bg-white transition-transform" style="width: 120px; height: 120px; object-fit: cover;">
-                                        <span class="position-absolute top-0 start-0 badge rounded-pill bg-dark shadow-sm" style="transform: translate(-20%, -20%); font-size: 0.7rem; border: 1px solid var(--cva-gold); z-index: 1;">#<?= $p['id_producto'] ?></span>
+                                             class="rounded-3 shadow-sm border p-1 bg-white transition-transform" style="width: 80px; height: 80px; object-fit: cover;">
+                                        <span class="position-absolute top-0 start-0 badge rounded-pill bg-dark shadow-sm d-md-none" style="transform: translate(-20%, -20%); font-size: 0.7rem; border: 1px solid var(--cva-gold); z-index: 1;">#<?= $p['id_producto'] ?></span>
                                     </div>
-                                    <div>
-                                        <div class="h5 fw-bold text-cva-brown mb-1"><?= esc($p['nombre_prod']) ?></div>
-                                        <div class="small text-muted mb-3"><?= character_limiter(esc($p['descripcion'] ?? ''), 100) ?></div>
+                                    <div class="product-text-details">
+                                        <div class="h6 fw-bold text-cva-brown mb-1"><?= esc($p['nombre_prod']) ?></div>
+                                        <div class="small text-muted mb-2 d-none d-md-block"><?= character_limiter(esc($p['descripcion'] ?? ''), 60) ?></div>
                                         <div class="d-flex gap-2">
-                                            <span class="x-small fw-bold text-uppercase badge bg-light text-muted border px-2 py-1" style="font-size: 0.6rem;">CVA ARTISAN</span>
-                                            <span class="x-small fw-bold text-uppercase badge bg-light text-muted border px-2 py-1" style="font-size: 0.6rem;">PROD ID: <?= $p['id_producto'] ?></span>
+                                            <span class="x-small fw-bold text-uppercase badge bg-light text-muted border px-2 py-1" style="font-size: 0.55rem;">ID: <?= $p['id_producto'] ?></span>
                                         </div>
                                     </div>
                                 </div>
                             </td>
-                            <td>
+                            <td data-label="CATEGORÍA">
                                 <span class="badge bg-gold-soft text-gold px-3 py-2 rounded-pill small fw-bold border border-warning border-opacity-10">
                                     <i class="bi bi-tag-fill me-1"></i> <?= esc($p['categoria'] ?? 'Sin Categoría') ?>
                                 </span>
                             </td>
-                            <td class="text-center">
+                            <td class="text-center" data-label="STOCK">
                                 <div class="d-inline-block text-center">
                                     <div class="h3 fw-bold mb-0 <?= $p['stock'] > 0 ? 'text-success' : 'text-muted' ?>">
                                         <?= $p['stock'] ?>
@@ -168,12 +167,11 @@
                                     <div class="x-small fw-bold text-uppercase text-muted" style="font-size: 0.65rem;">Unidades</div>
                                 </div>
                             </td>
-                            <td class="text-end">
-                                <div class="h5 fw-bold text-cva-brown mb-0">$<?= number_format($p['precio_vta'], 2, ',', '.') ?></div>
-                                <div class="x-small text-muted italic">Precio de Lista</div>
+                            <td class="text-end" data-label="PRECIO">
+                                <div class="fw-bold text-cva-brown mb-0">$<?= number_format($p['precio_vta'], 2, ',', '.') ?></div>
                             </td>
-                            <td class="pe-4 text-center">
-                                <div class="d-flex flex-column gap-2 align-items-center">
+                            <td class="text-center" data-label="GESTIÓN">
+                                <div class="d-flex flex-column flex-sm-row flex-lg-column gap-2 align-items-center justify-content-center w-100">
                                     <a href="<?= base_url('/editar-producto/' . $p['id_producto']) ?>" 
                                        class="btn btn-action-premium text-primary border-primary border-opacity-25 w-100">
                                         <i class="bi bi-pencil-fill me-2"></i> EDITAR
@@ -286,6 +284,11 @@
         0% { box-shadow: 0 0 0 0 rgba(201, 161, 107, 0.7); }
         70% { box-shadow: 0 0 0 15px rgba(201, 161, 107, 0); }
         100% { box-shadow: 0 0 0 0 rgba(201, 161, 107, 0); }
+    }
+
+    @media (max-width: 767.98px) {
+        .product-img-container { width: 80px; }
+        .product-row td[data-label="PIEZA"] { min-height: 80px; }
     }
 </style>
 

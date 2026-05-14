@@ -6,61 +6,61 @@
 
 <?= $this->section('content') ?>
 <!-- Encabezado Estilo Artisan -->
-<div class="row mb-5 align-items-center">
-    <div class="col-md-7">
-        <div class="d-flex align-items-center gap-4">
+<div class="row mb-5 align-items-center g-4">
+    <div class="col-lg-7">
+        <div class="d-flex align-items-center gap-3 gap-md-4">
             <div class="dashboard-icon-main bg-brown text-gold shadow">
                 <i class="bi bi-chat-left-text"></i>
             </div>
             <div>
-                <h1 class="display-5 fw-bold text-cva-brown mb-1">Inbox de Consultas</h1>
-                <p class="text-muted mb-0"><i class="bi bi-envelope-paper text-gold me-1"></i> Gestiona mensajes, presupuestos y atención al cliente.</p>
+                <h1 class="display-6 display-md-5 fw-bold text-cva-brown mb-1">Inbox</h1>
+                <p class="text-muted mb-0 small"><i class="bi bi-envelope-paper text-gold me-1"></i> Gestión de mensajes y presupuestos.</p>
             </div>
         </div>
     </div>
-    <div class="col-md-5 text-md-end">
-        <div class="badge bg-gold-soft text-gold px-4 py-2 rounded-pill fs-6 fw-bold border border-gold shadow-sm">
-            <i class="bi bi-inbox-fill me-2"></i><?= $counts['activos'] ?> CONSULTAS PENDIENTES
+    <div class="col-lg-5 text-lg-end">
+        <div class="badge bg-gold-soft text-gold px-4 py-2 rounded-pill fs-6 fw-bold border border-gold shadow-sm w-sm-100 justify-content-center">
+            <i class="bi bi-inbox-fill me-2"></i><?= $counts['activos'] ?> PENDIENTES
         </div>
     </div>
 </div>
 
 <!-- KPIs de Consultas -->
-<div class="row g-4 mb-5">
-    <div class="col-md-4">
-        <div class="admin-card-v2 p-4 border-start border-4 border-info h-100 shadow-sm">
+<div class="row g-3 g-md-4 mb-5">
+    <div class="col-6 col-md-4">
+        <div class="admin-card-v2 p-3 p-md-4 border-start border-4 border-info h-100 shadow-sm">
             <div class="d-flex justify-content-between align-items-center">
                 <div>
-                    <span class="d-block x-small text-uppercase fw-bold text-muted mb-1">Mensajes de <?= $nombreMes ?></span>
-                    <h3 class="fw-bold text-cva-brown mb-0"><?= $counts['mensuales'] ?> Consultas</h3>
+                    <span class="d-block x-small text-uppercase fw-bold text-muted mb-1">Mes <?= $nombreMes ?></span>
+                    <h4 class="fw-bold text-cva-brown mb-0"><?= $counts['mensuales'] ?></h4>
                 </div>
-                <div class="bg-light text-info p-3 rounded-circle">
+                <div class="bg-light text-info p-2 p-md-3 rounded-circle d-none d-sm-block">
                     <i class="bi bi-calendar3 fs-4"></i>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-md-4">
-        <div class="admin-card-v2 p-4 border-start border-4 h-100 shadow-sm" style="border-color: var(--cva-gold) !important;">
+    <div class="col-6 col-md-4">
+        <div class="admin-card-v2 p-3 p-md-4 border-start border-4 h-100 shadow-sm" style="border-color: var(--cva-gold) !important;">
             <div class="d-flex justify-content-between align-items-center">
                 <div>
                     <span class="d-block x-small text-uppercase fw-bold text-muted mb-1">Presupuestos</span>
-                    <h3 class="fw-bold text-gold mb-0"><?= $counts['presupuestos'] ?> Pedidos</h3>
+                    <h4 class="fw-bold text-gold mb-0"><?= $counts['presupuestos'] ?></h4>
                 </div>
-                <div class="bg-gold-soft text-gold p-3 rounded-circle">
+                <div class="bg-gold-soft text-gold p-2 p-md-3 rounded-circle d-none d-sm-block">
                     <i class="bi bi-file-earmark-spreadsheet fs-4"></i>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-md-4">
-        <div class="admin-card-v2 p-4 border-start border-4 border-success h-100 shadow-sm">
+    <div class="col-12 col-md-4">
+        <div class="admin-card-v2 p-3 p-md-4 border-start border-4 border-success h-100 shadow-sm">
             <div class="d-flex justify-content-between align-items-center">
                 <div>
                     <span class="d-block x-small text-uppercase fw-bold text-muted mb-1">Total Histórico</span>
-                    <h3 class="fw-bold text-success mb-0"><?= $counts['total'] ?> Mensajes</h3>
+                    <h4 class="fw-bold text-success mb-0"><?= $counts['total'] ?> Mensajes</h4>
                 </div>
-                <div class="bg-light text-success p-3 rounded-circle">
+                <div class="bg-light text-success p-2 p-md-3 rounded-circle d-none d-sm-block">
                     <i class="bi bi-archive fs-4"></i>
                 </div>
             </div>
@@ -78,7 +78,7 @@
     </div>
     <div class="p-4">
         <div class="row g-3 align-items-end">
-            <div class="col-md-5">
+            <div class="col-lg-5 col-md-12">
                 <label class="x-small fw-bold text-muted text-uppercase mb-2">Buscador en tiempo real</label>
                 <div class="input-group">
                     <span class="input-group-text bg-white border-end-0 border-2" style="border-radius: 1rem 0 0 1rem;">
@@ -86,27 +86,27 @@
                     </span>
                     <input type="text" id="input-search" class="form-control border-start-0 border-2 py-2" 
                            style="border-radius: 0 1rem 1rem 0;"
-                           placeholder="Nombre, email o asunto...">
+                           placeholder="Buscar...">
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-lg-3 col-6">
                 <label class="x-small fw-bold text-muted text-uppercase mb-2">Estado</label>
                 <button type="button" id="toggle-view" class="btn btn-outline-dark w-100 py-2 rounded-3 shadow-sm x-small fw-bold">
-                    <i class="bi bi-check2-all me-1"></i> VER CONTESTADOS
+                    <i class="bi bi-check2-all me-1"></i> CONTESTADOS
                 </button>
             </div>
-            <div class="col-md-2">
-                <label class="x-small fw-bold text-muted text-uppercase mb-2">Tipo de Asunto</label>
+            <div class="col-lg-3 col-6">
+                <label class="x-small fw-bold text-muted text-uppercase mb-2">Asunto</label>
                 <select id="select-asunto" class="form-select border-2 py-2 rounded-3 x-small fw-bold text-uppercase">
                     <option value="ALL">TODOS</option>
-                    <option value="Consulta general">Consulta general</option>
-                    <option value="Solicitud de presupuesto">Solicitud de presupuesto</option>
-                    <option value="Estado de mi pedido">Estado de mi pedido</option>
-                    <option value="Consulta sobre garantía">Consulta sobre garantía</option>
+                    <option value="Consulta general">Gral.</option>
+                    <option value="Solicitud de presupuesto">Presup.</option>
+                    <option value="Estado de mi pedido">Pedido</option>
+                    <option value="Consulta sobre garantía">Garantía</option>
                     <option value="Otro">Otro</option>
                 </select>
             </div>
-            <div class="col-md-2">
+            <div class="col-lg-1 col-12">
                 <button type="button" id="btn-reset" class="btn btn-light border py-2 w-100 rounded-3 shadow-sm x-small fw-bold text-uppercase">
                     <i class="bi bi-arrow-counterclockwise"></i>
                 </button>
@@ -117,16 +117,16 @@
 
 <!-- Listado de Mensajes -->
 <div class="admin-card-v2 border-0 shadow-sm overflow-hidden mb-5">
-    <div class="table-responsive">
+    <div class="table-responsive-stack">
         <table class="table table-hover align-middle mb-0">
             <thead class="bg-light">
                 <tr>
-                    <th class="ps-4 py-3 text-uppercase x-small fw-bold text-muted">Fecha</th>
-                    <th class="py-3 text-uppercase x-small fw-bold text-muted">Interesado</th>
-                    <th class="py-3 text-uppercase x-small fw-bold text-muted">Contacto</th>
-                    <th class="py-3 text-uppercase x-small fw-bold text-muted">Asunto</th>
-                    <th class="py-3 text-uppercase x-small fw-bold text-muted">Mensaje</th>
-                    <th class="pe-4 py-3 text-uppercase x-small fw-bold text-muted text-center">Acciones</th>
+                    <th class="ps-4 py-3 text-uppercase x-small fw-bold text-muted d-none d-lg-table-cell" style="width: 8%;">Fecha</th>
+                    <th class="py-3 text-uppercase x-small fw-bold text-muted" style="width: 22%;">Interesado</th>
+                    <th class="py-3 text-uppercase x-small fw-bold text-muted d-none d-lg-table-cell" style="width: 18%;">Contacto</th>
+                    <th class="py-3 text-uppercase x-small fw-bold text-muted d-none d-lg-table-cell" style="width: 12%;">Asunto</th>
+                    <th class="py-3 text-uppercase x-small fw-bold text-muted" style="width: 25%;">Mensaje</th>
+                    <th class="pe-4 py-3 text-uppercase x-small fw-bold text-muted text-center" style="width: 15%;">Acciones</th>
                 </tr>
             </thead>
             <tbody id="inquiry-table-body">
@@ -136,22 +136,31 @@
                             data-search="<?= $consulta['search_data'] ?>"
                             data-asunto="<?= esc($consulta['asunto']) ?>"
                             data-activo="<?= $consulta['activo'] ?>">
-                            <td class="ps-4">
+                            <td class="ps-4 d-none d-lg-table-cell" data-label="FECHA">
                                 <div class="fw-bold text-cva-brown small"><?= date('d/m/Y', strtotime($consulta['fecha'])) ?></div>
                             </td>
-                            <td>
-                                <div class="d-flex align-items-center gap-3">
-                                    <div class="avatar-premium bg-brown text-gold rounded-circle d-flex align-items-center justify-content-center fw-bold shadow-sm" style="width: 35px; height: 35px; font-size: 0.7rem;">
-                                        <?= strtoupper(substr($consulta['nombre'], 0, 1)) ?><?= strtoupper(substr($consulta['apellido'], 0, 1)) ?>
+                            <td data-label="INTERESADO">
+                                <div class="d-flex align-items-center gap-3 py-1 inquiry-info-wrapper">
+                                    <div class="position-relative">
+                                        <div class="avatar-premium bg-brown text-gold rounded-circle d-flex align-items-center justify-content-center fw-bold shadow-sm">
+                                            <?= strtoupper(substr($consulta['nombre'], 0, 1)) ?><?= strtoupper(substr($consulta['apellido'], 0, 1)) ?>
+                                        </div>
+                                        <span class="position-absolute top-0 start-0 badge rounded-pill bg-dark shadow-sm d-lg-none" style="transform: translate(-30%, -30%); font-size: 0.6rem; border: 1px solid var(--cva-gold);"><?= date('d/m/y', strtotime($consulta['fecha'])) ?></span>
                                     </div>
-                                    <div class="fw-bold text-cva-brown"><?= esc($consulta['nombre']) ?> <?= esc($consulta['apellido']) ?></div>
+                                    <div class="inquiry-text-details">
+                                        <div class="fw-bold text-cva-brown fs-5"><?= esc($consulta['nombre']) ?> <?= esc($consulta['apellido']) ?></div>
+                                        <div class="x-small text-muted d-lg-none"><?= esc($consulta['email']) ?></div>
+                                        <div class="d-lg-none mt-1">
+                                            <span class="badge bg-gold-soft text-gold border border-gold border-opacity-25 x-small" style="font-size: 0.6rem;"><?= esc($consulta['asunto']) ?></span>
+                                        </div>
+                                    </div>
                                 </div>
                             </td>
-                            <td>
-                                <div class="small"><i class="bi bi-envelope me-1 text-gold"></i> <?= esc($consulta['email']) ?></div>
-                                <div class="x-small fw-bold text-muted"><i class="bi bi-phone me-1"></i> <?= esc($consulta['telefono']) ?></div>
+                            <td class="d-none d-lg-table-cell" data-label="CONTACTO">
+                                <div class="small text-end text-md-start"><i class="bi bi-envelope me-1 text-gold"></i> <?= esc($consulta['email']) ?></div>
+                                <div class="x-small fw-bold text-muted text-end text-md-start"><i class="bi bi-phone me-1"></i> <?= esc($consulta['telefono']) ?></div>
                             </td>
-                            <td>
+                            <td class="d-none d-lg-table-cell" data-label="ASUNTO">
                                 <?php 
                                     $asunto_class = "bg-light text-muted";
                                     if(stripos($consulta['asunto'], 'presupuesto') !== false) $asunto_class = "bg-warning-soft text-warning border-warning";
@@ -161,13 +170,15 @@
                                     <?= esc($consulta['asunto']) ?>
                                 </span>
                             </td>
-                            <td style="max-width: 200px;">
-                                <div class="text-truncate small text-muted"><?= esc($consulta['descripcion']) ?></div>
-                                <a href="#" class="text-gold x-small fw-bold text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalConsulta<?= $index ?>">
-                                    LEER MÁS <i class="bi bi-chevron-right"></i>
-                                </a>
+                            <td data-label="MENSAJE" class="message-cell">
+                                <div class="message-preview text-truncate small text-muted mb-1"><?= esc($consulta['descripcion']) ?></div>
+                                <div class="message-action">
+                                    <a href="#" class="text-gold x-small fw-bold text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalConsulta<?= $index ?>">
+                                        LEER MÁS <i class="bi bi-chevron-right"></i>
+                                    </a>
+                                </div>
                             </td>
-                            <td class="pe-4 text-center">
+                            <td class="pe-4 text-center" data-label="ACCIONES">
                                 <div class="d-flex justify-content-center gap-2">
                                     <?php 
                                         $num = preg_replace('/[^0-9]/', '', $consulta['telefono']);
@@ -267,6 +278,50 @@
         font-size: 2rem;
         border-radius: 1.2rem;
     }
+    
+    .nav-item-admin-special i {
+        font-size: 1.2rem;
+    }
+
+    /* Fix para evitar desbordamiento en tablas de administración */
+    @media (min-width: 992px) {
+    .table-responsive-stack table {
+        table-layout: fixed !important;
+        width: 100% !important;
+    }
+    
+    .inquiry-row td {
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+    }
+
+    .inquiry-row .inquiry-info-wrapper,
+    .inquiry-row .message-cell {
+        overflow: hidden !important;
+    }
+
+    .inquiry-row .fw-bold {
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+        display: block !important;
+    }
+
+    .message-cell .message-preview {
+        max-width: 100% !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        display: block !important;
+    }
+
+    .message-cell .message-action {
+        display: block !important;
+        margin-top: 2px !important;
+    }
+}
+
     .bg-gold-soft { background: #fff9f0; }
     .btn-action-premium {
         width: 40px; height: 40px;
