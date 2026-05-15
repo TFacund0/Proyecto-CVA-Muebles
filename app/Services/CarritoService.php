@@ -24,8 +24,8 @@ class CarritoService
     public function agregar($data)
     {
         $producto = $this->productoModel->find($data['id_producto']);
-        if (!$producto || $producto['stock'] <= 0) {
-            return ['status' => 'error', 'message' => 'No hay stock disponible.'];
+        if (!$producto) {
+            return ['status' => 'error', 'message' => 'Producto no encontrado.'];
         }
 
         $this->cart->insert([
@@ -46,11 +46,6 @@ class CarritoService
     {
         $item = $this->cart->getItem($rowid);
         if (!$item) return false;
-
-        $producto = $this->productoModel->find($item['id']);
-        if ($producto['stock'] <= $item['qty']) {
-            return ['status' => 'error', 'message' => 'No hay más stock disponible.'];
-        }
 
         $this->cart->update([
             'rowid' => $rowid,
@@ -87,6 +82,18 @@ class CarritoService
         if ($rowid == "all") {
             $this->cart->destroy();
         } else {
+            $this->cart->remove($rowid);
+        }
+        return true;
+    }
+
+    /**
+     * Elimina varios items por su rowid.
+     */
+    public function eliminarVarios($rowids)
+    {
+        if (empty($rowids)) return false;
+        foreach ($rowids as $rowid) {
             $this->cart->remove($rowid);
         }
         return true;

@@ -18,23 +18,23 @@ class PagesController extends BaseController
     }
 
     public function quienesSomos() {
-        return view('front/pages/quienesSomos', ['title' => 'Quiénes Somos - CVA Muebles']);
+        return view('front/pages/quienesSomos', ['title' => 'Quiénes Somos']);
     }
 
     public function comercializacion() {   
-        return view('front/pages/comercializacion', ['title' => 'Comercialización - CVA Muebles']);
+        return view('front/pages/comercializacion', ['title' => 'Comercialización']);
     }
 
     public function informacionContacto() {
-        return view('front/pages/informacionContacto', ['title' => 'Contacto - CVA Muebles']);
+        return view('front/pages/informacionContacto', ['title' => 'Contacto']);
     }
 
     public function terminosYCondiciones() {
-        return view('front/pages/terminosYCondiciones', ['title' => 'Términos y Condiciones - CVA Muebles']);
+        return view('front/pages/terminosYCondiciones', ['title' => 'Términos y Condiciones']);
     }
 
     public function beneficios() {
-        return view('front/pages/beneficios', ['title' => 'Programa de Fidelidad - CVA Muebles']);
+        return view('front/pages/beneficios', ['title' => 'Programa de Fidelidad']);
     }
 
     /**
@@ -43,10 +43,10 @@ class PagesController extends BaseController
     public function productos() {
         $resultado = $this->productoService->getProductosConStats();
         return view('front/pages/productos', [
-            'producto'   => $resultado['productos'],
+            'productos'  => $resultado['productos'],
             'categorias' => $this->categoriaService->getCategoriasConStats(),
             'user_favs'  => session()->get('logged_in') ? $this->favoritosService->getFavoritosIds(session()->get('id_usuario')) : [],
-            'title'      => 'Nuestros Productos - CVA Muebles'
+            'title'      => 'Nuestros Productos'
         ]);
     }
 }

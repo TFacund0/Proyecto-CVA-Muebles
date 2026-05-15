@@ -41,8 +41,8 @@ class ConsultaController extends BaseController {
         }
 
         // Honeypot check
-        if (!empty($this->request->getPost('honeypot'))) {
-            return redirect()->to('/')->with('error', 'Bot detectado.');
+        if (!empty($this->request->getPost('middle_name'))) {
+            return redirect()->to('/')->with('error', 'Detectamos actividad inusual. Por favor intenta más tarde.');
         }
 
         $rules = [

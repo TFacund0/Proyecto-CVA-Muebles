@@ -36,42 +36,35 @@
 <form method="POST" action="<?= base_url('/modificar-producto/' . $producto['id_producto']) ?>" enctype="multipart/form-data">
     <?= csrf_field() ?>
     
-    <div class="row g-5">
-        <!-- COLUMNA IZQUIERDA: GESTIÓN DE IMAGEN -->
+    <div class="row g-4">
+        <!-- COLUMNA IZQUIERDA: IMAGEN PRINCIPAL -->
         <div class="col-lg-4">
             <div class="admin-card-v2 p-0 overflow-hidden shadow-sm border-0 mb-4 sticky-top" style="top: 20px;">
                 <div class="bg-brown p-3 text-center">
-                    <h6 class="mb-0 fw-bold text-gold small text-uppercase tracking-wider">Imagen en Catálogo</h6>
+                    <h6 class="mb-0 fw-bold text-gold small text-uppercase tracking-wider">Imagen de Portada</h6>
                 </div>
                 <div class="p-4">
-                    <div class="product-preview-container mb-4 position-relative">
+                    <div class="product-preview-container mb-4 position-relative bg-light rounded-4 border overflow-hidden" style="height: 350px;">
                         <img src="<?= base_url('assets/uploads/' . $producto['imagen']) ?>" 
-                             class="img-fluid rounded-4 shadow-sm w-100" 
-                             style="height: 350px; object-fit: cover; border: 4px solid white;" 
-                             id="main-preview" alt="Producto">
+                             class="img-fluid w-100 h-100" 
+                             style="object-fit: contain;" 
+                             id="main-preview">
                         <div class="position-absolute bottom-0 end-0 p-3">
-                            <span class="badge bg-gold px-3 py-2 rounded-pill shadow-sm">Vista Actual</span>
+                            <span class="badge bg-gold px-3 py-2 rounded-pill shadow-sm">Principal</span>
                         </div>
                     </div>
 
-                    <div class="upload-zone p-4 border-2 border-dashed rounded-4 text-center bg-light position-relative" style="border-color: #d7ccc8 !important;">
-                        <i class="bi bi-cloud-arrow-up fs-2 text-gold mb-2 d-block"></i>
-                        <span class="d-block small fw-bold text-muted mb-3 text-uppercase">Cambiar Fotografía</span>
-                        <input type="file" name="imagen" class="stretched-link opacity-0" 
-                               id="input-file" accept="image/*" onchange="previewImage(event)">
-                        <p class="x-small text-muted mb-0">Formatos: JPG, PNG. Tamaño recomendado: 800x800px</p>
-                    </div>
-
-                    <div id="new-badge-indicator" class="d-none mt-3 animate__animated animate__fadeIn">
-                        <div class="alert alert-warning x-small fw-bold py-2 px-3 rounded-pill text-center border-0 mb-0">
-                            <i class="bi bi-info-circle me-1"></i> Nueva imagen seleccionada
-                        </div>
+                    <div class="upload-zone p-4 border-2 border-dashed rounded-4 text-center bg-light-gold position-relative">
+                        <i class="bi bi-camera fs-2 text-gold mb-2 d-block"></i>
+                        <span class="d-block small fw-bold text-muted mb-2 text-uppercase">Cambiar Fotografía</span>
+                        <input type="file" name="imagen" class="stretched-link opacity-0" accept="image/*" onchange="previewImage(event)">
+                        <p class="x-small text-muted mb-0">Se recomienda formato cuadrado.</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- COLUMNA DERECHA: INFORMACIÓN Y PRECIOS -->
+        <!-- COLUMNA DERECHA: DATOS Y GALERÍA -->
         <div class="col-lg-8">
             <div class="admin-card-v2 p-4 p-md-5 shadow-sm border-0">
                 
@@ -87,12 +80,12 @@
                     <div class="row g-4">
                         <div class="col-md-8">
                             <label class="x-small fw-bold text-muted text-uppercase mb-2">Nombre Comercial</label>
-                            <input type="text" name="nombre_producto" class="form-control admin-control py-2 fs-5 fw-bold text-cva-brown" 
+                            <input type="text" name="nombre_producto" class="form-control admin-control py-3 fs-5 fw-bold text-cva-brown" 
                                    value="<?= esc($producto['nombre_prod']) ?>" required>
                         </div>
                         <div class="col-md-4">
                             <label class="x-small fw-bold text-muted text-uppercase mb-2">Categoría</label>
-                            <select name="categoria_id" class="form-select admin-control py-2 fw-bold" required>
+                            <select name="categoria_id" class="form-select admin-control py-3 fw-bold" required>
                                 <?php foreach ($categorias as $categoria): ?>
                                     <option value="<?= $categoria['id_categoria'] ?>" <?= $producto['categoria_id'] == $categoria['id_categoria'] ? 'selected' : '' ?>>
                                         <?= esc($categoria['descripcion']) ?>
@@ -113,63 +106,81 @@
                     </div>
 
                     <div class="row g-4">
-                        <div class="col-md-6 col-lg-3">
-                            <label class="x-small fw-bold text-muted text-uppercase mb-2">Precio Costo</label>
-                            <div class="input-group shadow-sm rounded-3 overflow-hidden">
-                                <span class="input-group-text bg-white border-end-0 text-muted">$</span>
-                                <input type="number" step="0.01" name="precio" class="form-control border-start-0 py-2 fw-bold" 
-                                       value="<?= esc($producto['precio']) ?>" required>
-                            </div>
+                        <div class="col-6 col-lg-3">
+                            <label class="x-small fw-bold text-muted text-uppercase mb-2">Costo</label>
+                            <input type="number" step="0.01" name="precio" class="form-control admin-control py-2 fw-bold" 
+                                   value="<?= esc($producto['precio']) ?>" required>
                         </div>
-                        <div class="col-md-6 col-lg-3">
-                            <label class="x-small fw-bold text-muted text-uppercase mb-2">Precio Venta</label>
-                            <div class="input-group shadow-sm rounded-3 overflow-hidden">
-                                <span class="input-group-text bg-gold-soft border-end-0 text-gold fw-bold">$</span>
-                                <input type="number" step="0.01" name="precio-vta" class="form-control border-start-0 py-2 fw-bold text-gold" 
-                                       value="<?= esc($producto['precio_vta']) ?>" required>
-                            </div>
+                        <div class="col-6 col-lg-3">
+                            <label class="x-small fw-bold text-muted text-uppercase mb-2">Venta</label>
+                            <input type="number" step="0.01" name="precio-vta" class="form-control admin-control py-2 fw-bold text-gold" 
+                                   value="<?= esc($producto['precio_vta']) ?>" required>
                         </div>
-                        <div class="col-md-6 col-lg-3">
-                            <label class="x-small fw-bold text-muted text-uppercase mb-2">Stock Actual</label>
+                        <div class="col-6 col-lg-3">
+                            <label class="x-small fw-bold text-muted text-uppercase mb-2">Stock</label>
                             <input type="number" name="stock" class="form-control admin-control py-2 text-center fw-bold fs-5" 
                                    value="<?= esc($producto['stock']) ?>" required>
                         </div>
-                        <div class="col-md-6 col-lg-3">
-                            <label class="x-small fw-bold text-muted text-uppercase mb-2">Aviso Stock Mín.</label>
-                            <input type="number" name="stock-min" class="form-control admin-control py-2 text-center fw-bold text-danger border-danger border-opacity-25" 
+                        <div class="col-6 col-lg-3">
+                            <label class="x-small fw-bold text-muted text-uppercase mb-2">Stock Mín.</label>
+                            <input type="number" name="stock-min" class="form-control admin-control py-2 text-center fw-bold text-danger" 
                                    value="<?= esc($producto['stock_min']) ?>" required>
                         </div>
                     </div>
                 </div>
 
-                <!-- SECCIÓN 3: FICHA TÉCNICA -->
-                <div class="mb-5">
+                <!-- SECCIÓN 3: GALERÍA ADICIONAL -->
+                <div class="mb-5 border-top pt-5">
                     <div class="d-flex align-items-center gap-3 mb-4 border-bottom pb-3">
-                        <div class="p-2 bg-info-soft rounded-3 text-info">
-                            <i class="bi bi-file-earmark-text-fill fs-4"></i>
+                        <div class="p-2 bg-warning-soft rounded-3 text-warning">
+                            <i class="bi bi-images fs-4"></i>
                         </div>
-                        <h5 class="fw-bold text-cva-brown mb-0">Ficha Técnica y Descripción</h5>
+                        <h5 class="fw-bold text-cva-brown mb-0">Galería de Imágenes Secundarias</h5>
                     </div>
-                    <div class="mb-3">
-                        <textarea name="descripcion" class="form-control admin-control p-4" rows="8" 
-                                  placeholder="Detalla materiales, medidas exactas, tiempos de entrega..."
-                                  style="line-height: 1.6; font-size: 0.95rem;"><?= esc($producto['descripcion']) ?></textarea>
+                    
+                    <div class="upload-zone-secondary p-4 border-2 border-dashed rounded-4 text-center bg-light-gold mb-4">
+                        <i class="bi bi-plus-circle text-gold fs-3 mb-2 d-block"></i>
+                        <span class="d-block small fw-bold text-muted mb-2 text-uppercase">Agregar fotos adicionales</span>
+                        <input type="file" name="fotos_galeria[]" class="form-control admin-control" multiple>
+                        <p class="x-small text-muted mt-2 mb-0">Elegí varias fotos para que el cliente vea el mueble de todos lados.</p>
                     </div>
-                    <div class="d-flex align-items-center gap-2 p-3 bg-light rounded-4 border border-opacity-10 border-dark">
-                        <i class="bi bi-magic text-gold fs-5"></i>
-                        <span class="x-small text-muted italic">Consejo: Describe la madera y el acabado para resaltar el valor artesanal del mueble.</span>
+
+                    <div class="row g-2">
+                        <?php if(!empty($producto['galeria'])): ?>
+                            <?php foreach($producto['galeria'] as $img): ?>
+                                <div class="col-4 col-md-3 col-lg-2">
+                                    <div class="gallery-item-admin rounded-3 overflow-hidden shadow-sm position-relative border">
+                                        <img src="<?= base_url('assets/uploads/' . $img['imagen']) ?>" class="img-fluid w-100" style="height: 100px; object-fit: cover;">
+                                        <div class="gallery-actions position-absolute top-0 end-0 p-1">
+                                            <a href="<?= base_url('/admin/productos/eliminar-foto/' . $img['id']) ?>" 
+                                               class="btn btn-danger btn-sm rounded-circle p-1" 
+                                               onclick="return confirm('¿Eliminar esta foto?')">
+                                                <i class="bi bi-x-lg" style="font-size: 10px;"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
                     </div>
                 </div>
 
+                <!-- SECCIÓN 4: DESCRIPCIÓN -->
+                <div class="mb-5 border-top pt-5">
+                    <label class="x-small fw-bold text-muted text-uppercase mb-2">Ficha Técnica y Descripción</label>
+                    <textarea name="descripcion" class="form-control admin-control p-4" rows="6" 
+                              style="line-height: 1.6;"><?= esc($producto['descripcion']) ?></textarea>
+                </div>
+
                 <!-- BOTONES DE ACCIÓN -->
-                <div class="row g-3 pt-4">
+                <div class="row g-3 pt-4 border-top">
                     <div class="col-md-8">
                         <button type="submit" class="btn btn-admin-gold w-100 py-3 fw-bold fs-5 shadow-sm rounded-4">
-                            <i class="bi bi-cloud-check me-2"></i> ACTUALIZAR CATÁLOGO
+                            <i class="bi bi-cloud-check me-2"></i> ACTUALIZAR TODO
                         </button>
                     </div>
                     <div class="col-md-4">
-                        <a href="<?= base_url('/crud-productos') ?>" class="btn btn-outline-dark w-100 py-3 fw-bold rounded-4">
+                        <a href="<?= base_url('/crud-productos') ?>" class="btn btn-outline-dark w-100 py-3 fw-bold rounded-4 text-uppercase small">
                             CANCELAR
                         </a>
                     </div>
@@ -190,15 +201,32 @@
     .bg-gold-soft { background: #fff9f0; }
     .bg-success-soft { background: #f0fff4; }
     .bg-info-soft { background: #f0f7ff; }
+    .bg-warning-soft { background: #fff8e1; }
+    .bg-light-gold { background: #faf9f6; }
     .tracking-wider { letter-spacing: 1.5px; }
     
-    .upload-zone {
+    .upload-zone, .upload-zone-secondary {
         transition: all 0.3s ease;
         border-style: dashed !important;
     }
-    .upload-zone:hover {
+    .upload-zone:hover, .upload-zone-secondary:hover {
         background: #fdfaf5 !important;
         border-color: var(--cva-gold) !important;
+    }
+
+    .gallery-item-admin img {
+        transition: transform 0.3s ease;
+    }
+    .gallery-item-admin:hover img {
+        transform: scale(1.1);
+    }
+    .gallery-actions {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        background: rgba(0,0,0,0.2);
+    }
+    .gallery-item-admin:hover .gallery-actions {
+        opacity: 1;
     }
     
     .admin-control:focus {

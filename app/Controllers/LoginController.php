@@ -22,9 +22,16 @@ class LoginController extends BaseController {
     }
 
     /**
-     * Autentica al usuario delegando al servicio.
+     * Autentica al usuario delegando al servicio con protección de Throttling.
      */
     public function auth() {
+        $throttler = \Config\Services::throttler();
+
+        // Limitar a 5 intentos por minuto por cada IP
+        if ($throttler->check(md5($this->request->getIPAddress()), 5, MINUTE) === false) {
+            return redirect()->back()->withInput()->with('error', 'Demasiados intentos. Por favor, espera un minuto.');
+        }
+
         $resultado = $this->usuarioService->autenticar(
             $this->request->getVar('email'),
             $this->request->getVar('pass')

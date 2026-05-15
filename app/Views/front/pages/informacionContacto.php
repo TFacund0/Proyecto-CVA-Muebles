@@ -46,7 +46,7 @@
                     <div class="artisan-contact-card">
                         <div class="icon-contact-wrapper"><i class="bi bi-whatsapp"></i></div>
                         <h4 class="font-lora fw-bold">WhatsApp</h4>
-                        <p class="text-muted mb-4">+54 9 3794 098511<br>Atención Inmediata</p>
+                        <p class="text-muted mb-4"><?= env('WHATSAPP_NUMBER') ?><br>Atención Inmediata</p>
                         <a href="https://wa.me/<?= env('WHATSAPP_NUMBER') ?>" target="_blank" class="btn btn-premium-action w-whatsapp">
                             <span>HABLAR AHORA</span>
                             <i class="bi bi-chat-dots"></i>

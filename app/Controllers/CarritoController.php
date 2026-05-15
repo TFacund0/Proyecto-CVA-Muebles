@@ -22,6 +22,8 @@ class CarritoController extends BaseController
      */
     public function add()
     {
+        if (!session()->get('logged_in')) return redirect()->to('/login');
+        
         $resultado = $this->carritoService->agregar($this->request->getPost());
         
         if ($resultado['status'] === 'error') {
@@ -67,6 +69,19 @@ class CarritoController extends BaseController
     public function suma($rowid)
     {
         $resultado = $this->carritoService->incrementar($rowid);
+        
+        if ($this->request->isAJAX()) {
+            if ($resultado && $resultado['status'] === 'error') {
+                return $this->response->setJSON(['status' => 'error', 'message' => $resultado['message']]);
+            }
+            $cartCount = $this->carritoService->getContenido(); // Refresh content
+            return $this->response->setJSON([
+                'status' => 'success', 
+                'cart' => $this->carritoService->getContenido(),
+                'totalItems' => \Config\Services::cart()->totalItems()
+            ]);
+        }
+
         if ($resultado && $resultado['status'] === 'error') {
             return redirect()->back()->with('error', $resultado['message']);
         }
@@ -79,6 +94,15 @@ class CarritoController extends BaseController
     public function resta($rowid)
     {
         $this->carritoService->decrementar($rowid);
+        
+        if ($this->request->isAJAX()) {
+            return $this->response->setJSON([
+                'status' => 'success', 
+                'cart' => $this->carritoService->getContenido(),
+                'totalItems' => \Config\Services::cart()->totalItems()
+            ]);
+        }
+
         return redirect()->to("/muestro");
     }
 

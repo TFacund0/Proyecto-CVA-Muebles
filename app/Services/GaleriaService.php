@@ -69,6 +69,14 @@ class GaleriaService
      */
     public function eliminar($id)
     {
-        return $this->galeriaModel->delete($id);
+        $foto = $this->galeriaModel->find($id);
+        if ($foto) {
+            $path = FCPATH . 'assets/uploads/galeria/' . $foto['imagen'];
+            if (file_exists($path)) {
+                @unlink($path);
+            }
+            return $this->galeriaModel->delete($id);
+        }
+        return false;
     }
 }

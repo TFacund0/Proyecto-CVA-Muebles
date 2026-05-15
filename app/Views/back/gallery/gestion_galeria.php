@@ -1,18 +1,28 @@
-<?= $this->extend('layout/main') ?>
+<?= $this->extend('layout/admin_layout') ?>
+
+<?= $this->section('breadcrumbs') ?>
+    <li class="breadcrumb-item active small fw-bold text-gold" aria-current="page">MODERACIÓN DE GALERÍA</li>
+<?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
-<div class="container py-5">
-    <div class="d-flex justify-content-between align-items-center mb-5">
-        <div>
-            <h1 class="fw-bold text-cva-brown font-lora">Moderación de Galería</h1>
-            <p class="text-muted">Aprobá o rechazá las fotos enviadas por los clientes.</p>
+<div class="row mb-5 align-items-center g-4">
+    <div class="col-lg-7">
+        <div class="d-flex align-items-center gap-3 gap-md-4">
+            <div class="dashboard-icon-main bg-brown text-gold shadow">
+                <i class="bi bi-images"></i>
+            </div>
+            <div>
+                <h1 class="display-6 display-md-5 fw-bold text-cva-brown mb-1">Moderación de Galería</h1>
+                <p class="text-muted mb-0 small"><i class="bi bi-shield-check text-gold me-1"></i> Revisión de contenido enviado por clientes.</p>
+            </div>
         </div>
-        <a href="<?= base_url('galeria') ?>" class="btn btn-outline-brown rounded-pill px-4">VER GALERÍA PÚBLICA</a>
     </div>
-
-    <?php if (session()->getFlashdata('success')): ?>
-        <div class="alert alert-success border-0 shadow-sm rounded-4 mb-4"><?= session()->getFlashdata('success') ?></div>
-    <?php endif; ?>
+    <div class="col-lg-5 text-lg-end">
+        <a href="<?= base_url('galeria') ?>" class="btn btn-admin-primary rounded-pill px-4 py-2 shadow-gold w-sm-100 justify-content-center">
+            <i class="bi bi-eye me-2"></i> VER GALERÍA PÚBLICA
+        </a>
+    </div>
+</div>
 
     <div class="row g-4">
         <?php if (empty($fotos)): ?>

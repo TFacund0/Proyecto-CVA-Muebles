@@ -35,21 +35,8 @@ abstract class BaseController extends Controller
      *
      * @var list<string>
      */
-    protected $helpers = [];
+    protected $helpers = ['url', 'date', 'form'];
 
-    /**
-     * Be sure to declare properties for any property fetch you initialized.
-     * The creation of dynamic property is deprecated in PHP 8.2.
-     */
-    // protected $session;
-
-    //creo un atributo protected en el que guardo toda la informacion ajustable del footer, si queremos cambiar info se hace desde aca
-    protected $footerData;
-    
-    public function __construct()
-    {
-        helper(['url', 'date']); // Carga los helpers
-    }
     /**
      * @return void
      */

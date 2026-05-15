@@ -47,9 +47,12 @@ class CategoriaController extends BaseController {
     public function editar($id) {
         if (session()->get('perfil_id') != 1) return redirect()->to('/login');
 
-        $rules = ['descripcion' => 'required|min_length[3]'];
+        $rules = [
+            'descripcion' => "required|min_length[3]|is_unique[categorias.descripcion,id_categoria,{$id}]"
+        ];
+        
         if (!$this->validate($rules)) {
-            return redirect()->back()->withInput()->with('error', 'Descripción inválida.');
+            return redirect()->back()->withInput()->with('error', 'Esa descripción ya está siendo utilizada por otra categoría.');
         }
 
         $this->categoriaService->actualizar($id, ['descripcion' => $this->request->getPost('descripcion')]);

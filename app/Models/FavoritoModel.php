@@ -7,6 +7,11 @@ class FavoritoModel extends Model {
     protected $primaryKey = 'id';
     protected $allowedFields = ['usuario_id', 'producto_id', 'fecha'];
 
+    protected $validationRules = [
+        'usuario_id'  => 'required|numeric',
+        'producto_id' => 'required|numeric'
+    ];
+
     /**
      * Verifica si un producto ya está en favoritos del usuario
      */

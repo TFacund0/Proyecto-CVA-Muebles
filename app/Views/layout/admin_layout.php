@@ -144,7 +144,19 @@
                 document.body.style.overflow = '';
             });
         });
+        function submitAction(url, message) {
+            if (confirm(message)) {
+                const form = document.getElementById('global-action-form');
+                form.action = url;
+                form.submit();
+            }
+        }
     </script>
+    
+    <!-- Formulario Global para acciones POST Seguras -->
+    <form id="global-action-form" method="POST" style="display: none;">
+        <?= csrf_field() ?>
+    </form>
     <?= $this->renderSection('extra-js') ?>
 </body>
 </html>

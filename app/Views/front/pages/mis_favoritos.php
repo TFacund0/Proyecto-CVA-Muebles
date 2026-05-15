@@ -89,7 +89,13 @@
 function toggleFav(id, btn) {
     if(!confirm('¿Quitar este mueble de tus favoritos?')) return;
     
-    fetch('<?= base_url('favoritos/toggle/') ?>' + id)
+    fetch('<?= base_url('favoritos/toggle/') ?>' + id, {
+        method: 'POST',
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest',
+            'X-CSRF-TOKEN': '<?= csrf_hash() ?>'
+        }
+    })
         .then(response => response.json())
         .then(data => {
             if (data.status === 'removed') {
@@ -103,7 +109,8 @@ function toggleFav(id, btn) {
                     }
                 }, 400);
             }
-        });
+        })
+        .catch(err => console.error('Error:', err));
 }
 </script>
 <?= $this->endSection() ?>

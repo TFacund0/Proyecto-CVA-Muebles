@@ -23,6 +23,23 @@ class GaleriaController extends BaseController {
     public function subir() {
         if (!session()->get('logged_in')) return redirect()->to('/login');
 
+        $rules = [
+            'imagen' => [
+                'rules'  => 'uploaded[imagen]|is_image[imagen]|mime_in[imagen,image/jpg,image/jpeg,image/png,image/webp]|max_size[imagen,2048]',
+                'label'  => 'Foto de cliente',
+                'errors' => [
+                    'mime_in' => 'Solo se permiten imágenes en formato JPG, JPEG, PNG o WEBP.',
+                    'max_size' => 'La imagen es demasiado pesada (máximo 2MB).',
+                    'is_image' => 'El archivo seleccionado no es una imagen válida.'
+                ]
+            ],
+            'comentario' => 'permit_empty|max_length[255]'
+        ];
+
+        if (!$this->validate($rules)) {
+            return redirect()->back()->withInput()->with('error', $this->validator->getError('imagen') ?? 'Error en la validación.');
+        }
+
         $img = $this->request->getFile('imagen');
         $resultado = $this->galeriaService->subir(
             session()->get('id_usuario'),

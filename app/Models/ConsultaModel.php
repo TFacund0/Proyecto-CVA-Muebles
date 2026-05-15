@@ -9,6 +9,13 @@ class ConsultaModel extends Model {
     protected $primaryKey = 'id_consulta';
     protected $allowedFields = ['nombre', 'apellido', 'email', 'telefono', 'asunto', 'descripcion', 'fecha', 'activo'];
 
+    protected $validationRules = [
+        'nombre'      => 'required|min_length[3]',
+        'apellido'    => 'required|min_length[3]',
+        'email'       => 'required|valid_email',
+        'descripcion' => 'required|min_length[10]'
+    ];
+
     public function getConsultas() {
         return $this->findAll();
     }

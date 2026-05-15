@@ -15,7 +15,13 @@
             </div>
             <div>
                 <h1 class="display-6 display-md-5 fw-bold text-cva-brown mb-1">Producción</h1>
-                <p class="text-muted mb-0 small"><i class="bi bi-person-badge text-gold me-1"></i> <?= esc($venta['nombre'] . ' ' . $venta['apellido']) ?></p>
+                <p class="text-muted mb-0 small">
+                    <i class="bi bi-person-badge text-gold me-1"></i> <?= esc($venta['nombre'] . ' ' . $venta['apellido']) ?>
+                    <a href="https://wa.me/<?= preg_replace('/[^0-9]/', '', $venta['usuario'] ?? '') ?>?text=Hola%20<?= urlencode($venta['nombre']) ?>,%20te%20contacto%20por%20tu%20pedido%20#<?= $venta['id'] ?>%20en%20CVA%20Muebles" 
+                       target="_blank" class="ms-2 badge bg-success text-white text-decoration-none">
+                        <i class="bi bi-whatsapp me-1"></i> Contactar
+                    </a>
+                </p>
             </div>
         </div>
     </div>
@@ -30,66 +36,135 @@
     <!-- COLUMNA PRINCIPAL: DETALLES Y PRODUCCIÓN -->
     <div class="col-lg-8">
         
-        <!-- PROGRESO VISUAL DE PRODUCCIÓN -->
+        <!-- PROGRESO VISUAL O APROBACIÓN -->
         <div class="admin-card-v2 p-4 p-md-5 border-0 shadow-sm mb-4 overflow-hidden">
-            <h5 class="fw-bold text-brown mb-4"><i class="bi bi-hammer me-2 text-gold"></i> Estado de la Obra</h5>
-            
-            <div class="production-stepper position-relative py-3">
-                <?php 
-                    $steps = ['PENDIENTE', 'EN_PROCESO', 'TERMINADO', 'ENTREGADO'];
-                    $current_idx = array_search($venta['estado'], $steps);
-                    $progress = ($current_idx / (count($steps)-1)) * 100;
-                ?>
-                <div class="progress mb-4" style="height: 10px; background-color: #f0ece2; border-radius: 10px;">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" 
-                         style="width: <?= $progress ?>%; background-color: var(--cva-gold);"></div>
-                </div>
-                <div class="d-flex justify-content-between text-center position-relative">
-                    <?php foreach($steps as $idx => $step): ?>
-                        <div class="step-item <?= $idx <= $current_idx ? 'active' : '' ?>" style="flex: 1;">
-                            <div class="step-dot mb-2 mx-auto shadow-sm"></div>
-                            <span class="x-small fw-bold d-block text-uppercase <?= $idx <= $current_idx ? 'text-brown' : 'text-muted' ?>" style="letter-spacing: 0.5px;"><?= $step ?></span>
+            <?php if ($venta['estado_aprobacion'] == 'SOLICITUD'): ?>
+                <div class="text-center py-4">
+                    <div class="bg-gold-soft p-4 rounded-4 mb-4 border border-gold border-opacity-25">
+                        <i class="bi bi-shield-lock display-4 text-gold mb-3 d-block"></i>
+                        <h4 class="fw-bold text-brown">Pedido Pendiente de Aprobación</h4>
+                        <p class="text-muted">Revisa los detalles antes de aceptar este pedido para producción.</p>
+                        
+                        <div class="d-flex justify-content-center gap-3 mt-4">
+                            <form action="<?= base_url('ventas/actualizar_estado/' . $venta['id']) ?>" method="post">
+                                <?= csrf_field() ?>
+                                <input type="hidden" name="estado" value="ACEPTADO">
+                                <button type="submit" class="btn btn-success px-5 py-3 rounded-pill fw-bold shadow-sm">
+                                    <i class="bi bi-check-lg me-2"></i> ACEPTAR Y EMPEZAR OBRA
+                                </button>
+                            </form>
+                            <form action="<?= base_url('ventas/actualizar_estado/' . $venta['id']) ?>" method="post" onsubmit="return confirm('¿Seguro que deseas rechazar este pedido?')">
+                                <?= csrf_field() ?>
+                                <input type="hidden" name="estado" value="RECHAZADO">
+                                <button type="submit" class="btn btn-outline-danger px-5 py-3 rounded-pill fw-bold">
+                                    <i class="bi bi-x-lg me-2"></i> RECHAZAR PEDIDO
+                                </button>
+                            </form>
                         </div>
-                    <?php endforeach; ?>
+                    </div>
                 </div>
-            </div>
+            <?php else: ?>
+                <h5 class="fw-bold text-brown mb-4"><i class="bi bi-hammer me-2 text-gold"></i> Estado de la Obra</h5>
+                
+                <div class="production-stepper position-relative py-3">
+                    <?php 
+                        $steps = ['ACEPTADO', 'EN_PROCESO', 'TERMINADO', 'ENTREGADO'];
+                        // Si por algún motivo está en PENDIENTE (manual), lo tratamos como ACEPTADO
+                        $estado_visual = ($venta['estado'] == 'PENDIENTE') ? 'ACEPTADO' : $venta['estado'];
+                        $current_idx = array_search($estado_visual, $steps);
+                        $progress = ($current_idx / (count($steps)-1)) * 100;
+                    ?>
+                    <div class="progress mb-4" style="height: 10px; background-color: #f0ece2; border-radius: 10px;">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" 
+                             style="width: <?= $progress ?>%; background-color: var(--cva-gold);"></div>
+                    </div>
+                    <div class="d-flex justify-content-between text-center position-relative">
+                        <?php foreach($steps as $idx => $step): ?>
+                            <div class="step-item <?= $idx <= $current_idx ? 'active' : '' ?>" style="flex: 1;">
+                                <div class="step-dot mb-2 mx-auto shadow-sm"></div>
+                                <span class="x-small fw-bold d-block text-uppercase <?= $idx <= $current_idx ? 'text-brown' : 'text-muted' ?>" style="letter-spacing: 0.5px;"><?= $step ?></span>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
 
-            <!-- Formulario de cambio de estado -->
-            <form action="<?= base_url('ventas/actualizar_estado/' . $venta['id']) ?>" method="post" class="mt-5 pt-4 border-top">
-                <?= csrf_field() ?>
-                <div class="row align-items-center g-3">
-                    <div class="col-lg-6">
-                        <p class="small text-muted mb-0">Cambia la etapa de producción:</p>
+                <!-- Formulario de cambio de estado -->
+                <form action="<?= base_url('ventas/actualizar_estado/' . $venta['id']) ?>" method="post" class="mt-5 pt-4 border-top">
+                    <?= csrf_field() ?>
+                    <div class="row align-items-center g-3">
+                        <div class="col-lg-6">
+                            <p class="small text-muted mb-0">Cambia la etapa de producción:</p>
+                        </div>
+                        <div class="col-lg-4 col-8">
+                            <select name="estado" class="form-select admin-control py-2 fw-bold text-uppercase x-small">
+                                <?php foreach($steps as $step): ?>
+                                    <option value="<?= $step ?>" <?= $venta['estado'] == $step ? 'selected' : '' ?>><?= $step ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div class="col-lg-2 col-4">
+                            <button class="btn btn-admin-gold w-100 py-2" type="submit">
+                                <i class="bi bi-check-lg"></i>
+                            </button>
+                        </div>
                     </div>
-                    <div class="col-lg-4 col-8">
-                        <select name="estado" class="form-select admin-control py-2 fw-bold text-uppercase x-small">
-                            <?php foreach($steps as $step): ?>
-                                <option value="<?= $step ?>" <?= $venta['estado'] == $step ? 'selected' : '' ?>><?= $step ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
-                    <div class="col-lg-2 col-4">
-                        <button class="btn btn-admin-gold w-100 py-2" type="submit">
-                            <i class="bi bi-check-lg"></i>
-                        </button>
-                    </div>
-                </div>
-            </form>
+                </form>
+            <?php endif; ?>
         </div>
 
-        <!-- DETALLES TÉCNICOS (OBSERVACIONES) -->
+        <!-- DETALLES DE LA OBRA -->
         <div class="admin-card-v2 border-0 shadow-sm mb-4 notebook-card overflow-hidden">
             <div class="bg-brown p-3 px-4 d-flex justify-content-between align-items-center">
-                <h6 class="mb-0 fw-bold text-gold"><i class="bi bi-pencil-square me-2"></i> NOTAS DEL MAESTRO ARTESANO</h6>
+                <h6 class="mb-0 fw-bold text-gold"><i class="bi bi-pencil-square me-2"></i> ESPECIFICACIONES Y OBRA</h6>
                 <span class="badge bg-gold-soft text-gold x-small px-3 border border-gold border-opacity-25">Ficha Técnica</span>
             </div>
+            
+            <?php 
+                $obs_clean = $venta['observaciones'] ?? '';
+                $img_ref = "";
+                if (preg_match('/\[IMG_REF:(.*?)\]/', $obs_clean, $matches)) {
+                    $img_ref = $matches[1];
+                    $obs_clean = trim(str_replace($matches[0], '', $obs_clean));
+                }
+            ?>
+
+            <?php if (!empty($obs_clean) || !empty($img_ref)): ?>
+            <div class="p-4 border-bottom bg-gold-soft bg-opacity-10">
+                <div class="d-flex gap-3">
+                    <i class="bi bi-chat-left-quote fs-4 text-gold opacity-50"></i>
+                    <div>
+                        <span class="admin-label mb-1">Nota del Cliente / Pedido</span>
+                        <p class="mb-0 text-brown fw-semibold italic"><?= nl2br(esc($obs_clean)) ?></p>
+                    </div>
+                </div>
+            </div>
+            <?php endif; ?>
+
             <div class="p-4">
+                <?php if (!empty($img_ref)): ?>
+                    <div class="mb-4 text-center p-3 border rounded-4 bg-light">
+                        <span class="admin-label mb-2 d-block">Imagen de Referencia / Boceto</span>
+                        <div class="product-img-zoom-container rounded-3 overflow-hidden shadow-sm d-inline-block" style="max-width: 100%;">
+                            <a href="<?= base_url('assets/uploads/referencias/' . $img_ref) ?>" target="_blank">
+                                <img src="<?= base_url('assets/uploads/referencias/' . $img_ref) ?>" 
+                                     class="img-fluid transition-all" style="max-height: 400px;" alt="Referencia">
+                            </a>
+                        </div>
+                        <div class="mt-2 x-small text-muted italic"><i class="bi bi-zoom-in me-1"></i> Pasa el mouse para ampliar o haz clic para ver original</div>
+                    </div>
+                <?php endif; ?>
+
                 <form action="<?= base_url('ventas/guardar_observaciones') ?>" method="post">
                     <?= csrf_field() ?>
                     <input type="hidden" name="venta_id" value="<?= $venta['id'] ?>">
                     <div class="mb-3 position-relative">
                         <textarea name="observaciones" class="form-control artisan-notebook-textarea" rows="8" 
-                                  placeholder="Madera: Roble, Medidas: 1.80m x 0.90m, Acabado: Barniz mate..."><?= esc($venta['observaciones']) ?></textarea>
+                                  placeholder="Madera: Roble, Medidas: 1.80m x 0.90m, Acabado: Barniz mate..."><?= esc($obs_clean) ?></textarea>
+                        
+                        <!-- Mantenemos el tag de imagen oculto si existe para no perderlo al guardar -->
+                        <?php if ($img_ref): ?>
+                            <input type="hidden" name="img_ref_tag" value="[IMG_REF:<?= $img_ref ?>]">
+                        <?php endif; ?>
                     </div>
                     <div class="text-end">
                         <button type="submit" class="btn btn-admin-gold px-5 py-2 shadow-sm fw-bold">
@@ -109,7 +184,8 @@
                 <table class="table table-hover align-middle mb-0">
                     <thead class="bg-white d-none d-md-table-header-group">
                         <tr class="x-small text-uppercase text-muted fw-bold">
-                            <th class="py-3 px-4 border-0">Producto</th>
+                            <th class="py-3 px-4 border-0" style="width: 100px;">Imagen</th>
+                            <th class="py-3 border-0">Producto</th>
                             <th class="py-3 text-center border-0">Cant.</th>
                             <th class="py-3 text-end border-0">Unit.</th>
                             <th class="py-3 text-end px-4 border-0">Subtotal</th>
@@ -118,7 +194,20 @@
                     <tbody>
                         <?php foreach ($detalles as $det): ?>
                         <tr>
-                            <td class="px-4 py-3" data-label="PRODUCTO">
+                            <td class="ps-4 py-3" data-label="IMAGEN">
+                                <?php if (!empty($det['imagen'])): ?>
+                                    <div class="product-img-zoom-container rounded-3 border overflow-hidden shadow-sm" style="width: 70px; height: 70px;">
+                                        <img src="<?= base_url('assets/uploads/' . $det['imagen']) ?>" 
+                                             class="img-fluid h-100 w-100 object-fit-cover transition-all" 
+                                             alt="<?= esc($det['nombre_prod']) ?>">
+                                    </div>
+                                <?php else: ?>
+                                    <div class="bg-light rounded-3 d-flex align-items-center justify-content-center text-muted" style="width: 70px; height: 70px;">
+                                        <i class="bi bi-image"></i>
+                                    </div>
+                                <?php endif; ?>
+                            </td>
+                            <td class="py-3" data-label="PRODUCTO">
                                 <div class="fw-bold text-brown"><?= esc($det['nombre_prod']) ?></div>
                                 <div class="x-small text-muted">ID: <?= $det['producto_id'] ?? 'CUSTOM' ?></div>
                             </td>
@@ -130,7 +219,7 @@
                     </tbody>
                     <tfoot class="bg-light border-top border-2">
                         <tr>
-                            <td colspan="3" class="text-end py-3 px-4 text-muted x-small fw-bold text-uppercase d-none d-md-table-cell">Total Venta</td>
+                            <td colspan="4" class="text-end py-3 px-4 text-muted x-small fw-bold text-uppercase d-none d-md-table-cell">Total Venta</td>
                             <td class="text-end py-3 px-4 text-brown fw-bold font-lora fs-5" data-label="TOTAL FINAL">$ <?= number_format($venta['total_venta'], 2, ',', '.') ?></td>
                         </tr>
                     </tfoot>
@@ -284,12 +373,47 @@
         box-shadow: 0 8px 20px rgba(184, 134, 11, 0.2);
     }
 
+    /* Zoom Effect for Images */
+    .product-img-zoom-container {
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    .product-img-zoom-container:hover img {
+        transform: scale(1.5);
+    }
+    .object-fit-cover { object-fit: cover; }
+    .transition-all { transition: all 0.4s ease; }
+
     @media (max-width: 767.98px) {
-        .step-item span { font-size: 0.6rem !important; }
-        .production-stepper { padding-bottom: 0 !important; }
-        .finance-card h3 { font-size: 1.5rem !important; }
-        .finance-card h2 { font-size: 1.8rem !important; }
+        .step-item span { 
+            font-size: 0.55rem !important; 
+            letter-spacing: 0 !important;
+            white-space: nowrap;
+        }
+        .step-item:nth-child(even) span {
+            margin-top: 5px;
+        }
+        .production-stepper { padding: 10px 0 !important; }
+        .finance-card h3 { font-size: 1.4rem !important; }
+        .finance-card h2 { font-size: 1.7rem !important; }
         .artisan-notebook-textarea { padding: 1rem; font-size: 0.9rem; }
+        
+        .d-flex.justify-content-center.gap-3.mt-4 {
+            flex-direction: column !important;
+            width: 100% !important;
+            gap: 0.75rem !important;
+            margin-top: 2rem !important;
+        }
+        .d-flex.justify-content-center.gap-3.mt-4 form, 
+        .d-flex.justify-content-center.gap-3.mt-4 button {
+            width: 100% !important;
+            margin: 0 !important;
+        }
+        
+        .display-6.display-md-5 { font-size: 1.6rem !important; }
+        .w-sm-100 { width: 100% !important; }
+        .admin-card-v2 { overflow: hidden !important; }
+        .bi-wallet2 { font-size: 5rem !important; opacity: 0.03 !important; }
     }
 </style>
 

@@ -12,17 +12,33 @@ $active_comercializacion = (strpos(current_url(), 'comercializacion') !== false)
 $active_info = (strpos(current_url(), 'quienesSomos') !== false) ? 'active' : '';
 $active_contacto = (strpos(current_url(), 'informacionContacto') !== false) ? 'active' : '';
 $active_galeria = (strpos(current_url(), 'galeria') !== false) ? 'active' : '';
+
+// Carrito
+$cartCount = 0;
+if (env('SHOPPING_CART_ENABLED')) {
+    $cartCount = \Config\Services::cart()->totalItems();
+}
 ?>
 
 <!-- NAVBAR PRINCIPAL (ESTRUCTURA HÍBRIDA ARTISAN) -->
 <nav class="navbar navbar-expand-lg artisan-main-nav sticky-top">
   <div class="container-fluid px-3 px-lg-5 d-flex align-items-center justify-content-between">
     
-    <!-- [MÓVIL] BOTÓN MENÚ (Solo izquierda en celular) -->
-    <div class="d-lg-none d-flex align-items-center" style="flex: 1;">
+    <div class="d-lg-none d-flex align-items-center gap-2" style="flex: 1;">
       <button class="boton-icon-circle" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
         <i class="bi bi-list fs-4"></i>
       </button>
+      
+      <?php if (env('SHOPPING_CART_ENABLED') && $isLogged): ?>
+        <a href="<?= base_url('muestro') ?>" class="boton-icon-circle position-relative text-decoration-none">
+          <i class="bi bi-cart3 fs-5"></i>
+          <?php if ($cartCount > 0): ?>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.6rem;">
+              <?= $cartCount ?>
+            </span>
+          <?php endif; ?>
+        </a>
+      <?php endif; ?>
     </div>
 
     <!-- [DESKTOP: IZQUIERDA / MÓVIL: CENTRO] LOGO -->
@@ -45,17 +61,26 @@ $active_galeria = (strpos(current_url(), 'galeria') !== false) ? 'active' : '';
       </ul>
     </div>
 
-    <!-- [DERECHA] ICONOS USUARIO / AUTH (Oculto en móvil por petición del usuario) -->
-    <div class="d-flex align-items-center justify-content-end" style="flex: 1;">
+    <!-- [DERECHA] ICONOS USUARIO / AUTH -->
+    <div class="d-flex align-items-center justify-content-end gap-2" style="flex: 1;">
+        <?php if (env('SHOPPING_CART_ENABLED') && $isLogged): ?>
+          <a href="<?= base_url('muestro') ?>" class="boton-icon-circle d-none d-lg-flex position-relative text-decoration-none">
+            <i class="bi bi-cart3 fs-5"></i>
+            <?php if ($cartCount > 0): ?>
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.6rem;">
+                <?= $cartCount ?>
+              </span>
+            <?php endif; ?>
+          </a>
+        <?php endif; ?>
+
         <?php if (!$isLogged): ?>
           <div class="auth-pill-artisan d-none d-lg-flex">
             <a href="<?= base_url('login') ?>" class="auth-pill-link">Ingresar</a>
             <div class="auth-pill-divider"></div>
             <a href="<?= base_url('registro') ?>" class="auth-pill-link">Registrarse</a>
           </div>
-          <!-- Eliminado icono de persona en móvil para invitados -->
         <?php else: ?>
-          <!-- Icono de persona solo visible en desktop para usuarios logueados -->
           <button class="boton-icon-circle d-none d-lg-flex" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
             <img src="<?= base_url('assets/img/ui/icons/person.svg') ?>" alt="Perfil" class="icono-svg">
           </button>

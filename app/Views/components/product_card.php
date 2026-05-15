@@ -71,14 +71,18 @@
                     <a href="<?= base_url('login') ?>" class="btn btn-outline-secondary w-100 py-3 small">Iniciá sesión para comprar</a>
                 <?php endif; ?>
             <?php else: ?>
-                <?php 
-                    $whatsapp_num = env('WHATSAPP_NUMBER') ?? "5493794098511";
-                    $mensaje = urlencode("Hola! Estoy interesado en el producto: " . $producto['nombre_prod'] . " (ID: " . $producto['id_producto'] . "). Me podrías dar más información?");
-                    $url_whatsapp = "https://wa.me/{$whatsapp_num}?text={$mensaje}";
-                ?>
-                <a href="<?= $url_whatsapp ?>" target="_blank" class="btn btn-whatsapp-artisan w-100 py-3">
-                    <i class="bi bi-whatsapp me-2"></i> Consultar por WhatsApp
-                </a>
+                <?php if (session()->get('logged_in')): ?>
+                    <?php 
+                        $whatsapp_num = env('WHATSAPP_NUMBER') ?? "5493794098511";
+                        $mensaje = urlencode("Hola! Estoy interesado en el producto: " . $producto['nombre_prod'] . " (ID: " . $producto['id_producto'] . "). Me podrías dar más información?");
+                        $url_whatsapp = "https://wa.me/{$whatsapp_num}?text={$mensaje}";
+                    ?>
+                    <a href="<?= $url_whatsapp ?>" target="_blank" class="btn btn-whatsapp-artisan w-100 py-3">
+                        <i class="bi bi-whatsapp me-2"></i> Consultar por WhatsApp
+                    </a>
+                <?php else: ?>
+                    <a href="<?= base_url('login') ?>" class="btn btn-outline-secondary w-100 py-3 small">Iniciá sesión para consultar</a>
+                <?php endif; ?>
             <?php endif; ?>
         </div>
     </div>

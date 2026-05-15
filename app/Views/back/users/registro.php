@@ -242,8 +242,7 @@
                 <p class="text-muted">Completa tus datos para formar parte de la familia.</p>
             </div>
 
-            <!-- Mensajes de Estado Modularizados -->
-            <?= view('components/alert_message') ?>
+
 
             <form method="post" action="<?= base_url('/enviar-form') ?>">
                 <?= csrf_field(); ?>

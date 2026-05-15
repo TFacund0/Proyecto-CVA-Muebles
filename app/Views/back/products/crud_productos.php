@@ -178,15 +178,14 @@
                                     </a>
                                     
                                     <div class="w-100 btn-group-actions">
-                                        <a href="<?= base_url('/delete-producto/' . $p['id_producto']) ?>" 
-                                           class="btn btn-action-premium text-danger border-danger border-opacity-25 w-100 action-archive <?= $p['eliminado'] == 'SI' ? 'd-none' : '' ?>" 
-                                           onclick="return confirm('¿Confirmas archivar esta pieza del catálogo?')">
+                                        <button type="button" onclick="submitAction('<?= base_url('/delete-producto/' . $p['id_producto']) ?>', '¿Confirmas archivar esta pieza del catálogo?')" 
+                                                class="btn btn-action-premium text-danger border-danger border-opacity-25 w-100 action-archive <?= $p['eliminado'] == 'SI' ? 'd-none' : '' ?>">
                                             <i class="bi bi-archive-fill me-2"></i> ARCHIVAR
-                                        </a>
-                                        <a href="<?= base_url('/activar-producto/' . $p['id_producto']) ?>" 
-                                           class="btn btn-action-premium text-success border-success border-opacity-25 w-100 action-restore <?= $p['eliminado'] == 'NO' ? 'd-none' : '' ?>">
+                                        </button>
+                                        <button type="button" onclick="submitAction('<?= base_url('/activar-producto/' . $p['id_producto']) ?>', '¿Confirmas reactivar esta pieza?')" 
+                                                class="btn btn-action-premium text-success border-success border-opacity-25 w-100 action-restore <?= $p['eliminado'] == 'NO' ? 'd-none' : '' ?>">
                                             <i class="bi bi-arrow-counterclockwise me-2"></i> RESTAURAR
-                                        </a>
+                                        </button>
                                     </div>
                                 </div>
                             </td>

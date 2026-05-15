@@ -9,6 +9,14 @@ class ProductoModel extends Model
     protected $primaryKey = 'id_producto';
     protected $allowedFields = ['nombre_prod', 'imagen', 'categoria_id', 'precio', 'precio_vta', 'stock', 'stock_min', 'eliminado', 'descripcion'];
 
+    protected $validationRules = [
+        'nombre_prod'  => 'required|min_length[3]|max_length[100]',
+        'categoria_id' => 'required|numeric',
+        'precio'       => 'required|numeric',
+        'precio_vta'   => 'required|numeric',
+        'stock'        => 'required|numeric'
+    ];
+
     public function getProductoAll() {
         return $this->select('productos.*, categorias.descripcion as categoria')
                     ->join('categorias', 'categorias.id_categoria = productos.categoria_id')
@@ -16,12 +24,8 @@ class ProductoModel extends Model
     }
 
     public function getBuilderProductos() {
-        $db = \Config\Database::connect();
-        $builder = $db->table('productos');
-        $builder->select('productos.*, categorias.descripcion as categoria');
-        $builder->join('categorias', 'categorias.id_categoria = productos.categoria_id');
-        
-        return $builder;
+        return $this->select('productos.*, categorias.descripcion as categoria')
+                    ->join('categorias', 'categorias.id_categoria = productos.categoria_id');
     }
 
     public function getProducto($id = null) {

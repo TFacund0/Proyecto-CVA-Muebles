@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\ProductoModel;
+use App\Models\ProductoImagenModel;
 
 /**
  * Servicio para manejar la lógica de negocio relacionada con los productos.
@@ -10,10 +11,12 @@ use App\Models\ProductoModel;
 class ProductoService
 {
     protected $productoModel;
+    protected $imagenModel;
 
     public function __construct()
     {
         $this->productoModel = new ProductoModel();
+        $this->imagenModel = new ProductoImagenModel();
     }
 
     /**
@@ -53,7 +56,7 @@ class ProductoService
         try {
             if ($image && $image->isValid() && !$image->hasMoved()) {
                 $nombre_imagen = $image->getRandomName();
-                $image->move(ROOTPATH . 'assets/uploads', $nombre_imagen);
+                $image->move(FCPATH . 'assets/uploads', $nombre_imagen);
                 $data['imagen'] = $nombre_imagen;
             }
 
@@ -73,8 +76,15 @@ class ProductoService
     {
         try {
             if ($image && $image->isValid() && !$image->hasMoved()) {
+                // Borrar imagen anterior si existe
+                $producto_actual = $this->productoModel->find($id);
+                if ($producto_actual && !empty($producto_actual['imagen'])) {
+                    $old_path = FCPATH . 'assets/uploads/' . $producto_actual['imagen'];
+                    if (file_exists($old_path)) @unlink($old_path);
+                }
+
                 $nombre_imagen = $image->getRandomName();
-                $image->move(ROOTPATH . 'assets/uploads', $nombre_imagen);
+                $image->move(FCPATH . 'assets/uploads', $nombre_imagen);
                 $data['imagen'] = $nombre_imagen;
             }
 
@@ -104,10 +114,54 @@ class ProductoService
     }
 
     /**
-     * Obtiene un producto por ID.
+     * Obtiene un producto por ID con su galería de imágenes.
      */
-    public function getProducto($id)
+    public function getProductoConGaleria($id)
     {
-        return $this->productoModel->getProducto($id);
+        $producto = $this->productoModel->getProducto($id);
+        if ($producto) {
+            $producto['galeria'] = $this->imagenModel->getImagenesPorProducto($id);
+        }
+        return $producto;
+    }
+
+    /**
+     * Sube imágenes adicionales a la galería.
+     */
+    public function subirImagenesGaleria($producto_id, $files)
+    {
+        if (empty($files)) return false;
+
+        $count = 0;
+        foreach ($files as $img) {
+            if ($img->isValid() && !$img->hasMoved()) {
+                $newName = $img->getRandomName();
+                $img->move(FCPATH . 'assets/uploads', $newName);
+
+                $this->imagenModel->insert([
+                    'producto_id' => $producto_id,
+                    'imagen'      => $newName,
+                    'orden'       => 0
+                ]);
+                $count++;
+            }
+        }
+        return $count > 0;
+    }
+
+    /**
+     * Elimina una imagen de la galería.
+     */
+    public function eliminarImagenGaleria($id)
+    {
+        $img = $this->imagenModel->find($id);
+        if ($img) {
+            $path = FCPATH . 'assets/uploads/' . $img['imagen'];
+            if (file_exists($path)) {
+                @unlink($path);
+            }
+            return $this->imagenModel->delete($id);
+        }
+        return false;
     }
 }

@@ -205,8 +205,7 @@
                 <p>Ingresa tus credenciales para continuar.</p>
             </div>
 
-            <!-- Mensajes de Estado Modularizados -->
-            <?= view('components/alert_message') ?>
+
 
             <form method="post" action="<?= base_url('enviar-login') ?>">
                 <?= csrf_field(); ?>

@@ -75,16 +75,15 @@
                                 <i class="bi bi-pencil-square"></i>
                             </button>
                             
-                            <a href="<?= base_url('admin/categorias/toggle/' . $cat['id_categoria']) ?>" 
+                            <button type="button" onclick="submitAction('<?= base_url('admin/categorias/toggle/' . $cat['id_categoria']) ?>', '¿Cambiar el estado de esta categoría?')" 
                                class="btn btn-action-premium <?= $cat['activo'] == 'SI' ? 'text-warning border-warning' : 'text-success border-success' ?> border-opacity-10">
                                 <i class="bi <?= $cat['activo'] == 'SI' ? 'bi-slash-circle' : 'bi-check-circle' ?>"></i>
-                            </a>
+                            </button>
 
-                            <a href="<?= base_url('admin/categorias/eliminar/' . $cat['id_categoria']) ?>" 
-                               class="btn btn-action-premium text-danger border-danger border-opacity-10"
-                                onclick="return confirm('¿Estás seguro de eliminar esta categoría? Solo se podrá si no tiene productos vinculados.')">
+                            <button type="button" onclick="submitAction('<?= base_url('admin/categorias/eliminar/' . $cat['id_categoria']) ?>', '¿Estás seguro de eliminar esta categoría? Solo se podrá si no tiene productos vinculados.')" 
+                               class="btn btn-action-premium text-danger border-danger border-opacity-10">
                                 <i class="bi bi-trash3-fill"></i>
-                            </a>
+                            </button>
                         </div>
                     </td>
                 </tr>

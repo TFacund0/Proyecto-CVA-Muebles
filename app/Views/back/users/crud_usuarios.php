@@ -172,22 +172,21 @@
                                         <i class="bi bi-person-gear"></i>
                                     </a>
                                 <?php else: ?>
-                                    <a href="<?= base_url('/editar-usuario/' . $u['id_usuario']) ?>" 
-                                       class="btn btn-action-premium text-primary border-primary border-opacity-25 shadow-sm" 
-                                       title="Cambiar Rango">
+                                    <button type="button" onclick="submitAction('<?= base_url('/editar-usuario/' . $u['id_usuario']) ?>', '¿Cambiar perfil de este usuario?')" 
+                                            class="btn btn-action-premium text-primary border-primary border-opacity-25 shadow-sm" 
+                                            title="Cambiar Rango">
                                         <i class="bi bi-arrow-repeat"></i>
-                                    </a>
+                                    </button>
                                     
                                     <div class="action-toggle-container">
-                                        <a href="<?= base_url('/delete-usuario/' . $u['id_usuario']) ?>" 
-                                           class="btn btn-action-premium text-danger border-danger border-opacity-25 shadow-sm btn-archive <?= $u['baja'] == 'SI' ? 'd-none' : '' ?>" 
-                                           onclick="return confirm('¿Confirmas suspender a este usuario?')">
+                                        <button type="button" onclick="submitAction('<?= base_url('/delete-usuario/' . $u['id_usuario']) ?>', '¿Confirmas suspender a este usuario?')"
+                                                class="btn btn-action-premium text-danger border-danger border-opacity-25 shadow-sm btn-archive <?= $u['baja'] == 'SI' ? 'd-none' : '' ?>">
                                             <i class="bi bi-person-x-fill"></i>
-                                        </a>
-                                        <a href="<?= base_url('/activar-usuario/' . $u['id_usuario']) ?>" 
-                                           class="btn btn-action-premium text-success border-success border-opacity-25 shadow-sm btn-restore <?= $u['baja'] == 'NO' ? 'd-none' : '' ?>">
+                                        </button>
+                                        <button type="button" onclick="submitAction('<?= base_url('/activar-usuario/' . $u['id_usuario']) ?>', '¿Confirmas reactivar a este usuario?')"
+                                                class="btn btn-action-premium text-success border-success border-opacity-25 shadow-sm btn-restore <?= $u['baja'] == 'NO' ? 'd-none' : '' ?>">
                                             <i class="bi bi-person-check-fill"></i>
-                                        </a>
+                                        </button>
                                     </div>
                                 <?php endif; ?>
                             </div>
@@ -253,10 +252,23 @@
     }
 </style>
 
+<!-- Formulario oculto para acciones POST -->
+<form id="action-form" method="POST" style="display: none;">
+    <?= csrf_field() ?>
+</form>
+
 <?= $this->endSection() ?>
 
 <?= $this->section('extra-js') ?>
 <script>
+    function submitAction(url, message) {
+        if (confirm(message)) {
+            const form = document.getElementById('action-form');
+            form.action = url;
+            form.submit();
+        }
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
         const inputSearch = document.getElementById('input-search');
         const toggleView = document.getElementById('toggle-view');

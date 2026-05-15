@@ -118,8 +118,15 @@ class UsuarioService
             ];
 
             if ($image && $image->isValid() && !$image->hasMoved()) {
+                // Borrar imagen anterior si existe
+                $user_actual = $this->usuarioModel->find($userId);
+                if ($user_actual && !empty($user_actual['imagen'])) {
+                    $old_path = FCPATH . 'assets/uploads/perfil/' . $user_actual['imagen'];
+                    if (file_exists($old_path)) @unlink($old_path);
+                }
+
                 $nombre_imagen = $image->getRandomName();
-                $image->move(ROOTPATH . 'assets/uploads/perfil', $nombre_imagen);
+                $image->move(FCPATH . 'assets/uploads/perfil', $nombre_imagen);
                 $updateData['imagen'] = $nombre_imagen;
             }
 

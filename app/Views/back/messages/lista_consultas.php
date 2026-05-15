@@ -197,9 +197,10 @@
                                         </button>
                                     </form>
                                     
-                                    <a href="<?= base_url('consultas/eliminar/'.$consulta['id_consulta']) ?>" class="btn btn-action-premium text-danger border-danger border-opacity-25 shadow-sm" title="Archivar/Contestado" onclick="return confirm('¿Marcar como contestado/archivado?')">
+                                    <button type="button" onclick="submitAction('<?= base_url('consultas/eliminar/'.$consulta['id_consulta']) ?>', '¿Marcar como contestado/archivado?')" 
+                                            class="btn btn-action-premium text-danger border-danger border-opacity-25 shadow-sm" title="Archivar/Contestado">
                                         <i class="bi bi-check2-circle"></i>
-                                    </a>
+                                    </button>
                                 </div>
                             </td>
                         </tr>

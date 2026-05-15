@@ -36,6 +36,4 @@ class FavoritosController extends BaseController {
             'title'     => 'Mis Favoritos - CVA Muebles'
         ]);
     }
-
-    }
 }

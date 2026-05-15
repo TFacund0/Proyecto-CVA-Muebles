@@ -31,7 +31,7 @@ class UsuarioController extends BaseController {
             'surname' => 'required|min_length[3]|max_length[30]',
             'user' => 'required|min_length[3]|max_length[20]|alpha_numeric|is_unique[usuarios.usuario]',
             'email' => 'required|min_length[3]|max_length[100]|valid_email|is_unique[usuarios.email]',
-            'pass' => 'required|min_length[3]|max_length[50]',
+            'pass' => 'required|min_length[8]|max_length[50]',
             'terms' => 'required'
         ];
 

@@ -1,4 +1,4 @@
-/* 
+﻿/* 
   =============================================
   CVA MUEBLES - DETALLE DE PRODUCTO (ARTISAN)
   =============================================
@@ -32,6 +32,7 @@
 .image-column {
     background-color: #fcfbf8;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 2rem;
@@ -40,25 +41,28 @@
 
 .image-container {
     width: 100%;
-    height: 450px;
-    /* Reducido */
+    min-height: 500px;
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    overflow: visible;
 }
 
 .main-img {
     max-width: 100%;
-    max-height: 100%;
+    max-height: 650px;
+    width: auto;
+    height: auto;
     object-fit: contain;
-    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.08));
-    transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+    filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.12));
+    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 /* Info Column */
 .info-column {
     padding: 2.5rem !important;
-    /* Más compacto */
     background: white;
 }
 
@@ -76,7 +80,6 @@
     font-family: 'Lora', serif;
     color: var(--cva-brown);
     font-size: 2.5rem;
-    /* Más pequeño */
     font-weight: 700;
     line-height: 1.2;
     margin-bottom: 1rem;
@@ -109,7 +112,6 @@
 
 .price-value {
     font-size: 2.8rem;
-    /* Reducido */
     font-weight: 800;
     color: var(--cva-vivid);
     font-family: 'Inter', sans-serif;
@@ -147,7 +149,6 @@
 
 .feature-icon {
     width: 45px;
-    /* Más compacto */
     height: 45px;
     background-color: white;
     color: var(--cva-gold);
@@ -180,7 +181,6 @@
     background-color: var(--cva-brown) !important;
     color: white !important;
     padding: 0.9rem !important;
-    /* Más bajo */
     border-radius: 1rem !important;
     font-weight: 800 !important;
     letter-spacing: 0.5px;
@@ -297,7 +297,6 @@
         opacity: 0;
         transform: translateY(20px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
@@ -311,14 +310,107 @@
 /* Responsive */
 @media (max-width: 991.98px) {
     .image-container {
-        height: 400px;
+        min-height: 400px;
     }
-
     .info-column {
         padding: 2rem;
     }
-
     .product-title {
         font-size: 2.2rem;
     }
+}
+
+/* -------------------- Galería de Miniaturas -------------------- */
+.product-gallery-thumbs {
+    padding: 0.5rem 0;
+    width: 100%;
+}
+
+.thumb-item {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    opacity: 0.6;
+}
+
+.thumb-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.thumb-item:hover {
+    opacity: 1;
+    transform: translateY(-3px);
+}
+
+.thumb-item.active {
+    border-color: var(--cva-gold);
+    opacity: 1;
+    box-shadow: 0 5px 15px rgba(184, 134, 11, 0.2);
+}
+
+.main-image-box {
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+/* -------------------- Flechas de Galería -------------------- */
+.gallery-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--cva-brown);
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+}
+
+.image-container:hover .gallery-arrow {
+    opacity: 1;
+}
+
+.gallery-arrow:hover {
+    background-color: var(--cva-gold);
+    color: white;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.gallery-arrow.arrow-left {
+    left: 20px;
+}
+
+.gallery-arrow.arrow-right {
+    right: 20px;
+}
+
+@media (max-width: 768px) {
+    .gallery-arrow {
+        opacity: 1;
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+    .gallery-arrow.arrow-left { left: 10px; }
+    .gallery-arrow.arrow-right { right: 10px; }
+}
+
+#main-product-img {
+    transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }

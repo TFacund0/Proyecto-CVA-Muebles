@@ -46,77 +46,82 @@ class VentasService
             'ingresos'   => 0
         ];
 
+        $ventas_procesadas = [];
+        $solicitados = [];
+
         foreach ($ventas as &$venta) {
+            // Un pedido rechazado no se muestra
+            if (($venta['estado_aprobacion'] ?? '') == 'RECHAZADO') continue;
+
             $ventaDate = strtotime($venta['fecha']);
             
             if (date('m', $ventaDate) == $currentMonth && date('Y', $ventaDate) == $currentYear) {
                 $counts['mensuales']++;
-                $counts['ingresos'] += $venta['total_venta'];
+                // Los ingresos solo cuentan si ya fue aprobado
+                if (($venta['estado_aprobacion'] ?? '') == 'ACEPTADO') {
+                    $counts['ingresos'] += $venta['total_venta'];
+                }
             }
 
-            if ($venta['estado'] == 'PENDIENTE') $counts['pendientes']++;
-            if ($venta['estado'] == 'EN_PROCESO') $counts['en_proceso']++;
-            if ($venta['estado'] == 'TERMINADO' || $venta['estado'] == 'ENTREGADO') $counts['terminados']++;
-            
             $nombre_completo = ($venta['nombre'] ?? '') . ' ' . ($venta['apellido'] ?? '');
             $venta['search_data'] = strtolower(esc($venta['id'] . ' ' . $nombre_completo . ' ' . ($venta['usuario'] ?? '')));
+
+            // Si el pedido está en espera de aprobación
+            if (($venta['estado_aprobacion'] ?? '') == 'SOLICITUD') {
+                $solicitados[] = $venta;
+            } else {
+                if ($venta['estado'] == 'PENDIENTE' || $venta['estado'] == 'ACEPTADO') $counts['pendientes']++;
+                if ($venta['estado'] == 'EN_PROCESO') $counts['en_proceso']++;
+                if ($venta['estado'] == 'TERMINADO' || $venta['estado'] == 'ENTREGADO') $counts['terminados']++;
+                $ventas_procesadas[] = $venta;
+            }
         }
 
         return [
-            'ventas' => $ventas,
-            'counts' => $counts
+            'ventas'      => $ventas_procesadas,
+            'solicitados' => $solicitados,
+            'counts'      => $counts
         ];
     }
 
     /**
-     * Procesa una venta completa: valida stock, crea registros y actualiza inventario.
+     * Procesa una venta completa: valida stock (opcional), crea registros y guarda mensaje.
+     * Nota: Ya no descuenta stock aquí, se hace al aprobar el pedido.
      */
-    public function procesarVenta($usuario_id, $carrito)
+    public function procesarVenta($usuario_id, $items_seleccionados, $observaciones = '')
     {
-        if (empty($carrito)) {
-            return ['status' => 'error', 'message' => 'El carrito está vacío.'];
+        if (empty($items_seleccionados)) {
+            return ['status' => 'error', 'message' => 'No hay productos seleccionados para el pedido.'];
         }
 
-        $productos_validos = [];
-        $productos_sin_stock = [];
         $total = 0;
-
-        foreach ($carrito as $item) {
-            $producto = $this->productoModel->find($item['id']);
-            if ($producto && $producto['stock'] >= $item['qty']) {
-                $productos_validos[] = $item;
-                $total += $item['subtotal'];
-            } else {
-                $productos_sin_stock[] = $item['name'];
-            }
-        }
-
-        if (!empty($productos_sin_stock)) {
-            return [
-                'status' => 'error',
-                'message' => 'Stock insuficiente para: ' . implode(', ', $productos_sin_stock)
-            ];
+        foreach ($items_seleccionados as $item) {
+            $total += $item['price'] * $item['qty'];
         }
 
         $this->db->transStart();
         try {
             $venta_id = $this->ventasModel->insert([
-                'usuario_id' => $usuario_id,
-                'fecha' => date('Y-m-d H:i:s'),
-                'total_venta' => $total,
-                'estado' => 'PENDIENTE'
+                'usuario_id'       => $usuario_id,
+                'fecha'            => date('Y-m-d H:i:s'),
+                'total_venta'      => $total,
+                'estado'           => 'PENDIENTE',
+                'estado_aprobacion'=> 'SOLICITUD',
+                'observaciones'    => $observaciones,
+                'tipo_pedido'      => 'CARRITO'
             ]);
 
-            foreach ($productos_validos as $item) {
-                $this->detalleModel->insert([
-                    'venta_id' => $venta_id,
-                    'producto_id' => $item['id'],
-                    'cantidad' => $item['qty'],
-                    'precio' => $item['price'],
-                ]);
+            if (!$venta_id) {
+                throw new \Exception("No se pudo crear la cabecera de la venta.");
+            }
 
-                $producto = $this->productoModel->find($item['id']);
-                $this->productoModel->update($item['id'], ['stock' => $producto['stock'] - $item['qty']]);
+            foreach ($items_seleccionados as $item) {
+                $this->detalleModel->insert([
+                    'venta_id'    => $venta_id,
+                    'producto_id' => $item['id'],
+                    'cantidad'    => $item['qty'],
+                    'precio'      => $item['price'],
+                ]);
             }
 
             $this->db->transComplete();
@@ -149,10 +154,59 @@ class VentasService
     }
 
     /**
-     * Actualiza el estado de una venta.
+     * Actualiza el estado de una venta y gestiona el stock si es necesario.
      */
     public function actualizarEstado($venta_id, $estado)
     {
+        $venta_actual = $this->ventasModel->find($venta_id);
+        if (!$venta_actual) return false;
+
+        // --- FLUJO DE APROBACIÓN (SOLICITUD -> ACEPTADO/RECHAZADO) ---
+        if ($estado == 'ACEPTADO' || $estado == 'RECHAZADO') {
+            $this->db->transStart();
+            try {
+                // Si pasa a ACEPTADO y antes no lo estaba, descontamos stock
+                if ($estado == 'ACEPTADO' && $venta_actual['estado_aprobacion'] != 'ACEPTADO') {
+                    $detalles = $this->detalleModel->getDetalles($venta_id);
+                    foreach ($detalles as $detalle) {
+                        if (!empty($detalle['producto_id'])) {
+                            $producto = $this->productoModel->find($detalle['producto_id']);
+                            if ($producto) {
+                                $nuevo_stock = max(0, $producto['stock'] - $detalle['cantidad']);
+                                $this->productoModel->update($detalle['producto_id'], ['stock' => $nuevo_stock]);
+                            }
+                        }
+                    }
+                }
+
+                // Si se RECHAZA y antes estaba ACEPTADO (raro pero posible), devolvemos stock
+                if ($estado == 'RECHAZADO' && $venta_actual['estado_aprobacion'] == 'ACEPTADO') {
+                    $detalles = $this->detalleModel->getDetalles($venta_id);
+                    foreach ($detalles as $detalle) {
+                        if (!empty($detalle['producto_id'])) {
+                            $producto = $this->productoModel->find($detalle['producto_id']);
+                            if ($producto) {
+                                $this->productoModel->update($detalle['producto_id'], ['stock' => $producto['stock'] + $detalle['cantidad']]);
+                            }
+                        }
+                    }
+                }
+
+                $this->ventasModel->update($venta_id, [
+                    'estado_aprobacion' => $estado,
+                    'estado' => ($estado == 'ACEPTADO') ? 'PENDIENTE' : $venta_actual['estado']
+                ]);
+
+                $this->db->transComplete();
+                return true;
+            } catch (\Exception $e) {
+                $this->db->transRollback();
+                return false;
+            }
+        }
+
+        // --- FLUJO DE PRODUCCIÓN (PENDIENTE -> EN_PROCESO -> TERMINADO -> ENTREGADO) ---
+        // Aquí ya no tocamos stock, solo actualizamos la fase del pedido.
         return $this->ventasModel->update($venta_id, ['estado' => $estado]);
     }
 
@@ -192,23 +246,43 @@ class VentasService
     /**
      * Registra un pedido personalizado.
      */
-    public function registrarPedidoPersonalizado($data)
+    public function registrarPedidoPersonalizado($data, $file = null)
     {
         $usuarioModel = new \App\Models\UsuarioModel();
-        $usuario_gen = $usuarioModel->where('usuario', 'cliente_whatsapp')->first();
-        if (!$usuario_gen) return ['status' => 'error', 'message' => 'No se encontró el usuario genérico.'];
+        
+        // Si viene un usuario_id, lo usamos. Si no, usamos el genérico.
+        $usuario_id = $data['usuario_id'] ?? null;
+        
+        if (empty($usuario_id)) {
+            $usuario_gen = $usuarioModel->where('usuario', 'cliente_whatsapp')->first();
+            if (!$usuario_gen) return ['status' => 'error', 'message' => 'No se encontró el usuario genérico.'];
+            $usuario_id = $usuario_gen['id_usuario'];
+        }
 
         $this->db->transStart();
         try {
-            $observaciones = "CLIENTE: " . $data['nombre_cliente'] . "\n" . $data['detalles_obra'];
-            $venta_id = $this->ventasModel->insert([
-                'usuario_id'    => $usuario_gen['id_usuario'],
-                'total_venta'   => $data['total_venta'],
-                'estado'        => 'PENDIENTE',
-                'observaciones' => $observaciones,
-                'fecha'         => date('Y-m-d H:i:s')
-            ]);
+            // Manejo de Imagen Opcional
+            $img_ref = "";
+            if ($file && $file->isValid() && !$file->hasMoved()) {
+                $img_ref = $file->getRandomName();
+                $file->move(FCPATH . 'assets/uploads/referencias/', $img_ref);
+            }
 
+            $observaciones = "CLIENTE: " . $data['nombre_cliente'] . "\n" . $data['detalles_obra'];
+            if ($img_ref) {
+                $observaciones .= "\n[IMG_REF:" . $img_ref . "]";
+            }
+
+            $venta_id = $this->ventasModel->insert([
+                'usuario_id'       => $usuario_id,
+                'total_venta'      => $data['total_venta'],
+                'estado'           => 'PENDIENTE',
+                'estado_aprobacion'=> 'ACEPTADO',
+                'observaciones'    => $observaciones,
+                'fecha'            => date('Y-m-d H:i:s'),
+                'tipo_pedido'      => 'MANUAL'
+            ]);
+            
             $this->detalleModel->insert([
                 'venta_id' => $venta_id, 'producto_id' => null, 'cantidad' => 1, 'precio' => $data['total_venta']
             ]);
@@ -229,6 +303,10 @@ class VentasService
      */
     public function getVentasPorUsuario($usuario_id)
     {
-        return $this->ventasModel->getVentas(null, $usuario_id);
+        $ventas = $this->ventasModel->getVentas(null, $usuario_id);
+        foreach ($ventas as &$v) {
+            $v['items'] = $this->detalleModel->getDetalles($v['id']);
+        }
+        return $ventas;
     }
 }

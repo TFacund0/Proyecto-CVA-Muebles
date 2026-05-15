@@ -57,7 +57,7 @@ class ConsultaService
      */
     public function registrar($data)
     {
-        $data['fecha'] = date('Y-m-d');
+        $data['fecha'] = date('Y-m-d H:i:s');
         $data['activo'] = 'SI';
         
         return $this->consultaModel->insert($data);

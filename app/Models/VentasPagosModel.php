@@ -13,6 +13,11 @@ class VentasPagosModel extends Model {
     protected $primaryKey = 'id';
     protected $allowedFields = ['venta_id', 'monto', 'fecha', 'nota'];
 
+    protected $validationRules = [
+        'venta_id' => 'required|numeric',
+        'monto'    => 'required|numeric'
+    ];
+
     /**
      * @brief Obtiene todos los pagos asociados a una venta específica.
      * @param int $venta_id ID de la venta.

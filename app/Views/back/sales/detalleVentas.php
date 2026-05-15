@@ -81,10 +81,81 @@
     </div>
 </div>
 
-<!-- Filtros Inteligentes -->
+<!-- 1. SOLICITUDES PENDIENTES DE APROBACIÓN -->
+<div class="admin-card-v2 mb-5 border-0 shadow-lg overflow-hidden animate__animated animate__fadeIn">
+    <div class="bg-brown p-3 px-4 d-flex align-items-center justify-content-between">
+        <h6 class="mb-0 fw-bold text-gold">
+            <i class="bi bi-bell-fill me-2 <?= !empty($solicitados) ? 'animate__animated animate__swing animate__infinite' : '' ?>"></i> 
+            SOLICITUDES POR APROBAR (<?= count($solicitados) ?>)
+        </h6>
+        <?php if (!empty($solicitados)): ?>
+            <span class="badge bg-gold text-brown x-small fw-bold px-3">REVISIÓN REQUERIDA</span>
+        <?php else: ?>
+            <span class="badge bg-light text-muted x-small fw-bold px-3">AL DÍA</span>
+        <?php endif; ?>
+    </div>
+    
+    <?php if (!empty($solicitados)): ?>
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="bg-light">
+                    <tr class="x-small text-uppercase text-muted fw-bold">
+                        <th class="ps-4 py-3">ID</th>
+                        <th class="py-3">Fecha</th>
+                        <th class="py-3">Cliente</th>
+                        <th class="py-3 text-end">Monto</th>
+                        <th class="py-3 text-center">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($solicitados as $s): ?>
+                        <tr>
+                            <td class="ps-4" data-label="ID"><span class="badge bg-light text-muted">#<?= $s['id'] ?></span></td>
+                            <td class="small fw-bold" data-label="FECHA"><?= date('d/m/Y H:i', strtotime($s['fecha'])) ?></td>
+                            <td data-label="CLIENTE">
+                                <div class="fw-bold text-brown"><?= esc($s['nombre'] . ' ' . $s['apellido']) ?></div>
+                                <div class="x-small text-muted"><?= esc($s['email']) ?></div>
+                            </td>
+                            <td class="text-end fw-bold text-dark" data-label="MONTO">$ <?= number_format($s['total_venta'], 2, ',', '.') ?></td>
+                            <td class="text-center pe-4" data-label="GESTIÓN">
+                                <div class="d-flex justify-content-center gap-2">
+                                    <a href="<?= base_url('ventas/gestion/' . $s['id']) ?>" class="btn btn-sm btn-outline-brown rounded-pill px-3 fw-bold">
+                                        <i class="bi bi-eye me-1"></i> REVISAR
+                                    </a>
+                                    <form action="<?= base_url('ventas/actualizar_estado/' . $s['id']) ?>" method="post" class="d-inline">
+                                        <?= csrf_field() ?>
+                                        <input type="hidden" name="estado" value="ACEPTADO">
+                                        <button type="submit" class="btn btn-sm btn-success rounded-pill px-3 fw-bold">
+                                            <i class="bi bi-check-lg me-1"></i> APROBAR
+                                        </button>
+                                    </form>
+                                    <form action="<?= base_url('ventas/actualizar_estado/' . $s['id']) ?>" method="post" class="d-inline" onsubmit="return confirm('¿Estás seguro de rechazar este pedido? No se mostrará en la lista.')">
+                                        <?= csrf_field() ?>
+                                        <input type="hidden" name="estado" value="RECHAZADO">
+                                        <button type="submit" class="btn btn-sm btn-outline-danger rounded-pill px-3 fw-bold">
+                                            <i class="bi bi-x-lg me-1"></i> RECHAZAR
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    <?php else: ?>
+        <div class="p-5 text-center">
+            <i class="bi bi-check2-circle display-4 text-success opacity-25 mb-3 d-block"></i>
+            <h6 class="fw-bold text-brown">No tienes solicitudes nuevas</h6>
+            <p class="text-muted small mb-0">Cuando un cliente realice un pedido desde el carrito, aparecerá aquí para tu aprobación.</p>
+        </div>
+    <?php endif; ?>
+</div>
+
+<!-- 2. FILTROS Y LISTADO PRINCIPAL -->
 <div class="admin-card-v2 mb-4 border-0 shadow-sm overflow-hidden">
     <div class="bg-light p-3 border-bottom d-flex align-items-center justify-content-between" style="min-height: 52px;">
-        <h6 class="mb-0 fw-bold text-cva-brown"><i class="bi bi-filter-right me-2 text-gold"></i> Filtros de Búsqueda</h6>
+        <h6 class="mb-0 fw-bold text-cva-brown"><i class="bi bi-filter-right me-2 text-gold"></i> Filtros de Búsqueda (Pedidos Aprobados)</h6>
         <div id="filter-status" class="x-small fw-bold text-success" style="opacity: 0; transition: opacity 0.2s ease;">
             <span class="spinner-grow spinner-grow-sm me-1"></span> ACTUALIZANDO...
         </div>
@@ -246,6 +317,108 @@
     .bg-success-soft { background: #f0fff4; }
     .cursor-pointer { cursor: pointer; transition: transform 0.2s; }
     .cursor-pointer:hover { transform: translateY(-5px); }
+
+    @media (max-width: 767.98px) {
+        .col-lg-7 .d-flex { flex-direction: column; text-align: center; }
+        .col-lg-5.text-lg-end { text-align: center !important; margin-top: 1.5rem; }
+        .w-sm-100 { width: 100% !important; }
+        
+        .admin-card-v2 h3 { font-size: 1.4rem !important; }
+        .admin-card-v2 h4 { font-size: 1.2rem !important; }
+        
+        /* Rediseño de Solicitudes Pendientes (Tarjetas Premium) */
+        .table-responsive { border: none !important; }
+        .table-responsive table, .table-responsive tbody, .table-responsive tr, .table-responsive td { 
+            display: block !important; 
+            width: 100% !important;
+        }
+        .table-responsive thead { display: none !important; }
+        
+        .table-responsive tr { 
+            background: #fff; 
+            border: 1px solid #e0d5c5 !important;
+            border-radius: 1.2rem !important;
+            margin-bottom: 2rem !important;
+            padding: 0 !important;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+
+        .table-responsive td { 
+            padding: 1rem 1.5rem !important;
+            border: none !important;
+            text-align: left !important;
+            position: relative;
+        }
+
+        /* Cabecera de la Tarjeta */
+        .table-responsive td[data-label="ID"] {
+            background: #fdfaf7;
+            border-bottom: 1px solid #f0e6d6 !important;
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center;
+        }
+        .table-responsive td[data-label="ID"]::after {
+            content: "PENDIENTE";
+            font-size: 0.6rem;
+            font-weight: 900;
+            color: var(--cva-gold);
+            background: #fff9f0;
+            padding: 4px 10px;
+            border-radius: 50px;
+            border: 1px solid rgba(184, 134, 11, 0.2);
+        }
+
+        .table-responsive td[data-label="FECHA"] {
+            padding-top: 1.5rem !important;
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        .table-responsive td[data-label="CLIENTE"] {
+            padding-bottom: 0.5rem !important;
+        }
+
+        .table-responsive td[data-label="MONTO"] {
+            background: #fff9f0;
+            margin: 1rem 1.5rem;
+            width: auto !important;
+            border-radius: 10px;
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center;
+        }
+        .table-responsive td[data-label="MONTO"]::before {
+            content: "TOTAL A COBRAR";
+            font-size: 0.65rem;
+            font-weight: 800;
+            opacity: 0.5;
+        }
+        .table-responsive td[data-label="MONTO"] {
+            font-size: 1.25rem !important;
+            font-family: 'Lora', serif;
+            color: var(--cva-brown) !important;
+        }
+
+        .table-responsive td[data-label="GESTIÓN"] {
+            padding: 1.5rem !important;
+            background: #fafafa;
+            border-top: 1px solid #eee !important;
+        }
+
+        .table-responsive .d-flex.justify-content-center.gap-2 {
+            flex-direction: column;
+            gap: 0.75rem !important;
+        }
+        .table-responsive .btn { 
+            width: 100% !important; 
+            padding: 0.8rem !important;
+            font-size: 0.9rem !important;
+        }
+        
+        .input-group .form-control { width: 1% !important; flex: 1 1 auto !important; }
+    }
 </style>
 
 <?= $this->endSection() ?>

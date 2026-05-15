@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <title><?= $title ?? 'CVA Muebles' ?></title>
+    <meta name="description" content="<?= $meta_description ?? 'Carpintería artesanal en Mantilla, Corrientes. Muebles de algarrobo y maderas nobles diseñados para durar toda la vida.' ?>">
+    <meta name="keywords" content="muebles, carpinteria, artesanal, algarrobo, corrientes, mantilla, a medida">
+    <meta name="author" content="CVA Muebles">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,7 +43,23 @@
     <!-- Footer -->
     <?= view('partials/footer') ?>
 
+    <!-- Mensajes Flotantes Globales (Toasts) -->
+    <?= view('components/floating_alert') ?>
+
     <!-- Page Specific JS Section -->
     <?= $this->renderSection('extra-js') ?>
+
+    <script>
+        function submitAction(url, message) {
+            if (confirm(message)) {
+                const form = document.getElementById('global-action-form');
+                form.action = url;
+                form.submit();
+            }
+        }
+    </script>
+    <form id="global-action-form" method="POST" style="display: none;">
+        <?= csrf_field() ?>
+    </form>
 </body>
 </html>

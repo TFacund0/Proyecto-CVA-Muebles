@@ -91,7 +91,7 @@ class ProductoController extends BaseController {
     public function index_editar_producto($id) {
         if (session()->get('perfil_id') != 1) return redirect()->to('/login');
 
-        $producto = $this->productoService->getProducto($id);
+        $producto = $this->productoService->getProductoConGaleria($id);
         if (!$producto) return redirect()->to('/crud-productos')->with('fail', 'Producto no encontrado');
 
         return view('back/products/editar_producto', [
@@ -107,6 +107,7 @@ class ProductoController extends BaseController {
     public function modificar_producto($id) {
         if (session()->get('perfil_id') != 1) return redirect()->to('/login');
 
+        // Actualizar datos básicos e imagen principal
         $resultado = $this->productoService->actualizarProducto($id, [
             'nombre_prod'  => $this->request->getVar('nombre_producto'),
             'categoria_id' => $this->request->getVar('categoria_id'),
@@ -116,6 +117,12 @@ class ProductoController extends BaseController {
             'stock_min'    => $this->request->getVar('stock-min'),
             'descripcion'  => $this->request->getVar('descripcion')
         ], $this->request->getFile('imagen'));
+
+        // Procesar galería adicional si vienen archivos
+        $galeria = $this->request->getFileMultiple('fotos_galeria');
+        if ($galeria) {
+            $this->productoService->subirImagenesGaleria($id, $galeria);
+        }
 
         if ($resultado['status'] === 'success') {
             return redirect()->to('/crud-productos')->with('success', $resultado['message']);
@@ -146,7 +153,7 @@ class ProductoController extends BaseController {
      * Muestra el detalle del producto para el cliente.
      */
     public function ver_detalle($id) {
-        $producto = $this->productoService->getProducto($id);
+        $producto = $this->productoService->getProductoConGaleria($id);
         if (!$producto) return redirect()->to('/productos')->with('fail', 'Producto no encontrado');
 
         return view('front/pages/detalle_producto', [
@@ -154,4 +161,30 @@ class ProductoController extends BaseController {
             'title'    => $producto['nombre_prod']
         ]);
     }
+
+    /**
+     * Sube fotos a la galería de un producto.
+     */
+    public function subir_fotos_galeria($id) {
+        if (session()->get('perfil_id') != 1) return redirect()->to('/login');
+
+        $files = $this->request->getFileMultiple('fotos_galeria');
+        if ($this->productoService->subirImagenesGaleria($id, $files)) {
+            return redirect()->back()->with('success', 'Galería actualizada.');
+        }
+        return redirect()->back()->with('fail', 'No se pudieron subir las imágenes.');
+    }
+
+    /**
+     * Elimina una foto de la galería.
+     */
+    public function eliminar_foto_galeria($id) {
+        if (session()->get('perfil_id') != 1) return redirect()->to('/login');
+
+        if ($this->productoService->eliminarImagenGaleria($id)) {
+            return redirect()->back()->with('success', 'Imagen eliminada.');
+        }
+        return redirect()->back()->with('fail', 'No se pudo eliminar la imagen.');
+    }
+
 }

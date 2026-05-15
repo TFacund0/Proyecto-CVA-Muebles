@@ -28,10 +28,11 @@ class VentasController extends BaseController {
         $meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
         
         return view('back/sales/detalleVentas', [
-            'ventas'    => $resultado['ventas'],
-            'counts'    => $resultado['counts'],
-            'nombreMes' => $meses[(int)date('m') - 1],
-            'title'     => 'Control de Pedidos'
+            'ventas'      => $resultado['ventas'],
+            'solicitados' => $resultado['solicitados'],
+            'counts'      => $resultado['counts'],
+            'nombreMes'   => $meses[(int)date('m') - 1],
+            'title'       => 'Control de Pedidos'
         ]);
     }
 
@@ -39,12 +40,30 @@ class VentasController extends BaseController {
      * Procesa el registro de una nueva venta delegando al servicio.
      */
     public function registrar_venta() {
-        $cartController = new CarritoController();
-        $resultado = $this->ventasService->procesarVenta(session()->get('id_usuario'), $cartController->devolver_carrito());
+        $items_seleccionados_ids = $this->request->getPost('selected_items');
+        $observaciones = $this->request->getPost('observaciones');
+        
+        if (empty($items_seleccionados_ids)) {
+            return redirect()->to('/muestro')->with('error', 'Debes seleccionar al menos un producto para generar el pedido.');
+        }
+
+        $cartService = new \App\Services\CarritoService();
+        $carrito_completo = $cartService->getContenido();
+        
+        $items_a_procesar = [];
+        foreach ($items_seleccionados_ids as $rowid) {
+            if (isset($carrito_completo[$rowid])) {
+                $items_a_procesar[] = $carrito_completo[$rowid];
+            }
+        }
+
+        $resultado = $this->ventasService->procesarVenta(session()->get('id_usuario'), $items_a_procesar, $observaciones);
 
         if ($resultado['status'] === 'success') {
-            $cartController->borrar_carrito();
-            return redirect()->to('/muestro')->with('success', 'Venta registrada exitosamente. Total: ' . $resultado['total']);
+            // Eliminar solo los items procesados del carrito
+            $cartService->eliminarVarios($items_seleccionados_ids);
+            
+            return redirect()->to('/ventas_lista')->with('success', '¡Pedido Recibido! Tu orden ha sido registrada con éxito y está en espera de ser aceptada por nuestro taller. Podrás seguir el progreso aquí mismo.');
         } else {
             return redirect()->to('/muestro')->with('error', $resultado['message']);
         }
@@ -57,10 +76,14 @@ class VentasController extends BaseController {
         $data = $this->ventasService->getGestionDetalle($venta_id);
         if (!$data) return redirect()->to('/productos')->with('error', 'Pedido no encontrado.');
 
-        return view('back/sales/ver_factura_usuario', [
-            'venta' => $data['detalles'],
-            'title' => 'Mi Compra'
-        ]);
+        // Seguridad: Verificar que el pedido sea del usuario o que el usuario sea Admin
+        if (session()->get('perfil_id') != 1 && $data['venta']['usuario_id'] != session()->get('id_usuario')) {
+            return redirect()->to('/productos')->with('error', 'No tienes permiso para ver este pedido.');
+        }
+
+        return view('back/sales/ver_factura_usuario', array_merge($data, [
+            'title' => 'Detalle de mi Pedido #' . $venta_id
+        ]));
     }
 
     /**
@@ -84,6 +107,12 @@ class VentasController extends BaseController {
 
         $nuevo_estado = $this->request->getPost('estado');
         $this->ventasService->actualizarEstado($venta_id, $nuevo_estado);
+
+        // Si se rechaza, volvemos al listado general de solicitudes.
+        // Si se acepta o cambia de fase de producción, nos quedamos en la gestión.
+        if ($nuevo_estado == 'RECHAZADO') {
+            return redirect()->to('/ventas-list')->with('success', 'Pedido rechazado correctamente.');
+        }
 
         return redirect()->back()->with('success', 'Estado de pedido actualizado a: ' . $nuevo_estado);
     }
@@ -109,7 +138,14 @@ class VentasController extends BaseController {
      */
     public function nuevo_pedido_personalizado() {
         if (session()->get('perfil_id') != 1) return redirect()->to('/login');
-        return view('back/sales/nuevo_pedido_personalizado', ['title' => 'Nuevo Pedido Personalizado']);
+        
+        $usuarioModel = new \App\Models\UsuarioModel();
+        $clientes = $usuarioModel->where('perfil_id', 2)->where('baja', 'NO')->findAll();
+
+        return view('back/sales/nuevo_pedido_personalizado', [
+            'clientes' => $clientes,
+            'title'    => 'Nuevo Pedido Personalizado'
+        ]);
     }
 
     /**
@@ -118,7 +154,8 @@ class VentasController extends BaseController {
     public function guardar_pedido_personalizado() {
         if (session()->get('perfil_id') != 1) return redirect()->to('/login');
 
-        $resultado = $this->ventasService->registrarPedidoPersonalizado($this->request->getPost());
+        $file = $this->request->getFile('imagen_referencia');
+        $resultado = $this->ventasService->registrarPedidoPersonalizado($this->request->getPost(), $file);
 
         if ($resultado['status'] === 'success') {
             return redirect()->to('/ventas/gestion/' . $resultado['venta_id'])->with('success', 'Pedido personalizado registrado correctamente.');
@@ -161,9 +198,16 @@ class VentasController extends BaseController {
     public function guardar_observaciones() {
         if (session()->get('perfil_id') != 1) return redirect()->to('/login');
 
+        $observaciones = $this->request->getPost('observaciones');
+        $img_ref_tag = $this->request->getPost('img_ref_tag');
+        
+        if ($img_ref_tag) {
+            $observaciones .= "\n" . $img_ref_tag;
+        }
+
         $this->ventasService->actualizarObservaciones(
             $this->request->getPost('venta_id'),
-            $this->request->getPost('observaciones')
+            $observaciones
         );
 
         return redirect()->back()->with('success', 'Detalles del pedido actualizados.');

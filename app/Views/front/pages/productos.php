@@ -28,6 +28,7 @@
             color: #e74c3c;
             background: white;
         }
+
     </style>
 <?= $this->endSection() ?>
 
@@ -42,32 +43,34 @@
         </div>
     </div>
 
+
     <!-- Contenedor de muebles (Mi diseño artisan) -->
-    <div class="contenedor-muebles-artisan container-lg" id="catalogo-productos">
-        
-        <!-- Mensajes de Estado Modularizados -->
-        <?= view('components/alert_message') ?>
+    <div class="container-lg" id="catalogo-productos">
 
         <!-- Pestañas de Filtro -->
         <div class="filter-container mb-5 animate-fade-in">
             <div class="filter-group d-flex">
                 <button type="button" class="btn filtro-categoria active" data-categoria="todos">Todos</button>
-                <?php foreach ($categorias as $cat) { ?>
+                <?php 
+                    $descripciones_vistas = [];
+                    foreach ($categorias as $cat): 
+                        $desc = trim(mb_strtolower($cat['descripcion']));
+                        if (in_array($desc, $descripciones_vistas)) continue;
+                        $descripciones_vistas[] = $desc;
+                ?>
                     <button type="button" class="btn filtro-categoria" data-categoria="<?= esc($cat['descripcion']) ?>">
                         <?= esc($cat['descripcion']) ?>
                     </button>
-                <?php } ?>
+                <?php endforeach; ?>
             </div>
         </div>
 
         <div class="row g-3" id="lista-productos">
-            <?php foreach ($producto as $row) { ?>
+            <?php foreach ($productos as $row) { ?>
                 <div class="col-lg-4 col-md-6 col-12 mb-4" data-categorias="<?= esc($row['categoria']) ?>">
                     <?= view('components/product_card', ['producto' => $row, 'user_favs' => $user_favs ?? []]) ?>
                 </div>
             <?php } ?>
-        </div>
-    </div>
         </div>
     </div>
 </section>
@@ -81,7 +84,13 @@
             event.stopPropagation();
         }
 
-        fetch('<?= base_url('favoritos/toggle/') ?>' + id)
+        fetch('<?= base_url('favoritos/toggle/') ?>' + id, {
+            method: 'POST',
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'X-CSRF-TOKEN': '<?= csrf_hash() ?>'
+            }
+        })
             .then(response => response.json())
             .then(data => {
                 const icon = btn.querySelector('i');
